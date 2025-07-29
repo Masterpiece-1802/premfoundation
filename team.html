@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team - Prem Foundation</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Team Section Styles */
+        .team-hero {
+            background: linear-gradient(rgba(30, 64, 175, 0.9), rgba(30, 64, 175, 0.9)), url('images/team/team-hero.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .team-tabs .nav-link {
+            color: #64748b;
+            font-weight: 600;
+            border: none;
+            padding: 12px 24px;
+            position: relative;
+        }
+        
+        .team-tabs .nav-link.active {
+            color: #1e40af;
+            background: transparent;
+        }
+        
+        .team-tabs .nav-link.active:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 3px;
+            background: #1e40af;
+            border-radius: 3px;
+        }
+        
+        .team-card {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .team-img {
+            height: 280px;
+            object-fit: cover;
+            object-position: top;
+            transition: transform 0.5s ease;
+        }
+        
+        .team-card:hover .team-img {
+            transform: scale(1.05);
+        }
+        
+        .team-card-body {
+            position: relative;
+            z-index: 2;
+            background: white;
+        }
+        
+        .team-social {
+            position: absolute;
+            top: -20px;
+            right: 20px;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .team-card:hover .team-social {
+            opacity: 1;
+            top: -30px;
+        }
+        
+        .social-icon {
+            width: 36px;
+            height: 36px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            color: #1e40af;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-left: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background: #1e40af;
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .team-role {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .team-bio {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        
+        .bio-show {
+            max-height: 500px;
+        }
+        
+        .read-more-btn {
+            color: #1e40af;
+            font-weight: 500;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .read-more-btn i {
+            transition: transform 0.3s ease;
+            margin-left: 5px;
+        }
+        
+        .rotated {
+            transform: rotate(180deg);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .team-img {
+                height: 220px;
+            }
+            
+            .team-tabs .nav-link {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header (Same as other pages) -->
+    <header class="shadow-sm">
+        <!-- Your existing navbar -->
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="team-hero text-white py-5">
+            <div class="container py-5 text-center">
+                <h1 class="display-4 fw-bold mb-3">Meet Our Team</h1>
+                <p class="lead mb-0">The passionate individuals behind Prem Foundation's mission</p>
+            </div>
+        </section>
+
+        <!-- Team Navigation -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <ul class="nav team-tabs justify-content-center" id="teamTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="board-tab" data-bs-toggle="tab" data-bs-target="#board" type="button" role="tab">
+                            Board Members
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="staff-tab" data-bs-toggle="tab" data-bs-target="#staff" type="button" role="tab">
+                            Our Staff
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="volunteers-tab" data-bs-toggle="tab" data-bs-target="#volunteers" type="button" role="tab">
+                            Key Volunteers
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Team Members -->
+        <section class="py-5">
+            <div class="container py-4">
+                <div class="tab-content" id="teamTabContent">
+                    <!-- Board Members Tab -->
+                    <div class="tab-pane fade show active" id="board" role="tabpanel">
+                        <div class="row g-4">
+                            <!-- Board Member 1 -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="team-card h-100">
+                                    <div class="overflow-hidden">
+                                        <img src="images/team/board-1.jpg" alt="Dr. Rajesh Verma" class="w-100 team-img">
+                                    </div>
+                                    <div class="team-card-body p-4">
+                                        <div class="team-social">
+                                            <a href="https://wa.me/919876543210" class="social-icon" target="_blank">
+                                                <i class="fab fa-whatsapp"></i>
+                                            </a>
+                                            <a href="mailto:rajesh@premfoundation.org" class="social-icon">
+                                                <i class="fas fa-envelope"></i>
+                                            </a>
+                                        </div>
+                                        <h3 class="h5 mb-1">Dr. Rajesh Verma</h3>
+                                        <div class="team-role">Chairman & Founder</div>
+                                        <p class="mb-3">Former IAS officer with 25+ years of public service experience...</p>
+                                        
+                                        <div class="team-bio" id="bio1">
+                                            <p>Specializes in rural development policies. Instrumental in establishing Premangan's elder care model. Holds PhD in Social Work from TISS.</p>
+                                        </div>
+                                        <span class="read-more-btn" onclick="toggleBio('bio1', this)">
+                                            Read more <i class="fas fa-chevron-down"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Board Member 2 -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="team-card h-100">
+                                    <div class="overflow-hidden">
+                                        <img src="images/team/board-2.jpg" alt="Anjali Patil" class="w-100 team-img">
+                                    </div>
+                                    <div class="team-card-body p-4">
+                                        <div class="team-social">
+                                            <a href="mailto:anjali@premfoundation.org" class="social-icon">
+                                                <i class="fas fa-envelope"></i>
+                                            </a>
+                                            <a href="tel:+919876543211" class="social-icon">
+                                                <i class="fas fa-phone"></i>
+                                            </a>
+                                        </div>
+                                        <h3 class="h5 mb-1">Anjali Patil</h3>
+                                        <div class="team-role">Secretary</div>
+                                        <p class="mb-3">Education specialist with focus on marginalized communities...</p>
+                                        
+                                        <div class="team-bio" id="bio2">
+                                            <p>Founded 3 schools for tribal children before joining Prem Foundation. Leads our scholarship programs. Recipient of National Education Award 2018.</p>
+                                        </div>
+                                        <span class="read-more-btn" onclick="toggleBio('bio2', this)">
+                                            Read more <i class="fas fa-chevron-down"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Board Member 3 -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="team-card h-100">
+                                    <div class="overflow-hidden">
+                                        <img src="images/team/board-3.jpg" alt="Vikram Joshi" class="w-100 team-img">
+                                    </div>
+                                    <div class="team-card-body p-4">
+                                        <div class="team-social">
+                                            <a href="https://wa.me/919876543212" class="social-icon" target="_blank">
+                                                <i class="fab fa-whatsapp"></i>
+                                            </a>
+                                            <a href="tel:+919876543212" class="social-icon">
+                                                <i class="fas fa-phone"></i>
+                                            </a>
+                                        </div>
+                                        <h3 class="h5 mb-1">Vikram Joshi</h3>
+                                        <div class="team-role">Treasurer</div>
+                                        <p class="mb-3">Chartered accountant overseeing financial strategy...</p>
+                                        
+                                        <div class="team-bio" id="bio3">
+                                            <p>15+ years in nonprofit financial management. Implemented transparent accounting systems adopted by 20+ NGOs. Marathon runner fundraising for our causes.</p>
+                                        </div>
+                                        <span class="read-more-btn" onclick="toggleBio('bio3', this)">
+                                            Read more <i class="fas fa-chevron-down"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Staff Tab -->
+                    <div class="tab-pane fade" id="staff" role="tabpanel">
+                        <div class="row g-4">
+                            <!-- Staff 1 -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="team-card h-100">
+                                    <div class="overflow-hidden">
+                                        <img src="images/team/staff-1.jpg" alt="Priya Sharma" class="w-100 team-img">
+                                    </div>
+                                    <div class="team-card-body p-4">
+                                        <div class="team-social">
+                                            <a href="mailto:priya@premfoundation.org" class="social-icon">
+                                                <i class="fas fa-envelope"></i>
+                                            </a>
+                                        </div>
+                                        <h3 class="h5 mb-1">Priya Sharma</h3>
+                                        <div class="team-role">Program Director</div>
+                                        <p class="mb-3">Manages day-to-day operations across all initiatives...</p>
+                                        
+                                        <div class="team-bio" id="bio4">
+                                            <p>MSW from Delhi University. Joined as volunteer in 2015, now oversees 12 programs. Spearheaded our mobile health clinic initiative.</p>
+                                        </div>
+                                        <span class="read-more-btn" onclick="toggleBio('bio4', this)">
+                                            Read more <i class="fas fa-chevron-down"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Staff 2 -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="team-card h-100">
+                                    <div class="overflow-hidden">
+                                        <img src="images/team/staff-2.jpg" alt="Arun Mehta" class="w-100 team-img">
+                                    </div>
+                                    <div class="team-card-body p-4">
+                                        <div class="team-social">
+                                            <a href="https://wa.me/919876543213" class="social-icon" target="_blank">
+                                                <i class="fab fa-whatsapp"></i>
+                                            </a>
+                                        </div>
+                                        <h3 class="h5 mb-1">Arun Mehta</h3>
+                                        <div class="team-role">Premangan Manager</div>
+                                        <p class="mb-3">Oversees elder care facility operations...</p>
+                                        
+                                        <div class="team-bio" id="bio5">
+                                            <p>Gerontology specialist with 8 years experience. Implemented innovative memory care programs at Premangan. Certified in palliative care.</p>
+                                        </div>
+                                        <span class="read-more-btn" onclick="toggleBio('bio5', this)">
+                                            Read more <i class="fas fa-chevron-down"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Staff 3 -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="team-card h-100">
+                                    <div class="overflow-hidden">
+                                        <img src="images/team/staff-3.jpg" alt="Neha Gupta" class="w-100 team-img">
+                                    </div>
+                                    <div class="team-card-body p-4">
+                                        <div class="team-social">
+                                            <a href="tel:+919876543214" class="social-icon">
+                                                <i class="fas fa-phone"></i>
+                                            </a>
+                                        </div>
+                                        <h3 class="h5 mb-1">Neha Gupta</h3>
+                                        <div class="team-role">Education Coordinator</div>
+                                        <p class="mb-3">Leads our scholarship and after-school programs...</p>
+                                        
+                                        <div class="team-bio" id="bio6">
+                                            <p>Former Teach For India fellow. Developed STEM curriculum for rural schools. Manages 150 scholarship recipients annually.</p>
+                                        </div>
+                                        <span class="read-more-btn" onclick="toggleBio('bio6', this)">
+                                            Read more <i class="fas fa-chevron-down"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Volunteers Tab -->
+                    <div class="tab-pane fade" id="volunteers" role="tabpanel">
+                        <div class="row g-4">
+                            <!-- Volunteer 1 -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="team-card h-100">
+                                    <div class="overflow-hidden">
+                                        <img src="images/team/vol-1.jpg" alt="Rahul Deshpande" class="w-100 team-img">
+                                    </div>
+                                    <div class="team-card-body p-4">
+                                        <h3 class="h5 mb-1">Rahul Deshpande</h3>
+                                        <div class="team-role">Medical Volunteer</div>
+                                        <p class="mb-3">Weekly health checkups at Premangan...</p>
+                                        
+                                        <div class="team-bio" id="bio7">
+                                            <p>Cardiologist at City Hospital. Provides pro bono consultations. Organized vaccination drives for 500+ seniors.</p>
+                                        </div>
+                                        <span class="read-more-btn" onclick="toggleBio('bio7', this)">
+                                            Read more <i class="fas fa-chevron-down"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Volunteer 2 -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="team-card h-100">
+                                    <div class="overflow-hidden">
+                                        <img src="images/team/vol-2.jpg" alt="Meena Iyer" class="w-100 team-img">
+                                    </div>
+                                    <div class="team-card-body p-4">
+                                        <h3 class="h5 mb-1">Meena Iyer</h3>
+                                        <div class="team-role">Activity Coordinator</div>
+                                        <p class="mb-3">Organizes recreational activities...</p>
+                                        
+                                        <div class="team-bio" id="bio8">
+                                            <p>Retired school teacher. Develops cognitive engagement programs for seniors. Volunteer since 2018.</p>
+                                        </div>
+                                        <span class="read-more-btn" onclick="toggleBio('bio8', this)">
+                                            Read more <i class="fas fa-chevron-down"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (Same as other pages) -->
+    <footer>
+        <!-- Your existing footer -->
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Toggle Bio Function
+        function toggleBio(bioId, element) {
+            const bio = document.getElementById(bioId);
+            const icon = element.querySelector('i');
+            
+            bio.classList.toggle('bio-show');
+            icon.classList.toggle('rotated');
+            
+            if (bio.classList.contains('bio-show')) {
+                element.innerHTML = 'Read less <i class="fas fa-chevron-up"></i>';
+            } else {
+                element.innerHTML = 'Read more <i class="fas fa-chevron-down"></i>';
+            }
+        }
+        
+        // Initialize tooltips for social icons
+        document.addEventListener('DOMContentLoaded', function() {
+            const socialIcons = document.querySelectorAll('.social-icon');
+            socialIcons.forEach(icon => {
+                icon.setAttribute('data-bs-toggle', 'tooltip');
+                
+                if (icon.querySelector('.fa-whatsapp')) {
+                    icon.setAttribute('title', 'Contact via WhatsApp');
+                } else if (icon.querySelector('.fa-envelope')) {
+                    icon.setAttribute('title', 'Send Email');
+                } else if (icon.querySelector('.fa-phone')) {
+                    icon.setAttribute('title', 'Call');
+                }
+            });
+            
+            // Initialize Bootstrap tooltips
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        });
+    </script>
+</body>
+</html>

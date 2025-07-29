@@ -19,6 +19,7 @@
 <meta property="og:image" content="images/hero-bg.jpg">
 <meta name="theme-color" content="#1e40af">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <title>Premangan Old Age Home | Prem Foundation</title>
 </head>
 <body>
@@ -373,47 +374,46 @@
             <h3 class="h5 mb-0"><i class="fas fa-file-signature me-2"></i> Begin Admission</h3>
           </div>
           <div class="card-body p-4">
-            <form action="https://script.google.com/macros/s/AKfycbxMdsM53gCGM-WaRgvt5gzTeOGEiGiAdYIgpeltrex1ZOvuI9q1kX10h-bMFaN6qUzkxw/exec" method="POST" id="admissionForm">
+            <form id="admissionForm">
     <input type="hidden" name="email" id="applicantEmail">
-
-
-              <div class="row g-3">
-                <div class="col-md-6 mb-3">
-                  <label for="residentName" class="form-label">Resident's Full Name</label>
-                  <input type="text" name="name" class="form-control" id="residentName" required>
+    <div class="row g-3">
+        <div class="col-md-6 mb-3">
+            <label for="residentName" class="form-label">Resident's Full Name</label>
+            <input type="text" name="name" class="form-control" id="residentName" required>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="residentAge" class="form-label">Age</label>
+            <input type="number" name="age" class="form-control" id="residentAge" required>
+        </div>
+        <div class="col-12 mb-3">
+            <label for="medicalHistory" class="form-label">Medical History Summary</label>
+            <textarea name="medical" class="form-control" id="medicalHistory" rows="2" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="applicantEmail" class="form-label">Your Email</label>
+            <input type="email" name="email" class="form-control" id="applicantEmail" required>
+        </div>
+        <div class="col-12 mb-3">
+            <label class="form-label">Room Preference</label>
+            <div class="ps-3">
+                <div class="form-check mb-2">
+                    <input class="form-check-input" type="radio" name="roomType" id="privateRoom" value="Private Room" checked>
+                    <label class="form-check-label" for="privateRoom">Private Room (₹25,000/month)</label>
                 </div>
-                <div class="col-md-6 mb-3">
-                  <label for="residentAge" class="form-label">Age</label>
-                  <input type="number" name="age" class="form-control" id="residentAge" required>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="roomType" id="sharedRoom" value="Shared Room">
+                    <label class="form-check-label" for="sharedRoom">Shared Room (₹10,000/month)</label>
                 </div>
-                <div class="col-12 mb-3">
-                  <label for="medicalHistory" class="form-label">Medical History Summary</label>
-                  <textarea name="medical" class="form-control" id="medicalHistory" rows="2" required></textarea>
-                </div>
-<div class="mb-3">
-        <label for="applicantEmail" class="form-label">Your Email</label>
-        <input type="email" name="email" class="form-control" id="applicantEmail" required>
+            </div>
+        </div>
+        <div class="col-12 mt-2">
+            <button type="button" id="proceedToPayment" class="btn btn-success w-100 py-2">
+                <i class="fas fa-credit-card me-2"></i> Proceed to Payment
+            </button>
+        </div>
     </div>
-                <div class="col-12 mb-3">
-                  <label class="form-label">Room Preference</label>
-                  <div class="ps-3">
-                    <div class="form-check mb-2">
-                      <input class="form-check-input" type="radio" name="roomType" id="privateRoom" checked>
-                      <label class="form-check-label" for="privateRoom">Private Room (₹25,000/month)</label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="roomType" id="sharedRoom">
-                      <label class="form-check-label" for="sharedRoom">Shared Room (₹10,000/month)</label>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 mt-2">
-                  <button type="submit" class="btn btn-success w-100 py-2">
-                    <i class="fas fa-user-plus me-2"></i> Submit Application
-                  </button>
-                </div>
-              </div>
-            </form>
+</form>
+
           </div>
         </div>
       </div>

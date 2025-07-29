@@ -373,20 +373,27 @@
             <h3 class="h5 mb-0"><i class="fas fa-file-signature me-2"></i> Begin Admission</h3>
           </div>
           <div class="card-body p-4">
-            <form id="admissionForm">
+            <form action="https://script.google.com/macros/s/AKfycbxMdsM53gCGM-WaRgvt5gzTeOGEiGiAdYIgpeltrex1ZOvuI9q1kX10h-bMFaN6qUzkxw/exec" method="POST" id="admissionForm">
+    <input type="hidden" name="email" id="applicantEmail">
+
+
               <div class="row g-3">
                 <div class="col-md-6 mb-3">
                   <label for="residentName" class="form-label">Resident's Full Name</label>
-                  <input type="text" class="form-control" id="residentName" required>
+                  <input type="text" name="name" class="form-control" id="residentName" required>
                 </div>
                 <div class="col-md-6 mb-3">
                   <label for="residentAge" class="form-label">Age</label>
-                  <input type="number" class="form-control" id="residentAge" required>
+                  <input type="number" name="age" class="form-control" id="residentAge" required>
                 </div>
                 <div class="col-12 mb-3">
                   <label for="medicalHistory" class="form-label">Medical History Summary</label>
-                  <textarea class="form-control" id="medicalHistory" rows="2" required></textarea>
+                  <textarea name="medical" class="form-control" id="medicalHistory" rows="2" required></textarea>
                 </div>
+<div class="mb-3">
+        <label for="applicantEmail" class="form-label">Your Email</label>
+        <input type="email" name="email" class="form-control" id="applicantEmail" required>
+    </div>
                 <div class="col-12 mb-3">
                   <label class="form-label">Room Preference</label>
                   <div class="ps-3">

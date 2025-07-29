@@ -151,3 +151,138 @@ document.addEventListener('DOMContentLoaded', function() {
     initPremanganForms();
     // Keep existing functions
 });
+
+// Initialize lightbox for facility images
+function initFacilityLightbox() {
+    // Load fslightbox script dynamically if not already loaded
+    if (!document.querySelector('script[src*="fslightbox"]')) {
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.3.1/index.min.js';
+        document.body.appendChild(script);
+    }
+}
+
+// Add to your DOMContentLoaded event
+document.addEventListener('DOMContentLoaded', function() {
+    initFacilityLightbox();
+    // ... keep your existing code
+});
+
+// Form Validation and Handling
+function initPremanganForms() {
+    // Quick Inquiry Form
+    const inquiryForm = document.getElementById('inquiryForm');
+    if (inquiryForm) {
+        inquiryForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (this.checkValidity()) {
+                // Form submission logic (replace with actual submission)
+                alert('Thank you! Our team will contact you within 24 hours.');
+                this.reset();
+                this.classList.remove('was-validated');
+            } else {
+                e.stopPropagation();
+                this.classList.add('was-validated');
+            }
+        }, false);
+    }
+
+    // Admission Form
+    const admissionForm = document.getElementById('admissionForm');
+    if (admissionForm) {
+        admissionForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            // Simulate form processing
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status"></span>Processing...';
+            
+            setTimeout(() => {
+                alert('Application submitted successfully! We will contact you to complete the admission process.');
+                this.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 1500);
+        });
+    }
+}
+
+// Initialize when DOM loads
+document.addEventListener('DOMContentLoaded', function() {
+    initPremanganForms();
+    // Keep existing functions
+});
+
+// Gallery Management
+function initGallery() {
+    const galleryGrid = document.getElementById('premanganGallery');
+    
+    // Sample gallery data (replace with admin-loaded content)
+    const sampleGallery = [
+        { img: 'images/premangan/gallery/activity1.jpg', caption: 'Yoga Session' },
+        { img: 'images/premangan/gallery/activity2.jpg', caption: 'Festival Celebration' },
+        { img: 'images/premangan/gallery/facility1.jpg', caption: 'Dining Area' }
+    ];
+    
+    // Render gallery
+    function renderGallery(images) {
+        galleryGrid.innerHTML = images.map(img => `
+            <div class="col-lg-4 col-md-6">
+                <div class="gallery-item">
+                    <img src="${img.img}" alt="${img.caption}" class="gallery-img">
+                    <div class="gallery-caption">${img.caption}</div>
+                </div>
+            </div>
+        `).join('');
+    }
+    
+    // Simulate loading
+    setTimeout(() => renderGallery(sampleGallery), 1000);
+    
+    // Admin upload functionality
+    const uploadForm = document.getElementById('galleryUploadForm');
+    if (uploadForm) {
+        uploadForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const files = document.getElementById('galleryUpload').files;
+            if (files.length > 0) {
+                // Simulate upload (replace with actual API call)
+                simulateUpload(files);
+            }
+        });
+    }
+}
+
+function simulateUpload(files) {
+    const progressBar = document.querySelector('.progress-bar');
+    const uploadProgress = document.querySelector('.upload-progress');
+    const uploadCount = document.querySelector('.upload-count');
+    const totalFiles = document.querySelector('.total-files');
+    
+    totalFiles.textContent = files.length;
+    uploadProgress.style.display = 'block';
+    
+    let uploaded = 0;
+    const interval = setInterval(() => {
+        uploaded++;
+        uploadCount.textContent = uploaded;
+        progressBar.style.width = `${(uploaded/files.length)*100}%`;
+        
+        if (uploaded === files.length) {
+            clearInterval(interval);
+            setTimeout(() => {
+                alert(`${files.length} photos uploaded successfully!`);
+                uploadProgress.style.display = 'none';
+                progressBar.style.width = '0%';
+            }, 500);
+        }
+    }, 300);
+}
+
+// Initialize when DOM loads
+document.addEventListener('DOMContentLoaded', function() {
+    initGallery();
+    // Keep existing functions
+});

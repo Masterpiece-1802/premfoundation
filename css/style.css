@@ -313,21 +313,208 @@ a:focus, button:focus {
     min-height: 60vh;
 }
 
+
+/* ===== Facilities Section ===== */
+#facilities {
+    background-color: #f8f9fa; /* Light gray background */
+    padding: 5rem 0;
+}
+
+#facilities .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Section Header */
+.facilities-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.facilities-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #212529; /* Dark gray */
+    margin-bottom: 0.5rem;
+}
+
+.facilities-header p {
+    font-size: 1.25rem;
+    color: #495057; /* Medium gray */
+    margin-bottom: 0;
+}
+
+/* Facility Cards */
 .facility-card {
-    background: white;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(0,0,0,0.1);
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    height: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    margin-bottom: 1.5rem;
 }
 
 .facility-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
 }
 
-.facility-icon {
-    color: var(--primary);
+/* Facility Image */
+.facility-img-container {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
 }
+
+.facility-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.facility-card:hover .facility-img {
+    transform: scale(1.05);
+}
+
+/* Facility Content */
+.facility-body {
+    padding: 1.75rem;
+}
+
+.facility-body h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #212529;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.facility-body h3 i {
+    margin-right: 0.75rem;
+    font-size: 1.2em;
+    color: #4361ee; /* Primary color */
+}
+
+.facility-features {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.facility-features li {
+    position: relative;
+    padding-left: 1.75rem;
+    margin-bottom: 0.75rem;
+    color: #495057;
+    line-height: 1.5;
+}
+
+.facility-features li:before {
+    content: "\f00c";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    color: #4361ee; /* Primary color */
+    font-size: 0.9em;
+}
+
+/* View Button (Optional) */
+.view-btn {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    color: #4361ee;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.facility-card:hover .view-btn {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.view-btn:hover {
+    background: #4361ee;
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .facility-body {
+        padding: 1.5rem;
+    }
+    
+    .facility-features li {
+        padding-left: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    #facilities {
+        padding: 4rem 0;
+    }
+    
+    .facilities-header h2 {
+        font-size: 2rem;
+    }
+    
+    .facility-img-container {
+        height: 200px;
+    }
+}
+
+@media (max-width: 576px) {
+    .facility-img-container {
+        height: 180px;
+    }
+    
+    .facility-body {
+        padding: 1.25rem;
+    }
+    
+    .facility-body h3 {
+        font-size: 1.25rem;
+    }
+    
+    .facility-features li {
+        font-size: 0.95rem;
+    }
+}
+
+/* Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.facility-card {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+}
+
+.facility-card:nth-child(1) { animation-delay: 0.1s; }
+.facility-card:nth-child(2) { animation-delay: 0.2s; }
+.facility-card:nth-child(3) { animation-delay: 0.3s; }
 
 .admin-gallery-placeholder {
     background: rgba(255,255,255,0.1);
@@ -335,16 +522,159 @@ a:focus, button:focus {
     border-radius: 10px;
 }
 
-/* Forms */
-#inquiryForm, #admissionForm {
-    display: grid;
-    gap: 1rem;
+
+/* Testimonials */
+.testimonial-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
+.testimonial-img img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 3px solid var(--primary);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+blockquote p {
+    position: relative;
+    font-style: italic;
+    line-height: 1.6;
+}
+
+blockquote p:before,
+blockquote p:after {
+    content: '"';
+    color: var(--primary);
+    font-size: 1.5em;
+    line-height: 0;
+    opacity: 0.8;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+    color: var(--primary);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: var(--primary);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-size: 60%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Admission Section */
+.accordion-button {
+    font-weight: 500;
+    padding: 1rem 1.25rem;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: rgba(67, 97, 238, 0.1);
+    color: var(--primary);
+}
+
+.accordion-body {
+    padding: 1rem 1.25rem;
+    background-color: #f8f9fa;
+}
+
+/* Updated Admission Section CSS */
 #admissionForm {
-    grid-template-columns: 1fr 1fr;
+    grid-column: 1 / -1; /* Makes the form span all columns */
+    width: 100%;
 }
 
-#admissionForm .full-width {
-    grid-column: span 2;
+/* Adjust the card layout */
+.card.shadow-sm:last-child { /* Targets the "Begin Admission" card */
+    grid-column: 1 / -1;
+    margin-top: 1rem; /* Adds spacing between forms */
+}
+
+/* Optional: Adjust form element widths if needed */
+#admissionForm .col-md-6 {
+    width: 48%; /* Makes the two columns fit better in full width */
+    margin-right: 2%;
+}
+
+#admissionForm .col-md-6:last-child {
+    margin-right: 0;
+}
+
+/* Gallery Section */
+.gallery-grid {
+    min-height: 300px;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    height: 250px;
+    transition: all 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.admin-upload {
+    background: rgba(248,249,250,0.8);
+    backdrop-filter: blur(10px);
+}
+
+/* Progress bar */
+.upload-progress {
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .gallery-item {
+        height: 200px;
+    }
+}
+
+
+/* Map Section */
+.map-container {
+    border: 1px solid rgba(0,0,0,0.1);
+    background: white;
+}
+
+.map-container iframe {
+    border: none;
+}
+
+/* Contact Info */
+.contact-method {
+    margin-bottom: 1rem;
+}
+
+/* Footer */
+footer a {
+    transition: all 0.2s ease;
+}
+
+footer a:hover {
+    color: var(--accent) !important;
+    padding-left: 3px;
+}
+
+footer iframe {
+    filter: grayscale(30%) contrast(90%);
+    border-radius: 4px;
 }

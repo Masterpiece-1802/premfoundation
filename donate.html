@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prem Foundation - Make a Difference</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        :root {
+            --primary: #6c5ce7;
+            --primary-dark: #5649c0;
+            --secondary: #00cec9;
+            --dark: #2d3436;
+            --light: #f5f6fa;
+            --gold: #fdcb6e;
+            --silver: #b2bec3;
+            --bronze: #e17055;
+            --success: #00b894;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            color: var(--light);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header Styles - Assuming these match your existing site */
+        /* Footer Styles - Assuming these match your existing site */
+
+        /* Donation Page Specific Styles */
+        .donation-hero {
+            position: relative;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(44, 44, 84, 0.9) 0%, rgba(33, 33, 63, 0.9) 100%), 
+                        url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, var(--gold), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: white;
+            opacity: 0;
+            animation: sparkle 3s infinite;
+        }
+
+        @keyframes sparkle {
+            0% { opacity: 0; transform: scale(0); }
+            50% { opacity: 0.8; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0); }
+        }
+
+        /* Donation Sections */
+        .donation-section {
+            padding: 5rem 2rem;
+            background-color: var(--dark);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            display: inline-block;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        /* Campaign Table */
+        .campaign-table {
+            width: 100%;
+            max-width: 1000px;
+            margin: 3rem auto;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .campaign-table th, .campaign-table td {
+            padding: 1.2rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .campaign-table th {
+            background: rgba(108, 92, 231, 0.2);
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .campaign-table tr:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .campaign-table .donate-link {
+            color: var(--primary);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .campaign-table .donate-link:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+
+        /* Donation Tiers Section */
+        .donation-tiers {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tier-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            width: 300px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tier-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary);
+        }
+
+        .tier-card.gold {
+            border-top: 4px solid var(--gold);
+        }
+
+        .tier-card.silver {
+            border-top: 4px solid var(--silver);
+        }
+
+        .tier-card.bronze {
+            border-top: 4px solid var(--bronze);
+        }
+
+        .tier-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .tier-card .amount {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 1.5rem 0;
+            color: var(--secondary);
+        }
+
+        .tier-card .benefits {
+            list-style-type: none;
+            margin-bottom: 2rem;
+        }
+
+        .tier-card .benefits li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .tier-card .benefits li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+        }
+
+        /* Custom Donation Form */
+        .custom-donation {
+            max-width: 600px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .custom-donation h3 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .custom-donation .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .custom-donation label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .custom-donation input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .custom-donation input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* Premangan Special Section */
+        .premangan-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, rgba(44, 44, 84, 0.9) 0%, rgba(33, 33, 63, 0.9) 100%);
+            text-align: center;
+        }
+
+        .premangan-card {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .premangan-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(253, 203, 110, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+            z-index: 0;
+        }
+
+/* Navigation Buttons */
+.nav-btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background: transparent;
+    color: var(--primary);
+    border-radius: 50px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: 2px solid var(--primary);
+    cursor: pointer;
+    text-align: center;
+    margin: 0.5rem;
+}
+
+.nav-btn:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
+}
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .premangan-card h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--gold);
+            position: relative;
+            z-index: 1;
+        }
+
+        .premangan-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .premangan-card .highlight {
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /* 80G Benefits Section */
+        .tax-benefits {
+            padding: 5rem 2rem;
+            background-color: var(--dark);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .benefit-card i {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card h3 {
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+
+
+        /* Certifications Section */
+        .certifications {
+            padding: 5rem 2rem;
+            background-color: var(--dark);
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .cert-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            text-align: center;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border-color: var(--primary);
+        }
+
+        .cert-card i {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .cert-card h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-card p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(44, 44, 84, 0.9) 0%, rgba(33, 33, 63, 0.9) 100%);
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, var(--gold), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .cta-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        /* Buttons */
+        .donate-btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            color: white;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .donate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: var(--dark);
+            border-radius: 10px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2rem;
+            position: relative;
+            border: 1px solid var(--primary);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        /* Particle Background */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .tier-card {
+                width: 100%;
+                max-width: 350px;
+            }
+
+            .campaign-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header (from your existing site) -->
+    <header class="site-header">
+        <!-- Your header content here -->
+    </header>
+
+    <!-- Donation Hero Section -->
+    <section class="donation-hero">
+        <div class="particles" id="particles-js"></div>
+        <div class="sparkles" id="sparkles"></div>
+        <div class="hero-content floating">
+            <h1>Transform Lives With Your Generosity</h1>
+            <p>Your contribution helps us create lasting change in communities. Every donation, big or small, makes a difference in someone's life. Join us in our mission to spread hope and opportunity.</p>
+            <a href="#campaigns" class="nav-btn">View Campaigns</a>
+        </div>
+    </section>
+
+    <!-- Campaigns Table -->
+    <section class="donation-section" id="campaigns">
+        <div class="section-title">
+            <h2>Our Campaigns</h2>
+            <p>Support specific initiatives that align with your passion</p>
+        </div>
+
+        <table class="campaign-table">
+            <thead>
+                <tr>
+                    <th>Campaign</th>
+                    <th>Details</th>
+                    <th>Amount</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Small Donation</td>
+                    <td>General fund to support our most urgent needs</td>
+                    <td>₹500/-</td>
+                    <td><a href="#" class="donate-link" data-amount="500">Donate</a></td>
+                </tr>
+                <tr>
+                    <td>Clothes Distribution</td>
+                    <td>Provide warm clothing for 100 underprivileged children this winter</td>
+                    <td>₹1,000/-</td>
+                    <td><a href="#" class="donate-link" data-amount="1000">Donate</a></td>
+                </tr>
+                <tr>
+                    <td>Food Distribution</td>
+                    <td>Sponsor meals for a family of 4 for one month</td>
+                    <td>₹2,000/-</td>
+                    <td><a href="#" class="donate-link" data-amount="2000">Donate</a></td>
+                </tr>
+                <tr>
+                    <td>Education Fund</td>
+                    <td>Support a child's school fees and supplies for a year</td>
+                    <td>₹5,000/-</td>
+                    <td><a href="#" class="donate-link" data-amount="5000">Donate</a></td>
+                </tr>
+                <tr>
+                    <td>Tree Planting</td>
+                    <td>Plant and maintain 10 trees in urban areas</td>
+                    <td>₹3,000/-</td>
+                    <td><a href="#" class="donate-link" data-amount="3000">Donate</a></td>
+                </tr>
+                <tr>
+                    <td>Women Empowerment</td>
+                    <td>Vocational training for one woman to become self-sufficient</td>
+                    <td>₹7,500/-</td>
+                    <td><a href="#" class="donate-link" data-amount="7500">Donate</a></td>
+                </tr>
+                <tr>
+                    <td>Healthcare Initiative</td>
+                    <td>Medical camp in rural area serving 50 patients</td>
+                    <td>₹15,000/-</td>
+                    <td><a href="#" class="donate-link" data-amount="15000">Donate</a></td>
+                </tr>
+                <tr>
+                    <td>Animal Welfare</td>
+                    <td>Support shelter and medical care for stray animals</td>
+                    <td>₹4,000/-</td>
+                    <td><a href="#" class="donate-link" data-amount="4000">Donate</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Custom Donation Form -->
+    <section class="donation-section">
+        <div class="custom-donation">
+            <h3>Make Your Donation</h3>
+            <form id="custom-donation-form">
+                <div class="form-group">
+                    <label for="custom-amount">Amount (₹)</label>
+                    <input type="number" id="custom-amount" min="100" placeholder="Put any amount" required>
+                </div>
+                <button type="submit" class="donate-btn" style="width: 100%;">Donate Now</button>
+            </form>
+        </div>
+    </section>
+
+      <!-- Donation Tiers Section -->
+    <section class="donation-section" id="donation-tiers">
+        <div class="section-title">
+            <h2>Donation Tiers</h2>
+            <p>Choose a giving level that resonates with you</p>
+        </div>
+
+        <div class="donation-tiers">
+            <div class="tier-card bronze">
+                <h3>Hope Giver</h3>
+                <div class="amount">₹500/-</div>
+                <ul class="benefits">
+                    <li>Supports one child's education for a month</li>
+                    <li>Provides 10 nutritious meals</li>
+                    <li>Tax exemption certificate</li>
+                    <li>Thank you letter</li>
+                </ul>
+                <button class="donate-btn" data-amount="500">Donate Now</button>
+            </div>
+
+            <div class="tier-card silver">
+                <h3>Change Maker</h3>
+                <div class="amount">₹2,500/-</div>
+                <ul class="benefits">
+                    <li>Supports a woman's vocational training</li>
+                    <li>Provides healthcare for 5 elderly</li>
+                    <li>Tax exemption certificate</li>
+                    <li>Personalized thank you video</li>
+                    <li>Quarterly impact report</li>
+                </ul>
+                <button class="donate-btn" data-amount="2500">Donate Now</button>
+            </div>
+
+            <div class="tier-card gold">
+                <h3>Visionary</h3>
+                <div class="amount">₹10,000/-</div>
+                <ul class="benefits">
+                    <li>Sponsors a child's education for a year</li>
+                    <li>Funds a community health camp</li>
+                    <li>Tax exemption certificate</li>
+                    <li>Invitation to annual donor event</li>
+                    <li>Personal impact assessment</li>
+                    <li>Featured on our donor wall</li>
+                </ul>
+                <button class="donate-btn" data-amount="10000">Donate Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premangan Special Section -->
+    <section class="premangan-section">
+        <div class="premangan-card">
+            <h2>Premangan - Our Old Age Home Project</h2>
+            <p>We're building <span class="highlight">Premangan</span>, a sanctuary for the elderly in Igatpuri. With your support, we can create a loving home for those who need it most.</p>
+            <p>Donate <span class="highlight">₹50,000/-</span> or more to name a room in our facility. Your chosen name will be permanently displayed, creating a lasting legacy of your generosity.</p>
+            <button class="donate-btn" data-amount="50000" data-special="premangan">Name a Room at Premangan</button>
+        </div>
+    </section>
+
+    <!-- 80G Tax Benefits Section -->
+    <section class="tax-benefits">
+        <div class="section-title">
+            <h2>80G Tax Benefits</h2>
+            <p>Your donations qualify for 50% tax exemption under Section 80G</p>
+        </div>
+
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <i class="fas fa-percentage"></i>
+                <h3>50% Tax Deduction</h3>
+                <p>Under Section 80G of the Income Tax Act, you can claim 50% of your donation amount as tax deduction.</p>
+            </div>
+            <div class="benefit-card">
+                <i class="fas fa-file-invoice"></i>
+                <h3>Instant Certificate</h3>
+                <p>Receive your 80G tax exemption certificate immediately after donation via email.</p>
+            </div>
+            <div class="benefit-card">
+                <i class="fas fa-rupee-sign"></i>
+                <h3>No Upper Limit</h3>
+                <p>There's no maximum limit on the amount you can claim as deduction under 80G.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="certifications">
+        <div class="section-title">
+            <h2>Our Certifications</h2>
+            <p>Prem Foundation is a trusted, transparent organization</p>
+        </div>
+
+        <div class="cert-grid">
+            <div class="cert-card" data-cert="80g">
+                <i class="fas fa-file-invoice-dollar"></i>
+                <h3>80G Certification</h3>
+                <p>Your donations are tax exempt under section 80G of the Income Tax Act</p>
+            </div>
+            <div class="cert-card" data-cert="12a">
+                <i class="fas fa-hand-holding-heart"></i>
+                <h3>12A Registration</h3>
+                <p>Registered under section 12A for tax exemption on income</p>
+            </div>
+            <div class="cert-card" data-cert="fcra">
+                <i class="fas fa-globe-asia"></i>
+                <h3>FCRA Compliance</h3>
+                <p>Authorized to receive foreign contributions</p>
+            </div>
+            <div class="cert-card" data-cert="csr">
+                <i class="fas fa-building"></i>
+                <h3>CSR Approved</h3>
+                <p>Eligible for Corporate Social Responsibility funding</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Have Questions About Donating?</h2>
+            <p>Our team is here to help you with any questions you might have about the donation process, tax benefits, or our initiatives.</p>
+            <a href="contact.html" class="nav-btn">Get In Touch</a>
+        </div>
+    </section>
+
+    <!-- Certification Modal -->
+    <div class="modal" id="certModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modal-content">
+                <!-- Content will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Donation Form Modal -->
+    <div class="modal" id="donationModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="donation-title">Make a Donation</h2>
+            <form id="donation-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="amount">Amount (₹)</label>
+                    <input type="number" id="amount" required>
+                </div>
+                <div class="form-group" id="premangan-field" style="display: none;">
+                    <label for="room-name">Room Name (for Premangan)</label>
+                    <input type="text" id="room-name" placeholder="Enter the name you'd like to display">
+                </div>
+                <div class="form-group">
+                    <label for="pan">PAN Number (for 80G certificate)</label>
+                    <input type="text" id="pan">
+                </div>
+                <button type="submit" class="donate-btn">Proceed to Payment</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer (from your existing site) -->
+    <footer class="site-footer">
+        <!-- Your footer content here -->
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create sparkles
+            createSparkles();
+            
+            // Create particle background
+            createParticles();
+            
+            // Certification modal functionality
+            const certCards = document.querySelectorAll('.cert-card');
+            const certModal = document.getElementById('certModal');
+            const modalContent = document.getElementById('modal-content');
+            const closeModal = document.querySelectorAll('.close-modal');
+            
+            certCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const certType = this.getAttribute('data-cert');
+                    showCertification(certType);
+                });
+            });
+            
+            closeModal.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.modal').forEach(modal => {
+                        modal.classList.remove('active');
+                    });
+                });
+            });
+            
+            // Donation buttons functionality
+            const donateButtons = document.querySelectorAll('[data-amount], .donate-link');
+            const donationModal = document.getElementById('donationModal');
+            const donationForm = document.getElementById('donation-form');
+            const amountInput = document.getElementById('amount');
+            const premanganField = document.getElementById('premangan-field');
+            const customDonationForm = document.getElementById('custom-donation-form');
+            const customAmountInput = document.getElementById('custom-amount');
+            
+            // Handle custom donation form
+            customDonationForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const amount = customAmountInput.value;
+                
+                if (amount < 100) {
+                    alert('Minimum donation amount is ₹100');
+                    return;
+                }
+                
+                amountInput.value = amount;
+                document.getElementById('donation-title').textContent = 'Make a Donation';
+                premanganField.style.display = 'none';
+                donationModal.classList.add('active');
+            });
+            
+            // Handle other donation buttons
+            donateButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const amount = this.getAttribute('data-amount');
+                    const isPremangan = this.getAttribute('data-special') === 'premangan';
+                    
+                    if (amount) {
+                        amountInput.value = amount;
+                    }
+                    
+                    if (isPremangan) {
+                        document.getElementById('donation-title').textContent = 'Name a Room at Premangan';
+                        premanganField.style.display = 'block';
+                    } else {
+                        document.getElementById('donation-title').textContent = 'Make a Donation';
+                        premanganField.style.display = 'none';
+                    }
+                    
+                    donationModal.classList.add('active');
+                });
+            });
+            
+            // Form submission
+            donationForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Here you would normally integrate with Razorpay
+                // For now, redirect to thank you page
+                window.location.href = "thankyou.html";
+                
+                // Reset form
+                this.reset();
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', function(e) {
+                if (e.target.classList.contains('modal')) {
+                    document.querySelectorAll('.modal').forEach(modal => {
+                        modal.classList.remove('active');
+                    });
+                }
+            });
+        });
+        
+        function createSparkles() {
+            const sparklesContainer = document.getElementById('sparkles');
+            const sparkleCount = 30;
+            
+            for (let i = 0; i < sparkleCount; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.classList.add('sparkle');
+                
+                // Random position
+                sparkle.style.left = `${Math.random() * 100}%`;
+                sparkle.style.top = `${Math.random() * 100}%`;
+                
+                // Random size
+                const size = Math.random() * 6 + 2;
+                sparkle.style.width = `${size}px`;
+                sparkle.style.height = `${size}px`;
+                
+                // Random delay
+                sparkle.style.animationDelay = `${Math.random() * 5}s`;
+                
+                sparklesContainer.appendChild(sparkle);
+            }
+        }
+        
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles-js');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random position
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Random size
+                const size = Math.random() * 3 + 1;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random opacity
+                particle.style.opacity = Math.random() * 0.5 + 0.1;
+                
+                // Random animation
+                const duration = Math.random() * 20 + 10;
+                const delay = Math.random() * 10;
+                particle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        function showCertification(certType) {
+            let title = '';
+            let content = '';
+            
+            switch(certType) {
+                case '80g':
+                    title = '80G Tax Exemption Certificate';
+                    content = `
+                        <h3>80G Tax Exemption</h3>
+                        <p>Prem Foundation is registered under section 80G of the Income Tax Act, 1961. Donations made to our organization are eligible for 50% tax deduction under this section.</p>
+                        <p><strong>Registration Number:</strong> AAATP1234GF2023</p>
+                        <p><strong>Valid Until:</strong> Perpetual</p>
+                        <p>Upon donation, you will receive a receipt that can be used to claim your tax deduction when filing your returns.</p>
+                        <div style="margin-top: 2rem; text-align: center;">
+                            <a href="certificates/80g.pdf" target="_blank" class="donate-btn">View PDF Certificate</a>
+                        </div>
+                    `;
+                    break;
+                case '12a':
+                    title = '12A Registration';
+                    content = `
+                        <h3>12A Registration Certificate</h3>
+                        <p>We are registered under section 12A of the Income Tax Act, which grants us tax exemption on our income. This certification is a mark of our legitimacy as a charitable organization.</p>
+                        <p><strong>Registration Number:</strong> AAATP5678SA2023</p>
+                        <p><strong>Valid Until:</strong> Perpetual</p>
+                        <div style="margin-top: 2rem; text-align: center;">
+                            <a href="certificates/12a.pdf" target="_blank" class="donate-btn">View PDF Certificate</a>
+                        </div>
+                    `;
+                    break;
+                case 'fcra':
+                    title = 'FCRA Compliance';
+                    content = `
+                        <h3>Foreign Contribution Regulation Act</h3>
+                        <p>Prem Foundation is authorized to receive foreign contributions under the FCRA, 2010. This allows us to accept donations from international donors and NRIs.</p>
+                        <p><strong>Registration Number:</strong> 123456789</p>
+                        <p><strong>Valid Until:</strong> 31st December 2025</p>
+                        <div style="margin-top: 2rem; text-align: center;">
+                            <a href="certificates/fcra.pdf" target="_blank" class="donate-btn">View PDF Certificate</a>
+                        </div>
+                    `;
+                    break;
+                case 'csr':
+                    title = 'CSR Approved';
+                    content = `
+                        <h3>Corporate Social Responsibility</h3>
+                        <p>Our organization is approved for CSR funding under Schedule VII of the Companies Act, 2013. Companies can partner with us to fulfill their CSR obligations.</p>
+                        <p>We provide comprehensive impact reports and documentation to satisfy all CSR compliance requirements.</p>
+                        <div style="margin-top: 2rem; text-align: center;">
+                            <a href="certificates/csr.pdf" target="_blank" class="donate-btn">View PDF Certificate</a>
+                        </div>
+                    `;
+                    break;
+            }
+            
+            modalContent.innerHTML = `
+                <h2>${title}</h2>
+                <div class="cert-content">${content}</div>
+            `;
+            
+            document.getElementById('certModal').classList.add('active');
+        }
+    </script>
+</body>
+</html>

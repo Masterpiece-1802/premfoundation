@@ -10,409 +10,632 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
     <style>
-        /* Team Section Styles */
-        .team-hero {
-            background: linear-gradient(rgba(30, 64, 175, 0.9), rgba(30, 64, 175, 0.9)), url('images/team/team-hero.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .team-tabs .nav-link {
-            color: #64748b;
-            font-weight: 600;
-            border: none;
-            padding: 12px 24px;
-            position: relative;
-        }
-        
-        .team-tabs .nav-link.active {
-            color: #1e40af;
-            background: transparent;
-        }
-        
-        .team-tabs .nav-link.active:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 3px;
-            background: #1e40af;
-            border-radius: 3px;
-        }
-        
-        .team-card {
-            border: none;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-        }
-        
-        .team-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
-        }
-        
-        .team-img {
-            height: 280px;
-            object-fit: cover;
-            object-position: top;
-            transition: transform 0.5s ease;
-        }
-        
-        .team-card:hover .team-img {
-            transform: scale(1.05);
-        }
-        
-        .team-card-body {
-            position: relative;
-            z-index: 2;
-            background: white;
-        }
-        
-        .team-social {
-            position: absolute;
-            top: -20px;
-            right: 20px;
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-        
-        .team-card:hover .team-social {
-            opacity: 1;
-            top: -30px;
-        }
-        
-        .social-icon {
-            width: 36px;
-            height: 36px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: white;
-            color: #1e40af;
-            border-radius: 50%;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            margin-left: 8px;
-            transition: all 0.3s ease;
-        }
-        
-        .social-icon:hover {
-            background: #1e40af;
-            color: white;
-            transform: translateY(-3px);
-        }
-        
-        .team-role {
-            color: #64748b;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-        }
-        
-        .team-bio {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease;
-        }
-        
-        .bio-show {
-            max-height: 500px;
-        }
-        
-        .read-more-btn {
-            color: #1e40af;
-            font-weight: 500;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-        }
-        
-        .read-more-btn i {
-            transition: transform 0.3s ease;
-            margin-left: 5px;
-        }
-        
-        .rotated {
-            transform: rotate(180deg);
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .team-img {
-                height: 220px;
-            }
-            
-            .team-tabs .nav-link {
-                padding: 8px 16px;
-                font-size: 0.9rem;
-            }
-        }
+/* Team Section */
+.team-section {
+    background: linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.team-tabs {
+    background: rgba(241, 245, 249, 0.9); /* Increased opacity for better visibility */
+    border-radius: 50px;
+    padding: 8px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Darker shadow for better contrast */
+    max-width: fit-content;
+    margin: 0 auto 40px;
+}
+
+.team-tabs .nav-link {
+    font-weight: 600;
+    color: #64748b;
+    border: none;
+    padding: 8px 24px;
+    position: relative;
+    transition: all 0.3s ease;
+    z-index: 1;
+    border-radius: 30px;
+    background-color: rgba(150,150,150,0.3); /* Added background for inactive tabs */
+}
+
+.team-tabs .nav-link:hover {
+    color: #1e40af;
+    background: rgba(255,255,255,0.8); /* More opaque on hover */
+}
+
+.team-tabs .nav-link.active {
+    color: white;
+    background: #1e40af;
+    box-shadow: 0 4px 10px rgba(30, 64, 175, 0.3);
+}
+
+.team-card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin-bottom: 24px;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+    background: white;
+}
+
+.team-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(30, 64, 175, 0.15);
+}
+
+.team-img-container {
+    height: 280px;
+    overflow: hidden;
+    position: relative;
+    display: flex; /* Added for better image centering */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+}
+
+.team-img {
+    height: 100%;
+    width: auto; /* Changed from 100% to auto for better proportions */
+    max-width: 100%; /* Ensure it doesn't overflow */
+    object-fit: contain; /* Changed from cover to contain to show full portrait */
+    object-position: center;
+    transition: all 0.6s ease;
+    transform-origin: center center; /* Changed from bottom center */
+}
+
+.team-card:hover .team-img {
+    transform: scale(1.05); /* Reduced scale effect for contained images */
+}
+
+.team-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+
+
+.team-card:hover .team-overlay {
+    opacity: 1;
+}
+
+.team-overlay-text {
+    color: white;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.team-card-body {
+    padding: 24px;
+    position: relative;
+}
+
+.team-name {
+    color: #1e293b;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.team-role {
+    color: #1e40af;
+    font-weight: 600;
+    margin-bottom: 12px;
+    position: relative;
+    display: inline-block;
+    font-size: 0.9rem;
+}
+
+.team-bio {
+    color: #475569;
+    margin-bottom: 16px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.team-bio.expanded {
+    -webkit-line-clamp: unset;
+    overflow: visible;
+}
+
+.read-more-btn {
+    color: #1e40af;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    margin-top: 8px;
+    transition: all 0.3s ease;
+}
+
+.read-more-btn:hover {
+    color: #1e3a8a;
+}
+
+.read-more-btn i {
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+}
+
+.read-more-btn.expanded i {
+    transform: rotate(180deg);
+}
+
+.team-contact {
+    border-top: 1px solid rgba(226, 232, 240, 0.5);
+    padding-top: 16px;
+    margin-top: 16px;
+    transition: all 0.3s ease;
+}
+
+.contact-btn {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+    margin-right: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.2);
+    transform: scale(0);
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.contact-btn:hover::after {
+    transform: scale(1);
+}
+
+.contact-btn:hover {
+    transform: translateY(-3px);
+}
+
+.btn-whatsapp {
+    background: #25D366;
+}
+
+.btn-email {
+    background: #EA4335;
+}
+
+.btn-phone {
+    background: #1e40af;
+}
+
+.team-social {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.team-card:hover .team-social {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.team-social-btn {
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    color: #1e40af;
+}
+
+.team-social-btn:hover {
+    background: #1e40af;
+    color: white;
+    transform: translateY(-3px);
+}
+
+.custom-share-menu {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    z-index: 100;
+    min-width: 180px;
+    overflow: hidden;
+    animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.share-option {
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.share-option:hover {
+    background: #f1f5f9;
+}
+
+.share-option i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+    color: #64748b;
+}
+
+@media (max-width: 768px) {
+    .custom-share-menu {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: auto;
+        border-radius: 12px 12px 0 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .team-img-container {
+        height: 220px;
+    }
+    
+    .team-tabs .nav-link {
+        padding: 6px 16px;
+        font-size: 0.9rem;
+        background-color: rgba(255,255,255,0.8); /* More opaque on mobile */
+    }
+    
+    .team-overlay {
+        opacity: 1;
+    }
+    
+    .team-bio {
+        -webkit-line-clamp: 4;
+    }
+    
+    .team-img {
+        width: 100%;
+        height: auto;
+        max-height: 100%;
+        object-fit: contain;
+    }
+}
+
+/* For very tall images */
+@media (min-width: 769px) {
+    .team-img-container {
+        height: 280px;
+    }
+    .team-img {
+        height: 100%;
+        width: auto;
+    }
+}
     </style>
 </head>
 <body>
-    <!-- Header (Same as other pages) -->
-    <header class="shadow-sm">
-        <!-- Your existing navbar -->
-    </header>
-
-    <!-- Main Content -->
-    <main>
-        <!-- Hero Section -->
-        <section class="team-hero text-white py-5">
-            <div class="container py-5 text-center">
-                <h1 class="display-4 fw-bold mb-3">Meet Our Team</h1>
-                <p class="lead mb-0">The passionate individuals behind Prem Foundation's mission</p>
-            </div>
-        </section>
-
-        <!-- Team Navigation -->
-        <section class="py-5 bg-light">
-            <div class="container">
-                <ul class="nav team-tabs justify-content-center" id="teamTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="board-tab" data-bs-toggle="tab" data-bs-target="#board" type="button" role="tab">
-                            Board Members
-                        </button>
+    <!-- Header -->
+    <header>
+            <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.jpg" alt="Prem Foundation" height="50">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
                     </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="staff-tab" data-bs-toggle="tab" data-bs-target="#staff" type="button" role="tab">
-                            Our Staff
-                        </button>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown">
+                            About Us
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="about.html">Our Story</a></li>
+                            <li><a class="dropdown-item" href="team.html">Our Team</a></li>
+                        </ul>
                     </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="volunteers-tab" data-bs-toggle="tab" data-bs-target="#volunteers" type="button" role="tab">
-                            Key Volunteers
-                        </button>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="projectsDropdown" role="button" data-bs-toggle="dropdown">
+                            Projects
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="projects.html">All Initiatives</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="premangan.html">Premangan Old Age Home</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="donate.html">Donate</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="volunteer.html">Volunteer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
                     </li>
                 </ul>
             </div>
-        </section>
+        </div>
+    </nav>
+    </header>
 
-        <!-- Team Members -->
-        <section class="py-5">
-            <div class="container py-4">
-                <div class="tab-content" id="teamTabContent">
-                    <!-- Board Members Tab -->
-                    <div class="tab-pane fade show active" id="board" role="tabpanel">
-                        <div class="row g-4">
-                            <!-- Board Member 1 -->
-                            <div class="col-md-6 col-lg-4">
-                                <div class="team-card h-100">
-                                    <div class="overflow-hidden">
-                                        <img src="images/team/board-1.jpg" alt="Dr. Rajesh Verma" class="w-100 team-img">
+    <!-- Team Hero -->
+    <section class="hero-team bg-blue-900 text-white py-5 position-relative overflow-hidden">
+        <div class="container py-5 position-relative z-index-1">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="display-4 fw-bold mb-4 animate__animated animate__fadeInDown">Meet Our Team</h1>
+                    <p class="lead mb-0 animate__animated animate__fadeInUp animate__delay-1s">The driving force behind Prem Foundation's vision and impact</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section py-5">
+        <div class="container py-5 position-relative z-index-1">
+            <!-- Tabs Navigation -->
+            <ul class="nav team-tabs" id="teamTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="board-tab" data-bs-toggle="tab" data-bs-target="#board" type="button" role="tab">Board Members</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="staff-tab" data-bs-toggle="tab" data-bs-target="#staff" type="button" role="tab">Our Staff</button>
+                </li>
+            </ul>
+            
+            <!-- Tabs Content -->
+            <div class="tab-content" id="teamTabContent">
+                <!-- Board Members -->
+                <div class="tab-pane fade show active" id="board" role="tabpanel">
+                    <div class="row g-4">
+                        <!-- Board Member 1 -->
+                        <div class="col-md-6 col-lg-4">
+                            <div class="team-card">
+                                <div class="team-social">
+                                    <button class="team-social-btn share-btn" title="Share Profile" data-name="Dr. Rajesh Verma">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
+                                </div>
+                                <div class="team-img-container">
+                                    <img src="images/team/board-1.jpg" alt="Dr. Rajesh Verma" class="w-100 team-img">
+                                    <div class="team-overlay">
+                                        <p class="team-overlay-text">25+ years in social development. Former IAS officer.</p>
                                     </div>
-                                    <div class="team-card-body p-4">
-                                        <div class="team-social">
-                                            <a href="https://wa.me/919876543210" class="social-icon" target="_blank">
-                                                <i class="fab fa-whatsapp"></i>
-                                            </a>
-                                            <a href="mailto:rajesh@premfoundation.org" class="social-icon">
-                                                <i class="fas fa-envelope"></i>
-                                            </a>
-                                        </div>
-                                        <h3 class="h5 mb-1">Dr. Rajesh Verma</h3>
-                                        <div class="team-role">Chairman & Founder</div>
-                                        <p class="mb-3">Former IAS officer with 25+ years of public service experience...</p>
-                                        
-                                        <div class="team-bio" id="bio1">
-                                            <p>Specializes in rural development policies. Instrumental in establishing Premangan's elder care model. Holds PhD in Social Work from TISS.</p>
-                                        </div>
-                                        <span class="read-more-btn" onclick="toggleBio('bio1', this)">
-                                            Read more <i class="fas fa-chevron-down"></i>
-                                        </span>
+                                </div>
+                                <div class="team-card-body">
+                                    <h3 class="team-name">Dr. Rajesh Verma</h3>
+                                    <p class="team-role">Chairman & Founder</p>
+                                    <p class="team-bio">Leads strategic vision and oversees all foundation initiatives. Specializes in policy advocacy and large-scale program implementation. Has successfully led over 50 community development projects across Maharashtra. Recipient of the National Social Excellence Award in 2018.</p>
+                                    <div class="read-more-btn">
+                                        Read more <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                    <div class="team-contact">
+                                        <a href="https://wa.me/919876543210" class="contact-btn btn-whatsapp" title="WhatsApp">
+                                            <i class="fab fa-whatsapp"></i>
+                                        </a>
+                                        <a href="mailto:rajesh@premfoundation.org" class="contact-btn btn-email" title="Email">
+                                            <i class="fas fa-envelope"></i>
+                                        </a>
+                                        <a href="tel:+919876543210" class="contact-btn btn-phone" title="Call">
+                                            <i class="fas fa-phone"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
-                            
-                            <!-- Board Member 2 -->
-                            <div class="col-md-6 col-lg-4">
-                                <div class="team-card h-100">
-                                    <div class="overflow-hidden">
-                                        <img src="images/team/board-2.jpg" alt="Anjali Patil" class="w-100 team-img">
+                        </div>
+                        
+                        <!-- Board Member 2 -->
+                        <div class="col-md-6 col-lg-4">
+                            <div class="team-card">
+                                <div class="team-social">
+                                    <button class="team-social-btn share-btn" title="Share Profile" data-name="Ms. Priya Patel">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
+                                </div>
+                                <div class="team-img-container">
+                                    <img src="images/team/board-2.jpg" alt="Ms. Priya Patel" class="w-100 team-img">
+                                    <div class="team-overlay">
+                                        <p class="team-overlay-text">Education specialist with 18 years experience.</p>
                                     </div>
-                                    <div class="team-card-body p-4">
-                                        <div class="team-social">
-                                            <a href="mailto:anjali@premfoundation.org" class="social-icon">
-                                                <i class="fas fa-envelope"></i>
-                                            </a>
-                                            <a href="tel:+919876543211" class="social-icon">
-                                                <i class="fas fa-phone"></i>
-                                            </a>
-                                        </div>
-                                        <h3 class="h5 mb-1">Anjali Patil</h3>
-                                        <div class="team-role">Secretary</div>
-                                        <p class="mb-3">Education specialist with focus on marginalized communities...</p>
-                                        
-                                        <div class="team-bio" id="bio2">
-                                            <p>Founded 3 schools for tribal children before joining Prem Foundation. Leads our scholarship programs. Recipient of National Education Award 2018.</p>
-                                        </div>
-                                        <span class="read-more-btn" onclick="toggleBio('bio2', this)">
-                                            Read more <i class="fas fa-chevron-down"></i>
-                                        </span>
+                                </div>
+                                <div class="team-card-body">
+                                    <h3 class="team-name">Ms. Priya Patel</h3>
+                                    <p class="team-role">Secretary</p>
+                                    <p class="team-bio">Oversees our education initiatives and community programs. Former principal with expertise in curriculum development. Designed our flagship "Shiksha Sankalp" program that has educated over 5,000 underprivileged children. Holds a PhD in Education from Mumbai University.</p>
+                                    <div class="read-more-btn">
+                                        Read more <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                    <div class="team-contact">
+                                        <a href="https://wa.me/919876543211" class="contact-btn btn-whatsapp" title="WhatsApp">
+                                            <i class="fab fa-whatsapp"></i>
+                                        </a>
+                                        <a href="mailto:priya@premfoundation.org" class="contact-btn btn-email" title="Email">
+                                            <i class="fas fa-envelope"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
-                            
-                            <!-- Board Member 3 -->
-                            <div class="col-md-6 col-lg-4">
-                                <div class="team-card h-100">
-                                    <div class="overflow-hidden">
-                                        <img src="images/team/board-3.jpg" alt="Vikram Joshi" class="w-100 team-img">
+                        </div>
+                        
+                        <!-- Board Member 3 -->
+                        <div class="col-md-6 col-lg-4">
+                            <div class="team-card">
+                                <div class="team-social">
+                                    <button class="team-social-btn share-btn" title="Share Profile" data-name="Mr. Amit Joshi">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
+                                </div>
+                                <div class="team-img-container">
+                                    <img src="images/team/board-3.jpg" alt="Mr. Amit Joshi" class="w-100 team-img">
+                                    <div class="team-overlay">
+                                        <p class="team-overlay-text">Chartered accountant specializing in non-profits.</p>
                                     </div>
-                                    <div class="team-card-body p-4">
-                                        <div class="team-social">
-                                            <a href="https://wa.me/919876543212" class="social-icon" target="_blank">
-                                                <i class="fab fa-whatsapp"></i>
-                                            </a>
-                                            <a href="tel:+919876543212" class="social-icon">
-                                                <i class="fas fa-phone"></i>
-                                            </a>
-                                        </div>
-                                        <h3 class="h5 mb-1">Vikram Joshi</h3>
-                                        <div class="team-role">Treasurer</div>
-                                        <p class="mb-3">Chartered accountant overseeing financial strategy...</p>
-                                        
-                                        <div class="team-bio" id="bio3">
-                                            <p>15+ years in nonprofit financial management. Implemented transparent accounting systems adopted by 20+ NGOs. Marathon runner fundraising for our causes.</p>
-                                        </div>
-                                        <span class="read-more-btn" onclick="toggleBio('bio3', this)">
-                                            Read more <i class="fas fa-chevron-down"></i>
-                                        </span>
+                                </div>
+                                <div class="team-card-body">
+                                    <h3 class="team-name">Mr. Amit Joshi</h3>
+                                    <p class="team-role">Treasurer</p>
+                                    <p class="team-bio">Manages financial operations and ensures regulatory compliance. Focused on transparent fund utilization. Has implemented financial systems that reduced operational costs by 22% while increasing program spending. Certified in International NGO Financial Management from Harvard Kennedy School.</p>
+                                    <div class="read-more-btn">
+                                        Read more <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                    <div class="team-contact">
+                                        <a href="mailto:amit@premfoundation.org" class="contact-btn btn-email" title="Email">
+                                            <i class="fas fa-envelope"></i>
+                                        </a>
+                                        <a href="tel:+919876543212" class="contact-btn btn-phone" title="Call">
+                                            <i class="fas fa-phone"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Staff Tab -->
-                    <div class="tab-pane fade" id="staff" role="tabpanel">
-                        <div class="row g-4">
-                            <!-- Staff 1 -->
-                            <div class="col-md-6 col-lg-4">
-                                <div class="team-card h-100">
-                                    <div class="overflow-hidden">
-                                        <img src="images/team/staff-1.jpg" alt="Priya Sharma" class="w-100 team-img">
-                                    </div>
-                                    <div class="team-card-body p-4">
-                                        <div class="team-social">
-                                            <a href="mailto:priya@premfoundation.org" class="social-icon">
-                                                <i class="fas fa-envelope"></i>
-                                            </a>
-                                        </div>
-                                        <h3 class="h5 mb-1">Priya Sharma</h3>
-                                        <div class="team-role">Program Director</div>
-                                        <p class="mb-3">Manages day-to-day operations across all initiatives...</p>
-                                        
-                                        <div class="team-bio" id="bio4">
-                                            <p>MSW from Delhi University. Joined as volunteer in 2015, now oversees 12 programs. Spearheaded our mobile health clinic initiative.</p>
-                                        </div>
-                                        <span class="read-more-btn" onclick="toggleBio('bio4', this)">
-                                            Read more <i class="fas fa-chevron-down"></i>
-                                        </span>
+                </div>
+                
+                <!-- Staff Members -->
+                <div class="tab-pane fade" id="staff" role="tabpanel">
+                    <div class="row g-4">
+                        <!-- Staff Member 1 -->
+                        <div class="col-md-6 col-lg-4">
+                            <div class="team-card">
+                                <div class="team-social">
+                                    <button class="team-social-btn share-btn" title="Share Profile" data-name="Ms. Anjali Deshpande">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
+                                </div>
+                                <div class="team-img-container">
+                                    <img src="images/team/staff-1.jpg" alt="Ms. Anjali Deshpande" class="w-100 team-img">
+                                    <div class="team-overlay">
+                                        <p class="team-overlay-text">12 years grassroots experience.</p>
                                     </div>
                                 </div>
-                            </div>
-                            
-                            <!-- Staff 2 -->
-                            <div class="col-md-6 col-lg-4">
-                                <div class="team-card h-100">
-                                    <div class="overflow-hidden">
-                                        <img src="images/team/staff-2.jpg" alt="Arun Mehta" class="w-100 team-img">
+                                <div class="team-card-body">
+                                    <h3 class="team-name">Ms. Anjali Deshpande</h3>
+                                    <p class="team-role">Program Director</p>
+                                    <p class="team-bio">Leads field operations across all initiatives. Social work postgraduate with expertise in community mobilization. Speaks 5 regional languages and has personally trained over 200 field workers. Developed our community needs assessment framework adopted by 12 partner NGOs.</p>
+                                    <div class="read-more-btn">
+                                        Read more <i class="fas fa-chevron-down"></i>
                                     </div>
-                                    <div class="team-card-body p-4">
-                                        <div class="team-social">
-                                            <a href="https://wa.me/919876543213" class="social-icon" target="_blank">
-                                                <i class="fab fa-whatsapp"></i>
-                                            </a>
-                                        </div>
-                                        <h3 class="h5 mb-1">Arun Mehta</h3>
-                                        <div class="team-role">Premangan Manager</div>
-                                        <p class="mb-3">Oversees elder care facility operations...</p>
-                                        
-                                        <div class="team-bio" id="bio5">
-                                            <p>Gerontology specialist with 8 years experience. Implemented innovative memory care programs at Premangan. Certified in palliative care.</p>
-                                        </div>
-                                        <span class="read-more-btn" onclick="toggleBio('bio5', this)">
-                                            Read more <i class="fas fa-chevron-down"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Staff 3 -->
-                            <div class="col-md-6 col-lg-4">
-                                <div class="team-card h-100">
-                                    <div class="overflow-hidden">
-                                        <img src="images/team/staff-3.jpg" alt="Neha Gupta" class="w-100 team-img">
-                                    </div>
-                                    <div class="team-card-body p-4">
-                                        <div class="team-social">
-                                            <a href="tel:+919876543214" class="social-icon">
-                                                <i class="fas fa-phone"></i>
-                                            </a>
-                                        </div>
-                                        <h3 class="h5 mb-1">Neha Gupta</h3>
-                                        <div class="team-role">Education Coordinator</div>
-                                        <p class="mb-3">Leads our scholarship and after-school programs...</p>
-                                        
-                                        <div class="team-bio" id="bio6">
-                                            <p>Former Teach For India fellow. Developed STEM curriculum for rural schools. Manages 150 scholarship recipients annually.</p>
-                                        </div>
-                                        <span class="read-more-btn" onclick="toggleBio('bio6', this)">
-                                            Read more <i class="fas fa-chevron-down"></i>
-                                        </span>
+                                    <div class="team-contact">
+                                        <a href="https://wa.me/919876543213" class="contact-btn btn-whatsapp" title="WhatsApp">
+                                            <i class="fab fa-whatsapp"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <!-- Volunteers Tab -->
-                    <div class="tab-pane fade" id="volunteers" role="tabpanel">
-                        <div class="row g-4">
-                            <!-- Volunteer 1 -->
-                            <div class="col-md-6 col-lg-4">
-                                <div class="team-card h-100">
-                                    <div class="overflow-hidden">
-                                        <img src="images/team/vol-1.jpg" alt="Rahul Deshpande" class="w-100 team-img">
+                        
+                        <!-- Staff Member 2 -->
+                        <div class="col-md-6 col-lg-4">
+                            <div class="team-card">
+                                <div class="team-social">
+                                    <button class="team-social-btn share-btn" title="Share Profile" data-name="Dr. Sameer Khan">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
+                                </div>
+                                <div class="team-img-container">
+                                    <img src="images/team/staff-2.jpg" alt="Dr. Sameer Khan" class="w-100 team-img">
+                                    <div class="team-overlay">
+                                        <p class="team-overlay-text">Specializes in geriatric care.</p>
                                     </div>
-                                    <div class="team-card-body p-4">
-                                        <h3 class="h5 mb-1">Rahul Deshpande</h3>
-                                        <div class="team-role">Medical Volunteer</div>
-                                        <p class="mb-3">Weekly health checkups at Premangan...</p>
-                                        
-                                        <div class="team-bio" id="bio7">
-                                            <p>Cardiologist at City Hospital. Provides pro bono consultations. Organized vaccination drives for 500+ seniors.</p>
-                                        </div>
-                                        <span class="read-more-btn" onclick="toggleBio('bio7', this)">
-                                            Read more <i class="fas fa-chevron-down"></i>
-                                        </span>
+                                </div>
+                                <div class="team-card-body">
+                                    <h3 class="team-name">Dr. Sameer Khan</h3>
+                                    <p class="team-role">Medical Coordinator</p>
+                                    <p class="team-bio">Oversees healthcare programs at Premangan and mobile clinics. Focused on preventive care for seniors. Implemented our telemedicine program connecting rural elders with specialists. Former Head of Geriatrics at City Hospital with 15 years clinical experience. Conducts monthly health awareness webinars.</p>
+                                    <div class="read-more-btn">
+                                        Read more <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                    <div class="team-contact">
+                                        <a href="tel:+919876543214" class="contact-btn btn-phone" title="Call">
+                                            <i class="fas fa-phone"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
-                            
-                            <!-- Volunteer 2 -->
-                            <div class="col-md-6 col-lg-4">
-                                <div class="team-card h-100">
-                                    <div class="overflow-hidden">
-                                        <img src="images/team/vol-2.jpg" alt="Meena Iyer" class="w-100 team-img">
+                        </div>
+                        
+                        <!-- Staff Member 3 -->
+                        <div class="col-md-6 col-lg-4">
+                            <div class="team-card">
+                                <div class="team-social">
+                                    <button class="team-social-btn share-btn" title="Share Profile" data-name="Mr. Rohan Iyer">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
+                                </div>
+                                <div class="team-img-container">
+                                    <img src="images/team/staff-3.jpg" alt="Mr. Rohan Iyer" class="w-100 team-img">
+                                    <div class="team-overlay">
+                                        <p class="team-overlay-text">Digital marketing expert.</p>
                                     </div>
-                                    <div class="team-card-body p-4">
-                                        <h3 class="h5 mb-1">Meena Iyer</h3>
-                                        <div class="team-role">Activity Coordinator</div>
-                                        <p class="mb-3">Organizes recreational activities...</p>
-                                        
-                                        <div class="team-bio" id="bio8">
-                                            <p>Retired school teacher. Develops cognitive engagement programs for seniors. Volunteer since 2018.</p>
-                                        </div>
-                                        <span class="read-more-btn" onclick="toggleBio('bio8', this)">
-                                            Read more <i class="fas fa-chevron-down"></i>
-                                        </span>
+                                </div>
+                                <div class="team-card-body">
+                                    <h3 class="team-name">Mr. Rohan Iyer</h3>
+                                    <p class="team-role">Communications Head</p>
+                                    <p class="team-bio">Manages all digital presence and donor communications. Creates impactful stories from our field work. Increased social media engagement by 300% and donor retention by 45%. Leads our volunteer photographer network. Won the "Digital for Good" award at the 2022 NGO Tech Summit.</p>
+                                    <div class="read-more-btn">
+                                        Read more <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                    <div class="team-contact">
+                                        <a href="mailto:rohan@premfoundation.org" class="contact-btn btn-email" title="Email">
+                                            <i class="fas fa-envelope"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -420,53 +643,314 @@
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <!-- Footer (Same as other pages) -->
-    <footer>
-        <!-- Your existing footer -->
-    </footer>
+    <!-- CTA Section -->
+    <section class="py-5 bg-blue-900 text-white position-relative overflow-hidden">
+        <div class="container py-4 text-center position-relative z-index-1">
+            <h2 class="h1 mb-4 animate__animated animate__fadeIn">Join Our Mission</h2>
+            <p class="lead mb-4 animate__animated animate__fadeIn animate__delay-1s">Explore opportunities to collaborate with our team.</p>
+            <div class="d-flex justify-content-center gap-3 animate__animated animate__fadeIn animate__delay-2s">
+                <a href="contact.html" class="btn btn-light btn-lg px-4">
+                    <i class="fas fa-envelope me-2"></i> Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+<footer class="prem-footer">
+    <div class="prem-container">
+        <div class="prem-footer-main">
+            <!-- Brand Column (same as before) -->
+            <div class="prem-footer-brand">
+                <div class="prem-logo-wrapper">
+                    <img src="images/logo.jpg" alt="Prem Foundation" class="prem-logo">
+                    <div class="prem-logo-glow"></div>
+                </div>
+                <p class="prem-tagline">Committed to dignity, care, and community service since 2010.</p>
+                <div class="prem-social-proof">
+                    <div class="prem-trust-badge">
+                        <i class="fas fa-certificate"></i>
+                        <span>80+ Years Combined Experience</span>
+                    </div>
+                    <div class="prem-trust-badge">
+                        <i class="fas fa-heart"></i>
+                        <span>5000+ Lives Impacted</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Links Column (same as before) -->
+            <div class="prem-footer-links">
+                <div class="prem-links-column">
+                    <h5 class="prem-links-title">Our Initiatives</h5>
+                    <ul class="prem-links-list">
+                        <li><a href="premangan.html" class="prem-link"><i class="fas fa-home"></i> Premangan Old Age Home</a></li>
+                        <li><a href="projects.html" class="prem-link"><i class="fas fa-hands-helping"></i> Community Projects</a></li>
+                        <li><a href="donate.html" class="prem-link"><i class="fas fa-donate"></i> Donation Programs</a></li>
+                    </ul>
+                </div>
+                <div class="prem-links-column">
+                    <h5 class="prem-links-title">Organization</h5>
+                    <ul class="prem-links-list">
+                        <li><a href="about.html" class="prem-link"><i class="fas fa-info-circle"></i> About Us</a></li>
+                        <li><a href="team.html" class="prem-link"><i class="fas fa-users"></i> Our Team</a></li>
+                        <li><a href="#" class="prem-link"><i class="fas fa-file-alt"></i> Annual Reports</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Contact Column (same as before) -->
+            <div class="prem-footer-contact">
+                <h5 class="prem-contact-title">Contact Us</h5>
+                <div class="prem-contact-info">
+                    <div class="prem-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>456 Charity Lane, Mumbai 400001</span>
+                    </div>
+                    <div class="prem-contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+91 22 1234 5678</span>
+                    </div>
+                    <div class="prem-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>contact@premfoundation.org</span>
+                    </div>
+                </div>
+                <div class="prem-contact-buttons">
+                    <a href="tel:+912212345678" class="prem-call-button">
+                        <i class="fas fa-phone"></i> Call Us
+                    </a>
+                    <a href="https://wa.me/912212345678" class="prem-whatsapp-button">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <a href="mailto:contact@premfoundation.org" class="prem-email-button">
+                        <i class="fas fa-envelope"></i> Email
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Updated Maps Section -->
+        <div class="prem-footer-bottom">
+            <div class="prem-maps-container">
+                <div class="prem-map-wrapper">
+                    <h6 class="prem-map-title">Head Office</h6>
+                    <p class="prem-map-address">
+                        <i class="fas fa-map-marker-alt"></i> 
+                        456 Charity Lane, Mumbai 400001<br>
+                        Near Marine Drive, 2nd Floor
+                    </p>
+                    <div class="prem-map-ratio">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.0000000000005!2d72.80000000000001!3d19.100000000000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDA2JzAwLjAiTiA3MsKwNDgnMDAuMCJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
+                            allowfullscreen="" 
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+                <div class="prem-map-wrapper">
+                    <h6 class="prem-map-title">Premangan Old Age Home</h6>
+                    <p class="prem-map-address">
+                        <i class="fas fa-map-marker-alt"></i> 
+                        89 Peace Avenue, Pune 411045<br>
+                        Opposite Gandhi Park, Gate No. 3
+                    </p>
+                    <div class="prem-map-ratio">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.111111111111!2d72.81111111111111!3d19.11111111111111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDA2JzQwLjAiTiA3MsKwNDgnNDAuMCJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
+                            allowfullscreen="" 
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="prem-legal-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Financial Disclosure</a>
+            </div>
+            <div class="prem-copyright">
+                <p>&copy; 2023 Prem Foundation. All Rights Reserved.</p>
+                <p class="prem-credits">Crafted with <i class="fas fa-heart"></i> for humanity</p>
+            </div>
+        </div>
+    </div>
+</footer>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Toggle Bio Function
-        function toggleBio(bioId, element) {
-            const bio = document.getElementById(bioId);
-            const icon = element.querySelector('i');
-            
-            bio.classList.toggle('bio-show');
-            icon.classList.toggle('rotated');
-            
-            if (bio.classList.contains('bio-show')) {
-                element.innerHTML = 'Read less <i class="fas fa-chevron-up"></i>';
-            } else {
-                element.innerHTML = 'Read more <i class="fas fa-chevron-down"></i>';
-            }
-        }
-        
-        // Initialize tooltips for social icons
         document.addEventListener('DOMContentLoaded', function() {
-            const socialIcons = document.querySelectorAll('.social-icon');
-            socialIcons.forEach(icon => {
-                icon.setAttribute('data-bs-toggle', 'tooltip');
-                
-                if (icon.querySelector('.fa-whatsapp')) {
-                    icon.setAttribute('title', 'Contact via WhatsApp');
-                } else if (icon.querySelector('.fa-envelope')) {
-                    icon.setAttribute('title', 'Send Email');
-                } else if (icon.querySelector('.fa-phone')) {
-                    icon.setAttribute('title', 'Call');
-                }
-            });
+            // Equalize card heights
+            const equalizeCards = () => {
+                document.querySelectorAll('.tab-pane').forEach(tab => {
+                    const rows = tab.querySelectorAll('.row');
+                    rows.forEach(row => {
+                        let maxHeight = 0;
+                        const cards = row.querySelectorAll('.team-card');
+                        
+                        cards.forEach(card => card.style.height = 'auto');
+                        
+                        cards.forEach(card => {
+                            if (card.offsetHeight > maxHeight) maxHeight = card.offsetHeight;
+                        });
+                        
+                        cards.forEach(card => card.style.height = `${maxHeight}px`);
+                    });
+                });
+            };
             
-            // Initialize Bootstrap tooltips
-            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-            tooltipTriggerList.map(function (tooltipTriggerEl) {
-                return new bootstrap.Tooltip(tooltipTriggerEl);
+            equalizeCards();
+            window.addEventListener('resize', equalizeCards);
+            
+            // Tab change handler
+            document.querySelectorAll('button[data-bs-toggle="tab"]').forEach(tab => {
+                tab.addEventListener('shown.bs.tab', equalizeCards);
+            });
+
+            // Animate cards on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.team-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+
+            // Read more functionality
+            document.querySelectorAll('.read-more-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const bio = this.previousElementSibling;
+                    const icon = this.querySelector('i');
+                    
+                    bio.classList.toggle('expanded');
+                    this.classList.toggle('expanded');
+                    
+                    this.textContent = bio.classList.contains('expanded') ? 'Read less ' : 'Read more ';
+                    this.appendChild(icon);
+                    
+                    equalizeCards();
+                });
+            });
+
+            // Share functionality
+            // Replace the existing share button event listener with this:
+document.querySelectorAll('.share-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const name = this.getAttribute('data-name');
+        const currentUrl = window.location.href;
+        const shareText = `Learn more about ${name} and their work with Prem Foundation`;
+        
+        if (navigator.share) {
+            // Native sharing for supported devices
+            navigator.share({
+                title: `${name} - Prem Foundation`,
+                text: shareText,
+                url: currentUrl
+            }).catch(err => {
+                console.log('Error sharing:', err);
+                showCustomShareMenu(this, name, currentUrl, shareText);
+            });
+        } else {
+            // Custom share menu for unsupported browsers
+            showCustomShareMenu(this, name, currentUrl, shareText);
+        }
+    });
+});
+
+function showCustomShareMenu(button, name, url, text) {
+    // Create or show custom share menu
+    let shareMenu = button.nextElementSibling;
+    
+    if (!shareMenu || !shareMenu.classList.contains('custom-share-menu')) {
+        // Create menu if it doesn't exist
+        shareMenu = document.createElement('div');
+        shareMenu.className = 'custom-share-menu';
+        shareMenu.innerHTML = `
+            <div class="share-option" data-type="whatsapp">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </div>
+            <div class="share-option" data-type="facebook">
+                <i class="fab fa-facebook"></i> Facebook
+            </div>
+            <div class="share-option" data-type="twitter">
+                <i class="fab fa-twitter"></i> Twitter
+            </div>
+            <div class="share-option" data-type="linkedin">
+                <i class="fab fa-linkedin"></i> LinkedIn
+            </div>
+            <div class="share-option" data-type="email">
+                <i class="fas fa-envelope"></i> Email
+            </div>
+            <div class="share-option" data-type="copy">
+                <i class="fas fa-link"></i> Copy Link
+            </div>
+        `;
+        button.parentNode.insertBefore(shareMenu, button.nextSibling);
+        
+        // Add click handlers for each option
+        shareMenu.querySelectorAll('.share-option').forEach(option => {
+            option.addEventListener('click', (e) => {
+                e.stopPropagation();
+                shareViaPlatform(option.getAttribute('data-type'), name, url, text);
+                shareMenu.remove();
             });
         });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function closeMenu(e) {
+            if (!shareMenu.contains(e.target) && e.target !== button) {
+                shareMenu.remove();
+                document.removeEventListener('click', closeMenu);
+            }
+        });
+    } else {
+        // Toggle menu visibility
+        shareMenu.remove();
+    }
+}
+
+function shareViaPlatform(platform, name, url, text) {
+    const encodedUrl = encodeURIComponent(url);
+    const encodedText = encodeURIComponent(`${text}\n\n${url}`);
+    
+    switch(platform) {
+        case 'whatsapp':
+            window.open(`https://wa.me/?text=${encodedText}`, '_blank');
+            break;
+        case 'facebook':
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`, '_blank');
+            break;
+        case 'twitter':
+            window.open(`https://twitter.com/intent/tweet?text=${encodedText}`, '_blank');
+            break;
+        case 'linkedin':
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`, '_blank');
+            break;
+        case 'email':
+            window.open(`mailto:?subject=${encodeURIComponent(name + ' - Prem Foundation')}&body=${encodedText}`, '_blank');
+            break;
+        case 'copy':
+            navigator.clipboard.writeText(url).then(() => {
+                alert('Link copied to clipboard!');
+            });
+            break;
+    }
+}
     </script>
 </body>
 </html>

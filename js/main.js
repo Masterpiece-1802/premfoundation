@@ -39,14 +39,31 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Navbar scroll effect
-    window.addEventListener('scroll', function() {
-        const navbar = document.querySelector('.navbar');
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
+    // Floating Navbar with Dynamic Transparency
+window.addEventListener('scroll', function() {
+  const navbar = document.querySelector('.navbar');
+  const scrollPosition = window.scrollY;
+  
+  // More transparent when near top
+  if (scrollPosition < 100) {
+    navbar.style.backdropFilter = 'blur(12px)';
+    navbar.style.backgroundColor = 'rgba(30, 15, 45, 0.85)';
+  } 
+  // More glass-like when scrolled
+  else {
+    navbar.classList.add('scrolled');
+    const opacity = 0.7 - Math.min(scrollPosition / 1000, 0.3);
+    navbar.style.backgroundColor = `rgba(20, 15, 45, ${opacity})`;
+    navbar.style.backdropFilter = 'blur(16px)';
+  }
+});
+
+// Smooth hover effects
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('mouseenter', () => {
+    link.style.transition = 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
+  });
+});
 
 // Add debounce to scroll event for better performance
 function debounce(func, wait = 100) {
@@ -68,6 +85,68 @@ window.addEventListener('scroll', debounce(function() {
   }
 }));
 
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Smooth scroll for anchor links
+    document.querySelectorAll('.prem-link[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Animate elements when they come into view
+    const premAnimateOnScroll = () => {
+        const elements = document.querySelectorAll('.prem-trust-badge, .prem-link, .prem-contact-item');
+        
+        elements.forEach(element => {
+            const elementPosition = element.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            
+            if (elementPosition < windowHeight - 100) {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            }
+        });
+    };
+
+    // Set initial state
+    document.querySelectorAll('.prem-trust-badge, .prem-link, .prem-contact-item').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    });
+
+    // Run once on load
+    premAnimateOnScroll();
+    
+    // Run on scroll
+    window.addEventListener('scroll', premAnimateOnScroll);
+
+    // Add click effect to buttons
+    document.querySelectorAll('.prem-call-button, .prem-whatsapp-button, .prem-email-button').forEach(button => {
+        button.addEventListener('click', function(e) {
+            // Create ripple effect
+            const ripple = document.createElement('span');
+            ripple.classList.add('prem-ripple-effect');
+            
+            // Get click position
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            // Position ripple
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
+            
+            // Add and remove ripple
+            this.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 1000);
+        });
+    });
+});
 
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

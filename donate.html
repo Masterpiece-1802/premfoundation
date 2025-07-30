@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prem Foundation - Make a Difference</title>
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+
         /* Reset and Base Styles */
         :root {
             --primary: #6c5ce7;
@@ -99,6 +101,8 @@
             50% { opacity: 0.8; transform: scale(1); }
             100% { opacity: 0; transform: scale(0); }
         }
+
+
 
         /* Donation Sections */
         .donation-section {
@@ -313,28 +317,6 @@
             z-index: 0;
         }
 
-/* Navigation Buttons */
-.nav-btn {
-    display: inline-block;
-    padding: 0.8rem 2rem;
-    background: transparent;
-    color: var(--primary);
-    border-radius: 50px;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    border: 2px solid var(--primary);
-    cursor: pointer;
-    text-align: center;
-    margin: 0.5rem;
-}
-
-.nav-btn:hover {
-    background: var(--primary);
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
-}
-
         @keyframes rotate {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
@@ -399,7 +381,49 @@
             color: var(--gold);
         }
 
+.premangan-btn {
+    background: linear-gradient(135deg, #fdcb6e 0%, #e17055 100%);
+    position: relative;
+    overflow: hidden;
+}
 
+.premangan-btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255,255,255,0.1);
+    transform: rotate(30deg);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    from { transform: rotate(30deg) translate(-30%, -30%); }
+    to { transform: rotate(30deg) translate(30%, 30%); }
+}
+
+/* Navigation Buttons */
+.view-campaigns-btn,
+.get-in-touch-btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background: transparent;
+    color: var(--primary);
+    border-radius: 50px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: 2px solid var(--primary);
+    cursor: pointer;
+    text-align: center;
+}
+
+.view-campaigns-btn:hover,
+.get-in-touch-btn:hover {
+    background: var(--primary);
+    color: white;
+}
 
         /* Certifications Section */
         .certifications {
@@ -552,6 +576,150 @@
             transform: rotate(90deg);
         }
 
+/* Premium Modal Design */
+.premium-modal {
+    background: #1a1a2e;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3),
+                0 0 0 1px rgba(108, 92, 231, 0.2);
+    padding: 2.5rem;
+    max-width: 500px;
+    color: #f8f9fa;
+}
+
+.premium-modal .modal-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.premium-modal .icon-circle {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(135deg, #6c5ce7 0%, #00cec9 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
+}
+
+.premium-modal .icon-circle i {
+    font-size: 2.5rem;
+    color: white;
+}
+
+.premium-modal h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: white;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.premium-modal .modal-subtitle {
+    color: #adb5bd;
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+
+/* Premium Form Styles */
+.premium-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.premium-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #dee2e6;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+.premium-form input {
+    width: 100%;
+    padding: 0.9rem 1.2rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.premium-form input::placeholder {
+    color: rgba(255,255,255,0.3);
+}
+
+.premium-form input:focus {
+    background: rgba(255,255,255,0.08);
+    border-color: #6c5ce7;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
+}
+
+/* Premium Button */
+.modal-submit-btn {
+    background: linear-gradient(135deg, #6c5ce7 0%, #00cec9 100%);
+    color: white;
+    border: none;
+    padding: 1.1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    letter-spacing: 0.5px;
+}
+
+.modal-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(108, 92, 231, 0.4);
+}
+
+/* Close Button */
+.close-modal {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    color: rgba(255,255,255,0.6);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background: rgba(255,255,255,0.1);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.close-modal:hover {
+    color: white;
+    background: rgba(255,255,255,0.2);
+    transform: rotate(90deg);
+}
+
+/* Premangan Field Animation */
+#premangan-field {
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
         /* Particle Background */
         .particles {
             position: absolute;
@@ -604,6 +772,7 @@
         <!-- Your header content here -->
     </header>
 
+
     <!-- Donation Hero Section -->
     <section class="donation-hero">
         <div class="particles" id="particles-js"></div>
@@ -611,7 +780,7 @@
         <div class="hero-content floating">
             <h1>Transform Lives With Your Generosity</h1>
             <p>Your contribution helps us create lasting change in communities. Every donation, big or small, makes a difference in someone's life. Join us in our mission to spread hope and opportunity.</p>
-            <a href="#campaigns" class="nav-btn">View Campaigns</a>
+            <a href="#campaigns" class="btn-outline view-campaigns-btn">View Campaigns</a>
         </div>
     </section>
 
@@ -753,7 +922,7 @@
             <h2>Premangan - Our Old Age Home Project</h2>
             <p>We're building <span class="highlight">Premangan</span>, a sanctuary for the elderly in Igatpuri. With your support, we can create a loving home for those who need it most.</p>
             <p>Donate <span class="highlight">₹50,000/-</span> or more to name a room in our facility. Your chosen name will be permanently displayed, creating a lasting legacy of your generosity.</p>
-            <button class="donate-btn" data-amount="50000" data-special="premangan">Name a Room at Premangan</button>
+            <button class="donate-btn premangan-btn" data-amount="50000">Name a Room at Premangan</button>
         </div>
     </section>
 
@@ -820,7 +989,7 @@
         <div class="cta-content">
             <h2>Have Questions About Donating?</h2>
             <p>Our team is here to help you with any questions you might have about the donation process, tax benefits, or our initiatives.</p>
-            <a href="contact.html" class="nav-btn">Get In Touch</a>
+            <a href="contact.html" class="btn-outline get-in-touch-btn">Get In Touch</a>
         </div>
     </section>
 
@@ -835,39 +1004,59 @@
     </div>
 
     <!-- Donation Form Modal -->
-    <div class="modal" id="donationModal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2 id="donation-title">Make a Donation</h2>
-            <form id="donation-form">
-                <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" required>
-                </div>
-                <div class="form-group">
-                    <label for="amount">Amount (₹)</label>
-                    <input type="number" id="amount" required>
-                </div>
-                <div class="form-group" id="premangan-field" style="display: none;">
-                    <label for="room-name">Room Name (for Premangan)</label>
-                    <input type="text" id="room-name" placeholder="Enter the name you'd like to display">
-                </div>
-                <div class="form-group">
-                    <label for="pan">PAN Number (for 80G certificate)</label>
-                    <input type="text" id="pan">
-                </div>
-                <button type="submit" class="donate-btn">Proceed to Payment</button>
-            </form>
+<div class="modal" id="donationModal">
+    <div class="modal-content premium-modal">
+        <span class="close-modal">&times;</span>
+        <div class="modal-header">
+            <div class="icon-circle">
+                <i class="fas fa-hand-holding-heart"></i>
+            </div>
+            <h2 id="donation-title">Support Our Cause</h2>
+            <p class="modal-subtitle">Join us in making a difference</p>
         </div>
+        <form id="donation-form" class="premium-form">
+            <div class="form-group">
+                <label for="name">
+                    <i class="fas fa-user"></i> Full Name
+                </label>
+                <input type="text" id="name" required placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label for="email">
+                    <i class="fas fa-envelope"></i> Email
+                </label>
+                <input type="email" id="email" required placeholder="Enter your email address">
+            </div>
+            <div class="form-group">
+                <label for="phone">
+                    <i class="fas fa-phone"></i> Phone Number
+                </label>
+                <input type="tel" id="phone" required placeholder="Enter your phone number">
+            </div>
+            <div class="form-group amount-group">
+                <label for="amount">
+                    <i class="fas fa-rupee-sign"></i> Amount (₹)
+                </label>
+                <input type="number" id="amount" required placeholder="Enter donation amount">
+            </div>
+            <div class="form-group" id="premangan-field" style="display: none;">
+                <label for="room-name">
+                    <i class="fas fa-home"></i> Room Name (for Premangan)
+                </label>
+                <input type="text" id="room-name" placeholder="Enter the name you'd like to display">
+            </div>
+            <div class="form-group">
+                <label for="pan">
+                    <i class="fas fa-id-card"></i> PAN Number (for 80G certificate)
+                </label>
+                <input type="text" id="pan" placeholder="Enter your PAN number">
+            </div>
+            <button type="submit" class="donate-btn modal-submit-btn">
+                <i class="fas fa-lock"></i> Proceed to Secure Payment
+            </button>
+        </form>
     </div>
+</div>
 
     <!-- Footer (from your existing site) -->
     <footer class="site-footer">
@@ -904,7 +1093,7 @@
             });
             
             // Donation buttons functionality
-            const donateButtons = document.querySelectorAll('[data-amount], .donate-link');
+            const donateButtons = document.querySelectorAll('[data-amount],button.donate-btn:not(.premangan-btn), .donate-link');
             const donationModal = document.getElementById('donationModal');
             const donationForm = document.getElementById('donation-form');
             const amountInput = document.getElementById('amount');
@@ -1088,6 +1277,15 @@
             
             document.getElementById('certModal').classList.add('active');
         }
+
+// Handle Premangan button separately
+document.querySelector('.premangan-btn').addEventListener('click', function(e) {
+    e.preventDefault();
+    amountInput.value = this.getAttribute('data-amount');
+    document.getElementById('donation-title').textContent = 'Name a Room at Premangan';
+    premanganField.style.display = 'block';
+    donationModal.classList.add('active');
+});
     </script>
 </body>
 </html>

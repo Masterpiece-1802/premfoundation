@@ -110,8 +110,6 @@
     transition: all 0.3s ease;
 }
 
-
-
 .team-card:hover .team-overlay {
     opacity: 1;
 }
@@ -145,18 +143,32 @@
 .team-bio {
     color: #475569;
     margin-bottom: 16px;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    transition: all 0.3s ease;
     line-height: 1.6;
     font-size: 0.95rem;
+    position: relative;
+    overflow: hidden;
+    max-height: 4.8em; /* Show 3 lines by default (1.6 line-height × 3) */
+    transition: max-height 0.3s ease;
 }
 
 .team-bio.expanded {
-    -webkit-line-clamp: unset;
-    overflow: visible;
+    max-height: 1000px; /* Arbitrarily large value to show all content */
+}
+
+.team-bio::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1.6em; /* Match line-height */
+    background: linear-gradient(to bottom, rgba(255,255,255,0), white 80%);
+    transition: opacity 0.3s ease;
+    opacity: 1;
+}
+
+.team-bio.expanded::after {
+    opacity: 0;
 }
 
 .read-more-btn {
@@ -168,6 +180,9 @@
     align-items: center;
     margin-top: 8px;
     transition: all 0.3s ease;
+    background: none;
+    border: none;
+    padding: 0;
 }
 
 .read-more-btn:hover {
@@ -367,55 +382,64 @@
     <!-- Header -->
     <header>
             <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="images/logo.jpg" alt="Prem Foundation" height="50">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown">
-                            About Us
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="about.html">Our Story</a></li>
-                            <li><a class="dropdown-item" href="team.html">Our Team</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="projectsDropdown" role="button" data-bs-toggle="dropdown">
-                            Projects
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="projects.html">All Initiatives</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="premangan.html">Premangan Old Age Home</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="donate.html">Donate</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="volunteer.html">Volunteer</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand logo-glow" href="index.html">
+      <img src="images/logo.jpg" alt="Prem Foundation" height="50">
+      <span class="logo-pulse"></span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="index.html">
+            <span class="nav-link-underline">Home</span>
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown">
+            <span class="nav-link-underline">About Us</span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="about.html">Our Story</a></li>
+            <li><a class="dropdown-item" href="team.html">Our Team</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="projectsDropdown" role="button" data-bs-toggle="dropdown">
+            <span class="nav-link-underline">Projects</span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="projects.html">All Initiatives</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="premangan.html">Premangan Old Age Home</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link donate-btn" href="donate.html">
+            <span class="nav-link-underline">Donate</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="volunteer.html">
+            <span class="nav-link-underline">Volunteer</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">
+            <span class="nav-link-underline">Contact</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
     </header>
 
     <!-- Team Hero -->
-    <section class="hero-team bg-blue-900 text-white py-5 position-relative overflow-hidden">
+    <section class="hero-team bg-blue-900 text-white pt-6 pb-5 position-relative overflow-hidden" style="padding-top: 6rem;">
         <div class="container py-5 position-relative z-index-1">
             <div class="row align-items-center">
                 <div class="col-lg-8 mx-auto text-center">
@@ -462,9 +486,9 @@
                                     <h3 class="team-name">Dr. Rajesh Verma</h3>
                                     <p class="team-role">Chairman & Founder</p>
                                     <p class="team-bio">Leads strategic vision and oversees all foundation initiatives. Specializes in policy advocacy and large-scale program implementation. Has successfully led over 50 community development projects across Maharashtra. Recipient of the National Social Excellence Award in 2018.</p>
-                                    <div class="read-more-btn">
+                                    <button class="read-more-btn">
                                         Read more <i class="fas fa-chevron-down"></i>
-                                    </div>
+                                    </button>
                                     <div class="team-contact">
                                         <a href="https://wa.me/919876543210" class="contact-btn btn-whatsapp" title="WhatsApp">
                                             <i class="fab fa-whatsapp"></i>
@@ -498,9 +522,9 @@
                                     <h3 class="team-name">Ms. Priya Patel</h3>
                                     <p class="team-role">Secretary</p>
                                     <p class="team-bio">Oversees our education initiatives and community programs. Former principal with expertise in curriculum development. Designed our flagship "Shiksha Sankalp" program that has educated over 5,000 underprivileged children. Holds a PhD in Education from Mumbai University.</p>
-                                    <div class="read-more-btn">
+                                    <button class="read-more-btn">
                                         Read more <i class="fas fa-chevron-down"></i>
-                                    </div>
+                                    </button>
                                     <div class="team-contact">
                                         <a href="https://wa.me/919876543211" class="contact-btn btn-whatsapp" title="WhatsApp">
                                             <i class="fab fa-whatsapp"></i>
@@ -531,9 +555,9 @@
                                     <h3 class="team-name">Mr. Amit Joshi</h3>
                                     <p class="team-role">Treasurer</p>
                                     <p class="team-bio">Manages financial operations and ensures regulatory compliance. Focused on transparent fund utilization. Has implemented financial systems that reduced operational costs by 22% while increasing program spending. Certified in International NGO Financial Management from Harvard Kennedy School.</p>
-                                    <div class="read-more-btn">
+                                    <button class="read-more-btn">
                                         Read more <i class="fas fa-chevron-down"></i>
-                                    </div>
+                                    </button>
                                     <div class="team-contact">
                                         <a href="mailto:amit@premfoundation.org" class="contact-btn btn-email" title="Email">
                                             <i class="fas fa-envelope"></i>
@@ -569,9 +593,9 @@
                                     <h3 class="team-name">Ms. Anjali Deshpande</h3>
                                     <p class="team-role">Program Director</p>
                                     <p class="team-bio">Leads field operations across all initiatives. Social work postgraduate with expertise in community mobilization. Speaks 5 regional languages and has personally trained over 200 field workers. Developed our community needs assessment framework adopted by 12 partner NGOs.</p>
-                                    <div class="read-more-btn">
+                                    <button class="read-more-btn">
                                         Read more <i class="fas fa-chevron-down"></i>
-                                    </div>
+                                    </button>
                                     <div class="team-contact">
                                         <a href="https://wa.me/919876543213" class="contact-btn btn-whatsapp" title="WhatsApp">
                                             <i class="fab fa-whatsapp"></i>
@@ -599,9 +623,9 @@
                                     <h3 class="team-name">Dr. Sameer Khan</h3>
                                     <p class="team-role">Medical Coordinator</p>
                                     <p class="team-bio">Oversees healthcare programs at Premangan and mobile clinics. Focused on preventive care for seniors. Implemented our telemedicine program connecting rural elders with specialists. Former Head of Geriatrics at City Hospital with 15 years clinical experience. Conducts monthly health awareness webinars.</p>
-                                    <div class="read-more-btn">
+                                    <button class="read-more-btn">
                                         Read more <i class="fas fa-chevron-down"></i>
-                                    </div>
+                                    </button>
                                     <div class="team-contact">
                                         <a href="tel:+919876543214" class="contact-btn btn-phone" title="Call">
                                             <i class="fas fa-phone"></i>
@@ -629,9 +653,9 @@
                                     <h3 class="team-name">Mr. Rohan Iyer</h3>
                                     <p class="team-role">Communications Head</p>
                                     <p class="team-bio">Manages all digital presence and donor communications. Creates impactful stories from our field work. Increased social media engagement by 300% and donor retention by 45%. Leads our volunteer photographer network. Won the "Digital for Good" award at the 2022 NGO Tech Summit.</p>
-                                    <div class="read-more-btn">
+                                    <button class="read-more-btn">
                                         Read more <i class="fas fa-chevron-down"></i>
-                                    </div>
+                                    </button>
                                     <div class="team-contact">
                                         <a href="mailto:rohan@premfoundation.org" class="contact-btn btn-email" title="Email">
                                             <i class="fas fa-envelope"></i>
@@ -733,50 +757,10 @@
             </div>
         </div>
 
-        <!-- Updated Maps Section -->
-        <div class="prem-footer-bottom">
-            <div class="prem-maps-container">
-                <div class="prem-map-wrapper">
-                    <h6 class="prem-map-title">Head Office</h6>
-                    <p class="prem-map-address">
-                        <i class="fas fa-map-marker-alt"></i> 
-                        456 Charity Lane, Mumbai 400001<br>
-                        Near Marine Drive, 2nd Floor
-                    </p>
-                    <div class="prem-map-ratio">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.0000000000005!2d72.80000000000001!3d19.100000000000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDA2JzAwLjAiTiA3MsKwNDgnMDAuMCJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
-                            allowfullscreen="" 
-                            loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
-                    </div>
-                </div>
-                <div class="prem-map-wrapper">
-                    <h6 class="prem-map-title">Premangan Old Age Home</h6>
-                    <p class="prem-map-address">
-                        <i class="fas fa-map-marker-alt"></i> 
-                        89 Peace Avenue, Pune 411045<br>
-                        Opposite Gandhi Park, Gate No. 3
-                    </p>
-                    <div class="prem-map-ratio">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.111111111111!2d72.81111111111111!3d19.11111111111111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDA2JzQwLjAiTiA3MsKwNDgnNDAuMCJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
-                            allowfullscreen="" 
-                            loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="prem-legal-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Financial Disclosure</a>
-            </div>
+        
+  
             <div class="prem-copyright">
-                <p>&copy; 2023 Prem Foundation. All Rights Reserved.</p>
+                <p>&copy; 2025 Prem Foundation. All Rights Reserved.</p>
                 <p class="prem-credits">Crafted with <i class="fas fa-heart"></i> for humanity</p>
             </div>
         </div>
@@ -831,126 +815,141 @@
                 observer.observe(card);
             });
 
-            // Read more functionality
+            // Fixed Read More functionality
             document.querySelectorAll('.read-more-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const bio = this.previousElementSibling;
-                    const icon = this.querySelector('i');
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
                     
-                    bio.classList.toggle('expanded');
+                    const cardBody = this.closest('.team-card-body');
+                    if (!cardBody) return;
+                    
+                    const bio = cardBody.querySelector('.team-bio');
+                    if (!bio) return;
+                    
+                    // Toggle the expanded state
+                    const isExpanded = bio.classList.toggle('expanded');
                     this.classList.toggle('expanded');
                     
-                    this.textContent = bio.classList.contains('expanded') ? 'Read less ' : 'Read more ';
-                    this.appendChild(icon);
-                    
-                    equalizeCards();
+                    // Update button text and icon
+                    const icon = this.querySelector('i');
+                    if (icon) {
+                        if (isExpanded) {
+                            this.innerHTML = 'Read less <i class="fas fa-chevron-up"></i>';
+                        } else {
+                            this.innerHTML = 'Read more <i class="fas fa-chevron-down"></i>';
+                        }
+                    }
                 });
             });
 
             // Share functionality
-            // Replace the existing share button event listener with this:
-document.querySelectorAll('.share-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-        const name = this.getAttribute('data-name');
-        const currentUrl = window.location.href;
-        const shareText = `Learn more about ${name} and their work with Prem Foundation`;
-        
-        if (navigator.share) {
-            // Native sharing for supported devices
-            navigator.share({
-                title: `${name} - Prem Foundation`,
-                text: shareText,
-                url: currentUrl
-            }).catch(err => {
-                console.log('Error sharing:', err);
-                showCustomShareMenu(this, name, currentUrl, shareText);
+            document.querySelectorAll('.share-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const name = this.getAttribute('data-name');
+                    const currentUrl = window.location.href;
+                    const shareText = `Learn more about ${name} and their work with Prem Foundation`;
+                    
+                    if (navigator.share) {
+                        navigator.share({
+                            title: `${name} - Prem Foundation`,
+                            text: shareText,
+                            url: currentUrl
+                        }).catch(err => {
+                            console.log('Error sharing:', err);
+                            showCustomShareMenu(this, name, currentUrl, shareText);
+                        });
+                    } else {
+                        showCustomShareMenu(this, name, currentUrl, shareText);
+                    }
+                });
             });
-        } else {
-            // Custom share menu for unsupported browsers
-            showCustomShareMenu(this, name, currentUrl, shareText);
-        }
-    });
-});
 
-function showCustomShareMenu(button, name, url, text) {
-    // Create or show custom share menu
-    let shareMenu = button.nextElementSibling;
-    
-    if (!shareMenu || !shareMenu.classList.contains('custom-share-menu')) {
-        // Create menu if it doesn't exist
-        shareMenu = document.createElement('div');
-        shareMenu.className = 'custom-share-menu';
-        shareMenu.innerHTML = `
-            <div class="share-option" data-type="whatsapp">
-                <i class="fab fa-whatsapp"></i> WhatsApp
-            </div>
-            <div class="share-option" data-type="facebook">
-                <i class="fab fa-facebook"></i> Facebook
-            </div>
-            <div class="share-option" data-type="twitter">
-                <i class="fab fa-twitter"></i> Twitter
-            </div>
-            <div class="share-option" data-type="linkedin">
-                <i class="fab fa-linkedin"></i> LinkedIn
-            </div>
-            <div class="share-option" data-type="email">
-                <i class="fas fa-envelope"></i> Email
-            </div>
-            <div class="share-option" data-type="copy">
-                <i class="fas fa-link"></i> Copy Link
-            </div>
-        `;
-        button.parentNode.insertBefore(shareMenu, button.nextSibling);
-        
-        // Add click handlers for each option
-        shareMenu.querySelectorAll('.share-option').forEach(option => {
-            option.addEventListener('click', (e) => {
-                e.stopPropagation();
-                shareViaPlatform(option.getAttribute('data-type'), name, url, text);
-                shareMenu.remove();
-            });
-        });
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', function closeMenu(e) {
-            if (!shareMenu.contains(e.target) && e.target !== button) {
-                shareMenu.remove();
-                document.removeEventListener('click', closeMenu);
+            function showCustomShareMenu(button, name, url, text) {
+                // Remove any existing menus first
+                document.querySelectorAll('.custom-share-menu').forEach(menu => menu.remove());
+                
+                // Create new menu
+                const shareMenu = document.createElement('div');
+                shareMenu.className = 'custom-share-menu';
+                shareMenu.innerHTML = `
+                    <div class="share-option" data-type="whatsapp">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </div>
+                    <div class="share-option" data-type="facebook">
+                        <i class="fab fa-facebook"></i> Facebook
+                    </div>
+                    <div class="share-option" data-type="twitter">
+                        <i class="fab fa-twitter"></i> Twitter
+                    </div>
+                    <div class="share-option" data-type="linkedin">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </div>
+                    <div class="share-option" data-type="email">
+                        <i class="fas fa-envelope"></i> Email
+                    </div>
+                    <div class="share-option" data-type="copy">
+                        <i class="fas fa-link"></i> Copy Link
+                    </div>
+                `;
+                
+                // Position menu absolutely relative to viewport
+                const rect = button.getBoundingClientRect();
+                shareMenu.style.position = 'absolute';
+                shareMenu.style.top = `${rect.bottom + window.scrollY}px`;
+                shareMenu.style.left = `${rect.left + window.scrollX}px`;
+                shareMenu.style.zIndex = '1000';
+                
+                document.body.appendChild(shareMenu);
+                
+                // Handle option clicks
+                shareMenu.querySelectorAll('.share-option').forEach(option => {
+                    option.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        shareViaPlatform(option.getAttribute('data-type'), name, url, text);
+                        shareMenu.remove();
+                    });
+                });
+                
+                // Close when clicking outside
+                const clickHandler = function(e) {
+                    if (!shareMenu.contains(e.target)) {
+                        shareMenu.remove();
+                        document.removeEventListener('click', clickHandler);
+                    }
+                };
+                setTimeout(() => document.addEventListener('click', clickHandler), 0);
+            }
+
+            function shareViaPlatform(platform, name, url, text) {
+                const encodedUrl = encodeURIComponent(url);
+                const encodedText = encodeURIComponent(`${text}\n\n${url}`);
+                
+                switch(platform) {
+                    case 'whatsapp':
+                        window.open(`https://wa.me/?text=${encodedText}`, '_blank');
+                        break;
+                    case 'facebook':
+                        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`, '_blank');
+                        break;
+                    case 'twitter':
+                        window.open(`https://twitter.com/intent/tweet?text=${encodedText}`, '_blank');
+                        break;
+                    case 'linkedin':
+                        window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`, '_blank');
+                        break;
+                    case 'email':
+                        window.open(`mailto:?subject=${encodeURIComponent(name + ' - Prem Foundation')}&body=${encodedText}`, '_blank');
+                        break;
+                    case 'copy':
+                        navigator.clipboard.writeText(url).then(() => {
+                            alert('Link copied to clipboard!');
+                        });
+                        break;
+                }
             }
         });
-    } else {
-        // Toggle menu visibility
-        shareMenu.remove();
-    }
-}
-
-function shareViaPlatform(platform, name, url, text) {
-    const encodedUrl = encodeURIComponent(url);
-    const encodedText = encodeURIComponent(`${text}\n\n${url}`);
-    
-    switch(platform) {
-        case 'whatsapp':
-            window.open(`https://wa.me/?text=${encodedText}`, '_blank');
-            break;
-        case 'facebook':
-            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`, '_blank');
-            break;
-        case 'twitter':
-            window.open(`https://twitter.com/intent/tweet?text=${encodedText}`, '_blank');
-            break;
-        case 'linkedin':
-            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`, '_blank');
-            break;
-        case 'email':
-            window.open(`mailto:?subject=${encodeURIComponent(name + ' - Prem Foundation')}&body=${encodedText}`, '_blank');
-            break;
-        case 'copy':
-            navigator.clipboard.writeText(url).then(() => {
-                alert('Link copied to clipboard!');
-            });
-            break;
-    }
-}
     </script>
 </body>
 </html>

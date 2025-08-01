@@ -9,16 +9,148 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Swiper JS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+ <link href="css/style.css" rel="stylesheet">
     <style>
-        /* Timeline Styles */
+        :root {
+            --gold: #D4AF37;
+            --gold-light: #F4E5C2;
+            --dark-1: #0F172A;
+            --dark-2: #1E293B;
+            --dark-3: #334155;
+            --dark-4: #475569;
+            --light-1: #F8FAFC;
+            --light-2: #F1F5F9;
+            --light-3: #E2E8F0;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-1);
+            color: var(--light-2);
+        }
+        
+        /* Section Transition Effect */
+        section {
+            transition: background-color 0.5s ease;
+        }
+        
+        /* Hero Section */
+        .hero-about {
+            position: relative;
+            overflow: hidden;
+            padding-top: 100px;
+            padding-bottom: 60px;
+            background: linear-gradient(135deg, var(--dark-1) 0%, var(--dark-2) 100%);
+            color: white;
+        }
+        
+        .hero-about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="rgba(212, 175, 55, 0.2)" d="M50 0L61.8 38.2H100L69.1 61.8L80.9 100L50 76.4L19.1 100L30.9 61.8L0 38.2H38.2L50 0Z"/></svg>');
+            background-size: 20px;
+            opacity: 0.3;
+            animation: stars 100s linear infinite;
+            z-index: 0;
+        }
+        
+        @keyframes stars {
+            0% { background-position: 0 0; }
+            100% { background-position: -1000px 500px; }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+        
+        .hero-about h1 {
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-about h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+        
+        .hero-about p {
+            font-weight: 300;
+            opacity: 0.9;
+            max-width: 600px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .hero-image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            transform: perspective(1000px) rotateY(-5deg) translateZ(50px);
+            transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+            height: 100%;
+            max-height: 400px;
+        }
+        
+        .hero-image-container:hover {
+            transform: perspective(1000px) rotateY(0deg) translateZ(0);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+        }
+        
+        .hero-image-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(212,175,55,0.1) 0%, transparent 100%);
+            z-index: 1;
+        }
+        
+        .hero-image-container img {
+            transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .hero-image-container:hover img {
+            transform: scale(1.1) rotate(1deg);
+        }
+        
+        /* Timeline Section */
+        .timeline-section {
+            background-color: var(--dark-2);
+            position: relative;
+            overflow: hidden;
+        }
+        
         .timeline {
             position: relative;
-            max-width: 1140px;
+            max-width: 1000px;
             margin: 0 auto;
         }
         
@@ -26,7 +158,7 @@
             content: '';
             position: absolute;
             width: 4px;
-            background: #1e40af;
+            background: linear-gradient(to bottom, var(--gold), var(--gold-light));
             top: 0;
             bottom: 0;
             left: 50%;
@@ -36,22 +168,36 @@
         }
         
         .timeline-card {
-            padding: 10px 40px;
+            padding: 10px 30px;
             position: relative;
             width: 50%;
             box-sizing: border-box;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .timeline-card.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .timeline-card::after {
             content: '';
             position: absolute;
-            width: 25px;
-            height: 25px;
-            background: #1e40af;
-            border: 4px solid #bfdbfe;
+            width: 20px;
+            height: 20px;
+            background: var(--gold);
+            border: 3px solid var(--dark-2);
             border-radius: 50%;
-            top: 30px;
+            top: 25px;
             z-index: 2;
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-card:hover::after {
+            transform: scale(1.3);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.7);
         }
         
         .left {
@@ -63,117 +209,397 @@
         }
         
         .left::after {
-            right: -12px;
+            right: -10px;
         }
         
         .right::after {
-            left: -12px;
+            left: -10px;
         }
         
-.timeline-content {
-    padding: 30px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-    /* New text color settings */
-    color: #1e293b; /* Dark slate-800 */
-}
+        .timeline-content {
+            padding: 20px;
+            background: var(--dark-3);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
 
-.timeline-content h3 {
-    color: #1e40af; /* Keep blue for headings */
-}
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: var(--gold);
+            transition: height 0.4s ease;
+        }
 
-.timeline-content p {
-    color: #334155; /* Slightly lighter than body text */
-}
-
-.timeline-year {
-    color: #1e40af !important; /* Ensure year stays blue */
-}
+        .timeline-content:hover::before {
+            height: 100%;
+        }
         
-        .timeline-content:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        .timeline-content h3 {
+            color: var(--light-1);
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-content p {
+            color: var(--light-3);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
         }
         
         .timeline-year {
-            color: #1e40af;
-            font-weight: 700;
-            font-size: 1.25rem;
-            margin-bottom: 10px;
+            color: var(--gold) !important;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 5px;
+            transition: all 0.3s ease;
         }
         
         .timeline-img {
-            border-radius: 8px;
-            margin-top: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            border-radius: 6px;
+            margin-top: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+            filter: grayscale(30%) brightness(0.9);
+            width: 100%;
+            height: auto;
         }
         
         .timeline-img:hover {
-            transform: scale(1.02);
+            transform: scale(1.05);
+            filter: grayscale(0%) brightness(1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
         
         /* Press Coverage */
         .press-section {
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            background: linear-gradient(135deg, var(--dark-3) 0%, var(--dark-2) 100%);
+            position: relative;
+            overflow: hidden;
         }
-        
 
-.press-slide {
-    /* Keep all existing properties */
-    color: #1e293b; /* This is a dark blue-gray color */
-}
+        .press-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+            animation: float 15s infinite linear;
+            z-index: 0;
+        }
 
-.press-quote {
-    color: #334155; /* Slightly lighter than the main text */
-}
-
-.press-date {
-    color: #64748b; /* Keep the date slightly muted */
-}
         .press-slide {
-            height: 220px;
+            height: 350px;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: white;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            opacity: 0.85;
-            transition: all 0.3s ease;
+            background: var(--dark-3);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: 1px solid rgba(255,255,255,0.05);
         }
         
         .press-slide:hover {
-            opacity: 1;
-            transform: translateY(-5px);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            z-index: 2;
         }
         
-        .press-logo {
-            max-height: 60px;
-            max-width: 180px;
-            margin-bottom: 20px;
-            filter: grayscale(100%) contrast(0.5);
+        .press-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+        
+        .press-slide:hover img {
+            transform: scale(1.08);
+        }
+        
+        .press-slide-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
             transition: all 0.3s ease;
         }
         
-        .press-slide:hover .press-logo {
-            filter: grayscale(0%) contrast(1);
+        .press-slide-overlay h5 {
+            color: var(--gold-light);
+            margin-bottom: 0.5rem;
         }
         
-        .press-quote {
-            font-style: italic;
-            margin-bottom: 10px;
+        .press-slide-overlay small {
+            color: var(--light-3);
+            font-size: 0.8rem;
         }
         
-        .press-date {
-            font-size: 0.85rem;
-            color: #64748b;
-            margin-top: auto;
+        /* Swiper Navigation */
+        .swiper-button-next, .swiper-button-prev {
+            color: var(--gold) !important;
+            width: 40px !important;
+            height: 40px !important;
+            background: rgba(0,0,0,0.5);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .swiper-button-next::after, .swiper-button-prev::after {
+            font-size: 1.2rem !important;
+            font-weight: bold;
+        }
+        
+        .swiper-button-next:hover, .swiper-button-prev:hover {
+            background: rgba(212, 175, 55, 0.2);
+            transform: scale(1.1);
+        }
+        
+        /* Values Section */
+        .values-section {
+            background-color: var(--dark-1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .value-card {
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: none;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            background: var(--dark-2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--gold), var(--gold-light));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .value-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .value-icon-container {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(212,175,55,0.1) 0%, rgba(244,229,194,0.2) 100%);
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .value-icon-container::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--gold-light);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .value-card:hover .value-icon-container::before {
+            opacity: 1;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.7; }
+            70% { transform: scale(1.1); opacity: 0.2; }
+            100% { transform: scale(0.95); opacity: 0.7; }
+        }
+
+        .value-icon {
+            font-size: 2rem;
+            color: var(--gold);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .value-card:hover .value-icon {
+            transform: rotate(10deg) scale(1.1);
+        }
+        
+        .value-card .card-body {
+            padding: 30px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .value-card h3 {
+            color: var(--light-1);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .value-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--gold);
+            transition: all 0.3s ease;
+        }
+        
+        .value-card:hover h3::after {
+            width: 60px;
+        }
+        
+        .value-card p {
+            color: var(--light-3);
+        }
+        
+        /* Reports Section */
+        .reports-section {
+            background: linear-gradient(135deg, var(--dark-1) 0%, var(--dark-2) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .reports-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="rgba(212, 175, 55, 0.1)" d="M50 0L61.8 38.2H100L69.1 61.8L80.9 100L50 76.4L19.1 100L30.9 61.8L0 38.2H38.2L50 0Z"/></svg>');
+            background-size: 30px;
+            opacity: 0.5;
+            animation: stars 120s linear infinite;
+            z-index: 0;
+        }
+        
+        .reports-section .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            color: var(--light-1);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+        
+        .report-card {
+            transition: all 0.3s ease;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(5px);
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+.report-card .card-body {
+    /* Add this to ensure text visibility */
+    color: var(--light-2) !important;
+}
+
+.report-card small {
+    /* Update the small text color */
+    color: var(--gold-light) !important;
+}
+
+.report-card .btn-outline-light {
+    /* Ensure button text is visible */
+    color: var(--light-2) !important;
+    border-color: var(--gold-light) !important;
+}
+
+.report-card .btn-outline-light:hover {
+    /* Hover state */
+    color: var(--dark-1) !important;
+    background-color: var(--gold-light) !important;
+}
+
+.report-card .bg-blue-100 {
+    background-color: rgba(212, 175, 55, 0.1) !important; /* Gold tint */
+}
+
+.report-card .text-blue-800 {
+    color: var(--gold) !important; /* Gold color for PDF icon */
+}
+
+        .report-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--gold), var(--gold-light));
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .report-card:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .report-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            background: rgba(255,255,255,0.1);
         }
         
         /* Responsive */
@@ -184,141 +610,152 @@
             
             .timeline-card {
                 width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
+                padding-left: 60px;
+                padding-right: 20px;
             }
             
             .timeline-card::after {
-                left: 18px;
+                left: 15px;
             }
             
             .right {
                 left: 0;
             }
+            
+            .hero-about {
+                padding-top: 80px;
+                padding-bottom: 40px;
+            }
+            
+            .hero-image-container {
+                transform: none;
+                margin-top: 30px;
+                max-height: 300px;
+            }
+            
+            .press-slide {
+                height: 250px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header (Consistent with other pages) -->
-    <header class="shadow-sm">
-        <!-- Your existing navbar -->
-    </header>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand logo-glow" href="index.html">
+                <img src="images/logo.jpg" alt="Prem Foundation" height="50">
+                <span class="logo-pulse"></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">
+                            <span class="nav-link-underline">Home</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown">
+                            <span class="nav-link-underline">About Us</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="about.html">Our Story</a></li>
+                            <li><a class="dropdown-item" href="team.html">Our Team</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="projectsDropdown" role="button" data-bs-toggle="dropdown">
+                            <span class="nav-link-underline">Projects</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="projects.html">All Initiatives</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="premangan.html">Premangan Old Age Home</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link donate-btn" href="donate.html">
+                            <span class="nav-link-underline">Donate</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="volunteer.html">
+                            <span class="nav-link-underline">Volunteer</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">
+                            <span class="nav-link-underline">Contact</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
     <!-- Main Content -->
     <main>
-
-<!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-  <div class="container">
-    <a class="navbar-brand logo-glow" href="index.html">
-      <img src="images/logo.jpg" alt="Prem Foundation" height="50">
-      <span class="logo-pulse"></span>
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link active" href="index.html">
-            <span class="nav-link-underline">Home</span>
-          </a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown">
-            <span class="nav-link-underline">About Us</span>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="about.html">Our Story</a></li>
-            <li><a class="dropdown-item" href="team.html">Our Team</a></li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="projectsDropdown" role="button" data-bs-toggle="dropdown">
-            <span class="nav-link-underline">Projects</span>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="projects.html">All Initiatives</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="premangan.html">Premangan Old Age Home</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link donate-btn" href="donate.html">
-            <span class="nav-link-underline">Donate</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="volunteer.html">
-            <span class="nav-link-underline">Volunteer</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="contact.html">
-            <span class="nav-link-underline">Contact</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
         <!-- Hero Section -->
-        <section class="hero-about bg-blue-900 text-white py-5">
-            <div class="container py-5">
+        <section class="hero-about">
+            <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <h1 class="display-4 fw-bold mb-4">Our Journey of Compassion</h1>
-                        <p class="lead mb-4">For over 15 years, Prem Foundation has been transforming lives through sustainable community initiatives.</p>
+                    <div class="col-lg-6 hero-content" data-aos="fade-right" data-aos-duration="800">
+                        <h1 class="display-4 fw-bold">Our Journey of Compassion</h1>
+                        <p class="lead">For over 15 years, Prem Foundation has been at the forefront of transformative change, pioneering sustainable community initiatives that have touched thousands of lives across Maharashtra. Our commitment to excellence and innovation has established us as a beacon of hope and progress in the social sector.</p>
                     </div>
-                    <div class="col-lg-6">
-                        <img src="images/about/hero-about.jpg" alt="Prem Foundation Team" class="img-fluid rounded-3 shadow">
+                    <div class="col-lg-6" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
+                        <div class="hero-image-container">
+                            <img src="images/about/hero-about.jpg" alt="Prem Foundation Team" class="img-fluid">
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Timeline Section -->
-        <section class="py-5">
+        <section class="timeline-section py-5">
             <div class="container py-5">
-                <h2 class="text-center mb-5 fw-bold">Milestones of Impact</h2>
+                <h2 class="text-center mb-5 fw-bold section-title" data-aos="fade-up">Milestones of Impact</h2>
                 <div class="timeline">
                     <!-- Timeline Item 1 -->
-                    <div class="timeline-card left">
+                    <div class="timeline-card left" data-year="2008">
                         <div class="timeline-content">
                             <div class="timeline-year">2008</div>
                             <h3 class="h4">Foundation Established</h3>
-                            <p>Founded by social entrepreneurs to address education inequality in rural Maharashtra.</p>
+                            <p>Founded with a vision to create sustainable change in rural Maharashtra through education and empowerment initiatives.</p>
                             <img src="images/about/founding.jpg" alt="Foundation day" class="img-fluid timeline-img">
                         </div>
                     </div>
                     
                     <!-- Timeline Item 2 -->
-                    <div class="timeline-card right">
+                    <div class="timeline-card right" data-year="2012">
                         <div class="timeline-content">
                             <div class="timeline-year">2012</div>
                             <h3 class="h4">First Community Center</h3>
-                            <p>Opened our flagship community center serving 200+ families with vocational training.</p>
+                            <p>Opened our flagship center providing vocational training, education programs, and healthcare services to 200+ families.</p>
                             <img src="images/about/community-center.jpg" alt="Community center" class="img-fluid timeline-img">
                         </div>
                     </div>
                     
                     <!-- Timeline Item 3 -->
-                    <div class="timeline-card left">
+                    <div class="timeline-card left" data-year="2015">
                         <div class="timeline-content">
                             <div class="timeline-year">2015</div>
                             <h3 class="h4">Premangan Inauguration</h3>
-                            <p>Launched our elder care facility with 30 beds and holistic wellness programs.</p>
+                            <p>Launched our state-of-the-art elder care facility offering holistic wellness programs and compassionate care.</p>
                             <img src="images/about/premangan-inauguration.jpg" alt="Premangan" class="img-fluid timeline-img">
                         </div>
                     </div>
                     
                     <!-- Timeline Item 4 -->
-                    <div class="timeline-card right">
+                    <div class="timeline-card right" data-year="2020">
                         <div class="timeline-content">
                             <div class="timeline-year">2020</div>
                             <h3 class="h4">Pandemic Response</h3>
-                            <p>Distributed 25,000+ meal kits and organized mobile health camps across 12 villages.</p>
+                            <p>Mobilized resources to distribute 25,000+ meal kits and organize mobile health camps across 12 villages during COVID-19.</p>
                             <img src="images/about/covid-relief.jpg" alt="COVID relief" class="img-fluid timeline-img">
                         </div>
                     </div>
@@ -329,85 +766,95 @@
         <!-- Press Coverage -->
         <section class="press-section py-5">
             <div class="container py-5">
-                <h2 class="text-center mb-5 fw-bold">As Featured In</h2>
-                <div class="swiper pressSwiper">
+                <h2 class="text-center mb-5 fw-bold section-title" data-aos="fade-up">Media Highlights</h2>
+                <div class="swiper pressSwiper" data-aos="fade-up" data-aos-delay="200">
                     <div class="swiper-wrapper pb-5">
                         <!-- Press Item 1 -->
                         <div class="swiper-slide">
                             <div class="press-slide">
-                                <img src="images/press/toi.png" alt="Times of India" class="press-logo">
-                                <p class="press-quote">"Prem Foundation sets benchmark in community-led development."</p>
-                                <div class="press-date">June 12, 2021</div>
+                                <img src="images/press/news1.jpg" alt="Times of India Feature">
+                                <div class="press-slide-overlay">
+                                    <h5 class="mb-2">"Prem Foundation's Innovative Approach to Community Development"</h5>
+                                    <small>Times of India • June 12, 2021</small>
+                                </div>
                             </div>
                         </div>
                         
                         <!-- Press Item 2 -->
                         <div class="swiper-slide">
                             <div class="press-slide">
-                                <img src="images/press/hindu.png" alt="The Hindu" class="press-logo">
-                                <p class="press-quote">"Innovative elder care model gains national attention."</p>
-                                <div class="press-date">March 8, 2022</div>
+                                <img src="images/press/news2.jpg" alt="The Hindu Feature">
+                                <div class="press-slide-overlay">
+                                    <h5 class="mb-2">"Redefining Elder Care in Maharashtra: The Premangan Model"</h5>
+                                    <small>The Hindu • March 8, 2022</small>
+                                </div>
                             </div>
                         </div>
                         
                         <!-- Press Item 3 -->
                         <div class="swiper-slide">
                             <div class="press-slide">
-                                <img src="images/press/indian-express.png" alt="Indian Express" class="press-logo">
-                                <p class="press-quote">"How one NGO is bridging the education gap."</p>
-                                <div class="press-date">November 3, 2020</div>
+                                <img src="images/press/news3.jpg" alt="Indian Express Feature">
+                                <div class="press-slide-overlay">
+                                    <h5 class="mb-2">"Bridging the Education Gap in Rural Communities"</h5>
+                                    <small>Indian Express • November 3, 2020</small>
+                                </div>
                             </div>
                         </div>
                         
                         <!-- Press Item 4 -->
                         <div class="swiper-slide">
                             <div class="press-slide">
-                                <img src="images/press/mumbai-mirror.png" alt="Mumbai Mirror" class="press-logo">
-                                <p class="press-quote">"Premangan redefines senior living with dignity."</p>
-                                <div class="press-date">August 17, 2023</div>
+                                <img src="images/press/news4.jpg" alt="Mumbai Mirror Feature">
+                                <div class="press-slide-overlay">
+                                    <h5 class="mb-2">"A New Standard for Senior Living: Premangan's Success Story"</h5>
+                                    <small>Mumbai Mirror • August 17, 2023</small>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                     <div class="swiper-pagination"></div>
                 </div>
             </div>
         </section>
 
         <!-- Values Section -->
-        <section class="py-5">
+        <section class="values-section py-5">
             <div class="container py-5">
-                <h2 class="text-center mb-5 fw-bold">Our Core Values</h2>
+                <h2 class="text-center mb-5 fw-bold section-title" data-aos="fade-up">Our Core Values</h2>
                 <div class="row g-4">
-                    <div class="col-md-4">
-                        <div class="card h-100 border-0 shadow-sm hover-shadow transition-all">
-                            <div class="card-body text-center p-4">
-                                <div class="bg-blue-100 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
-                                    <i class="fas fa-hands-helping fa-2x text-blue-800"></i>
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card h-100 value-card">
+                            <div class="card-body text-center">
+                                <div class="value-icon-container">
+                                    <i class="fas fa-hands-helping value-icon"></i>
                                 </div>
                                 <h3 class="h5">Compassion</h3>
-                                <p>Every initiative begins with empathy for those we serve.</p>
+                                <p>Every initiative begins with deep empathy and respect for those we serve, ensuring dignity in all our interactions and programs.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card h-100 border-0 shadow-sm hover-shadow transition-all">
-                            <div class="card-body text-center p-4">
-                                <div class="bg-blue-100 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
-                                    <i class="fas fa-shield-alt fa-2x text-blue-800"></i>
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card h-100 value-card">
+                            <div class="card-body text-center">
+                                <div class="value-icon-container">
+                                    <i class="fas fa-shield-alt value-icon"></i>
                                 </div>
                                 <h3 class="h5">Integrity</h3>
-                                <p>Transparency and ethics guide all our actions.</p>
+                                <p>We maintain the highest standards of transparency and ethical conduct, with unwavering accountability to our stakeholders.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card h-100 border-0 shadow-sm hover-shadow transition-all">
-                            <div class="card-body text-center p-4">
-                                <div class="bg-blue-100 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
-                                    <i class="fas fa-lightbulb fa-2x text-blue-800"></i>
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                        <div class="card h-100 value-card">
+                            <div class="card-body text-center">
+                                <div class="value-icon-container">
+                                    <i class="fas fa-lightbulb value-icon"></i>
                                 </div>
                                 <h3 class="h5">Innovation</h3>
-                                <p>We constantly evolve to create sustainable impact.</p>
+                                <p>We constantly push boundaries to develop creative, sustainable solutions that maximize our impact and reach.</p>
                             </div>
                         </div>
                     </div>
@@ -415,142 +862,259 @@
             </div>
         </section>
 
-<!-- Annual Reports Section -->
-<section class="py-5 bg-light">
-    <div class="container py-5">
-        <h2 class="text-center mb-5 fw-bold">Annual Reports</h2>
-        <div class="row g-4">
-            <!-- Report 1 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card border-0 shadow-sm h-100 hover-lift transition-all">
-                    <div class="card-body p-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="bg-blue-100 rounded p-3 me-3">
-                                <i class="fas fa-file-pdf fa-2x text-blue-800"></i>
-                            </div>
-                            <div>
-                                <h3 class="h5 mb-0">2022-23 Report</h3>
-                                <small class="text-muted">PDF • 4.2 MB</small>
+        <!-- Annual Reports Section -->
+        <section class="reports-section py-5">
+            <div class="container py-5">
+                <h2 class="text-center mb-5 fw-bold section-title" data-aos="fade-up">Our Annual Reports</h2>
+                <div class="row g-4">
+                    <!-- Report 1 -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card h-100 report-card">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="bg-blue-100 rounded p-3 me-3">
+                                        <i class="fas fa-file-pdf fa-2x text-blue-800"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="h5 mb-0 text-white">2022-23 Report</h3>
+                                        <small class="text-gold-light">PDF • 4.2 MB</small>
+                                    </div>
+                                </div>
+                                <p class="mb-4 text-light-3">Complete annual review of our initiatives, financials, and impact metrics with detailed case studies.</p>
+                                <div class="d-flex gap-2">
+                                    <a href="reports/annual-report-2023.pdf" class="btn btn-sm btn-outline-light" download>
+                                        <i class="fas fa-download me-2"></i>Download
+                                    </a>
+                                    <button class="btn btn-sm btn-primary preview-btn" data-pdf="reports/annual-report-2023.pdf">
+                                        <i class="fas fa-eye me-2"></i>Preview
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                        <p class="mb-4">Complete annual review of our initiatives, financials, and impact metrics.</p>
-                        <div class="d-flex gap-2">
-                            <a href="reports/annual-report-2023.pdf" class="btn btn-sm btn-outline-primary" download>
-                                <i class="fas fa-download me-2"></i>Download
-                            </a>
-                            <button class="btn btn-sm btn-primary preview-btn" data-pdf="reports/annual-report-2023.pdf">
-                                <i class="fas fa-eye me-2"></i>Preview
-                            </button>
+                    </div>
+                    
+                    <!-- Report 2 -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card h-100 report-card">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="bg-blue-100 rounded p-3 me-3">
+                                        <i class="fas fa-file-pdf fa-2x text-blue-800"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="h5 mb-0 text-white">2021-22 Report</h3>
+                                        <small class="text-gold-light">PDF • 3.8 MB</small>
+                                    </div>
+                                </div>
+                                <p class="mb-4 text-light-3">Documenting our comprehensive pandemic response and recovery programs with impact analysis.</p>
+                                <div class="d-flex gap-2">
+                                    <a href="reports/annual-report-2022.pdf" class="btn btn-sm btn-outline-light" download>
+                                        <i class="fas fa-download me-2"></i>Download
+                                    </a>
+                                    <button class="btn btn-sm btn-primary preview-btn" data-pdf="reports/annual-report-2022.pdf">
+                                        <i class="fas fa-eye me-2"></i>Preview
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Report 3 -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                        <div class="card h-100 report-card">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="bg-blue-100 rounded p-3 me-3">
+                                        <i class="fas fa-file-pdf fa-2x text-blue-800"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="h5 mb-0 text-white">2020-21 Report</h3>
+                                        <small class="text-gold-light">PDF • 5.1 MB</small>
+                                    </div>
+                                </div>
+                                <p class="mb-4 text-light-3">Special edition covering our emergency relief efforts during the COVID-19 crisis with testimonials.</p>
+                                <div class="d-flex gap-2">
+                                    <a href="reports/annual-report-2021.pdf" class="btn btn-sm btn-outline-light" download>
+                                        <i class="fas fa-download me-2"></i>Download
+                                    </a>
+                                    <button class="btn btn-sm btn-primary preview-btn" data-pdf="reports/annual-report-2021.pdf">
+                                        <i class="fas fa-eye me-2"></i>Preview
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <!-- Report 2 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card border-0 shadow-sm h-100 hover-lift transition-all">
-                    <div class="card-body p-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="bg-blue-100 rounded p-3 me-3">
-                                <i class="fas fa-file-pdf fa-2x text-blue-800"></i>
-                            </div>
-                            <div>
-                                <h3 class="h5 mb-0">2021-22 Report</h3>
-                                <small class="text-muted">PDF • 3.8 MB</small>
-                            </div>
-                        </div>
-                        <p class="mb-4">Documenting our pandemic response and recovery programs.</p>
-                        <div class="d-flex gap-2">
-                            <a href="reports/annual-report-2022.pdf" class="btn btn-sm btn-outline-primary" download>
-                                <i class="fas fa-download me-2"></i>Download
-                            </a>
-                            <button class="btn btn-sm btn-primary preview-btn" data-pdf="reports/annual-report-2022.pdf">
-                                <i class="fas fa-eye me-2"></i>Preview
-                            </button>
-                        </div>
+                
+                <!-- View More Button -->
+                <div class="text-center mt-5" data-aos="fade-up">
+                    <button class="btn btn-outline-light" id="loadMoreReports">
+                        <i class="fas fa-history me-2"></i>View Archive (2015-2020)
+                    </button>
+                    <div id="moreReports" class="row g-4 mt-4 d-none">
+                        <!-- Additional reports will load here -->
                     </div>
                 </div>
             </div>
-            
-            <!-- Report 3 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card border-0 shadow-sm h-100 hover-lift transition-all">
-                    <div class="card-body p-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="bg-blue-100 rounded p-3 me-3">
-                                <i class="fas fa-file-pdf fa-2x text-blue-800"></i>
-                            </div>
-                            <div>
-                                <h3 class="h5 mb-0">2020-21 Report</h3>
-                                <small class="text-muted">PDF • 5.1 MB</small>
-                            </div>
-                        </div>
-                        <p class="mb-4">Special edition covering our emergency relief efforts.</p>
-                        <div class="d-flex gap-2">
-                            <a href="reports/annual-report-2021.pdf" class="btn btn-sm btn-outline-primary" download>
-                                <i class="fas fa-download me-2"></i>Download
-                            </a>
-                            <button class="btn btn-sm btn-primary preview-btn" data-pdf="reports/annual-report-2021.pdf">
-                                <i class="fas fa-eye me-2"></i>Preview
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- View More Button -->
-        <div class="text-center mt-5">
-            <button class="btn btn-primary" id="loadMoreReports">
-                <i class="fas fa-history me-2"></i>View Archive (2015-2020)
-            </button>
-            <div id="moreReports" class="row g-4 mt-4 d-none">
-                <!-- Additional reports will load here -->
-            </div>
-        </div>
-    </div>
-</section>
+        </section>
 
-<!-- PDF Preview Modal -->
-<div class="modal fade" id="pdfModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="pdfModalLabel">Report Preview</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="ratio ratio-16x9">
-                    <iframe id="pdfPreview" src="" allowfullscreen></iframe>
+        <!-- PDF Preview Modal -->
+        <div class="modal fade" id="pdfModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content bg-dark">
+                    <div class="modal-header border-secondary">
+                        <h5 class="modal-title text-white" id="pdfModalLabel">Report Preview</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="ratio ratio-16x9">
+                            <iframe id="pdfPreview" src="" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-secondary">
+                        <a id="pdfDownloadBtn" href="#" class="btn btn-primary" download>
+                            <i class="fas fa-download me-2"></i>Download Full Report
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <a id="pdfDownloadBtn" href="#" class="btn btn-primary" download>
-                    <i class="fas fa-download me-2"></i>Download Full Report
-                </a>
-            </div>
         </div>
-    </div>
-</div>
     </main>
 
-    <!-- Footer (Consistent with other pages) -->
-    <footer>
-        <!-- Your existing footer -->
-    </footer>
+    <!-- Footer -->
+<footer class="prem-footer">
+    <div class="prem-container">
+        <div class="prem-footer-main">
+            <!-- Brand Column (same as before) -->
+            <div class="prem-footer-brand">
+                <div class="prem-logo-wrapper">
+                    <img src="images/logo.jpg" alt="Prem Foundation" class="prem-logo">
+                    <div class="prem-logo-glow"></div>
+                </div>
+                <p class="prem-tagline">Committed to dignity, care, and community service since 2012.</p>
+                <div class="prem-social-proof">
+                    <div class="prem-trust-badge">
+                        <i class="fas fa-certificate"></i>
+                        <span>30+ Years Combined Experience</span>
+                    </div>
+                    <div class="prem-trust-badge">
+                        <i class="fas fa-heart"></i>
+                        <span>10000+ Lives Impacted</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Links Column (same as before) -->
+            <div class="prem-footer-links">
+                <div class="prem-links-column">
+                    <h5 class="prem-links-title">Our Initiatives</h5>
+                    <ul class="prem-links-list">
+                        <li><a href="premangan.html" class="prem-link"><i class="fas fa-home"></i> Premangan Old Age Home</a></li>
+                        <li><a href="projects.html" class="prem-link"><i class="fas fa-hands-helping"></i> Community Projects</a></li>
+                        <li><a href="donate.html" class="prem-link"><i class="fas fa-donate"></i> Donation Programs</a></li>
+                    </ul>
+                </div>
+                <div class="prem-links-column">
+                    <h5 class="prem-links-title">Organization</h5>
+                    <ul class="prem-links-list">
+                        <li><a href="about.html" class="prem-link"><i class="fas fa-info-circle"></i> About Us</a></li>
+                        <li><a href="team.html" class="prem-link"><i class="fas fa-users"></i> Our Team</a></li>
+                        <li><a href="about.html#report" class="prem-link"><i class="fas fa-file-alt"></i> Annual Reports</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Contact Column (same as before) -->
+            <div class="prem-footer-contact">
+                <h5 class="prem-contact-title">Contact Us</h5>
+                <div class="prem-contact-info">
+                    <div class="prem-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>4th Floor, Sitaram Chambers, Peth Naka, Panchavati, Nashik, Maharashtra, India - 422003</span>
+                    </div>
+                    <div class="prem-contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+91 9970559373</span>
+                    </div>
+                    <div class="prem-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>premfoundation2012@gmail.com</span>
+                    </div>
+                </div>
+                <div class="prem-contact-buttons">
+                    <a href="tel:+919970559373" class="prem-call-button">
+                        <i class="fas fa-phone"></i> Call Us
+                    </a>
+                    <a href="https://wa.me/919970559373" class="prem-whatsapp-button">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <a href="mailto:premfoundation2012@gmail.com" class="prem-email-button">
+                        <i class="fas fa-envelope"></i> Email
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Updated Maps Section -->
+        <div class="prem-footer-bottom">
+            <div class="prem-maps-container">
+                <div class="prem-map-wrapper">
+                    <h6 class="prem-map-title">Head Office</h6>
+                    <p class="prem-map-address">
+                        <i class="fas fa-map-marker-alt"></i> 
+                        4th Floor, Sitaram Chambers, Opp.Shweta Gas Agency, Peth Naka,<br> Panchavati, Nashik,
+			 Maharashtra, India - 422003
+                    </p>
+                    <div class="prem-map-ratio">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14995.597765001003!2d73.7735054937189!3d20.012734746571013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bddeba8d8ce1541%3A0x7b7f8306d427c1d9!2sPrem%20Foundation%20Nashik!5e0!3m2!1sen!2sin!4v1754061677229!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <div class="prem-map-wrapper">
+                    <h6 class="prem-map-title">Premangan Old Age Home</h6>
+                    <p class="prem-map-address">
+                        <i class="fas fa-map-marker-alt"></i> 
+                        Sanit Bunglow, Near Bhujbal Farm Road, Behind Deccan Petrol Pump,<br>
+			 Sunderban Colony, Lekha Nagar, Nashik, Maharashtra, India - 422009
+                    </p>
+                    <div class="prem-map-ratio">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.744635898167!2d73.77330310981564!3d19.977238781344372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bddeb8b37cd614d%3A0xbe5f3f6132bfe731!2sPremangan%20Old%20Age%20Home%20-%20Holiday%20Home!5e0!3m2!1sen!2sin!4v1754060954716!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="prem-copyright">
+                <p>&copy; 2025 Prem Foundation. All Rights Reserved.</p>
+                <p class="prem-credits">Crafted with <i class="fas fa-heart"></i> for humanity</p>
+            </div>
+        </div>
+    </div>
+</footer>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Initialize Press Swiper
+        // Initialize AOS animation
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Initialize Press Swiper with navigation
         const pressSwiper = new Swiper('.pressSwiper', {
             slidesPerView: 1,
             spaceBetween: 30,
             loop: true,
             autoplay: {
-                delay: 3000,
+                delay: 5000,
                 disableOnInteraction: false,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
             },
             pagination: {
                 el: '.swiper-pagination',
@@ -573,202 +1137,146 @@
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.1 });
             
             timelineCards.forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(30px)';
-                card.style.transition = 'all 0.6s ease';
                 observer.observe(card);
             });
         });
-    </script>
 
+        // PDF Preview Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Main preview buttons
+            document.querySelectorAll('.preview-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const pdfUrl = this.getAttribute('data-pdf');
+                    document.getElementById('pdfPreview').src = pdfUrl + '#view=fitH';
+                    document.getElementById('pdfDownloadBtn').href = pdfUrl;
+                    const modal = new bootstrap.Modal(document.getElementById('pdfModal'));
+                    modal.show();
+                });
+            });
 
-
-<footer class="prem-footer">
-    <div class="prem-container">
-        <div class="prem-footer-main">
-            <!-- Brand Column (same as before) -->
-            <div class="prem-footer-brand">
-                <div class="prem-logo-wrapper">
-                    <img src="images/logo.jpg" alt="Prem Foundation" class="prem-logo">
-                    <div class="prem-logo-glow"></div>
-                </div>
-                <p class="prem-tagline">Committed to dignity, care, and community service since 2010.</p>
-                <div class="prem-social-proof">
-                    <div class="prem-trust-badge">
-                        <i class="fas fa-certificate"></i>
-                        <span>80+ Years Combined Experience</span>
-                    </div>
-                    <div class="prem-trust-badge">
-                        <i class="fas fa-heart"></i>
-                        <span>5000+ Lives Impacted</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Links Column (same as before) -->
-            <div class="prem-footer-links">
-                <div class="prem-links-column">
-                    <h5 class="prem-links-title">Our Initiatives</h5>
-                    <ul class="prem-links-list">
-                        <li><a href="premangan.html" class="prem-link"><i class="fas fa-home"></i> Premangan Old Age Home</a></li>
-                        <li><a href="projects.html" class="prem-link"><i class="fas fa-hands-helping"></i> Community Projects</a></li>
-                        <li><a href="donate.html" class="prem-link"><i class="fas fa-donate"></i> Donation Programs</a></li>
-                    </ul>
-                </div>
-                <div class="prem-links-column">
-                    <h5 class="prem-links-title">Organization</h5>
-                    <ul class="prem-links-list">
-                        <li><a href="about.html" class="prem-link"><i class="fas fa-info-circle"></i> About Us</a></li>
-                        <li><a href="team.html" class="prem-link"><i class="fas fa-users"></i> Our Team</a></li>
-                        <li><a href="#" class="prem-link"><i class="fas fa-file-alt"></i> Annual Reports</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Contact Column (same as before) -->
-            <div class="prem-footer-contact">
-                <h5 class="prem-contact-title">Contact Us</h5>
-                <div class="prem-contact-info">
-                    <div class="prem-contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>456 Charity Lane, Mumbai 400001</span>
-                    </div>
-                    <div class="prem-contact-item">
-                        <i class="fas fa-phone-alt"></i>
-                        <span>+91 22 1234 5678</span>
-                    </div>
-                    <div class="prem-contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>contact@premfoundation.org</span>
-                    </div>
-                </div>
-                <div class="prem-contact-buttons">
-                    <a href="tel:+912212345678" class="prem-call-button">
-                        <i class="fas fa-phone"></i> Call Us
-                    </a>
-                    <a href="https://wa.me/912212345678" class="prem-whatsapp-button">
-                        <i class="fab fa-whatsapp"></i> WhatsApp
-                    </a>
-                    <a href="mailto:contact@premfoundation.org" class="prem-email-button">
-                        <i class="fas fa-envelope"></i> Email
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Updated Maps Section -->
-        <div class="prem-footer-bottom">
-            <div class="prem-maps-container">
-                <div class="prem-map-wrapper">
-                    <h6 class="prem-map-title">Head Office</h6>
-                    <p class="prem-map-address">
-                        <i class="fas fa-map-marker-alt"></i> 
-                        456 Charity Lane, Mumbai 400001<br>
-                        Near Marine Drive, 2nd Floor
-                    </p>
-                    <div class="prem-map-ratio">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.0000000000005!2d72.80000000000001!3d19.100000000000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDA2JzAwLjAiTiA3MsKwNDgnMDAuMCJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
-                            allowfullscreen="" 
-                            loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
-                    </div>
-                </div>
-                <div class="prem-map-wrapper">
-                    <h6 class="prem-map-title">Premangan Old Age Home</h6>
-                    <p class="prem-map-address">
-                        <i class="fas fa-map-marker-alt"></i> 
-                        89 Peace Avenue, Pune 411045<br>
-                        Opposite Gandhi Park, Gate No. 3
-                    </p>
-                    <div class="prem-map-ratio">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.111111111111!2d72.81111111111111!3d19.11111111111111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDA2JzQwLjAiTiA3MsKwNDgnNDAuMCJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
-                            allowfullscreen="" 
-                            loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="prem-legal-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Financial Disclosure</a>
-            </div>
-            <div class="prem-copyright">
-                <p>&copy; 2023 Prem Foundation. All Rights Reserved.</p>
-                <p class="prem-credits">Crafted with <i class="fas fa-heart"></i> for humanity</p>
-            </div>
-        </div>
-    </div>
-</footer>
-<script>
-    // PDF Preview Functionality
-    document.querySelectorAll('.preview-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const pdfUrl = this.getAttribute('data-pdf');
-            document.getElementById('pdfPreview').src = pdfUrl + '#view=fitH';
-            document.getElementById('pdfDownloadBtn').href = pdfUrl;
-            const modal = new bootstrap.Modal(document.getElementById('pdfModal'));
-            modal.show();
-        });
-    });
-
-    // Load More Reports
-    document.getElementById('loadMoreReports').addEventListener('click', function() {
-        const moreReportsDiv = document.getElementById('moreReports');
-        
-        if (moreReportsDiv.classList.contains('d-none')) {
-            // Simulate loading (replace with actual AJAX call if needed)
-            this.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Loading...';
-            
-            setTimeout(() => {
-                moreReportsDiv.innerHTML = `
-                    <!-- Sample additional reports -->
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card border-0 shadow-sm h-100">
-                            <div class="card-body p-4">
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="bg-blue-100 rounded p-3 me-3">
-                                        <i class="fas fa-file-pdf fa-2x text-blue-800"></i>
+            // Load More Reports
+            document.getElementById('loadMoreReports').addEventListener('click', function() {
+                const moreReportsDiv = document.getElementById('moreReports');
+                const btn = this;
+                
+                if (moreReportsDiv.classList.contains('d-none')) {
+                    // Simulate loading (replace with actual AJAX call if needed)
+                    btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Loading...';
+                    btn.disabled = true;
+                    
+                    setTimeout(() => {
+                        moreReportsDiv.innerHTML = `
+                            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                                <div class="card h-100 report-card">
+                                    <div class="card-body p-4">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <div class="bg-blue-100 rounded p-3 me-3">
+                                                <i class="fas fa-file-pdf fa-2x text-blue-800"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="h5 mb-0 text-white">2019-20 Report</h3>
+                                                <small class="text-gold-light">PDF • 3.5 MB</small>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex gap-2">
+                                            <a href="reports/annual-report-2020.pdf" class="btn btn-sm btn-outline-light" download>
+                                                <i class="fas fa-download me-2"></i>Download
+                                            </a>
+                                            <button class="btn btn-sm btn-primary preview-btn" data-pdf="reports/annual-report-2020.pdf">
+                                                <i class="fas fa-eye me-2"></i>Preview
+                                            </button>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <h3 class="h5 mb-0">2019-20 Report</h3>
-                                        <small class="text-muted">PDF • 3.5 MB</small>
-                                    </div>
-                                </div>
-                                <div class="d-flex gap-2">
-                                    <a href="reports/annual-report-2020.pdf" class="btn btn-sm btn-outline-primary" download>
-                                        <i class="fas fa-download me-2"></i>Download
-                                    </a>
-                                    <button class="btn btn-sm btn-primary preview-btn" data-pdf="reports/annual-report-2020.pdf">
-                                        <i class="fas fa-eye me-2"></i>Preview
-                                    </button>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <!-- Add more years as needed -->
-                `;
-                moreReportsDiv.classList.remove('d-none');
-                this.innerHTML = '<i class="fas fa-chevron-up me-2"></i> Show Less';
-            }, 800);
-        } else {
-            moreReportsDiv.classList.add('d-none');
-            this.innerHTML = '<i class="fas fa-history me-2"></i> View Archive (2015-2020)';
-        }
-    });
-</script>
+                            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                                <div class="card h-100 report-card">
+                                    <div class="card-body p-4">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <div class="bg-blue-100 rounded p-3 me-3">
+                                                <i class="fas fa-file-pdf fa-2x text-blue-800"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="h5 mb-0 text-white">2018-19 Report</h3>
+                                                <small class="text-gold-light">PDF • 3.2 MB</small>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex gap-2">
+                                            <a href="reports/annual-report-2019.pdf" class="btn btn-sm btn-outline-light" download>
+                                                <i class="fas fa-download me-2"></i>Download
+                                            </a>
+                                            <button class="btn btn-sm btn-primary preview-btn" data-pdf="reports/annual-report-2019.pdf">
+                                                <i class="fas fa-eye me-2"></i>Preview
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                                <div class="card h-100 report-card">
+                                    <div class="card-body p-4">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <div class="bg-blue-100 rounded p-3 me-3">
+                                                <i class="fas fa-file-pdf fa-2x text-blue-800"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="h5 mb-0 text-white">2017-18 Report</h3>
+                                                <small class="text-gold-light">PDF • 2.9 MB</small>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex gap-2">
+                                            <a href="reports/annual-report-2018.pdf" class="btn btn-sm btn-outline-light" download>
+                                                <i class="fas fa-download me-2"></i>Download
+                                            </a>
+                                            <button class="btn btn-sm btn-primary preview-btn" data-pdf="reports/annual-report-2018.pdf">
+                                                <i class="fas fa-eye me-2"></i>Preview
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        moreReportsDiv.classList.remove('d-none');
+                        btn.innerHTML = '<i class="fas fa-chevron-up me-2"></i> Show Less';
+                        btn.disabled = false;
+                        
+                        // Initialize AOS for newly loaded elements
+                        AOS.refresh();
+                        
+                        // Add event listeners to new preview buttons
+                        document.querySelectorAll('#moreReports .preview-btn').forEach(newBtn => {
+                            newBtn.addEventListener('click', function() {
+                                const pdfUrl = this.getAttribute('data-pdf');
+                                document.getElementById('pdfPreview').src = pdfUrl + '#view=fitH';
+                                document.getElementById('pdfDownloadBtn').href = pdfUrl;
+                                const modal = new bootstrap.Modal(document.getElementById('pdfModal'));
+                                modal.show();
+                            });
+                        });
+                    }, 800);
+                } else {
+                    moreReportsDiv.classList.add('d-none');
+                    btn.innerHTML = '<i class="fas fa-history me-2"></i> View Archive (2015-2020)';
+                }
+            });
+        });
 
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>

@@ -245,47 +245,171 @@
             color: var(--success);
         }
 
-        /* Custom Donation Form */
-        .custom-donation {
-            max-width: 600px;
-            margin: 3rem auto;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-        }
+        /* Custom Donation Form *//* Premium Luxury Donation Form - Size Enhanced */
+.custom-donation {
+    max-width: 792px; /* 0.1x larger (720 + 72) */
+    margin: 4rem auto;
+    padding: 3.3rem; /* Increased padding */
+    background: linear-gradient(135deg, 
+                rgba(30, 30, 50, 0.85) 0%, 
+                rgba(20, 20, 40, 0.9) 100%);
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25),
+                0 0 0 1px rgba(108, 92, 231, 0.1);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
 
-        .custom-donation h3 {
-            text-align: center;
-            margin-bottom: 1.5rem;
-            color: var(--secondary);
-        }
+.custom-donation:hover {
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(108, 92, 231, 0.2);
+    transform: translateY(-2px);
+}
 
-        .custom-donation .form-group {
-            margin-bottom: 1.5rem;
-        }
+.custom-donation h3 {
+    text-align: center;
+    margin-bottom: 2.4rem; /* Adjusted spacing */
+    color: var(--gold);
+    font-size: 2.4rem; /* 1.2x larger (from 2rem) */
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
 
-        .custom-donation label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
+.custom-donation h3::after {
+    content: '';
+    display: block;
+    width: 72px; /* Slightly larger */
+    height: 3px;
+    background: linear-gradient(to right, var(--gold), var(--secondary));
+    margin: 1.2rem auto 0; /* Adjusted spacing */
+    border-radius: 3px;
+}
 
-        .custom-donation input {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            color: white;
-            font-size: 1rem;
-        }
+.custom-donation .form-group {
+    margin-bottom: 2.4rem; /* Increased spacing */
+    position: relative;
+}
 
-        .custom-donation input:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
+.custom-donation label {
+    display: block;
+    margin-bottom: 0.96rem; /* Increased spacing */
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.14rem; /* 1.2x larger (from 0.95rem) */
+    letter-spacing: 0.36px;
+}
+
+.custom-donation input {
+    width: 100%;
+    padding: 1.2rem 1.44rem; /* Increased padding */
+    background: rgba(10, 10, 20, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: white;
+    font-size: 1.32rem; /* 1.2x larger (from 1.1rem) */
+    transition: all 0.3s ease;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.custom-donation input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+    font-weight: 300;
+    font-size: 1.2rem; /* Larger placeholder */
+}
+
+.custom-donation input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: rgba(10, 10, 20, 0.6);
+    box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2),
+                inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.donate-btn {
+    width: 100%;
+    padding: 1.32rem; /* 1.2x larger (from 1.1rem) */
+    background: linear-gradient(135deg, 
+                var(--primary) 0%, 
+                var(--primary-dark) 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.32rem; /* 1.2x larger (from 1.1rem) */
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.donate-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.1), 
+                transparent);
+    transition: 0.5s;
+}
+
+.donate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(108, 92, 231, 0.4);
+}
+
+.donate-btn:hover::before {
+    left: 100%;
+}
+
+/* Enhanced Currency Symbol */
+.custom-donation .form-group::before {
+    content: '₹';
+    position: absolute;
+    left: 1.44rem; /* Adjusted position */
+    top: 45%;
+    transform: translateY(30%); /* Slightly lower */
+    color: var(--gold);
+    font-weight: 700; /* Bolder */
+    font-size: 1.44rem; /* 1.2x larger (from 1.2rem) + 0.2x more */
+    pointer-events: none;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.custom-donation input {
+    padding-left: 3rem; /* More space for larger rupee symbol */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .custom-donation {
+        padding: 2.4rem 1.8rem; /* Increased padding */
+        margin: 3.6rem auto; /* More spacing */
+    }
+    
+    .custom-donation h3 {
+        font-size: 2rem; /* Adjusted for mobile */
+    }
+    
+    .custom-donation input {
+        font-size: 1.2rem; /* Slightly smaller on mobile */
+    }
+    
+    .donate-btn {
+        padding: 1.2rem;
+        font-size: 1.2rem;
+    }
+}
 
         /* Premangan Special Section */
         .premangan-section {
@@ -764,13 +888,160 @@
         .floating {
             animation: float 6s ease-in-out infinite;
         }
+
+/* Ultra-Compact Premium Navbar */
+.premium-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 0.4rem 1.2rem; /* Ultra-compact padding */
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+  background: rgba(15, 15, 25, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 2.5rem; /* Ultra-compact height */
+}
+
+.nav-logo a {
+  color: var(--gold);
+  font-size: 1.1rem; /* Very compact font */
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.8px;
+  background: linear-gradient(to right, var(--gold), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem; /* Tight spacing */
+}
+
+.nav-link {
+  position: relative;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  font-size: 0.85rem; /* Very compact text */
+  text-decoration: none;
+  padding: 0.3rem 0.7rem; /* Minimal padding */
+  border-radius: 5px;
+  transition: all 0.25s ease;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(108, 92, 231, 0.3), transparent);
+  transition: 0.4s;
+}
+
+.nav-link:hover::before {
+  left: 100%;
+}
+
+.nav-link:hover {
+  color: white;
+  box-shadow: 0 2px 8px rgba(108, 92, 231, 0.3);
+  border-color: var(--primary);
+}
+
+.nav-hamburger {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 3px; /* Tight hamburger */
+}
+
+.hamburger-line {
+  width: 20px; /* Compact hamburger */
+  height: 1.5px; /* Thinner lines */
+  background: white;
+  transition: all 0.2s ease;
+}
+
+/* Scrolled State */
+.premium-navbar.scrolled {
+  padding: 0.3rem 1.2rem;
+  background: rgba(15, 15, 25, 0.85);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Mobile Menu */
+@media (max-width: 768px) {
+  .nav-links {
+    top: 3.3rem; /* Adjusted for ultra-compact */
+    height: calc(100vh - 3.3rem);
+    gap: 1.5rem;
+  }
+  
+  .nav-hamburger.active .hamburger-line:nth-child(1) {
+    transform: translateY(5px) rotate(45deg);
+  }
+  
+  .nav-hamburger.active .hamburger-line:nth-child(3) {
+    transform: translateY(-5px) rotate(-45deg);
+  }
+}
+
+/* Micro Ripple Effect */
+.ripple {
+  width: 12px;
+  height: 12px;
+  animation: ripple 0.35s ease-out;
+}
+
+@keyframes ripple {
+  to {
+    transform: translate(-50%, -50%) scale(8);
+  }
+}
     </style>
 </head>
 <body>
-    <!-- Header (from your existing site) -->
-    <header class="site-header">
-        <!-- Your header content here -->
-    </header>
+<!-- Premium Navbar with Logo -->
+<!-- Premium Navbar -->
+<nav class="premium-navbar">
+  <div class="nav-container">
+    <div class="nav-logo">
+      <a href="index.html">Prem Foundation</a>
+    </div>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link" data-text="Home">
+        <span>Home</span>
+      </a>
+      <a href="about.html" class="nav-link" data-text="About Us">
+        <span>About Us</span>
+      </a>
+      <a href="contact.html" class="nav-link" data-text="Contact">
+        <span>Contact</span>
+      </a>
+    </div>
+    <div class="nav-hamburger">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </div>
+</nav>
 
 
     <!-- Donation Hero Section -->
@@ -783,6 +1054,21 @@
             <a href="#campaigns" class="btn-outline view-campaigns-btn">View Campaigns</a>
         </div>
     </section>
+
+    <!-- Custom Donation Form -->
+    <section class="donation-section">
+        <div class="custom-donation">
+            <h3>Make Your Donation</h3>
+            <form id="custom-donation-form">
+                <div class="form-group">
+                    <label for="custom-amount">Amount (₹)</label>
+                    <input type="number" id="custom-amount" min="100" placeholder="Put any amount" required>
+                </div>
+                <button type="submit" class="donate-btn" style="width: 100%;">Donate Now</button>
+            </form>
+        </div>
+    </section>
+
 
     <!-- Campaigns Table -->
     <section class="donation-section" id="campaigns">
@@ -853,19 +1139,7 @@
         </table>
     </section>
 
-    <!-- Custom Donation Form -->
-    <section class="donation-section">
-        <div class="custom-donation">
-            <h3>Make Your Donation</h3>
-            <form id="custom-donation-form">
-                <div class="form-group">
-                    <label for="custom-amount">Amount (₹)</label>
-                    <input type="number" id="custom-amount" min="100" placeholder="Put any amount" required>
-                </div>
-                <button type="submit" class="donate-btn" style="width: 100%;">Donate Now</button>
-            </form>
-        </div>
-    </section>
+
 
       <!-- Donation Tiers Section -->
     <section class="donation-section" id="donation-tiers">
@@ -1058,10 +1332,88 @@
     </div>
 </div>
 
-    <!-- Footer (from your existing site) -->
-    <footer class="site-footer">
-        <!-- Your footer content here -->
-    </footer>
+        <!-- Footer (Same as other pages) -->
+    <footer class="prem-footer">
+    <div class="prem-container">
+        <div class="prem-footer-main">
+            <!-- Brand Column (same as before) -->
+            <div class="prem-footer-brand">
+                <div class="prem-logo-wrapper">
+                    <img src="images/logo.jpg" alt="Prem Foundation" class="prem-logo">
+                    <div class="prem-logo-glow"></div>
+                </div>
+                <p class="prem-tagline">Committed to dignity, care, and community service since 2010.</p>
+                <div class="prem-social-proof">
+                    <div class="prem-trust-badge">
+                        <i class="fas fa-certificate"></i>
+                        <span>80+ Years Combined Experience</span>
+                    </div>
+                    <div class="prem-trust-badge">
+                        <i class="fas fa-heart"></i>
+                        <span>5000+ Lives Impacted</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Links Column (same as before) -->
+            <div class="prem-footer-links">
+                <div class="prem-links-column">
+                    <h5 class="prem-links-title">Our Initiatives</h5>
+                    <ul class="prem-links-list">
+                        <li><a href="premangan.html" class="prem-link"><i class="fas fa-home"></i> Premangan Old Age Home</a></li>
+                        <li><a href="projects.html" class="prem-link"><i class="fas fa-hands-helping"></i> Community Projects</a></li>
+                        <li><a href="donate.html" class="prem-link"><i class="fas fa-donate"></i> Donation Programs</a></li>
+                    </ul>
+                </div>
+                <div class="prem-links-column">
+                    <h5 class="prem-links-title">Organization</h5>
+                    <ul class="prem-links-list">
+                        <li><a href="about.html" class="prem-link"><i class="fas fa-info-circle"></i> About Us</a></li>
+                        <li><a href="team.html" class="prem-link"><i class="fas fa-users"></i> Our Team</a></li>
+                        <li><a href="#" class="prem-link"><i class="fas fa-file-alt"></i> Annual Reports</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Contact Column (same as before) -->
+            <div class="prem-footer-contact">
+                <h5 class="prem-contact-title">Contact Us</h5>
+                <div class="prem-contact-info">
+                    <div class="prem-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>456 Charity Lane, Mumbai 400001</span>
+                    </div>
+                    <div class="prem-contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+91 22 1234 5678</span>
+                    </div>
+                    <div class="prem-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>contact@premfoundation.org</span>
+                    </div>
+                </div>
+                <div class="prem-contact-buttons">
+                    <a href="tel:+912212345678" class="prem-call-button">
+                        <i class="fas fa-phone"></i> Call Us
+                    </a>
+                    <a href="https://wa.me/912212345678" class="prem-whatsapp-button">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <a href="mailto:contact@premfoundation.org" class="prem-email-button">
+                        <i class="fas fa-envelope"></i> Email
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        
+            <div class="prem-copyright">
+                <p>&copy; 2023 Prem Foundation. All Rights Reserved.</p>
+                <p class="prem-credits">Crafted with <i class="fas fa-heart"></i> for humanity</p>
+            </div>
+        </div>
+    </div>
+</footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -1285,6 +1637,60 @@ document.querySelector('.premangan-btn').addEventListener('click', function(e) {
     document.getElementById('donation-title').textContent = 'Name a Room at Premangan';
     premanganField.style.display = 'block';
     donationModal.classList.add('active');
+});
+
+// Navbar Scripts
+const navbar = document.querySelector('.premium-navbar');
+const navLinks = document.querySelector('.nav-links');
+const hamburger = document.querySelector('.nav-hamburger');
+
+// Toggle mobile menu
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+  hamburger.classList.toggle('active');
+});
+
+// Close mobile menu when clicking a link
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+    hamburger.classList.remove('active');
+  });
+});
+
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 30) { // Reduced trigger point
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+});
+
+// Add ripple effect to nav links
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    // Create ripple
+    const ripple = document.createElement('span');
+    ripple.classList.add('ripple');
+    this.appendChild(ripple);
+    
+    // Get click position
+    const x = e.clientX - e.target.getBoundingClientRect().left;
+    const y = e.clientY - e.target.getBoundingClientRect().top;
+    
+    // Position ripple
+    ripple.style.left = `${x}px`;
+    ripple.style.top = `${y}px`;
+    
+    // Remove ripple after animation
+    setTimeout(() => {
+      ripple.remove();
+      window.location.href = this.getAttribute('href');
+    }, 400); // Faster transition
+  });
 });
     </script>
 </body>

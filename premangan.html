@@ -22,6 +22,7 @@
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <title>Premangan Old Age Home | Prem Foundation</title>
 </head>
+
 <body>
         <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
@@ -197,104 +198,134 @@
     </div>
 </section>
 
-<!-- Photo Gallery with Admin Upload -->
+<!-- ===== Premium Gallery Section ===== -->
+<!-- ===== Gallery Section ===== -->
+<!-- ===== Gallery Section ===== -->
 <section id="gallery" class="py-5">
     <div class="container">
         <div class="text-center mb-5">
             <h2 class="display-5 fw-bold">Photo Gallery</h2>
             <p class="lead text-muted">Life at Premangan</p>
         </div>
-        
-        <!-- Admin Upload Interface (Visible when logged in) -->
-        <div class="admin-upload mb-5 p-4 border rounded bg-light" style="display: none;">
-            <h4 class="mb-3"><i class="fas fa-cloud-upload-alt me-2"></i>Upload New Photos</h4>
-            <form id="galleryUploadForm">
-                <div class="mb-3">
-                    <input class="form-control" type="file" id="galleryUpload" multiple accept="image/*">
-                </div>
-                <button type="submit" class="btn btn-primary">
-                    <i class="fas fa-save me-2"></i>Upload to Gallery
+
+        <!-- Rotating Gallery with Navigation -->
+        <div class="rotating-gallery">
+            <button class="set-nav-btn prev-set-btn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <div class="gallery-set row g-3"></div>
+            
+            <button class="set-nav-btn next-set-btn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
+            <!-- Dynamic Toggle Button -->
+            <div class="text-center mt-4">
+                <button id="galleryToggleBtn" class="btn btn-primary px-4 py-2">
+                    <span class="btn-icon">
+                        <i class="fas fa-images me-2"></i>
+                    </span>
+                    <span class="btn-text">View Full Gallery</span>
                 </button>
-            </form>
-            <div class="upload-progress mt-3" style="display: none;">
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 0%"></div>
-                </div>
-                <p class="small mt-2 mb-0">Uploading: <span class="upload-count">0</span>/<span class="total-files">0</span></p>
             </div>
         </div>
-        
-        <!-- Gallery Grid -->
-        <div class="row g-3 gallery-grid" id="premanganGallery">
-            <!-- Dynamic content will be loaded here -->
-            <div class="col-12 text-center py-5">
-                <div class="spinner-border text-primary" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
+
+        <!-- Full Gallery Archive -->
+        <div id="fullGallery" class="full-gallery">
+            <div class="gallery-grid row g-3"></div>
+        </div>
+
+        <!-- Lightbox Modal -->
+        <div id="galleryLightbox" class="gallery-lightbox">
+            <span class="close-btn">&times;</span>
+            <button class="download-btn" title="Download">
+                <i class="fas fa-download"></i>
+            </button>
+            <img class="lightbox-img" alt="Gallery Image">
+            <div class="lightbox-nav">
+                <button class="nav-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                <button class="nav-btn next-btn"><i class="fas fa-chevron-right"></i></button>
             </div>
+            <div class="image-counter"></div>
         </div>
     </div>
 </section>
 
    <!-- Testimonials Section -->
-<section id="testimonials" class="py-5 bg-light">
+<!-- COMPLETELY ISOLATED TESTIMONIALS SECTION -->
+<section id="testimonials-fixed" 
+         style="display: block !important; visibility: visible !important; 
+                opacity: 1 !important; position: relative !important;
+                padding: 3rem 0; background: #f8f9fa;">
     <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="display-5 fw-bold text-dark">Family Testimonials</h2>
-            <p class="lead" style="color: #555;">Hear from those who trust us</p>
+        <div style="text-align: center; margin-bottom: 3rem;">
+            <h2 style="font-size: 2.5rem; font-weight: 700; color: #212529;">Family Testimonials</h2>
+            <p style="font-size: 1.25rem; color: #555;">Hear from those who trust us</p>
         </div>
         
-        <div class="row justify-content-center">
-            <div class="col-lg-9">
-                <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <!-- Testimonial 1 -->
-                        <div class="carousel-item active">
-                            <div class="testimonial-card text-center p-4 p-md-5">
-                                <div class="testimonial-img mb-4">
-                                    <img src="images/premangan/testimonials/family1.jpg" alt="Sharma Family" class="rounded-circle">
-                                </div>
-                                <blockquote class="mb-4">
-                                    <p class="lead" style="color: #333;">Premangan gave my father the care we couldn't provide at home. The staff treats residents like family.</p>
-                                </blockquote>
-                                <div class="testimonial-author">
-                                    <h5 class="mb-1 text-dark">Rajesh Sharma</h5>
-                                    <p style="color: #666;">Son of Resident (2019-Present)</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Testimonial 2 -->
-                        <div class="carousel-item">
-                            <div class="testimonial-card text-center p-4 p-md-5">
-                                <div class="testimonial-img mb-4">
-                                    <img src="images/premangan/testimonials/family2.jpg" alt="Patel Family" class="rounded-circle">
-                                </div>
-                                <blockquote class="mb-4">
-                                    <p class="lead" style="color: #333;">After visiting 5 facilities, we knew Premangan was special. The medical care and activities are exceptional.</p>
-                                </blockquote>
-                                <div class="testimonial-author">
-                                    <h5 class="mb-1 text-dark">Priya Patel</h5>
-                                    <p style="color: #666;">Daughter of Resident (2020-2022)</p>
-                                </div>
-                            </div>
+        <!-- Pure CSS Carousel - No Bootstrap Dependency -->
+        <div class="testimonial-carousel" 
+             style="position: relative; width: 100%; overflow: hidden;">
+            <div class="carousel-track" 
+                 style="display: flex; transition: transform 0.5s ease;">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card" 
+                     style="min-width: 100%; padding: 1rem;">
+                    <div style="text-align: center; padding: 2rem; background: white; 
+                              border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                        <img src="images/premangan/testimonials/family1.jpg" 
+                             style="width: 100px; height: 100px; object-fit: cover; 
+                                    border-radius: 50%; border: 3px solid #4361ee;">
+                        <blockquote style="font-style: italic; font-size: 1.25rem; 
+                                         color: #333; margin: 1.5rem 0;">
+                            Premangan gave my father the care we couldn't provide at home.
+                        </blockquote>
+                        <div>
+                            <h5 style="margin-bottom: 0.25rem; color: #212529;">Rajesh Sharma</h5>
+                            <p style="color: #666;">Son of Resident (2019-Present)</p>
                         </div>
                     </div>
-                    
-                    <!-- Carousel Controls -->
-                    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card" 
+                     style="min-width: 100%; padding: 1rem;">
+                    <div style="text-align: center; padding: 2rem; background: white; 
+                              border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                        <img src="images/premangan/testimonials/family2.jpg" 
+                             style="width: 100px; height: 100px; object-fit: cover; 
+                                    border-radius: 50%; border: 3px solid #4361ee;">
+                        <blockquote style="font-style: italic; font-size: 1.25rem; 
+                                         color: #333; margin: 1.5rem 0;">
+                            After visiting 5 facilities, we knew Premangan was special.
+                        </blockquote>
+                        <div>
+                            <h5 style="margin-bottom: 0.25rem; color: #212529;">Priya Patel</h5>
+                            <p style="color: #666;">Daughter of Resident (2020-2022)</p>
+                        </div>
+                    </div>
                 </div>
             </div>
+            
+            <!-- Navigation Buttons -->
+            <button class="carousel-prev" 
+                    style="position: absolute; top: 50%; left: 15px; transform: translateY(-50%);
+                           width: 40px; height: 40px; background: #4361ee; border: none;
+                           border-radius: 50%; color: white; cursor: pointer;">
+                &lt;
+            </button>
+            <button class="carousel-next" 
+                    style="position: absolute; top: 50%; right: 15px; transform: translateY(-50%);
+                           width: 40px; height: 40px; background: #4361ee; border: none;
+                           border-radius: 50%; color: white; cursor: pointer;">
+                &gt;
+            </button>
         </div>
     </div>
 </section>
+
+
 <!-- Admission Section -->
 <section id="admission" class="py-5">
   <div class="container">
@@ -532,48 +563,8 @@
             </div>
         </div>
 
-        <!-- Updated Maps Section -->
-        <div class="prem-footer-bottom">
-            <div class="prem-maps-container">
-                <div class="prem-map-wrapper">
-                    <h6 class="prem-map-title">Head Office</h6>
-                    <p class="prem-map-address">
-                        <i class="fas fa-map-marker-alt"></i> 
-                        456 Charity Lane, Mumbai 400001<br>
-                        Near Marine Drive, 2nd Floor
-                    </p>
-                    <div class="prem-map-ratio">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.0000000000005!2d72.80000000000001!3d19.100000000000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDA2JzAwLjAiTiA3MsKwNDgnMDAuMCJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
-                            allowfullscreen="" 
-                            loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
-                    </div>
-                </div>
-                <div class="prem-map-wrapper">
-                    <h6 class="prem-map-title">Premangan Old Age Home</h6>
-                    <p class="prem-map-address">
-                        <i class="fas fa-map-marker-alt"></i> 
-                        89 Peace Avenue, Pune 411045<br>
-                        Opposite Gandhi Park, Gate No. 3
-                    </p>
-                    <div class="prem-map-ratio">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.111111111111!2d72.81111111111111!3d19.11111111111111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDA2JzQwLjAiTiA3MsKwNDgnNDAuMCJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
-                            allowfullscreen="" 
-                            loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="prem-legal-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Financial Disclosure</a>
-            </div>
+       
+ 
             <div class="prem-copyright">
                 <p>&copy; 2023 Prem Foundation. All Rights Reserved.</p>
                 <p class="prem-credits">Crafted with <i class="fas fa-heart"></i> for humanity</p>
@@ -584,7 +575,34 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JS -->
+    
+
+<!-- Custom JS -->
     <script src="js/main.js"></script>
+
+<script>
+// Smooth scrolling for section links
+document.querySelectorAll('.quick-links a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 100, // Adjust for header height
+                behavior: 'smooth'
+            });
+            
+            // Update URL without page refresh
+            history.pushState(null, null, targetId);
+        }
+    });
+});
+</script>
+
+
+
 </body>
 </html>

@@ -135,22 +135,125 @@
                 </div>
             </div>
 
-            <!-- History + Future Media Placeholder -->
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h3 class="h2 fw-bold mb-3">Our Journey</h3>
-                    <p class="lead">Founded in 2010, Prem Foundation began with a small shelter for homeless elders and has since expanded to multiple initiatives including healthcare, education, and community development.</p>
-                    <p>Key milestones will be added here by the admin, along with photos/videos of past activities.</p>
+<!-- HTML -->
+<section class="journey-section py-5 position-relative">
+    <div class="container py-4">
+        <!-- Section Borders -->
+        <div class="section-border-top"></div>
+        <div class="section-border-bottom"></div>
+        
+        <div class="row align-items-center">
+            <!-- Journey Text -->
+            <div class="col-lg-5 mb-5 mb-lg-0" data-aos="fade-right">
+                <h3 class="h2 fw-bold mb-3 text-white">Our Journey</h3>
+                <div class="acronym-display mb-4">
+                    <span class="letter-p">P</span>
+                    <span class="letter-r">R</span>
+                    <span class="letter-e">E</span>
+                    <span class="letter-m">M</span>
+                    <span class="foundation-text">Foundation</span>
+                    <div class="full-form text-prem-light mt-2">
+                        Participatory Research and Environment Management Organisation
+                    </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="media-placeholder">
-                        <i class="fas fa-images"></i>
-                        <p>Admin can upload photos/videos here later</p>
+                <p class="lead mb-4 text-light">Since 2010, <strong class="text-prem">PREM Foundation</strong> has pioneered sustainable development through participatory approaches. Our journey reflects a commitment to environmental stewardship and community empowerment, creating lasting impact through research-driven solutions.</p>
+                
+                <!-- Floating Badges (Dynamic Elements) -->
+                <div class="floating-badges mb-4">
+                    <div class="badge-item" style="--delay: 0.2s">
+                        <i class="fas fa-leaf"></i> Environmental Care
+                    </div>
+                    <div class="badge-item" style="--delay: 0.4s">
+                        <i class="fas fa-users"></i> Community Focus
+                    </div>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="about.html" class="btn btn-outline-light px-4">
+                        <i class="fas fa-arrow-right me-2"></i> Our Story
+                    </a>
+                    <a href="donate.html" class="btn btn-prem px-4">
+                        <i class="fas fa-hand-holding-heart me-2"></i> Donate
+                    </a>
+                    <a href="projects.html" class="btn btn-initiatives px-4">
+                        <i class="fas fa-tasks me-2"></i> Initiatives
+                    </a>
+                    <a href="volunteer.html" class="btn btn-outline-prem px-4">
+                        <i class="fas fa-hands-helping me-2"></i> Volunteer
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Gallery -->
+            <div class="col-lg-7" data-aos="fade-left">
+                <div class="premium-gallery">
+                    <!-- Main Slideshow -->
+                    <div class="main-slider">
+                        <div class="slide active">
+                            <img src="premangan/images/journey/a.jpg" alt="Community Workshop" loading="lazy">
+                            <div class="slide-caption">Community Workshop on Sustainable Farming (2023)</div>
+                        </div>
+                        <div class="slide">
+                            <img src="premangan/images/journey/b.jpg" alt="Tree Plantation" loading="lazy">
+                            <div class="slide-caption">Annual Tree Plantation Drive (2022)</div>
+                        </div>
+                        <div class="slide">
+                            <img src="premangan/images/journey/c.jpg" alt="Research Team" loading="lazy">
+                            <div class="slide-caption">Field Research Team in Action (2021)</div>
+                        </div>
+                        <div class="slide">
+                            <img src="premangan/images/journey/d.jpg" alt="Children's Program" loading="lazy">
+                            <div class="slide-caption">Environmental Education for Children (2020)</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Navigation Arrows -->
+                    <div class="slider-nav">
+                        <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                        <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    
+                    <!-- Thumbnail Strip -->
+                    <div class="thumbnail-strip">
+                        <div class="thumb active" data-index="0">
+                            <img src="premangan/images/journey/a.jpg" alt="Thumb 1">
+                        </div>
+                        <div class="thumb" data-index="1">
+                            <img src="premangan/images/journey/b.jpg" alt="Thumb 2">
+                        </div>
+                        <div class="thumb" data-index="2">
+                            <img src="premangan/images/journey/c.jpg" alt="Thumb 3">
+                        </div>
+                        <div class="thumb" data-index="3">
+                            <img src="premangan/images/journey/d.jpg" alt="Thumb 4">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+    
+    <!-- Floating Particles for Dynamic Effect -->
+    <div class="particles">
+        <!-- Particles will be added via JS -->
+    </div>
+    
+    <!-- Gold Accent Elements -->
+    <div class="gold-accent-1"></div>
+    <div class="gold-accent-2"></div>
+</section>
+
+<!-- Full Screen Gallery Modal -->
+<div class="gallery-modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="modal-slides">
+            <!-- Slides will be injected here via JS -->
+        </div>
+        <div class="modal-caption"></div>
+    </div>
+</div>
 
 <footer class="prem-footer">
     <div class="prem-container">

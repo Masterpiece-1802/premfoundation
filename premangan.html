@@ -447,10 +447,10 @@
             </div>
         </div>
         <div class="col-12 mt-2">
-            <button type="button" id="proceedToPayment" class="btn btn-success w-100 py-2">
-                <i class="fas fa-credit-card me-2"></i> Proceed to Payment
-            </button>
-        </div>
+        <button type="button" id="proceedToPayment" class="btn btn-success w-100 py-2">
+            <i class="fas fa-credit-card me-2"></i> Proceed to Secure Payment
+        </button>
+    </div>
     </div>
 </form>
 
@@ -611,7 +611,51 @@ document.querySelectorAll('.quick-links a[href^="#"]').forEach(anchor => {
 });
 </script>
 
+    <script src="js/backend.js"></script>
+    <script>
+    document.getElementById('proceedToPayment').addEventListener('click', function() {
+        const form = document.getElementById('admissionForm');
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
 
+        const formData = {
+            resident_name: document.getElementById('residentName').value,
+            age: document.getElementById('residentAge').value,
+            email: document.getElementById('applicantEmail').value,
+            medical: document.getElementById('medicalHistory').value,
+            room_type: document.querySelector('input[name="roomType"]:checked').value,
+            amount: document.querySelector('input[name="roomType"]:checked').value === "Private Room" ? 25000 : 10000
+        };
+
+        const rzp = new Razorpay({
+            key: 'rzp_test_YOUR_API_KEY', // SAME KEY AS DONATE PAGE
+            amount: formData.amount * 100,
+            currency: 'INR',
+            name: 'Premangan Admission',
+            description: `${formData.room_type} Admission`,
+            image: '/images/logo.jpg',
+            handler: function(response) {
+                submitToBackend({
+                    ...formData,
+                    type: 'admission',
+                    razorpay_payment_id: response.razorpay_payment_id
+                }, 'thank-you.html');
+            },
+            prefill: {
+                name: formData.resident_name,
+                email: formData.email
+            },
+            theme: { color: '#4361ee' }
+        });
+
+        rzp.on('payment.failed', function(response) {
+            alert('Payment failed: ' + response.error.description);
+        });
+        rzp.open();
+    });
+    </script>
 
 </body>
 </html>

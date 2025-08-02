@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -188,23 +189,20 @@
         });
     </script>
 
-<!-- Keep existing structure, update script part: -->
+
+
+<!-- Add this script before </body> -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const params = new URLSearchParams(window.location.search);
-    if (params.get('success')) {
-        document.getElementById('paymentAmount').textContent = 
-            '₹' + (params.get('amount') || '25,000');
-    } else {
-        document.querySelector('.container').innerHTML = `
-            <div class="alert alert-danger">
-                <h4>Payment Processing Issue</h4>
-                <p>Please contact premfoundation2012@gmail.com with your details</p>
-                <a href="premangan.html" class="btn btn-primary">Try Again</a>
-            </div>
-        `;
-    }
+    const amount = params.get('amount') || '0';
+    
+    document.getElementById('donationAmount').textContent = '₹' + amount;
+    document.title = `Thank You for Your ₹${amount} Donation | Prem Foundation`;
+    
+    // Update meta tags for sharing
+    document.querySelector('meta[property="og:title"]').content = `Thanks for donating ₹${amount}`;
+    document.querySelector('meta[property="og:description"]').content = 
+        `Your generous donation helps us continue our mission.`;
 });
 </script>
-</body>
-</html>

@@ -1516,17 +1516,23 @@
                 });
             });
             
-            // Form submission
-            donationForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Here you would normally integrate with Razorpay
-                // For now, redirect to thank you page
-                window.location.href = "thankyou.html";
-                
-                // Reset form
-                this.reset();
-            });
+            document.getElementById('donation-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  handleRazorpayPayment(
+    document.getElementById('amount').value * 100,
+    'Donation to Prem Foundation',
+    {
+      name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      phone: document.getElementById('phone').value,
+      pan: document.getElementById('pan').value,
+      purpose: 'Donation'
+    },
+    (response) => {
+      window.location.href = `thankyou.html?payment_id=${response.razorpay_payment_id}`;
+    }
+  );
+});
             
             // Close modal when clicking outside
             window.addEventListener('click', function(e) {

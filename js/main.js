@@ -442,180 +442,137 @@ document.addEventListener('DOMContentLoaded', function() {
     // Keep your existing counter and scroll code
 });
 
-// Premangan Forms Handling
-function initPremanganForms() {
-    // Quick Inquiry Form
-    const inquiryForm = document.getElementById('inquiryForm');
-    if (inquiryForm) {
-        inquiryForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Form handling logic
-            alert('Thank you! We will contact you shortly.');
-            this.reset();
-        });
-    }
-
-    // Admission Form
-    const admissionForm = document.getElementById('admissionForm');
-    if (admissionForm) {
-        admissionForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Validate and process
-            if (confirm('Submit admission request?')) {
-                alert('Application received! We will process it within 48 hours.');
-                this.reset();
-            }
-        });
-    }
-}
-
-// Initialize when DOM loads
-document.addEventListener('DOMContentLoaded', function() {
-    initPremanganForms();
-    // Keep existing functions
-});
-
-// Initialize lightbox for facility images
-function initFacilityLightbox() {
-    // Load fslightbox script dynamically if not already loaded
-    if (!document.querySelector('script[src*="fslightbox"]')) {
-        const script = document.createElement('script');
-        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.3.1/index.min.js';
-        document.body.appendChild(script);
-    }
-}
-
-// Add to your DOMContentLoaded event
-document.addEventListener('DOMContentLoaded', function() {
-    initFacilityLightbox();
-    // ... keep your existing code
-});
-
-// Form Validation and Handling
-function initPremanganForms() {
-    // Quick Inquiry Form
-    const inquiryForm = document.getElementById('inquiryForm');
-    if (inquiryForm) {
-        inquiryForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            if (this.checkValidity()) {
-                // Form submission logic (replace with actual submission)
-                alert('Thank you! Our team will contact you within 24 hours.');
-                this.reset();
-                this.classList.remove('was-validated');
-            } else {
-                e.stopPropagation();
-                this.classList.add('was-validated');
-            }
-        }, false);
-    }
-
-    // Admission Form
-    const admissionForm = document.getElementById('admissionForm');
-    if (admissionForm) {
-        admissionForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            
-            // Simulate form processing
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status"></span>Processing...';
-            
-            setTimeout(() => {
-                alert('Application submitted successfully! We will contact you to complete the admission process.');
-                this.reset();
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            }, 1500);
-        });
-    }
-}
-
-// Initialize when DOM loads
-document.addEventListener('DOMContentLoaded', function() {
-    initPremanganForms();
-    // Keep existing functions
-});
 
 
-// Razorpay Payment Handler
-document.getElementById('proceedToPayment').addEventListener('click', function() {
-    const form = document.getElementById('admissionForm');
-    if (form.checkValidity()) {
-        // Get form data
-        const formData = {
-            name: document.getElementById('residentName').value,
-            age: document.getElementById('residentAge').value,
-            email: document.getElementById('applicantEmail').value,
-            medical: document.getElementById('medicalHistory').value,
-            roomType: document.querySelector('input[name="roomType"]:checked').value,
-            amount: document.querySelector('input[name="roomType"]:checked').value === "Private Room" ? 2500000 : 1000000 // in paise
-        };
 
-        // Store form data temporarily
-        sessionStorage.setItem('premanganAdmission', JSON.stringify(formData));
 
-        // Initialize Razorpay
-        const options = {
-            key: 'YOUR_RAZORPAY_KEY_ID', // Replace with your key
-            amount: formData.amount,
-            currency: 'INR',
-            name: 'Prem Foundation',
-            description: 'Premangan Admission Fee',
-            image: 'images/logo.jpg',
-            handler: function(response) {
-                // On successful payment
-                submitAdmissionForm(formData, response.razorpay_payment_id);
-            },
-            prefill: {
-                name: formData.name,
-                email: formData.email
-            },
-            theme: {
-                color: '#4361ee'
-            }
-        };
-        
-        const rzp = new Razorpay(options);
-        rzp.open();
-    } else {
-        form.reportValidity();
-    }
-});
 
-// Submit to Google Sheets after payment
-function submitAdmissionForm(formData, paymentId) {
-    const submitBtn = document.getElementById('proceedToPayment');
-    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Processing...';
+
+// ====== RAZORPAY & FORM SUBMISSION HANDLER ======
+const BACKEND_URL = 'https://script.google.com/macros/s/AKfycbwJyLjb-WsfCBGYuLTCVTgm9IEmjXdrds-QOD1WpI6kd5oXoADhlnqDqqeLCq37mp7r/exec'; // Paste deployed URL here
+
+// (1) Handle Razorpay Payments (Donations & Premangan)
+async function handleRazorpayPayment(amount, description, formData, successCallback) {
+  const submitBtn = document.querySelector('#proceedToPayment, #donate-now-btn');
+  const originalBtnText = submitBtn.innerHTML;
+  
+  try {
+    // Show loading state
+    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Processing...';
     submitBtn.disabled = true;
 
-    const payload = {
-        ...formData,
-        paymentId: paymentId,
-        timestamp: new Date().toISOString()
-    };
-
-    fetch('https://script.google.com/macros/s/AKfycbz5XNuPgvE6retHHHVC7mDH9sxcfMfvP4zAn6YbEZK6hTFEExq2BIGhxMcfT8DT55gj/exec', {
-        method: 'POST',
-        body: JSON.stringify(payload),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => {
-        if (response.ok) {
-            window.location.href = 'thank-you.html'; // Create this page
-        } else {
-            throw new Error('Submission failed');
-        }
-    })
-    .catch(error => {
-        alert('Error: ' + error.message);
-        submitBtn.innerHTML = '<i class="fas fa-credit-card me-2"></i> Try Payment Again';
-        submitBtn.disabled = false;
+    // (A) Create Razorpay Order
+    const orderResponse = await fetch(BACKEND_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        endpoint: 'createOrder',
+        data: { amount, currency: 'INR', receipt: 'order_' + Date.now() }
+      })
     });
+    if (!orderResponse.ok) throw new Error('Failed to create order');
+    const orderData = await orderResponse.json();
+
+    // (B) Open Razorpay Checkout
+    const rzp = new Razorpay({
+      key: 'rzp_test_YOUR_KEY_ID', // Replace
+      amount: orderData.amount,
+      currency: 'INR',
+      name: 'Prem Foundation',
+      description: description,
+      order_id: orderData.id,
+      image: 'images/logo.jpg',
+      handler: async (response) => {
+        // (C) Verify Payment
+        const verificationResponse = await fetch(BACKEND_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            endpoint: 'verifyPayment',
+            data: { ...response, formData }
+          })
+        });
+        if (!verificationResponse.ok) throw new Error('Payment verification failed');
+        
+        // (D) On Success
+        successCallback(response);
+      },
+      prefill: { name: formData.name, email: formData.email, contact: formData.phone },
+      theme: { color: '#6c5ce7' },
+      modal: { ondismiss: () => showNotification('Payment cancelled', 'warning') }
+    });
+    rzp.open();
+
+  } catch (error) {
+    showNotification(error.message || 'Payment failed. Please try again.', 'error');
+  } finally {
+    submitBtn.innerHTML = originalBtnText;
+    submitBtn.disabled = false;
+  }
 }
+
+// (2) Handle ALL Form Submissions (Contact, Volunteer, etc.)
+document.querySelectorAll('form').forEach(form => {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+    
+    try {
+      // Show loading
+      submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Sending...';
+      submitBtn.disabled = true;
+
+      // Collect form data
+      const formData = {};
+      new FormData(form).forEach((value, key) => formData[key] = value);
+
+      // Submit to backend
+      const response = await fetch(BACKEND_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          endpoint: 'submitForm',
+          data: { formType: form.id || 'general_form', ...formData }
+        })
+      });
+      if (!response.ok) throw new Error('Failed to submit form');
+      
+      showNotification('Form submitted successfully!', 'success');
+      form.reset();
+      window.location.href = 'thankyou.html'; // Redirect to thank you page
+
+    } catch (error) {
+      showNotification(error.message || 'Submission failed. Please try again.', 'error');
+    } finally {
+      submitBtn.innerHTML = originalText;
+      submitBtn.disabled = false;
+    }
+  });
+});
+
+// (3) Notification System
+function showNotification(message, type = 'success') {
+  const notification = document.createElement('div');
+  notification.className = `notification notification-${type}`;
+  notification.innerHTML = `
+    <i class="fas fa-${
+      type === 'success' ? 'check-circle' : 
+      type === 'error' ? 'times-circle' : 'exclamation-circle'
+    } me-2"></i> ${message}
+  `;
+  document.body.appendChild(notification);
+  setTimeout(() => notification.remove(), 5000);
+}
+
+
+
+
+
+
+
+
+
 
 // Bulletproof Testimonials Carousel - No Dependencies
 document.addEventListener('DOMContentLoaded', function() {

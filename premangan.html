@@ -590,28 +590,6 @@
     <script src="js/main.js"></script>
 
 <script>
-
-document.getElementById('proceedToPayment').addEventListener('click', () => {
-  const form = document.getElementById('admissionForm');
-  if (form.checkValidity()) {
-    handleRazorpayPayment(
-      document.querySelector('input[name="roomType"]:checked').value === "Private Room" ? 2500000 : 1000000,
-      'Premangan Admission',
-      {
-        name: document.getElementById('residentName').value,
-        email: document.getElementById('applicantEmail').value,
-        phone: document.getElementById('applicantPhone').value,
-        medical: document.getElementById('medicalHistory').value,
-        purpose: 'Premangan Admission'
-      },
-      (response) => {
-        window.location.href = `thankyou.html?admission=1&payment_id=${response.razorpay_payment_id}`;
-      }
-    );
-  } else {
-    form.reportValidity();
-  }
-});
 // Smooth scrolling for section links
 document.querySelectorAll('.quick-links a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {

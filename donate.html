@@ -45,13 +45,13 @@
         /* Donation Page Specific Styles */
         .donation-hero {
             position: relative;
-            height: 50vh;
+            height: 80vh;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
             background: linear-gradient(135deg, rgba(44, 44, 84, 0.9) 0%, rgba(33, 33, 63, 0.9) 100%), 
-                        url('https://plus.unsplash.com/premium_photo-1661769800950-a36da6a69d44?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y2hhcml0eXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+                        url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
         }
 
         .hero-content {
@@ -64,7 +64,7 @@
 
         .hero-content h1 {
             font-size: 3.5rem;
-            margin-bottom: 0.1rem;
+            margin-bottom: 1.5rem;
             background: linear-gradient(to right, var(--gold), var(--secondary));
             -webkit-background-clip: text;
             background-clip: text;
@@ -74,7 +74,7 @@
 
         .hero-content p {
             font-size: 1.2rem;
-            margin-bottom: 0.4rem;
+            margin-bottom: 2rem;
             line-height: 1.6;
         }
 
@@ -1073,24 +1073,22 @@
         <div class="particles" id="particles-js"></div>
         <div class="sparkles" id="sparkles"></div>
         <div class="hero-content floating">
-            <h1>Transforming Lives</h1>
-            <p>Your contribution helps us create lasting change in communities. Every donation, big or small, makes a difference in someone's life.</p>
+            <h1>Transform Lives With Your Generosity</h1>
+            <p>Your contribution helps us create lasting change in communities. Every donation, big or small, makes a difference in someone's life. Join us in our mission to spread hope and opportunity.</p>
             <a href="#campaigns" class="btn-outline view-campaigns-btn">View Campaigns</a>
         </div>
     </section>
 
     <!-- Custom Donation Form -->
-        <section class="donation-section">
+    <section class="donation-section">
         <div class="custom-donation">
             <h3>Make Your Donation</h3>
             <form id="custom-donation-form">
                 <div class="form-group">
                     <label for="custom-amount">Amount (₹)</label>
-                    <input type="number" id="custom-amount" min="100" placeholder="Minimum ₹100" required>
+                    <input type="number" id="custom-amount" min="100" placeholder="Put any amount" required>
                 </div>
-                <button type="submit" class="donate-btn">
-                    <i class="fas fa-lock"></i> Donate Securely
-                </button>
+                <button type="submit" class="donate-btn" style="width: 100%;">Donate Now</button>
             </form>
         </div>
     </section>
@@ -1718,62 +1716,6 @@ document.querySelectorAll('.nav-link').forEach(link => {
     }, 400); // Faster transition
   });
 });
-
-
-
-    </script>
-
-    <script src="js/backend.js"></script>
-    <script>
-    // Razorpay Donation Handler
-    document.addEventListener('DOMContentLoaded', function() {
-        // Campaign donations
-        document.querySelectorAll('[data-amount]').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                initiatePayment(
-                    this.dataset.amount * 100,
-                    this.dataset.description || 'General Donation'
-                );
-            });
-        });
-
-        // Custom donation form
-        document.getElementById('custom-donation-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const amount = document.getElementById('custom-amount').value * 100;
-            if (amount < 10000) {
-                alert('Minimum donation is ₹100');
-                return;
-            }
-            initiatePayment(amount, 'Custom Donation');
-        });
-
-        function initiatePayment(amount, description) {
-            const rzp = new Razorpay({
-                key: 'rzp_test_YOUR_API_KEY', // REPLACE THIS
-                amount: amount,
-                currency: 'INR',
-                name: 'Prem Foundation',
-                description: description,
-                image: '/images/logo.jpg',
-                handler: function(response) {
-                    submitToBackend({
-                        type: 'donation',
-                        amount: amount/100,
-                        purpose: description,
-                        razorpay_payment_id: response.razorpay_payment_id
-                    }, 'thanks.html');
-                },
-                theme: { color: '#4361ee' }
-            });
-            
-            rzp.on('payment.failed', function(response) {
-                alert('Payment failed: ' + response.error.description);
-            });
-            rzp.open();
-        }
-    });
     </script>
 </body>
 </html>

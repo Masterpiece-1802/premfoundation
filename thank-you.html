@@ -175,34 +175,27 @@
     <script src="js/main.js"></script>
 
     <script>
-        // Display payment details from session storage
-        document.addEventListener('DOMContentLoaded', function() {
-            const admissionData = JSON.parse(sessionStorage.getItem('premanganAdmission'));
-            if (admissionData) {
-                document.getElementById('paymentAmount').textContent = 
-                    `₹${(admissionData.amount/100).toLocaleString()}`;
-                document.getElementById('residentName').textContent = admissionData.name;
-                document.getElementById('roomType').textContent = admissionData.roomType;
-                sessionStorage.removeItem('premanganAdmission');
-            }
-        });
-    </script>
-
-<!-- Keep existing structure, update script part: -->
-<script>
 document.addEventListener('DOMContentLoaded', function() {
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('success')) {
+    const admissionData = JSON.parse(sessionStorage.getItem('premanganAdmission'));
+    const urlParams = new URLSearchParams(window.location.search);
+    const paymentId = urlParams.get('payment_id');
+    
+    if (admissionData) {
         document.getElementById('paymentAmount').textContent = 
-            '₹' + (params.get('amount') || '25,000');
-    } else {
-        document.querySelector('.container').innerHTML = `
-            <div class="alert alert-danger">
-                <h4>Payment Processing Issue</h4>
-                <p>Please contact premfoundation2012@gmail.com with your details</p>
-                <a href="premangan.html" class="btn btn-primary">Try Again</a>
-            </div>
-        `;
+            `₹${(admissionData.amount/100).toLocaleString()}`;
+        document.getElementById('residentName').textContent = admissionData.name;
+        document.getElementById('roomType').textContent = admissionData.roomType;
+        
+        if (paymentId) {
+            document.getElementById('paymentId').textContent = paymentId;
+        }
+        
+        // Clear storage after displaying
+        sessionStorage.removeItem('premanganAdmission');
+    } else if (paymentId) {
+        // If coming back directly with payment ID
+        document.getElementById('paymentId').textContent = paymentId;
+        document.querySelector('.card').style.display = 'none';
     }
 });
 </script>

@@ -455,25 +455,8 @@ function initPremanganForms() {
         });
     }
 
-    // Admission Form
-    const admissionForm = document.getElementById('admissionForm');
-    if (admissionForm) {
-        admissionForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Validate and process
-            if (confirm('Submit admission request?')) {
-                alert('Application received! We will process it within 48 hours.');
-                this.reset();
-            }
-        });
-    }
-}
+    
 
-// Initialize when DOM loads
-document.addEventListener('DOMContentLoaded', function() {
-    initPremanganForms();
-    // Keep existing functions
-});
 
 // Initialize lightbox for facility images
 function initFacilityLightbox() {
@@ -491,131 +474,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // ... keep your existing code
 });
 
-// Form Validation and Handling
-function initPremanganForms() {
-    // Quick Inquiry Form
-    const inquiryForm = document.getElementById('inquiryForm');
-    if (inquiryForm) {
-        inquiryForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            if (this.checkValidity()) {
-                // Form submission logic (replace with actual submission)
-                alert('Thank you! Our team will contact you within 24 hours.');
-                this.reset();
-                this.classList.remove('was-validated');
-            } else {
-                e.stopPropagation();
-                this.classList.add('was-validated');
-            }
-        }, false);
-    }
-
-    // Admission Form
-    const admissionForm = document.getElementById('admissionForm');
-    if (admissionForm) {
-        admissionForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            
-            // Simulate form processing
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status"></span>Processing...';
-            
-            setTimeout(() => {
-                alert('Application submitted successfully! We will contact you to complete the admission process.');
-                this.reset();
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            }, 1500);
-        });
-    }
-}
-
-// Initialize when DOM loads
-document.addEventListener('DOMContentLoaded', function() {
-    initPremanganForms();
-    // Keep existing functions
-});
-
-
-// Razorpay Payment Handler
-document.getElementById('proceedToPayment').addEventListener('click', function() {
-    const form = document.getElementById('admissionForm');
-    if (form.checkValidity()) {
-        // Get form data
-        const formData = {
-            name: document.getElementById('residentName').value,
-            age: document.getElementById('residentAge').value,
-            email: document.getElementById('applicantEmail').value,
-            medical: document.getElementById('medicalHistory').value,
-            roomType: document.querySelector('input[name="roomType"]:checked').value,
-            amount: document.querySelector('input[name="roomType"]:checked').value === "Private Room" ? 2500000 : 1000000 // in paise
-        };
-
-        // Store form data temporarily
-        sessionStorage.setItem('premanganAdmission', JSON.stringify(formData));
-
-        // Initialize Razorpay
-        const options = {
-            key: 'YOUR_RAZORPAY_KEY_ID', // Replace with your key
-            amount: formData.amount,
-            currency: 'INR',
-            name: 'Prem Foundation',
-            description: 'Premangan Admission Fee',
-            image: 'images/logo.jpg',
-            handler: function(response) {
-                // On successful payment
-                submitAdmissionForm(formData, response.razorpay_payment_id);
-            },
-            prefill: {
-                name: formData.name,
-                email: formData.email
-            },
-            theme: {
-                color: '#4361ee'
-            }
-        };
-        
-        const rzp = new Razorpay(options);
-        rzp.open();
-    } else {
-        form.reportValidity();
-    }
-});
-
-// Submit to Google Sheets after payment
-function submitAdmissionForm(formData, paymentId) {
-    const submitBtn = document.getElementById('proceedToPayment');
-    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Processing...';
-    submitBtn.disabled = true;
-
-    const payload = {
-        ...formData,
-        paymentId: paymentId,
-        timestamp: new Date().toISOString()
-    };
-
-    fetch('https://script.google.com/macros/s/AKfycbz5XNuPgvE6retHHHVC7mDH9sxcfMfvP4zAn6YbEZK6hTFEExq2BIGhxMcfT8DT55gj/exec', {
-        method: 'POST',
-        body: JSON.stringify(payload),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => {
-        if (response.ok) {
-            window.location.href = 'thank-you.html'; // Create this page
-        } else {
-            throw new Error('Submission failed');
-        }
-    })
-    .catch(error => {
-        alert('Error: ' + error.message);
-        submitBtn.innerHTML = '<i class="fas fa-credit-card me-2"></i> Try Payment Again';
-        submitBtn.disabled = false;
-    });
-}
 
 // Bulletproof Testimonials Carousel - No Dependencies
 document.addEventListener('DOMContentLoaded', function() {
@@ -845,3 +703,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize
     loadGallery();
 });
+
+
+

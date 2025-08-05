@@ -442,22 +442,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Keep your existing counter and scroll code
 });
 
-// Premangan Forms Handling
-function initPremanganForms() {
-    // Quick Inquiry Form
-    const inquiryForm = document.getElementById('inquiryForm');
-    if (inquiryForm) {
-        inquiryForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Form handling logic
-            alert('Thank you! We will contact you shortly.');
-            this.reset();
-        });
-    }
-
-    
-
-
 // Initialize lightbox for facility images
 function initFacilityLightbox() {
     // Load fslightbox script dynamically if not already loaded
@@ -474,7 +458,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // ... keep your existing code
 });
 
-
+    
 // Bulletproof Testimonials Carousel - No Dependencies
 document.addEventListener('DOMContentLoaded', function() {
     const carousel = document.querySelector('#testimonials-fixed .testimonial-carousel');
@@ -703,6 +687,3 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize
     loadGallery();
 });
-
-
-

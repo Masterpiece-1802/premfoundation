@@ -6,6 +6,7 @@
     <title>Prem Foundation - Make a Difference</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <style>
 
         /* Reset and Base Styles */
@@ -1313,43 +1314,32 @@
             <p class="modal-subtitle">Join us in making a difference</p>
         </div>
         <form id="donation-form" class="premium-form">
+            <input type="hidden" id="donation-type" name="donation-type">
             <div class="form-group">
-                <label for="name">
-                    <i class="fas fa-user"></i> Full Name
-                </label>
+                <label for="name"><i class="fas fa-user"></i> Full Name</label>
                 <input type="text" id="name" required placeholder="Enter your full name">
             </div>
             <div class="form-group">
-                <label for="email">
-                    <i class="fas fa-envelope"></i> Email
-                </label>
+                <label for="email"><i class="fas fa-envelope"></i> Email</label>
                 <input type="email" id="email" required placeholder="Enter your email address">
             </div>
             <div class="form-group">
-                <label for="phone">
-                    <i class="fas fa-phone"></i> Phone Number
-                </label>
+                <label for="phone"><i class="fas fa-phone"></i> Phone Number</label>
                 <input type="tel" id="phone" required placeholder="Enter your phone number">
             </div>
             <div class="form-group amount-group">
-                <label for="amount">
-                    <i class="fas fa-rupee-sign"></i> Amount (₹)
-                </label>
+                <label for="amount"><i class="fas fa-rupee-sign"></i> Amount (₹)</label>
                 <input type="number" id="amount" required placeholder="Enter donation amount">
             </div>
             <div class="form-group" id="premangan-field" style="display: none;">
-                <label for="room-name">
-                    <i class="fas fa-home"></i> Room Name (for Premangan)
-                </label>
+                <label for="room-name"><i class="fas fa-home"></i> Room Name (for Premangan)</label>
                 <input type="text" id="room-name" placeholder="Enter the name you'd like to display">
             </div>
             <div class="form-group">
-                <label for="pan">
-                    <i class="fas fa-id-card"></i> PAN Number (for 80G certificate)
-                </label>
+                <label for="pan"><i class="fas fa-id-card"></i> PAN Number (for 80G certificate)</label>
                 <input type="text" id="pan" placeholder="Enter your PAN number">
             </div>
-            <button type="submit" class="donate-btn modal-submit-btn">
+            <button type="button" id="razorpay-btn" class="donate-btn modal-submit-btn">
                 <i class="fas fa-lock"></i> Proceed to Secure Payment
             </button>
         </form>
@@ -1468,65 +1458,7 @@
                 });
             });
             
-            // Donation buttons functionality
-            const donateButtons = document.querySelectorAll('[data-amount],button.donate-btn:not(.premangan-btn), .donate-link');
-            const donationModal = document.getElementById('donationModal');
-            const donationForm = document.getElementById('donation-form');
-            const amountInput = document.getElementById('amount');
-            const premanganField = document.getElementById('premangan-field');
-            const customDonationForm = document.getElementById('custom-donation-form');
-            const customAmountInput = document.getElementById('custom-amount');
-            
-            // Handle custom donation form
-            customDonationForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const amount = customAmountInput.value;
-                
-                if (amount < 100) {
-                    alert('Minimum donation amount is ₹100');
-                    return;
-                }
-                
-                amountInput.value = amount;
-                document.getElementById('donation-title').textContent = 'Make a Donation';
-                premanganField.style.display = 'none';
-                donationModal.classList.add('active');
-            });
-            
-            // Handle other donation buttons
-            donateButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const amount = this.getAttribute('data-amount');
-                    const isPremangan = this.getAttribute('data-special') === 'premangan';
-                    
-                    if (amount) {
-                        amountInput.value = amount;
-                    }
-                    
-                    if (isPremangan) {
-                        document.getElementById('donation-title').textContent = 'Name a Room at Premangan';
-                        premanganField.style.display = 'block';
-                    } else {
-                        document.getElementById('donation-title').textContent = 'Make a Donation';
-                        premanganField.style.display = 'none';
-                    }
-                    
-                    donationModal.classList.add('active');
-                });
-            });
-            
-            // Form submission
-            donationForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Here you would normally integrate with Razorpay
-                // For now, redirect to thank you page
-                window.location.href = "thankyou.html";
-                
-                // Reset form
-                this.reset();
-            });
+         
             
             // Close modal when clicking outside
             window.addEventListener('click', function(e) {
@@ -1663,59 +1595,195 @@ document.querySelector('.premangan-btn').addEventListener('click', function(e) {
     donationModal.classList.add('active');
 });
 
-// Navbar Scripts
-const navbar = document.querySelector('.premium-navbar');
-const navLinks = document.querySelector('.nav-links');
-const hamburger = document.querySelector('.nav-hamburger');
 
-// Toggle mobile menu
-hamburger.addEventListener('click', () => {
-  navLinks.classList.toggle('active');
-  hamburger.classList.toggle('active');
+
+
+
+// Razorpay Configuration
+const razorpayKey = 'rzp_test_5gCzTH1GxIb9R7'; // Replace with your actual key
+
+// Initialize Razorpay when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Handle donation buttons
+    document.querySelectorAll('[data-amount], .donate-btn:not(.premangan-btn), .donate-link').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const amount = this.getAttribute('data-amount');
+            const isPremangan = this.classList.contains('premangan-btn');
+            
+            if (amount) {
+                document.getElementById('amount').value = amount;
+            }
+            
+            if (isPremangan) {
+                document.getElementById('donation-title').textContent = 'Name a Room at Premangan';
+                document.getElementById('premangan-field').style.display = 'block';
+                document.getElementById('donation-type').value = 'Premangan Room Naming';
+            } else {
+                document.getElementById('donation-title').textContent = 'Make a Donation';
+                document.getElementById('premangan-field').style.display = 'none';
+                document.getElementById('donation-type').value = this.textContent.trim() || 'General Donation';
+            }
+            
+            document.getElementById('donationModal').classList.add('active');
+        });
+    });
+
+    // Handle custom donation form
+    document.getElementById('custom-donation-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const amount = document.getElementById('custom-amount').value;
+        
+        if (amount < 100) {
+            alert('Minimum donation amount is ₹100');
+            return;
+        }
+        
+        document.getElementById('amount').value = amount;
+        document.getElementById('donation-title').textContent = 'Make a Donation';
+        document.getElementById('premangan-field').style.display = 'none';
+        document.getElementById('donation-type').value = 'Custom Donation';
+        document.getElementById('donationModal').classList.add('active');
+    });
+
+    // Razorpay Payment Handler - UPDATED WITH BULLETPROOF IMPLEMENTATION
+    document.getElementById('razorpay-btn').addEventListener('click', function(e) {
+        e.preventDefault();
+        processRazorpayPayment();
+    });
 });
 
-// Close mobile menu when clicking a link
-document.querySelectorAll('.nav-link').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('active');
-    hamburger.classList.remove('active');
-  });
-});
+// Bulletproof Payment Processing Function
+function processRazorpayPayment() {
+    const form = document.getElementById('donation-form');
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const amount = parseFloat(document.getElementById('amount').value) * 100; // Convert to paise
+    const pan = document.getElementById('pan').value;
+    const roomName = document.getElementById('room-name').value;
+    const donationType = document.getElementById('donation-type').value;
 
-// Navbar scroll effect
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 30) { // Reduced trigger point
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
-  }
-});
+    // Validate required fields
+    if (!name || !email || !phone || !amount || isNaN(amount)) {
+        alert('Please fill all required fields with valid values');
+        return;
+    }
 
-// Add ripple effect to nav links
-document.querySelectorAll('.nav-link').forEach(link => {
-  link.addEventListener('click', function(e) {
-    e.preventDefault();
+    // Validate amount
+    if (amount < 10000) { // Minimum ₹100 in paise
+        alert('Minimum donation amount is ₹100');
+        return;
+    }
+
+    // Validate email format
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        alert('Please enter a valid email address');
+        return;
+    }
+
+    const options = {
+        key: razorpayKey,
+        amount: Math.round(amount), // Ensure amount is rounded
+        currency: 'INR',
+        name: 'Prem Foundation',
+        description: donationType,
+        image: 'images/logo.jpg',
+        handler: function(response) {
+            // On successful payment
+            submitDonationForm({
+                name,
+                email,
+                phone,
+                amount: amount/100,
+                pan,
+                roomName,
+                paymentId: response.razorpay_payment_id,
+                donationType,
+                razorpayOrderId: response.razorpay_order_id,
+                razorpaySignature: response.razorpay_signature
+            });
+        },
+        prefill: {
+            name: name,
+            email: email,
+            contact: phone
+        },
+        theme: {
+            color: '#6c5ce7'
+        },
+        modal: {
+            ondismiss: function() {
+                console.log('Payment dismissed');
+            }
+        }
+    };
     
-    // Create ripple
-    const ripple = document.createElement('span');
-    ripple.classList.add('ripple');
-    this.appendChild(ripple);
+    try {
+        const rzp = new Razorpay(options);
+        rzp.open();
+        
+        // Add error handling
+        rzp.on('payment.failed', function(response) {
+            console.error('Payment failed:', response.error);
+            alert('Payment failed: ' + response.error.description);
+            
+            // You can submit failed payment data to your server if needed
+            submitDonationForm({
+                name,
+                email,
+                phone,
+                amount: amount/100,
+                pan,
+                roomName,
+                paymentId: 'failed_' + Date.now(),
+                donationType,
+                error: response.error
+            }, true);
+        });
+    } catch (error) {
+        console.error('Razorpay initialization error:', error);
+        alert('Error initializing payment gateway. Please try again.');
+    }
+}
+
+// Enhanced Form Submission
+function submitDonationForm(formData, isFailure = false) {
+    const formURL = 'https://docs.google.com/forms/d/e/1FAIpQLSct5HEKa6sFyYP8xDt54Ci470Lht9zMlJDrzjIXw9oxhJCROw/formResponse';
     
-    // Get click position
-    const x = e.clientX - e.target.getBoundingClientRect().left;
-    const y = e.clientY - e.target.getBoundingClientRect().top;
-    
-    // Position ripple
-    ripple.style.left = `${x}px`;
-    ripple.style.top = `${y}px`;
-    
-    // Remove ripple after animation
-    setTimeout(() => {
-      ripple.remove();
-      window.location.href = this.getAttribute('href');
-    }, 400); // Faster transition
-  });
-});
+    // Prepare form data
+    const params = new URLSearchParams();
+    params.append('entry.166682115', formData.name);
+    params.append('entry.896540183', formData.email);
+    params.append('entry.1672727099', formData.phone);
+    params.append('entry.672957603', formData.amount);
+    params.append('entry.797974295', formData.pan || '');
+    params.append('entry.949170270', formData.paymentId);
+    params.append('entry.10645470', formData.donationType);
+    if (formData.roomName) {
+        params.append('entry.12345678', formData.roomName); // Add a field ID for room name
+    }
+    if (isFailure && formData.error) {
+        params.append('entry.87654321', formData.error.code + ': ' + formData.error.description);
+    }
+
+    // Submit to Google Form
+    fetch(formURL, {
+        method: 'POST',
+        body: params,
+        mode: 'no-cors'
+    }).then(() => {
+        // Redirect to thank you page with data
+        sessionStorage.setItem('donationData', JSON.stringify(formData));
+        window.location.href = 'thank-you.html';
+    }).catch(error => {
+        console.error('Error:', error);
+        // Still redirect but show error message
+        sessionStorage.setItem('donationError', error.message);
+        sessionStorage.setItem('donationData', JSON.stringify(formData));
+        window.location.href = 'thank-you.html';
+    });
+}
     </script>
 </body>
 </html>

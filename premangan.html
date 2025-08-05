@@ -4,7 +4,6 @@
         <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prem Foundation - Empowering Communities</title>
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -20,6 +19,7 @@
 <meta property="og:image" content="images/hero-bg.jpg">
 <meta name="theme-color" content="#1e40af">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <title>Premangan Old Age Home | Prem Foundation</title>
 </head>
 
@@ -208,6 +208,8 @@
 </section>
 
 <!-- ===== Premium Gallery Section ===== -->
+<!-- ===== Gallery Section ===== -->
+<!-- ===== Gallery Section ===== -->
 <section id="gallery" class="py-5">
     <div class="container">
         <div class="text-center mb-5">
@@ -259,7 +261,7 @@
     </div>
 </section>
 
-
+   <!-- Testimonials Section -->
 <!-- COMPLETELY ISOLATED TESTIMONIALS SECTION -->
 <section id="testimonials-fixed" 
          style="display: block !important; visibility: visible !important; 
@@ -413,7 +415,6 @@
           </div>
           <div class="card-body p-4">
             <form id="admissionForm">
-    <input type="hidden" name="email" id="applicantEmail">
     <div class="row g-3">
         <div class="col-md-6 mb-3">
             <label for="residentName" class="form-label">Resident's Full Name</label>
@@ -427,9 +428,13 @@
             <label for="medicalHistory" class="form-label">Medical History Summary</label>
             <textarea name="medical" class="form-control" id="medicalHistory" rows="2" required></textarea>
         </div>
-        <div class="mb-3">
+        <div class="col-md-6 mb-3">
             <label for="applicantEmail" class="form-label">Your Email</label>
             <input type="email" name="email" class="form-control" id="applicantEmail" required>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="applicantPhone" class="form-label">Your Phone</label>
+            <input type="tel" name="phone" class="form-control" id="applicantPhone" required>
         </div>
         <div class="col-12 mb-3">
             <label class="form-label">Room Preference</label>
@@ -607,172 +612,93 @@ document.querySelectorAll('.quick-links a[href^="#"]').forEach(anchor => {
         }
     });
 });
-</script>
 
 
-<script>
-// Payment Handling for Premangan Admission - Enhanced Version
-document.addEventListener('DOMContentLoaded', function() {
-    // Proceed to Payment button handler
-    document.getElementById('proceedToPayment')?.addEventListener('click', async function() {
-        const form = document.getElementById('admissionForm');
-        const submitBtn = this;
-        const originalText = submitBtn.innerHTML;
-        
-        // Validate form
-        if (!form.checkValidity()) {
-            form.reportValidity();
-            return;
-        }
-        
-        try {
-            // Show processing state
-            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Processing...';
-            submitBtn.disabled = true;
-            
-            // Get form data
-            const formData = {
-                name: document.getElementById('residentName').value,
-                age: document.getElementById('residentAge').value,
-                email: document.getElementById('applicantEmail').value,
-                medical: document.getElementById('medicalHistory').value,
-                roomType: document.querySelector('input[name="roomType"]:checked').value,
-                amount: document.querySelector('input[name="roomType"]:checked').value === "Private Room" ? 2500000 : 1000000 // in paise
-            };
 
-            // Store form data temporarily
-            sessionStorage.setItem('premanganAdmission', JSON.stringify(formData));
+// Razorpay Payment Handler for Premangan
+document.getElementById('proceedToPayment').addEventListener('click', function() {
+    const form = document.getElementById('admissionForm');
+    const name = document.getElementById('residentName').value;
+    const age = document.getElementById('residentAge').value;
+    const email = document.getElementById('applicantEmail').value;
+    const phone = document.getElementById('applicantPhone').value;
+    const medical = document.getElementById('medicalHistory').value;
+    const roomType = document.querySelector('input[name="roomType"]:checked').value;
+    const amount = roomType === "Private Room" ? 2500000 : 1000000; // in paise
 
-            // Configure Razorpay options
-            const options = {
-                key: 'rzp_test_5gCzTH1GxIb9R7', // Replace with your actual test/live key
-                amount: formData.amount,
-                currency: 'INR',
-                name: 'Premangan Old Age Home',
-                description: 'Admission Fee Payment',
-                image: 'images/logo.jpg',
-                handler: async function(response) {
-                    try {
-                        await handlePaymentSuccess(response, formData);
-                    } catch (error) {
-                        console.error('Payment handler error:', error);
-                        showError(error);
-                    }
-                },
-                prefill: {
-                    name: formData.name,
-                    email: formData.email
-                },
-                notes: {
-                    resident_name: formData.name,
-                    room_type: formData.roomType
-                },
-                theme: {
-                    color: '#1e40af'
-                }
-            };
-            
-            // Initialize and open Razorpay
-            const rzp = new Razorpay(options);
-            rzp.open();
-            
-            // Error handling
-            rzp.on('payment.failed', function(response) {
-                console.error('Payment failed:', response.error);
-                alert('Payment failed. Please try again or contact support. Error: ' + 
-                     (response.error.description || 'Unknown error'));
-                resetButton(submitBtn, originalText);
+    if (!name || !age || !email || !phone || !medical) {
+        alert('Please fill all required fields');
+        return;
+    }
+
+    const options = {
+        key: 'rzp_test_5gCzTH1GxIb9R7', // Same key as donate page
+        amount: amount,
+        currency: 'INR',
+        name: 'Premangan - Prem Foundation',
+        description: `Admission Fee - ${roomType}`,
+        image: 'images/logo.jpg',
+        handler: function(response) {
+            submitAdmissionForm({
+                name,
+                age,
+                email,
+                phone,
+                medical,
+                roomType,
+                amount: amount/100,
+                paymentId: response.razorpay_payment_id
             });
-            
-        } catch (error) {
-            console.error('Payment initialization error:', error);
-            alert('Error initializing payment: ' + error.message);
-            resetButton(submitBtn, originalText);
+        },
+        prefill: {
+            name: name,
+            email: email,
+            contact: phone
+        },
+        theme: {
+            color: '#4361ee'
         }
-    });
-
-    // Handle successful payment
-    async function handlePaymentSuccess(response, formData) {
-        const submitBtn = document.getElementById('proceedToPayment');
-        const originalText = submitBtn.innerHTML;
-        
-        try {
-            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Recording payment...';
-            
-            // Prepare complete data
-            const completeData = {
-                timestamp: new Date().toISOString(),
-                type: 'premangan_admission',
-                name: formData.name,
-                email: formData.email,
-                amount: formData.amount / 100, // Convert to rupees
-                paymentId: response.razorpay_payment_id,
-                order_id: response.razorpay_order_id,
-                signature: response.razorpay_signature,
-                status: 'Success',
-                purpose: 'Premangan Admission',
-                room_name: formData.roomType,
-                details: {
-                    resident_age: formData.age,
-                    medical_history: formData.medical
-                }
-            };
-
-            console.log('Submitting payment data:', completeData);
-            
-            // Submit to Google Apps Script
-            const apiUrl = 'https://script.google.com/macros/s/AKfycbwR_b46_sClFa5nWGGXzj3Ih0OCbrcTs9jAudO1nIcjkxKHZgNJ0EaHqTC5G6X8-MMigw/exec';
-            
-            const fetchResponse = await fetch(apiUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(completeData)
-            });
-            
-            console.log('Fetch response status:', fetchResponse.status);
-            
-            if (!fetchResponse.ok) {
-                throw new Error(`HTTP error! status: ${fetchResponse.status}`);
-            }
-            
-            const data = await fetchResponse.json();
-            console.log('API response:', data);
-            
-            if (data.status !== 'success') {
-                throw new Error(data.message || 'Payment recording failed');
-            }
-            
-            // Redirect to thank you page
-            window.location.href = 'thank-you.html?payment_id=' + response.razorpay_payment_id;
-            
-        } catch (error) {
-            console.error('Payment recording error:', error);
-            
-            // Show error but keep payment success info
-            alert('Payment was successful! However, we encountered an issue recording it. ' + 
-                 'Please contact support with your payment ID: ' + response.razorpay_payment_id + 
-                 '\n\nError: ' + error.message);
-            
-            // Still redirect to thank you page since payment succeeded
-            window.location.href = 'thank-you.html?payment_id=' + response.razorpay_payment_id;
-        } finally {
-            resetButton(submitBtn, originalText);
-        }
-    }
+    };
     
-    function showError(error) {
-        console.error('Error:', error);
-        alert('An error occurred: ' + (error.message || 'Unknown error'));
-    }
-    
-    function resetButton(button, originalHTML) {
-        button.innerHTML = originalHTML;
-        button.disabled = false;
-    }
+    const rzp = new Razorpay(options);
+    rzp.open();
 });
+
+// Submit to Google Form for Premangan
+function submitAdmissionForm(formData) {
+    const formURL = 'https://docs.google.com/forms/d/e/1FAIpQLSdVhNxlid7b7g5iI56wyYODn9xYmfD0T3nm-Bsse89dtK3yCA/formResponse'; // Replace with your form URL
+    
+    // Prepare form data
+    const params = new URLSearchParams();
+    params.append('entry.216524354', formData.name); // Replace with your field IDs
+    params.append('entry.1452510851', formData.age);
+    params.append('entry.336406862', formData.email);
+    params.append('entry.877248708', formData.phone);
+    params.append('entry.1104142093', formData.medical);
+    params.append('entry.203018693', formData.roomType);
+    params.append('entry.2115019961', formData.paymentId);
+    params.append('entry.619486999', formData.amount);
+    
+
+    // Submit to Google Form
+    fetch(formURL, {
+        method: 'POST',
+        body: params,
+        mode: 'no-cors'
+    }).then(() => {
+        // Redirect to thank you page with data
+        sessionStorage.setItem('premanganData', JSON.stringify(formData));
+        window.location.href = 'thank-you.html';
+    }).catch(error => {
+        console.error('Error:', error);
+        // Still redirect but show error message
+        sessionStorage.setItem('premanganData', JSON.stringify(formData));
+        window.location.href = 'thank-you.html';
+    });
+}
+
 </script>
+
 
 
 </body>

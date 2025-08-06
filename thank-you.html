@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- jsPDF for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
     <style>
@@ -26,7 +29,7 @@
             border: 1px solid rgba(212, 175, 55, 0.3);
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             overflow: hidden;
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
         }
         
@@ -79,6 +82,59 @@
         .action-btn {
             min-width: 200px;
         }
+        
+        /* Invoice preview section */
+        .invoice-preview {
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border: 1px dashed rgba(255,255,255,0.1);
+        }
+        
+        .invoice-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+        
+        .invoice-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--prem-gold);
+        }
+        
+        .invoice-meta {
+            text-align: right;
+        }
+        
+        .invoice-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        
+        .invoice-table th {
+            background: rgba(212, 175, 55, 0.1);
+            padding: 0.75rem;
+            text-align: left;
+        }
+        
+        .invoice-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .invoice-total {
+            font-weight: 600;
+            color: var(--prem-gold);
+        }
+        
+        .invoice-footer {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+        }
     </style>
 </head>
 <body>
@@ -100,6 +156,10 @@
                             <strong id="paymentId">N/A</strong>
                         </div>
                         <div class="confirmation-detail">
+                            <span>Date:</span>
+                            <strong id="paymentDate">Loading...</strong>
+                        </div>
+                        <div class="confirmation-detail">
                             <span>Amount:</span>
                             <strong id="paymentAmount">₹0</strong>
                         </div>
@@ -115,12 +175,72 @@
                             <span>Resident Name:</span>
                             <strong id="residentName">Not specified</strong>
                         </div>
+                        <div class="confirmation-detail" id="panNumberRow" style="display:none;">
+                            <span>PAN Number:</span>
+                            <strong id="panNumber">Not provided</strong>
+                        </div>
+                    </div>
+                    
+                    <!-- Invoice Preview -->
+                    <div class="invoice-preview">
+                        <div class="invoice-header">
+                            <div class="invoice-title">Invoice Preview</div>
+                            <div class="invoice-meta">
+                                <div>Invoice #<span id="invoiceNumber">PF-0000</span></div>
+                                <div id="invoiceDate">Date: Loading...</div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <h5>Prem Foundation</h5>
+                                <p>456 Charity Lane<br>
+                                Mumbai 400001<br>
+                                GSTIN: 27AAATP1234G1Z5<br>
+                                80G No: AAATP1234GF2023</p>
+                            </div>
+                            <div class="col-md-6 text-md-end">
+                                <h5 id="invoiceCustomerName">Customer</h5>
+                                <p id="invoiceCustomerDetails">Details not available</p>
+                            </div>
+                        </div>
+                        
+                        <table class="invoice-table">
+                            <thead>
+                                <tr>
+                                    <th>Description</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td id="invoiceDescription">Donation</td>
+                                    <td id="invoiceAmount">₹0.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Tax Deductible (80G)</td>
+                                    <td>50% of donation</td>
+                                </tr>
+                                <tr class="invoice-total">
+                                    <td>Total</td>
+                                    <td id="invoiceTotal">₹0.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="invoice-footer">
+                            <p>Thank you for your generous contribution. This invoice serves as your official receipt for tax purposes.</p>
+                            <p>For any queries, please contact donations@premfoundation.org</p>
+                        </div>
                     </div>
                     
                     <div class="action-buttons">
                         <a href="index.html" class="btn btn-outline-prem action-btn">
                             <i class="fas fa-home me-2"></i> Return Home
                         </a>
+                        <button id="downloadInvoiceBtn" class="btn btn-prem action-btn">
+                            <i class="fas fa-file-pdf me-2"></i> Download Invoice
+                        </button>
                         <a href="donate.html" class="btn btn-prem action-btn" id="donateAgainBtn" style="display:none;">
                             <i class="fas fa-donate me-2"></i> Donate Again
                         </a>
@@ -130,7 +250,7 @@
                     </div>
                     
                     <div class="mt-4 text-prem-light">
-                        <p>A confirmation has been sent to your email. For any questions, please contact us at <a href="mailto:contact@premfoundation.org" class="text-prem">contact@premfoundation.org</a></p>
+                        <p>For any questions, please contact us at <a href="mailto:contact@premfoundation.org" class="text-prem">contact@premfoundation.org</a></p>
                     </div>
                 </div>
             </div>
@@ -148,6 +268,9 @@
     <script src="js/main.js"></script>
 
     <script>
+    // Initialize jsPDF
+    const { jsPDF } = window.jspdf;
+    
     document.addEventListener('DOMContentLoaded', function() {
         // Check for donation data
         const donationData = JSON.parse(sessionStorage.getItem('donationData'));
@@ -163,12 +286,40 @@
             alert('Payment was successful but we encountered an issue saving your details: ' + error);
         }
 
+        // Current date for invoice
+        const now = new Date();
+        const formattedDate = now.toLocaleDateString('en-IN', {
+            day: '2-digit',
+            month: 'short',
+            year: 'numeric'
+        });
+        
+        // Set invoice date everywhere
+        document.getElementById('paymentDate').textContent = formattedDate;
+        document.getElementById('invoiceDate').textContent = `Date: ${formattedDate}`;
+        
+        // Generate a simple invoice number
+        const invoiceNumber = `PF-${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}-${String(now.getHours()).padStart(2, '0')}${String(now.getMinutes()).padStart(2, '0')}`;
+        document.getElementById('invoiceNumber').textContent = invoiceNumber;
+
         if (donationData) {
             // Show donation confirmation
-            document.getElementById('paymentAmount').textContent = `₹${donationData.amount.toLocaleString()}`;
+            document.getElementById('paymentAmount').textContent = `₹${donationData.amount.toLocaleString('en-IN')}`;
             document.getElementById('paymentId').textContent = donationData.paymentId || 'Processing...';
             document.getElementById('donationType').textContent = donationData.donationType || 'General Donation';
             document.getElementById('donateAgainBtn').style.display = 'inline-block';
+            
+            // Set invoice details
+            document.getElementById('invoiceDescription').textContent = donationData.donationType || 'Donation';
+            document.getElementById('invoiceAmount').textContent = `₹${donationData.amount.toLocaleString('en-IN')}`;
+            document.getElementById('invoiceTotal').textContent = `₹${donationData.amount.toLocaleString('en-IN')}`;
+            
+            // Customer details
+            document.getElementById('invoiceCustomerName').textContent = donationData.name || 'Anonymous Donor';
+            document.getElementById('invoiceCustomerDetails').innerHTML = 
+                (donationData.email ? `${donationData.email}<br>` : '') + 
+                (donationData.phone ? `${donationData.phone}<br>` : '') + 
+                (donationData.pan ? `PAN: ${donationData.pan}` : '');
             
             // Show Premangan specific fields if applicable
             if (donationData.roomName) {
@@ -178,10 +329,31 @@
                 document.getElementById('thankYouTitle').textContent = 'Room Naming Confirmed!';
                 document.getElementById('thankYouSubtitle').textContent = 'Your generous contribution will create lasting impact';
             }
+            
+            // Show PAN if provided
+            if (donationData.pan) {
+                document.getElementById('panNumberRow').style.display = 'flex';
+                document.getElementById('panNumber').textContent = donationData.pan;
+            }
+            
+            // Save invoice data to your system
+            saveInvoiceData({
+                type: 'donation',
+                invoiceNumber,
+                date: now.toISOString(),
+                amount: donationData.amount,
+                paymentId: donationData.paymentId,
+                donorName: donationData.name,
+                donorEmail: donationData.email,
+                donorPhone: donationData.phone,
+                panNumber: donationData.pan,
+                donationType: donationData.donationType,
+                roomName: donationData.roomName
+            });
         } 
         else if (premanganData) {
             // Show Premangan admission confirmation
-            document.getElementById('paymentAmount').textContent = `₹${premanganData.amount.toLocaleString()}`;
+            document.getElementById('paymentAmount').textContent = `₹${premanganData.amount.toLocaleString('en-IN')}`;
             document.getElementById('paymentId').textContent = premanganData.paymentId || 'Processing...';
             document.getElementById('residentNameRow').style.display = 'flex';
             document.getElementById('residentName').textContent = premanganData.name;
@@ -189,11 +361,150 @@
             document.getElementById('premanganBtn').style.display = 'inline-block';
             document.getElementById('thankYouTitle').textContent = 'Admission Confirmed!';
             document.getElementById('thankYouSubtitle').textContent = 'Welcome to the Premangan family';
+            
+            // Set invoice details
+            document.getElementById('invoiceDescription').textContent = `Premangan Admission - ${premanganData.roomType}`;
+            document.getElementById('invoiceAmount').textContent = `₹${premanganData.amount.toLocaleString('en-IN')}`;
+            document.getElementById('invoiceTotal').textContent = `₹${premanganData.amount.toLocaleString('en-IN')}`;
+            
+            // Customer details
+            document.getElementById('invoiceCustomerName').textContent = premanganData.name || 'Resident';
+            document.getElementById('invoiceCustomerDetails').innerHTML = 
+                (premanganData.email ? `${premanganData.email}<br>` : '') + 
+                (premanganData.phone ? `${premanganData.phone}<br>` : '');
+            
+            // Save invoice data to your system
+            saveInvoiceData({
+                type: 'premangan',
+                invoiceNumber,
+                date: now.toISOString(),
+                amount: premanganData.amount,
+                paymentId: premanganData.paymentId,
+                residentName: premanganData.name,
+                contactEmail: premanganData.email,
+                contactPhone: premanganData.phone,
+                roomType: premanganData.roomType,
+                medicalHistory: premanganData.medical
+            });
         } else {
             // No data found - redirect back to home page
             window.location.href = 'index.html';
         }
+        
+        // Set up invoice download button
+        document.getElementById('downloadInvoiceBtn').addEventListener('click', generateInvoice);
     });
+    
+    // Function to save invoice data to your system
+    function saveInvoiceData(invoiceData) {
+        // This will send the invoice data to your server for storage
+        const formURL = 'https://docs.google.com/forms/d/e/1FAIpQLSeHXg9Tj1rOQY1v3jZxVz7J5qK8n7J8h9i0j1k2l3m4n5o6p7q8/formResponse';
+        
+        // Prepare form data
+        const params = new URLSearchParams();
+        params.append('entry.1234567890', JSON.stringify(invoiceData)); // Replace with your actual form field IDs
+        
+        // Submit to Google Form (or your backend)
+        fetch(formURL, {
+            method: 'POST',
+            body: params,
+            mode: 'no-cors'
+        }).catch(error => {
+            console.error('Error saving invoice:', error);
+        });
+    }
+    
+    // Function to generate and download the invoice PDF
+    function generateInvoice() {
+        const doc = new jsPDF();
+        
+        // Add Prem Foundation logo
+        // Note: In a real implementation, you would need to add the logo image
+        // doc.addImage('logo.jpg', 'JPEG', 10, 10, 30, 30);
+        
+        // Invoice header
+        doc.setFontSize(20);
+        doc.setTextColor(40, 40, 40);
+        doc.text('Prem Foundation', 105, 20, { align: 'center' });
+        
+        doc.setFontSize(10);
+        doc.setTextColor(100, 100, 100);
+        doc.text('456 Charity Lane, Mumbai 400001 | 80G No: AAATP1234GF2023', 105, 26, { align: 'center' });
+        
+        // Invoice title and details
+        doc.setFontSize(16);
+        doc.setTextColor(40, 40, 40);
+        doc.text('INVOICE', 105, 36, { align: 'center' });
+        
+        doc.setFontSize(10);
+        doc.setTextColor(100, 100, 100);
+        doc.text(`Invoice #: ${document.getElementById('invoiceNumber').textContent}`, 15, 45);
+        doc.text(`Date: ${document.getElementById('paymentDate').textContent}`, 15, 50);
+        doc.text(`Payment ID: ${document.getElementById('paymentId').textContent}`, 15, 55);
+        
+        // Customer details
+        doc.setFontSize(12);
+        doc.setTextColor(40, 40, 40);
+        doc.text('Bill To:', 150, 45);
+        doc.setFontSize(10);
+        doc.text(document.getElementById('invoiceCustomerName').textContent, 150, 50);
+        
+        const customerDetails = document.getElementById('invoiceCustomerDetails').textContent;
+        if (customerDetails) {
+            const detailsLines = doc.splitTextToSize(customerDetails, 50);
+            doc.text(detailsLines, 150, 55);
+        }
+        
+        // Line separator
+        doc.setDrawColor(200, 200, 200);
+        doc.line(15, 70, 195, 70);
+        
+        // Invoice items table
+        doc.autoTable({
+            startY: 75,
+            head: [['Description', 'Amount']],
+            body: [
+                [document.getElementById('invoiceDescription').textContent, document.getElementById('invoiceAmount').textContent],
+               
+            ],
+            theme: 'grid',
+            headStyles: {
+                fillColor: [212, 175, 55],
+                textColor: [15, 23, 42],
+                fontStyle: 'bold'
+            },
+            columnStyles: {
+                0: { cellWidth: 'auto' },
+                1: { cellWidth: 'auto', halign: 'right' }
+            }
+        });
+        
+        // Total row
+        doc.autoTable({
+            startY: doc.lastAutoTable.finalY + 5,
+            body: [
+                ['Total', document.getElementById('invoiceTotal').textContent]
+            ],
+            theme: 'plain',
+            columnStyles: {
+                0: { fontStyle: 'bold', halign: 'right' },
+                1: { fontStyle: 'bold', halign: 'right' }
+            },
+            styles: {
+                fontSize: 12,
+                cellPadding: 5
+            }
+        });
+        
+        // Footer notes
+        doc.setFontSize(9);
+        doc.setTextColor(100, 100, 100);
+        doc.text('Thank you for your generous contribution. This invoice serves as your official receipt for tax purposes.', 15, doc.lastAutoTable.finalY + 15, { maxWidth: 180 });
+        doc.text('For any queries, please contact donations@premfoundation.org', 15, doc.lastAutoTable.finalY + 25);
+        
+        // Save the PDF
+        doc.save(`PremFoundation_Invoice_${document.getElementById('invoiceNumber').textContent}.pdf`);
+    }
     </script>
 </body>
 </html>

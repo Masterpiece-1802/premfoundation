@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Prem Foundation - Empowering Communities</title>
     <!-- Favicon -->
     <link rel="icon" href="images/logo.jpg" type="image/jpg">
@@ -28,61 +28,90 @@
     <meta name="theme-color" content="#1e40af">
 
     <style>
-    /* Hero Section - Optimized Background */
+/* Hero Section */
 /* Hero Section */
 .hero {
     background: 
         linear-gradient(135deg, rgba(30, 64, 175, 0.8), rgba(15, 23, 42, 0.9)),
         url('images/hero-bg.jpg') center/cover no-repeat;
-    min-height: 100vh;
+    min-height: 90vh;
     display: flex;
     align-items: center;
     position: relative;
+    margin-top: 70px; /* Height of navbar */
 }
 
-    
-    /* Load background image after critical content */
-    .hero-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('images/hero-bg.jpg') center/cover no-repeat;
-      z-index: -1;
-      opacity: 0;
-      transition: opacity 1s ease;
-      filter: blur(0px);
-    }
-    
-    .hero.loaded .hero-bg {
-      opacity: 1;
-    }
+.hero .container {
+    position: relative;
+    z-index: 2;
+}
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      padding: 2rem;
-      width: 100%;
-    }
 
+/* Load background image after critical content */
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('images/hero-bg.jpg') center/cover no-repeat;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 1s ease;
+    filter: blur(0px);
+}
+
+.hero.loaded .hero-bg {
+    opacity: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem); /* Adjusted for mobile */
+    font-weight: 700;
+    margin-bottom: 1rem; /* Reduced spacing */
+    background: linear-gradient(to right, #fff, #cbd5e1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    font-size: 1rem; /* Smaller on mobile */
+    max-width: 700px;
+    margin: 0 auto 1.5rem; /* Reduced spacing */
+    color: rgba(255, 255, 255, 0.9);
+}
+
+
+
+@media (max-width: 768px) {
+    .hero {
+        min-height: 75vh; /* Smaller height on mobile */
+        background-position: center 30%; /* Adjust background position */
+	margin-top: 60px;
+    }
+    
     .hero h1 {
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      background: linear-gradient(to right, #fff, #cbd5e1);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+        font-size: 2.2rem;
     }
-
+    
     .hero p {
-      font-size: 1.25rem;
-      max-width: 700px;
-      margin: 0 auto 2rem;
-      color: rgba(255, 255, 255, 0.9);
+        font-size: 1rem;
     }
+    
+    .cta-button {
+        padding: 0.7rem 1.5rem;
+        font-size: 1rem;
+    }
+}
 
     .cta-button {
       display: inline-block;
@@ -205,6 +234,50 @@
     .vision-card:hover .card-icon {
       transform: scale(1.1) rotate(-5deg);
     }
+
+/* Fix for navbar mobile view */
+.navbar {
+    will-change: transform; /* Optimize for performance */
+}
+
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background: rgba(30, 20, 50, 0.98);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        padding: 1rem;
+        margin-top: 0.5rem;
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        border: 1px solid rgba(255,255,255,0.1);
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+    
+    .navbar-nav {
+        padding-top: 0.5rem;
+    }
+    
+    .nav-item {
+        margin-bottom: 0.5rem;
+    }
+    
+    .dropdown-menu {
+        background: rgba(40, 30, 70, 0.95);
+        margin-left: 1rem;
+        margin-top: 0.5rem;
+    }
+}
+
+/* Prevent horizontal overflow on mobile */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+body {
+    position: relative;
+}
 
     </style>
 </head>
@@ -658,6 +731,19 @@ const firebaseConfig = {
             });
         });
     });
+
+// Fix for mobile viewport resize
+function fixViewport() {
+    let viewport = document.querySelector("meta[name=viewport]");
+    if (window.innerWidth <= 768) {
+        viewport.setAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no');
+    } else {
+        viewport.setAttribute('content', 'width=device-width, initial-scale=1');
+    }
+}
+
+window.addEventListener('resize', fixViewport);
+window.addEventListener('load', fixViewport);
     </script>
 </body>
 </html>

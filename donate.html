@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
 <link rel="icon" href="images/logo.jpg" type="image/jpg">
     <title>Prem Foundation - Make a Difference</title>
     <link rel="stylesheet" href="css/style.css">
@@ -643,59 +643,84 @@
             to { transform: rotate(30deg) translate(30%, 30%); }
         }
 
-        /* Bank Transfer Section with Copy Functionality */
-        .bank-transfer-section {
-            padding: 5rem 2rem;
-            background-color: var(--dark);
-            text-align: center;
-    width: 100%; /* Add this line */
-    max-width: 100vw; /* Add this line */
-    box-sizing: border-box; /* Add this line */
-    overflow-x: hidden;
-        }
-
-        .bank-transfer-container {
-            max-width: 800px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 3rem;
-            align-items: center;
-    width: 100%; /* Add this line */
+        
+.bank-transfer-section {
+    padding: 5rem 2rem;
+    background-color: var(--dark);
+    text-align: center;
+    width: 100%;
     box-sizing: border-box;
-        }
+}
 
-        .qr-code-container {
-            flex: 1;
-            min-width: 250px;
-        }
+.bank-transfer-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+}
 
-        .qr-code {
-            width: 250px;
-            height: 250px;
-            margin: 0 auto;
-            background: white;
-            padding: 1rem;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
+.qr-code-container {
+    flex: 1;
+    min-width: 250px;
+    max-width: 100%;
+}
 
-        .qr-code img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
+.qr-code {
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+    background: white;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
 
-        .bank-details {
-            flex: 1;
-            min-width: 300px;
-            text-align: left;
-            background: rgba(255,255,255,0.05);
-            padding: 2rem;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
+.qr-code img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.bank-details {
+    flex: 1;
+    min-width: 300px;
+    max-width: 100%;
+    text-align: left;
+    background: rgba(255,255,255,0.05);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Responsive fixes for mobile */
+@media (max-width: 768px) {
+    .bank-transfer-container {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 0 1rem;
+    }
+    
+    .bank-details {
+        text-align: center;
+        width: 100%;
+        min-width: auto;
+    }
+    
+    .bank-details p {
+        text-align: left;
+        padding-right: 2rem;
+    }
+    
+    .qr-code {
+        width: 200px;
+        height: 200px;
+    }
+}
 
         .bank-details h3 {
             color: var(--gold);

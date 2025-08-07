@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="icon" href="images/logo.jpg" type="image/jpg">
     <title>Our Team - Prem Foundation</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -23,14 +24,19 @@
 }
 
 .team-tabs {
-    background: rgba(241, 245, 249, 0.9); /* Increased opacity for better visibility */
+    background: rgba(241, 245, 249, 0.9);
     border-radius: 50px;
     padding: 8px;
     backdrop-filter: blur(5px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Darker shadow for better contrast */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     max-width: fit-content;
     margin: 0 auto 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
+
+
 
 .team-tabs .nav-link {
     font-weight: 600;
@@ -338,16 +344,27 @@
     }
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     .team-img-container {
         height: 220px;
     }
     
+    .team-tabs {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* This centers the tabs */
+        width: 100%;
+        max-width: 300px; /* Limits width for better appearance */
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
     .team-tabs .nav-link {
-        padding: 6px 16px;
+        padding: 10px 16px;
         font-size: 0.9rem;
-        background-color: rgba(255,255,255,0.8); /* More opaque on mobile */
+        background-color: rgba(255,255,255,0.8);
+        width: 100%; /* Makes both tabs equal width */
+        text-align: center; /* Centers text within each tab */
     }
     
     .team-overlay {
@@ -376,7 +393,40 @@
         width: auto;
     }
 }
+
+  
+        /* Add this after existing .hero-team styles */
+        .hero-team {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dot-network {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        
+        .dot {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.15);
+            transform: translate(-50%, -50%);
+        }
+        
+        .line {
+            position: absolute;
+            background-color: rgba(255,255,255,0.1);
+            height: 1px;
+            transform-origin: left center;
+        }
     </style>
+
 </head>
 <body>
     <!-- Header -->
@@ -950,6 +1000,110 @@
                 }
             }
         });
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Dot network effect for hero
+            const heroTeam = document.querySelector('.hero-team');
+            if (heroTeam) {
+                createDotNetwork();
+            }
+            
+            function createDotNetwork() {
+                const container = document.querySelector('.hero-team');
+                const dotNetwork = document.createElement('div');
+                dotNetwork.className = 'dot-network';
+                container.appendChild(dotNetwork);
+                
+                const dotCount = 30;
+                const dots = [];
+                const lines = [];
+                
+                // Create dots
+                for (let i = 0; i < dotCount; i++) {
+                    const dot = document.createElement('div');
+                    dot.className = 'dot';
+                    
+                    // Random position within container
+                    const x = Math.random() * 100;
+                    const y = Math.random() * 100;
+                    dot.style.left = `${x}%`;
+                    dot.style.top = `${y}%`;
+                    
+                    // Store position and element
+                    dots.push({
+                        element: dot,
+                        x,
+                        y,
+                        vx: (Math.random() - 0.5) * 0.2,
+                        vy: (Math.random() - 0.5) * 0.2
+                    });
+                    
+                    dotNetwork.appendChild(dot);
+                }
+                
+                // Create lines between nearby dots
+                function updateLines() {
+                    // Clear existing lines
+                    lines.forEach(line => dotNetwork.removeChild(line));
+                    lines.length = 0;
+                    
+                    // Create new connections
+                    for (let i = 0; i < dots.length; i++) {
+                        for (let j = i + 1; j < dots.length; j++) {
+                            const dx = dots[i].x - dots[j].x;
+                            const dy = dots[i].y - dots[j].y;
+                            const distance = Math.sqrt(dx * dx + dy * dy);
+                            
+                            // Connect if within certain distance
+                            if (distance < 20) {
+                                const line = document.createElement('div');
+                                line.className = 'line';
+                                
+                                const angle = Math.atan2(dy, dx);
+                                const length = distance;
+                                
+                                line.style.width = `${length}%`;
+                                line.style.left = `${dots[i].x}%`;
+                                line.style.top = `${dots[i].y}%`;
+                                line.style.transform = `rotate(${angle}rad)`;
+                                line.style.opacity = 1 - (distance / 20);
+                                
+                                dotNetwork.appendChild(line);
+                                lines.push(line);
+                            }
+                        }
+                    }
+                }
+                
+                // Animation loop
+                function animate() {
+                    dots.forEach(dot => {
+                        // Update position with velocity
+                        dot.x += dot.vx;
+                        dot.y += dot.vy;
+                        
+                        // Bounce off edges
+                        if (dot.x < 0 || dot.x > 100) dot.vx *= -1;
+                        if (dot.y < 0 || dot.y > 100) dot.vy *= -1;
+                        
+                        // Apply position
+                        dot.element.style.left = `${dot.x}%`;
+                        dot.element.style.top = `${dot.y}%`;
+                    });
+                    
+                    updateLines();
+                    requestAnimationFrame(animate);
+                }
+                
+                // Start animation
+                setTimeout(() => {
+                    updateLines();
+                    animate();
+                }, 100);
+            }
+        });
+    
     </script>
 </body>
 </html>

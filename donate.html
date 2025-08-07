@@ -1981,19 +1981,7 @@ function processRazorpayPayment() {
         rzp.on('payment.failed', function(response) {
             console.error('Payment failed:', response.error);
             alert('Payment failed: ' + response.error.description);
-            
-            // You can submit failed payment data to your server if needed
-            submitDonationForm({
-                name,
-                email,
-                phone,
-                amount: amount/100,
-                pan,
-                roomName,
-                paymentId: 'failed_' + Date.now(),
-                donationType,
-                error: response.error
-            }, true);
+            // Don't redirect to thank-you page for failed payments
         });
     } catch (error) {
         console.error('Razorpay initialization error:', error);

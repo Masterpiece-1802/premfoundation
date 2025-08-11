@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="icon" href="images/logo.jpg" type="image/jpg">
+    <link rel="icon" href="images/logo.jpg" type="image/jpg">
     <title>Thank You | Prem Foundation</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -17,7 +17,6 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
     <style>
-        
         .thank-you-section {
             min-height: 70vh;
             display: flex;
@@ -494,12 +493,13 @@
     // Function to save invoice data to your system
     function saveInvoiceData(invoiceData) {
         // This will send the invoice data to your server for storage
-        const formURL = 'https://docs.google.com/forms/d/e/1FAIpQLSeHXg9Tj1rOQY1v3jZxVz7J5qK8n7J8h9i0j1k2l3m4n5o6p7q8/formResponse';
-        
+        const formURL = 'https://docs.google.com/forms/d/e/1FAIpQLSdeWVC0LAWezmZGquiwTUi2kL34jpN8q7JHwWLiSIrmqn2MQg/formResponse';
+
         // Prepare form data
         const params = new URLSearchParams();
-        params.append('entry.1234567890', JSON.stringify(invoiceData)); // Replace with your actual form field IDs
+        params.append('entry.1795561353', JSON.stringify(invoiceData)); // Replace with your actual form field IDs
         
+
         // Submit to Google Form (or your backend)
         fetch(formURL, {
             method: 'POST',
@@ -527,43 +527,51 @@
             creator: 'Prem Foundation'
         });
         
-        // Add Prem Foundation header with logo
-        doc.setFontSize(20);
+        // Add Prem Foundation letterhead
+        doc.setFontSize(16);
         doc.setTextColor(15, 23, 42);
         doc.setFont('helvetica', 'bold');
-        doc.text('Prem Foundation', 105, 20, { align: 'center' });
+        doc.text('PREM Foundation, Nashik', 105, 15, { align: 'center' });
         
         doc.setFontSize(10);
         doc.setTextColor(100, 100, 100);
         doc.setFont('helvetica', 'normal');
-        doc.text('4th Floor, Sitaram Chambers, Peth Naka, Nashik - 422003 | 80G No: ', 105, 26, { align: 'center' });
+        doc.text('(Participatory Research & Environment Management)', 105, 20, { align: 'center' });
+        doc.text('(Regd. No. MH - 937/2012 NSK, Dt, 21/02/2012)', 105, 25, { align: 'center' });
+        
+        // Add contact information
+        doc.setFontSize(9);
+        doc.text('Correspondence:', 15, 35);
+        doc.text('PREM Foundation, Nashik, 4th Floor, Sitaram Chambers, Opp. Sweta Gas Agency,', 15, 40);
+        doc.text('Peth Naka, Panchavati, Nashik - 422 003. Ph.: (0253) 2516373', 15, 45);
+        doc.text('Mob.: 9970559373, 9404216373, E-mail: premfoundation2012@gmail.com', 15, 50);
         
         // Add decorative line
         doc.setDrawColor(212, 175, 55);
         doc.setLineWidth(0.5);
-        doc.line(15, 30, 195, 30);
+        doc.line(15, 55, 195, 55);
         
         // Invoice title and details
         doc.setFontSize(16);
         doc.setTextColor(212, 175, 55);
         doc.setFont('helvetica', 'bold');
-        doc.text('TAX INVOICE', 105, 40, { align: 'center' });
+        doc.text('TAX INVOICE', 105, 65, { align: 'center' });
         
         // Invoice details
         doc.setFontSize(10);
         doc.setTextColor(40, 40, 40);
         doc.setFont('helvetica', 'normal');
-        doc.text(`Invoice #: ${document.getElementById('invoiceNumber').textContent}`, 15, 50);
-        doc.text(`Date: ${document.getElementById('invoiceDate').textContent.replace('Date: ', '')}`, 15, 55);
-        doc.text(`Time: ${document.getElementById('invoiceTime').textContent.replace('Time: ', '')}`, 15, 60);
-        doc.text(`Payment Mode: ${document.getElementById('invoicePaymentMode').textContent}`, 15, 65);
-        doc.text(`Payment ID: ${document.getElementById('paymentId').textContent}`, 15, 70);
+        doc.text(`Invoice #: ${document.getElementById('invoiceNumber').textContent}`, 15, 75);
+        doc.text(`Date: ${document.getElementById('invoiceDate').textContent.replace('Date: ', '')}`, 15, 80);
+        doc.text(`Time: ${document.getElementById('invoiceTime').textContent.replace('Time: ', '')}`, 15, 85);
+        doc.text(`Payment Mode: ${document.getElementById('invoicePaymentMode').textContent}`, 15, 90);
+        doc.text(`Payment ID: ${document.getElementById('paymentId').textContent}`, 15, 95);
         
         // Customer details - improved layout
         doc.setFontSize(12);
         doc.setTextColor(15, 23, 42);
         doc.setFont('helvetica', 'bold');
-        doc.text('Bill To:', 130, 50);
+        doc.text('Bill To:', 130, 75);
         
         const customerName = document.getElementById('invoiceCustomerName').textContent;
         const customerDetails = document.getElementById('invoiceCustomerDetails').textContent;
@@ -574,10 +582,10 @@
         
         // Split customer name if too long
         const nameLines = doc.splitTextToSize(customerName, 65);
-        doc.text(nameLines, 130, 55);
+        doc.text(nameLines, 130, 80);
         
         // Calculate Y position after name
-        let currentY = 55 + (nameLines.length * 5);
+        let currentY = 80 + (nameLines.length * 5);
         
         // Add customer details if available
         if (customerDetails) {
@@ -589,11 +597,11 @@
         // Line separator before table
         doc.setDrawColor(200, 200, 200);
         doc.setLineWidth(0.2);
-        doc.line(15, 80, 195, 80);
+        doc.line(15, 105, 195, 105);
         
         // Invoice items table - improved layout
         doc.autoTable({
-            startY: 85,
+            startY: 110,
             head: [['Description', 'Amount (₹)']],
             body: [
                 [
@@ -608,7 +616,7 @@
                         }
                     },
                     {
-                        content: '₹' + document.getElementById('invoiceAmount').textContent,
+                        content: document.getElementById('invoiceAmount').textContent,
                         styles: { 
                             halign: 'right',
                             fontStyle: 'normal',
@@ -674,7 +682,7 @@
                         }
                     },
                     {
-                        content: '₹' + document.getElementById('invoiceTotal').textContent,
+                        content: document.getElementById('invoiceTotal').textContent,
                         styles: { 
                             fontStyle: 'bold', 
                             halign: 'right',
@@ -711,13 +719,14 @@
         doc.setFontSize(9);
         doc.setTextColor(100, 100, 100);
         doc.text('Thank you for your generous contribution.', 15, finalY, { maxWidth: 180 });
-        doc.text('For any queries, please contact premfoundaton2012@gmail.com or call +91 9970559373', 15, finalY + 10, { maxWidth: 180 });
+        doc.text('For any queries, please contact premfoundation2012@gmail.com or call +91 9970559373', 15, finalY + 10, { maxWidth: 180 });
         
         // Add terms and conditions
         doc.setFontSize(8);
         doc.text('Terms & Conditions:', 15, finalY + 20);
         doc.text('1. This is a receipt for your donation to Prem Foundation.', 15, finalY + 25, { maxWidth: 180 });
         doc.text('2. Please retain this receipt for your records and tax purposes.', 15, finalY + 30, { maxWidth: 180 });
+        doc.text('3. For 80G tax exemption, please provide your PAN details if not already provided.', 15, finalY + 35, { maxWidth: 180 });
         
         // Online generated notice with border
         doc.setDrawColor(200, 200, 200);
@@ -726,7 +735,7 @@
         
         doc.setFontSize(8);
         doc.setTextColor(150, 150, 150);
-        doc.text('This is a computer generated invoice.', 105, 280, { align: 'center' });
+        doc.text('This is a computer generated invoice. No signature required.', 105, 280, { align: 'center' });
         
         // Save the PDF
         doc.save(`PremFoundation_Invoice_${document.getElementById('invoiceNumber').textContent}.pdf`);

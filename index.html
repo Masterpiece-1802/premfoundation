@@ -24,7 +24,7 @@
     <meta name="description" content="Prem Foundation - Transforming lives through compassion and community service">
     <meta property="og:title" content="Prem Foundation">
     <meta property="og:description" content="Empowering communities through various social initiatives">
-    <meta property="og:image" content="images/hero-bg.jpg">
+    <meta property="og:image" content="images/hero-bg.jpeg">
     <meta name="theme-color" content="#1e40af">
 
 <!-- Google tag (gtag.js) -->
@@ -43,7 +43,7 @@
 .hero {
     background: 
         linear-gradient(135deg, rgba(30, 64, 175, 0.8), rgba(15, 23, 42, 0.9)),
-        url('images/hero-bg.jpg') center/cover no-repeat;
+        url('images/hero-bg.jpeg') center/cover no-repeat;
     min-height: 90vh;
     display: flex;
     align-items: center;
@@ -64,7 +64,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('images/hero-bg.jpg') center/cover no-repeat;
+    background: url('images/hero-bg.jpeg') center/cover no-repeat;
     z-index: -1;
     opacity: 0;
     transition: opacity 1s ease;
@@ -410,6 +410,7 @@ body {
             </div>
 
 
+<!-- Updated Journey/Gallery Section -->
 <section id="journey" class="journey-section py-5 position-relative">
     <div class="container py-4">
         <!-- Section Borders -->
@@ -462,24 +463,21 @@ body {
             <!-- Gallery -->
             <div class="col-lg-7" data-aos="fade-left">
                 <div class="premium-gallery">
+                    <!-- Media Type Toggle -->
+                    <div class="media-toggle-container mb-3 d-flex justify-content-center">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-prem active" id="showPhotos">
+                                <i class="fas fa-images me-2"></i> Photos
+                            </button>
+                            <button type="button" class="btn btn-outline-prem" id="showVideos">
+                                <i class="fas fa-video me-2"></i> Videos
+                            </button>
+                        </div>
+                    </div>
+                    
                     <!-- Main Slideshow -->
                     <div class="main-slider">
-                        <div class="slide active">
-                            <img src="images/journey/a.jpg" alt="Community Workshop" loading="lazy">
-                            <div class="slide-caption">Community Workshop on Sustainable Farming (2023)</div>
-                        </div>
-                        <div class="slide">
-                            <img src="images/journey/b.jpg" alt="Tree Plantation" loading="lazy">
-                            <div class="slide-caption">Annual Tree Plantation Drive (2022)</div>
-                        </div>
-                        <div class="slide">
-                            <img src="images/journey/c.jpg" alt="Research Team" loading="lazy">
-                            <div class="slide-caption">Field Research Team in Action (2021)</div>
-                        </div>
-                        <div class="slide">
-                            <img src="images/journey/d.jpg" alt="Children's Program" loading="lazy">
-                            <div class="slide-caption">Environmental Education for Children (2020)</div>
-                        </div>
+                        <!-- Slides will be loaded dynamically via JavaScript -->
                     </div>
                     
                     <!-- Navigation Arrows -->
@@ -488,20 +486,14 @@ body {
                         <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
                     </div>
                     
-                    <!-- Thumbnail Strip -->
-                    <div class="thumbnail-strip">
-                        <div class="thumb active" data-index="0">
-                            <img src="images/journey/a.jpg" alt="Thumb 1">
+                    <!-- Thumbnail Strip and View All Button -->
+                    <div class="d-flex align-items-center">
+                        <div class="thumbnail-strip flex-grow-1">
+                            <!-- Thumbnails will be loaded dynamically via JavaScript -->
                         </div>
-                        <div class="thumb" data-index="1">
-                            <img src="images/journey/b.jpg" alt="Thumb 2">
-                        </div>
-                        <div class="thumb" data-index="2">
-                            <img src="images/journey/c.jpg" alt="Thumb 3">
-                        </div>
-                        <div class="thumb" data-index="3">
-                            <img src="images/journey/d.jpg" alt="Thumb 4">
-                        </div>
+                        <button class="btn btn-prem ms-3" id="viewAllMedia" style="white-space: nowrap;">
+                            <i class="fas fa-expand me-2"></i> View All
+                        </button>
                     </div>
                 </div>
             </div>
@@ -528,6 +520,48 @@ body {
         <div class="modal-caption"></div>
     </div>
 </div>
+
+<!-- View All Media Modal -->
+<div class="modal fade" id="allMediaModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content bg-dark">
+            <div class="modal-header border-secondary">
+                <h5 class="modal-title text-gold">All Media</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-3" id="allMediaGrid">
+                    <!-- Media items will be loaded dynamically -->
+                </div>
+            </div>
+            <div class="modal-footer border-secondary">
+                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Lightbox Modal -->
+<div class="modal fade" id="mediaLightbox" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content bg-transparent border-0">
+            <div class="modal-body p-0 position-relative">
+                <!-- Close Button -->
+                <button type="button" class="btn btn-sm btn-outline-light position-absolute top-0 start-0 m-3" 
+                        data-bs-dismiss="modal" aria-label="Close" title="Close">
+                    <i class="fas fa-times"></i>
+                </button>
+                <!-- Download Button -->
+                <button class="btn btn-sm btn-outline-light position-absolute top-0 end-0 m-3" id="downloadMedia" title="Download">
+                    <i class="fas fa-download"></i>
+                </button>
+                <!-- Media Content -->
+                <div class="lightbox-content" id="lightboxContent"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <footer class="prem-footer">
     <div class="prem-container">
@@ -671,7 +705,7 @@ body {
         
         // First check if image is in cache
         const img = new Image();
-        img.src = 'images/hero-bg.jpg';
+        img.src = 'images/hero-bg.jpeg';
         
         if (img.complete) {
             // Image is cached
@@ -754,6 +788,368 @@ function fixViewport() {
 
 window.addEventListener('resize', fixViewport);
 window.addEventListener('load', fixViewport);
+
+// Gallery functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Media data - this would ideally come from a server/database
+    // For now, we'll simulate loading from a folder structure
+    
+    // Image configuration
+    const imageConfig = {
+        folder: 'images/journey', // Folder where images are stored
+        extensions: ['jpeg', 'jpg', 'png'], // Supported image extensions
+        count: 300, // Total number of images available
+        prefix: '', // Prefix for filenames (if any)
+        startIndex: 1 // Starting index for numbered files
+    };
+    
+    // Video configuration
+    const videoConfig = {
+        folder: 'videos/journey', // Folder where videos are stored
+        extensions: ['mp4', 'mov'], // Supported video extensions
+        count: 10, // Total number of videos available
+        prefix: '', // Prefix for filenames (if any)
+        startIndex: 1 // Starting index for numbered files
+    };
+    
+    // Current media type (photos or videos)
+    let currentMediaType = 'photos';
+    let currentMediaItems = [];
+    
+    // DOM elements
+    const mainSlider = document.querySelector('.main-slider');
+    const thumbnailStrip = document.querySelector('.thumbnail-strip');
+    const modalSlides = document.querySelector('.modal-slides');
+    const showPhotosBtn = document.getElementById('showPhotos');
+    const showVideosBtn = document.getElementById('showVideos');
+    const viewAllBtn = document.getElementById('viewAllMedia');
+    const allMediaGrid = document.getElementById('allMediaGrid');
+    
+    // Initialize gallery
+    function initGallery() {
+        loadMediaItems(currentMediaType);
+        setupEventListeners();
+    }
+    
+    // Load media items based on type
+    function loadMediaItems(type) {
+        currentMediaType = type;
+        currentMediaItems = [];
+        
+        // Clear existing slides
+        mainSlider.innerHTML = '';
+        thumbnailStrip.innerHTML = '';
+        modalSlides.innerHTML = '';
+        
+        // Determine which config to use
+        const config = type === 'photos' ? imageConfig : videoConfig;
+        
+        // Generate media items (in a real app, this would come from a server)
+        for (let i = config.startIndex; i <= config.count; i++) {
+            // Create filename (assuming files are named sequentially)
+            const filename = `${config.prefix}${i}.${config.extensions[0]}`;
+            const mediaPath = `${config.folder}/${filename}`;
+            
+            // Create media item object
+            const mediaItem = {
+                type: type,
+                path: mediaPath,
+                caption: `${type === 'photos' ? 'Photo' : 'Video'} ${i} - ${type === 'photos' ? 'Gallery' : 'Event Coverage'} `,
+                index: i - config.startIndex
+            };
+            
+            currentMediaItems.push(mediaItem);
+            
+            // Only load first few items for performance
+            if (i <= (type === 'photos' ? 20 : 6)) {
+                createSlide(mediaItem, i <= 1); // Only first 1 are visible initially
+            }
+        }
+        
+        // Set active states for toggle buttons
+        if (type === 'photos') {
+            showPhotosBtn.classList.add('active');
+            showPhotosBtn.classList.remove('btn-outline-prem');
+            showPhotosBtn.classList.add('btn-prem');
+            showVideosBtn.classList.remove('active');
+            showVideosBtn.classList.remove('btn-prem');
+            showVideosBtn.classList.add('btn-outline-prem');
+        } else {
+            showVideosBtn.classList.add('active');
+            showVideosBtn.classList.remove('btn-outline-prem');
+            showVideosBtn.classList.add('btn-prem');
+            showPhotosBtn.classList.remove('active');
+            showPhotosBtn.classList.remove('btn-prem');
+            showPhotosBtn.classList.add('btn-outline-prem');
+        }
+        
+        // Initialize slider if not already initialized
+        if (!window.gallerySliderInitialized) {
+            initSlider();
+            window.gallerySliderInitialized = true;
+        }
+    }
+    
+    // Create a slide (both main and thumbnail)
+    function createSlide(mediaItem, isActive = false) {
+        const slideIndex = mediaItem.index;
+        const isVideo = mediaItem.type === 'videos';
+        
+        // Main slide
+        const slide = document.createElement('div');
+        slide.className = `slide ${isActive ? 'active' : ''}`;
+        slide.dataset.index = slideIndex;
+        
+        if (isVideo) {
+            slide.innerHTML = `
+                <video class="w-100 h-100" autoplay loop muted playsinline>
+                    <source src="${mediaItem.path}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="slide-caption">${mediaItem.caption}</div>
+            `;
+        } else {
+            slide.innerHTML = `
+                <img src="${mediaItem.path}" alt="Gallery Image ${slideIndex + 1}" loading="lazy">
+                <div class="slide-caption">${mediaItem.caption}</div>
+            `;
+        }
+        
+        mainSlider.appendChild(slide);
+        
+        // Thumbnail
+        const thumb = document.createElement('div');
+        thumb.className = `thumb ${isActive ? 'active' : ''}`;
+        thumb.dataset.index = slideIndex;
+        
+        if (isVideo) {
+            thumb.innerHTML = `
+                <div class="position-relative h-100">
+                    <video class="w-100 h-100" muted playsinline>
+                        <source src="${mediaItem.path}" type="video/mp4">
+                    </video>
+                    <div class="position-absolute top-50 start-50 translate-middle">
+                        <i class="fas fa-play text-white bg-dark bg-opacity-50 rounded-circle p-2"></i>
+                    </div>
+                </div>
+            `;
+        } else {
+            thumb.innerHTML = `<img src="${mediaItem.path}" alt="Thumbnail ${slideIndex + 1}">`;
+        }
+        
+        thumbnailStrip.appendChild(thumb);
+        
+        // Modal slide (for fullscreen view)
+        const modalSlide = document.createElement('div');
+        modalSlide.className = `modal-slide ${isActive ? 'active' : ''}`;
+        modalSlide.dataset.index = slideIndex;
+        
+        if (isVideo) {
+            modalSlide.innerHTML = `
+                <video controls autoplay loop class="w-100 h-100">
+                    <source src="${mediaItem.path}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            `;
+        } else {
+            modalSlide.innerHTML = `<img src="${mediaItem.path}" alt="Gallery Image ${slideIndex + 1}">`;
+        }
+        
+        modalSlides.appendChild(modalSlide);
+    }
+    
+    // Initialize slider functionality
+    function initSlider() {
+        const slides = document.querySelectorAll('.slide');
+        const thumbs = document.querySelectorAll('.thumb');
+        let currentSlide = 0;
+        let slideInterval;
+        
+        if (slides.length === 0) return;
+        
+        // Start autoplay
+        function startSlideShow() {
+            slideInterval = setInterval(nextSlide, 3000);
+        }
+        
+        // Go to specific slide
+        function goToSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            thumbs[currentSlide].classList.remove('active');
+            document.querySelectorAll('.modal-slide')[currentSlide].classList.remove('active');
+            
+            currentSlide = (n + slides.length) % slides.length;
+            
+            slides[currentSlide].classList.add('active');
+            thumbs[currentSlide].classList.add('active');
+            document.querySelectorAll('.modal-slide')[currentSlide].classList.add('active');
+        }
+        
+        // Next slide
+        function nextSlide() {
+            goToSlide(currentSlide + 1);
+        }
+        
+        // Previous slide
+        function prevSlide() {
+            goToSlide(currentSlide - 1);
+        }
+        
+        // Navigation arrows
+        document.querySelector('.next-btn').addEventListener('click', function() {
+            clearInterval(slideInterval);
+            nextSlide();
+            startSlideShow();
+        });
+        
+        document.querySelector('.prev-btn').addEventListener('click', function() {
+            clearInterval(slideInterval);
+            prevSlide();
+            startSlideShow();
+        });
+        
+        // Thumbnail click
+        thumbs.forEach(thumb => {
+            thumb.addEventListener('click', function() {
+                const index = parseInt(this.getAttribute('data-index'));
+                clearInterval(slideInterval);
+                goToSlide(index);
+                startSlideShow();
+            });
+        });
+        
+        // Start the slideshow
+        startSlideShow();
+    }
+    
+    // Setup event listeners
+    function setupEventListeners() {
+        // Toggle between photos and videos
+        showPhotosBtn.addEventListener('click', () => {
+            if (currentMediaType !== 'photos') {
+                loadMediaItems('photos');
+            }
+        });
+        
+        showVideosBtn.addEventListener('click', () => {
+            if (currentMediaType !== 'videos') {
+                loadMediaItems('videos');
+            }
+        });
+        
+        // View all media button
+        viewAllBtn.addEventListener('click', () => {
+            showAllMediaModal();
+        });
+        
+        // Click on slides to open modal
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.slide') || e.target.closest('.thumb')) {
+                const slide = e.target.closest('.slide') || e.target.closest('.thumb');
+                if (slide) {
+                    const index = parseInt(slide.getAttribute('data-index'));
+                    openLightbox(index);
+                }
+            }
+        });
+    }
+    
+    // Show all media in a grid modal
+    function showAllMediaModal() {
+        allMediaGrid.innerHTML = '';
+        
+        currentMediaItems.forEach((item, index) => {
+            const col = document.createElement('div');
+            col.className = 'col-6 col-md-4 col-lg-3';
+            
+            const mediaItem = document.createElement('div');
+            mediaItem.className = 'media-grid-item position-relative overflow-hidden rounded cursor-pointer';
+            mediaItem.style.height = '200px';
+            mediaItem.dataset.index = index;
+            
+            if (item.type === 'videos') {
+                mediaItem.innerHTML = `
+                    <video class="w-100 h-100 object-fit-cover" muted loop>
+                        <source src="${item.path}" type="video/mp4">
+                    </video>
+                    <div class="position-absolute top-50 start-50 translate-middle">
+                        <i class="fas fa-play text-white bg-dark bg-opacity-50 rounded-circle p-2"></i>
+                    </div>
+                    <div class="position-absolute bottom-0 start-0 end-0 p-2 bg-dark bg-opacity-75 text-white small">
+                        ${item.caption}
+                    </div>
+                `;
+            } else {
+                mediaItem.innerHTML = `
+                    <img src="${item.path}" alt="Media ${index + 1}" class="w-100 h-100 object-fit-cover">
+                    <div class="position-absolute bottom-0 start-0 end-0 p-2 bg-dark bg-opacity-75 text-white small">
+                        ${item.caption}
+                    </div>
+                `;
+            }
+            
+            mediaItem.addEventListener('click', () => {
+                openLightbox(index);
+                const modal = bootstrap.Modal.getInstance(document.getElementById('allMediaModal'));
+                if (modal) modal.hide();
+            });
+            
+            col.appendChild(mediaItem);
+            allMediaGrid.appendChild(col);
+        });
+        
+        // Show the modal
+        const modal = new bootstrap.Modal(document.getElementById('allMediaModal'));
+        modal.show();
+    }
+    
+    // Open lightbox for a specific media item
+    function openLightbox(index) {
+        const item = currentMediaItems[index];
+        const lightboxContent = document.getElementById('lightboxContent');
+        const downloadBtn = document.getElementById('downloadMedia');
+        
+        if (item.type === 'videos') {
+            lightboxContent.innerHTML = `
+                <video controls autoplay class="w-100" style="max-height: 80vh;">
+                    <source src="${item.path}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            `;
+        } else {
+            lightboxContent.innerHTML = `
+                <img src="${item.path}" alt="Media ${index + 1}" class="img-fluid" style="max-height: 80vh;">
+            `;
+        }
+        
+        // Set up download
+        downloadBtn.onclick = () => {
+            const link = document.createElement('a');
+            link.href = item.path;
+            link.download = item.path.split('/').pop();
+            link.click();
+        };
+        
+        // Show the lightbox
+        const lightbox = new bootstrap.Modal(document.getElementById('mediaLightbox'));
+        lightbox.show();
+    }
+    
+    // Initialize the gallery
+    initGallery();
+    
+    // Create particles (existing functionality)
+    createParticles();
+    
+    // Animate floating badges (existing functionality)
+    const badges = document.querySelectorAll('.badge-item');
+    badges.forEach((badge, i) => {
+        setTimeout(() => {
+            badge.style.transform = 'translateY(-5px)';
+            badge.style.opacity = '1';
+        }, i * 200);
+    });
+});
     </script>
 </body>
 </html>

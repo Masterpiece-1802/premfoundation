@@ -2357,3 +2357,25 @@ footer iframe {
     filter: grayscale(30%) contrast(90%);
     border-radius: 4px;
 }
+
+.prem-legal-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    margin: 1.5rem 0;
+}
+
+.prem-legal-links a {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.prem-legal-links a:hover {
+    color: #2c3e50;
+    text-decoration: underline;
+}

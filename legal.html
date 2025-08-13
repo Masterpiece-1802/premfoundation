@@ -2,76 +2,439 @@
 <html lang="en">
 <head>
     <!-- Your existing head content -->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XH1EG1VFN7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XH1EG1VFN7');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="icon" href="images/logo.jpg" type="image/jpg">
+    <title>Contact Us - Prem Foundation</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Leaflet CSS (Maps) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
     <title>Legal Information | Prem Foundation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #a29bfe;
+            --dark: #2d3436;
+            --darker: #1e272e;
+            --light: #f5f6fa;
+            --text: #dfe6e9;
+            --text-muted: #b2bec3;
+        }
+        
+        body {
+            background-color: var(--darker);
+            color: var(--text);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+        
+        .prem-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        h1 {
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
         .legal-section {
             margin-bottom: 3rem;
-            padding: 1.5rem;
-            background: #f9f9f9;
-            border-radius: 8px;
+            padding: 2rem;
+            background: rgba(45, 52, 54, 0.7);
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
+        
+        .legal-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        
+        .legal-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.1), transparent);
+            pointer-events: none;
+        }
+        
         .legal-section h2 {
-            color: #2c3e50;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 0.5rem;
+            color: var(--primary);
+            margin-top: 0;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .legal-section h2 i {
+            color: var(--secondary);
+        }
+        
+        ul, ol {
+            padding-left: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.8rem;
+            position: relative;
+        }
+        
+        li::before {
+            content: '•';
+            color: var(--secondary);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            position: absolute;
+        }
+        
+        ol li::before {
+            content: counter(item) '.';
+            counter-increment: item;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+        }
+        
+        .last-updated {
+            text-align: center;
+            margin-top: 3rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        /* Animation classes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-section {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        /* Scroll indicator */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: transparent;
+            z-index: 1000;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+        
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
+            z-index: 999;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
         }
     </style>
 </head>
 <body>
     <!-- Your existing header/navigation -->
 
-    <main class="prem-container" style="padding: 2rem 0;">
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <main class="prem-container">
         <h1>Legal Information</h1>
         
-        <section id="terms" class="legal-section">
-            <h2>Terms and Conditions</h2>
-            <p>By using our website and donation services, you agree to these terms:</p>
+        <section id="terms" class="legal-section animate-section" style="animation-delay: 0.1s">
+            <h2><i class="fas fa-file-contract"></i> Terms and Conditions</h2>
+            <p>By accessing and using Prem Foundation's website and services, you agree to comply with and be bound by the following terms:</p>
             <ul>
-                <li>Prem Foundation reserves the right to modify these terms at any time</li>
-                <li>All donations are voluntary and non-refundable unless specified otherwise</li>
-                <li>We use Razorpay as our payment gateway partner</li>
+                <li>Prem Foundation reserves the exclusive right to modify these terms at any time without prior notice</li>
+                <li>All donations are considered voluntary contributions and are non-refundable unless expressly stated otherwise</li>
+                <li>We utilize Razorpay as our secure payment gateway partner for all transactions</li>
+                <li>The content on this website is for general information and may change without notice</li>
+                <li>Unauthorized use of this website may give rise to a claim for damages</li>
+                <li>Your use of this website and any dispute arising out of such use is subject to the laws of India</li>
+                <li>We are not liable for any indirect, special or consequential loss arising from the use of this website</li>
             </ul>
         </section>
 
-        <section id="privacy" class="legal-section">
-            <h2>Privacy Policy</h2>
-            <p>We respect your privacy and protect your personal information:</p>
+        <section id="privacy" class="legal-section animate-section" style="animation-delay: 0.2s">
+            <h2><i class="fas fa-shield-alt"></i> Privacy Policy</h2>
+            <p>Prem Foundation is committed to protecting your privacy and handling your data with care:</p>
             <ul>
-                <li>We collect only necessary information for processing donations</li>
-                <li>Payment details are processed securely through Razorpay</li>
-                <li>We may use your contact information to send updates about our work</li>
+                <li>We collect only necessary personal information required for processing donations and maintaining records</li>
+                <li>Payment details are processed securely through our PCI-DSS compliant partner Razorpay</li>
+                <li>We may use your contact information to send periodic updates about our charitable activities</li>
+                <li>Your personal information will not be sold, exchanged, or shared with third parties without consent</li>
+                <li>We implement appropriate security measures to protect against unauthorized access to your data</li>
+                <li>Our website may use cookies to enhance user experience</li>
             </ul>
         </section>
 
-        <section id="refunds" class="legal-section">
-            <h2>Cancellation and Refund Policy</h2>
-            <p>Regarding donations made through our website:</p>
+        <section id="refunds" class="legal-section animate-section" style="animation-delay: 0.3s">
+            <h2><i class="fas fa-exchange-alt"></i> Cancellation and Refund Policy</h2>
+            <p>Regarding donations made through our platform:</p>
             <ul>
-                <li>Donations are generally non-refundable</li>
-                <li>In case of accidental or duplicate donations, contact us within 7 days</li>
-                <li>Refunds will be processed through the original payment method</li>
+                <li>Donations are typically non-refundable as they are considered charitable contributions</li>
+                <li>In exceptional cases of accidental or duplicate donations, contact us within 7 days of transaction</li>
+                <li>Approved refunds will be processed through the original payment method within 14 business days</li>
+                <li>Refund requests must include transaction details and valid reason for consideration</li>
             </ul>
         </section>
 
-        <section id="shipping" class="legal-section">
-            <h2>Shipping and Exchange</h2>
-            <p>Not Applicable</p>
+        <section id="shipping" class="legal-section animate-section" style="animation-delay: 0.4s">
+            <h2><i class="fas fa-truck"></i> Shipping and Exchange</h2>
+            <p>This policy is not applicable to our services:</p>
             <ul>
-                <li>We do not ship goods</li>
+                <li>We do not engage in shipping of physical goods</li>
+                <li>No exchange policy applies as we provide charitable services, not products</li>
             </ul>
         </section>
 
-        <section class="legal-section">
-            <h2>Transaction Access Request</h2>
+        <section id="bank-access" class="legal-section animate-section" style="animation-delay: 0.5s">
+            <h2><i class="fas fa-university"></i> Transaction Access Request</h2>
             <p>To request access to additional bank payment options:</p>
             <ol>
                 <li>Send an email to premfoundation2012@gmail.com with subject "Bank Access Request"</li>
-                <li>Include your name, contact number, and preferred bank</li>
-                <li>We will review and enable additional options within 3 business days</li>
+                <li>Include your full name, contact number, and preferred bank details</li>
+                <li>Our team will review and enable additional payment options within 3 business days</li>
+                <li>You will receive confirmation once the requested payment method is activated</li>
             </ol>
         </section>
+
+        <div class="last-updated">
+            Last updated: <span id="currentDate"></span>
+        </div>
     </main>
 
-    <!-- Your existing footer -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Footer (Same as other pages) -->
+<footer class="prem-footer">
+    <div class="prem-container">
+        <div class="prem-footer-main">
+            <!-- Brand Column (same as before) -->
+            <div class="prem-footer-brand">
+                <div class="prem-logo-wrapper">
+                    <img src="images/logo.jpg" alt="Prem Foundation" class="prem-logo">
+                    <div class="prem-logo-glow"></div>
+                </div>
+                <p class="prem-tagline">Committed to dignity, care, and community service since 2012.</p>
+                <div class="prem-social-proof">
+                    <div class="prem-trust-badge">
+                        <i class="fas fa-certificate"></i>
+                        <span>30+ Years Combined Experience</span>
+                    </div>
+                    <div class="prem-trust-badge">
+                        <i class="fas fa-heart"></i>
+                        <span>10000+ Lives Impacted</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Links Column (same as before) -->
+            <div class="prem-footer-links">
+                <div class="prem-links-column">
+                    <h5 class="prem-links-title">Our Initiatives</h5>
+                    <ul class="prem-links-list">
+                        <li><a href="premangan.html" class="prem-link"><i class="fas fa-home"></i> Premangan Old Age Home</a></li>
+                        <li><a href="projects.html" class="prem-link"><i class="fas fa-hands-helping"></i> Community Projects</a></li>
+                        <li><a href="donate.html" class="prem-link"><i class="fas fa-donate"></i> Donation Programs</a></li>
+                    </ul>
+                </div>
+                <div class="prem-links-column">
+                    <h5 class="prem-links-title">Organization</h5>
+                    <ul class="prem-links-list">
+                        <li><a href="about.html" class="prem-link"><i class="fas fa-info-circle"></i> About Us</a></li>
+                        <li><a href="team.html" class="prem-link"><i class="fas fa-users"></i> Our Team</a></li>
+                        <li><a href="about.html#report" class="prem-link"><i class="fas fa-file-alt"></i> Annual Reports</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Contact Column (same as before) -->
+            <div class="prem-footer-contact">
+                <h5 class="prem-contact-title">Contact Us</h5>
+                <div class="prem-contact-info">
+                    <div class="prem-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>4th Floor, Sitaram Chambers, Peth Naka, Panchavati, Nashik, Maharashtra, India - 422003</span>
+                    </div>
+                    <div class="prem-contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+91 9970559373</span>
+                    </div>
+                    <div class="prem-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>premfoundation2012@gmail.com</span>
+                    </div>
+                </div>
+                <div class="prem-contact-buttons">
+                    <a href="tel:+919970559373" class="prem-call-button">
+                        <i class="fas fa-phone"></i> Call Us
+                    </a>
+                    <a href="https://wa.me/919970559373" class="prem-whatsapp-button">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <a href="mailto:premfoundation2012@gmail.com" class="prem-email-button">
+                        <i class="fas fa-envelope"></i> Email
+                    </a>
+                </div>
+            </div>
+        </div>
+
+            
+
+            <div class="prem-copyright">
+                <p>&copy; 2025 Prem Foundation. All Rights Reserved.</p>
+                <p class="prem-credits">Crafted with <i class="fas fa-heart"></i> for humanity</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        // Set current date
+        document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        });
+
+        // Scroll progress indicator
+        window.onscroll = function() {
+            updateProgressBar();
+            toggleBackToTop();
+        };
+
+        function updateProgressBar() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("progressBar").style.width = scrolled + "%";
+        }
+
+        // Back to top button
+        function toggleBackToTop() {
+            const backToTop = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        }
+
+        document.getElementById('backToTop').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Animate sections on scroll
+        const animateSections = document.querySelectorAll('.animate-section');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        animateSections.forEach(section => {
+            section.style.opacity = 0;
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
 </body>
 </html>

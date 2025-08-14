@@ -32,7 +32,167 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <title>Premangan Old Age Home | Prem Foundation</title>
+
+
+<style>/* Dark Theme Gallery Styles */
+#gallery {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.gallery-bg-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.1;
+    transition: all 0.5s ease;
+    animation: float 15s infinite ease-in-out;
+}
+
+.bg-circle.circle-1 {
+    width: 300px;
+    height: 300px;
+    background: #a56cff;
+    top: 10%;
+    left: 5%;
+    animation-delay: 0s;
+}
+
+.bg-circle.circle-2 {
+    width: 400px;
+    height: 400px;
+    background: #5d9dff;
+    bottom: 10%;
+    right: 5%;
+    animation-delay: 3s;
+}
+
+.bg-circle.circle-3 {
+    width: 200px;
+    height: 200px;
+    background: #ec4899;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-delay: 6s;
+}
+
+.gallery-item {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.gallery-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.gallery-item:hover::after {
+    background: rgba(0,0,0,0.1);
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Set Navigation Buttons */
+.set-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(212, 175, 55, 0.7);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    cursor: pointer;
+    color: #0f172a;
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.set-nav-btn:hover {
+    background: var(--prem-gold);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev-set-btn {
+    left: 15px;
+}
+
+.next-set-btn {
+    right: 15px;
+}
+
+.rotating-gallery:hover .set-nav-btn {
+    opacity: 1;
+}
+
+/* Full Gallery Modal Dark Theme */
+#fullGalleryModal .modal-content {
+    background: #0f172a;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+#fullGalleryModal .modal-header,
+#fullGalleryModal .modal-footer {
+    border-color: rgba(255,255,255,0.1);
+}
+
+#fullGalleryModal .gallery-item {
+    height: 200px;
+}
+
+/* Animations */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+    }
+    50% {
+        transform: translateY(-20px) translateX(20px);
+    }
+}
+</style>
 </head>
+
+
 
 <body>
         <!-- Navigation Bar -->
@@ -218,14 +378,21 @@
     </div>
 </section>
 
-<!-- ===== Premium Gallery Section ===== -->
+
 <!-- ===== Gallery Section ===== -->
-<!-- ===== Gallery Section ===== -->
-<section id="gallery" class="py-5">
-    <div class="container">
+<section id="gallery" class="py-5 position-relative overflow-hidden bg-dark">
+    <!-- Dynamic Background Elements -->
+    <div class="gallery-bg-elements">
+        <div class="bg-circle circle-1"></div>
+        <div class="bg-circle circle-2"></div>
+        <div class="bg-circle circle-3"></div>
+        <div class="bg-blur"></div>
+    </div>
+
+    <div class="container position-relative">
         <div class="text-center mb-5">
-            <h2 class="display-5 fw-bold">Photo Gallery</h2>
-            <p>~ Life at Premangan</p>
+            <h2 class="display-5 fw-bold text-light">Photo Gallery</h2>
+            <p class="text-prem-light">~ Life at Premangan</p>
         </div>
 
         <!-- Rotating Gallery with Navigation -->
@@ -240,20 +407,12 @@
                 <i class="fas fa-chevron-right"></i>
             </button>
 
-            <!-- Dynamic Toggle Button -->
+            <!-- View Full Gallery Button -->
             <div class="text-center mt-4">
-                <button id="galleryToggleBtn" class="btn btn-primary px-4 py-2">
-                    <span class="btn-icon">
-                        <i class="fas fa-images me-2"></i>
-                    </span>
-                    <span class="btn-text">View Full Gallery</span>
+                <button id="viewFullGalleryBtn" class="btn btn-prem px-4 py-2">
+                    <i class="fas fa-images me-2"></i> View Full Gallery
                 </button>
             </div>
-        </div>
-
-        <!-- Full Gallery Archive -->
-        <div id="fullGallery" class="full-gallery">
-            <div class="gallery-grid row g-3"></div>
         </div>
 
         <!-- Lightbox Modal -->
@@ -269,11 +428,28 @@
             </div>
             <div class="image-counter"></div>
         </div>
+
+        <!-- Full Gallery Modal -->
+        <div id="fullGalleryModal" class="modal fade" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content bg-dark text-light">
+                    <div class="modal-header border-bottom border-secondary">
+                        <h5 class="modal-title">Premangan Photo Gallery</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="gallery-grid row g-3"></div>
+                    </div>
+                    <div class="modal-footer border-top border-secondary">
+                        <button type="button" class="btn btn-prem" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
    <!-- Testimonials Section -->
-<!-- COMPLETELY ISOLATED TESTIMONIALS SECTION -->
 <section id="testimonials-fixed" 
          style="display: block !important; visibility: visible !important; 
                 opacity: 1 !important; position: relative !important;
@@ -709,6 +885,278 @@ function submitAdmissionForm(formData) {
     });
 }
 
+
+
+
+// Initialize lightbox for facility images
+function initFacilityLightbox() {
+    // Load fslightbox script dynamically if not already loaded
+    if (!document.querySelector('script[src*="fslightbox"]')) {
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.3.1/index.min.js';
+        document.body.appendChild(script);
+    }
+}
+
+// Add to your DOMContentLoaded event
+document.addEventListener('DOMContentLoaded', function() {
+    initFacilityLightbox();
+    // ... keep your existing code
+});
+
+    
+// Bulletproof Testimonials Carousel - No Dependencies
+document.addEventListener('DOMContentLoaded', function() {
+    const carousel = document.querySelector('#testimonials-fixed .testimonial-carousel');
+    if (!carousel) return;
+    
+    const track = carousel.querySelector('.carousel-track');
+    const items = carousel.querySelectorAll('.testimonial-card');
+    const prevBtn = carousel.querySelector('.carousel-prev');
+    const nextBtn = carousel.querySelector('.carousel-next');
+    
+    let currentIndex = 0;
+    const itemWidth = items[0].offsetWidth;
+    
+    function updateCarousel() {
+        track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+    }
+    
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % items.length;
+        updateCarousel();
+    }
+    
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + items.length) % items.length;
+        updateCarousel();
+    }
+    
+    // Button events
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+    
+    // Auto-rotate if more than one item
+    if (items.length > 1) {
+        setInterval(nextSlide, 5000);
+    }
+    
+    // Initial positioning
+    updateCarousel();
+    
+    // Force visibility (final guarantee)
+    const section = document.getElementById('testimonials-fixed');
+    if (section) {
+        section.style.display = 'block';
+        section.style.visibility = 'visible';
+        section.style.opacity = '1';
+    }
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Elements
+    const gallerySet = document.querySelector('.gallery-set');
+    const viewFullBtn = document.getElementById('viewFullGalleryBtn');
+    const fullGalleryModal = new bootstrap.Modal(document.getElementById('fullGalleryModal'));
+    const prevSetBtn = document.querySelector('.prev-set-btn');
+    const nextSetBtn = document.querySelector('.next-set-btn');
+    const lightbox = document.getElementById('galleryLightbox');
+    const lightboxImg = document.querySelector('.lightbox-img');
+    const closeBtn = document.querySelector('.close-btn');
+    const downloadBtn = document.querySelector('.download-btn');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    const imageCounter = document.querySelector('.image-counter');
+
+    // Variables
+    let allImages = [];
+    let currentSet = 0;
+    let currentImageIndex = 0;
+    let rotationInterval;
+    let lightboxInterval;
+
+    // Dynamic background animation
+    function animateBackground() {
+        const circles = document.querySelectorAll('.bg-circle');
+        circles.forEach((circle, index) => {
+            const speed = 0.0005 * (index + 1);
+            const time = Date.now() * speed;
+            const x = Math.sin(time) * 50;
+            const y = Math.cos(time) * 30;
+            
+            circle.style.transform = `translate(${x}px, ${y}px)`;
+        });
+        
+        requestAnimationFrame(animateBackground);
+    }
+
+    // Start background animation
+    animateBackground();
+
+    function loadGallery() {
+        // Define your image filenames
+        const imageFiles = [
+            '1.jpg', '2.jpg', '3.jpeg', '4.jpeg', 
+            '5.jpg', '6.jpeg', '7.jpeg', '8.jpeg',
+            '9.jpeg', '10.jpeg', '11.jpeg', '12.jpeg', 
+            '13.jpeg', '14.jpeg', '15.jpeg', '16.jpeg',
+            '17.jpeg', '18.jpeg', '19.jpeg', '20.jpg', 
+            '21.jpeg', '22.jpeg', '23.jpg', '24.jpg',
+            '25.jpeg', '26.jpeg', '27.jpeg', '28.jpeg', 
+            '29.jpeg', '30.jpeg', '31.jpeg', '32.jpeg',
+            '33.jpeg', '34.jpeg', '35.jpeg', '36.jpeg', 
+            '37.jpeg', '38.jpeg', '39.jpeg', '40.jpeg',
+            '41.jpeg', '42.jpeg', '43.jpeg', '44.jpeg', 
+            '45.jpeg', '46.jpeg', '47.jpeg', '48.jpeg', 
+            '49.jpeg', '50.jpg', '51.jpg', '52.jpg',
+            '53.jpg', '54.jpg', '55.jpg', '56.jpeg', 
+            '57.jpeg', '58.jpeg', '59.jpeg', '60.jpeg',
+            '61.jpeg', '62.jpeg', '63.jpeg', '64.jpeg',
+            '65.jpeg', '66.jpeg', '67.jpeg', '68.jpeg', 
+            '69.jpeg', '70.jpeg', '71.jpeg', '72.jpeg',
+            '73.jpeg', '74.jpeg', '75.jpeg', '76.jpeg', 
+            '77.jpeg', '78.jpeg', '79.jpeg', '80.jpeg',
+            '81.jpeg', '82.jpeg', '83.jpeg', '84.jpeg',
+            '85.jpeg', '86.jpeg', '87.jpeg', '88.jpeg', 
+            '89.jpeg', '90.jpeg', '91.jpeg', '92.jpeg',
+            '93.jpeg', '94.jpeg', '95.jpeg', '96.jpeg', 
+            '97.jpeg', '98.jpeg', '99.jpeg', '100.jpeg'
+        ];
+        
+        // Load all images
+        imageFiles.forEach((filename, index) => {
+            const imgPath = `images/premangan/gallery/${filename}`;
+            allImages.push(imgPath);
+            
+            // Add to modal gallery grid
+            const gridItem = document.createElement('div');
+            gridItem.className = 'col-6 col-md-4 col-lg-3 gallery-item';
+            gridItem.innerHTML = `<img src="${imgPath}" alt="Gallery Image ${index + 1}" class="img-fluid rounded shadow" loading="lazy">`;
+            document.querySelector('.modal-body .gallery-grid').appendChild(gridItem);
+            
+            gridItem.addEventListener('click', () => {
+                fullGalleryModal.hide();
+                openLightbox(index);
+            });
+        });
+
+        // Start rotating sets
+        rotateImageSet();
+        rotationInterval = setInterval(rotateImageSet, 3000);
+    }
+
+    // Rotate sets of images
+    function rotateImageSet() {
+        gallerySet.innerHTML = '';
+        const setSize = window.innerWidth < 768 ? 2 : (window.innerWidth < 1200 ? 3 : 4);
+        const startIdx = currentSet * setSize % allImages.length;
+        
+        for (let i = 0; i < setSize; i++) {
+            const imgIdx = (startIdx + i) % allImages.length;
+            const imgPath = allImages[imgIdx];
+            
+            const item = document.createElement('div');
+            item.className = 'col gallery-item';
+            item.innerHTML = `<img src="${imgPath}" alt="Gallery Image" class="img-fluid rounded shadow">`;
+            gallerySet.appendChild(item);
+            
+            item.addEventListener('click', () => {
+                clearInterval(rotationInterval);
+                openLightbox(imgIdx);
+            });
+        }
+    }
+
+    // Manual set navigation
+    function navigateSet(direction) {
+        const setSize = window.innerWidth < 768 ? 2 : (window.innerWidth < 1200 ? 3 : 4);
+        currentSet = (currentSet + direction + Math.ceil(allImages.length / setSize)) % Math.ceil(allImages.length / setSize);
+        clearInterval(rotationInterval);
+        rotateImageSet();
+        
+        // Restart auto-rotation after manual navigation
+        rotationInterval = setInterval(rotateImageSet, 5000);
+    }
+
+    // Lightbox functions
+    function openLightbox(index) {
+        currentImageIndex = index;
+        lightbox.style.display = 'flex';
+        lightboxImg.src = allImages[currentImageIndex];
+        updateCounter();
+        
+        // Pause auto-rotation
+        clearInterval(rotationInterval);
+        
+        // Start lightbox auto-slide
+        lightboxInterval = setInterval(nextImage, 3000);
+    }
+
+    function closeLightbox() {
+        lightbox.style.display = 'none';
+        clearInterval(lightboxInterval);
+        
+        // Restart rotation after delay
+        setTimeout(() => {
+            rotationInterval = setInterval(rotateImageSet, 3000);
+        }, 1000);
+    }
+
+    function nextImage() {
+        currentImageIndex = (currentImageIndex + 1) % allImages.length;
+        lightboxImg.src = allImages[currentImageIndex];
+        updateCounter();
+    }
+
+    function prevImage() {
+        currentImageIndex = (currentImageIndex - 1 + allImages.length) % allImages.length;
+        lightboxImg.src = allImages[currentImageIndex];
+        updateCounter();
+    }
+
+    function updateCounter() {
+        imageCounter.textContent = `${currentImageIndex + 1}/${allImages.length}`;
+    }
+
+    function downloadImage() {
+        const link = document.createElement('a');
+        link.href = allImages[currentImageIndex];
+        link.download = `premangan-${currentImageIndex + 1}.jpg`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+    // Event listeners
+    viewFullBtn.addEventListener('click', () => {
+        clearInterval(rotationInterval);
+        fullGalleryModal.show();
+    });
+    
+    fullGalleryModal._element.addEventListener('hidden.bs.modal', () => {
+        rotationInterval = setInterval(rotateImageSet, 5000);
+    });
+    
+    prevSetBtn.addEventListener('click', () => navigateSet(-1));
+    nextSetBtn.addEventListener('click', () => navigateSet(1));
+    closeBtn.addEventListener('click', closeLightbox);
+    downloadBtn.addEventListener('click', downloadImage);
+    prevBtn.addEventListener('click', prevImage);
+    nextBtn.addEventListener('click', nextImage);
+
+    // Keyboard controls
+    document.addEventListener('keydown', (e) => {
+        if (lightbox.style.display === 'flex') {
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') nextImage();
+            if (e.key === 'ArrowLeft') prevImage();
+        }
+    });
+
+    // Initialize
+    loadGallery();
+});
 </script>
 
 

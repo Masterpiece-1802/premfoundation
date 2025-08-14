@@ -1340,61 +1340,36 @@
         </div>
     </section>
 
-    <!-- Donation Tiers Section -->
-    <section class="donation-section" id="donation-tiers">
-        <div class="section-title">
-            <h2>Donation Tiers</h2>
-            <p>Choose a giving level that resonates with you</p>
-        </div>
-
-        <div class="donation-tiers">
-            <div class="tier-card bronze">
-                <h3>Hope Giver</h3>
-                <div class="amount">₹500/-</div>
-                <ul class="benefits">
-                    <li>Supports one child's education for a month</li>
-                    <li>Provides 10 nutritious meals</li>
-                    <li>Tax exemption certificate</li>
-                    <li>Thank you letter</li>
-                </ul>
-                <button class="donate-btn" data-amount="500">Donate Now</button>
-            </div>
-
-            <div class="tier-card silver">
-                <h3>Change Maker</h3>
-                <div class="amount">₹2,500/-</div>
-                <ul class="benefits">
-                    <li>Supports a woman's vocational training</li>
-                    <li>Provides healthcare for 5 elderly</li>
-                    <li>Tax exemption certificate</li>
-                    <li>Personalized thank you video</li>
-                    <li>Quarterly impact report</li>
-                </ul>
-                <button class="donate-btn" data-amount="2500">Donate Now</button>
-            </div>
-
-            <div class="tier-card gold">
-                <h3>Visionary</h3>
-                <div class="amount">₹10,000/-</div>
-                <ul class="benefits">
-                    <li>Sponsors a child's education for a year</li>
-                    <li>Funds a community health camp</li>
-                    <li>Tax exemption certificate</li>
-                    <li>Invitation to annual donor event</li>
-                    <li>Personal impact assessment</li>
-                    <li>Featured on our donor wall</li>
-                </ul>
-                <button class="donate-btn" data-amount="10000">Donate Now</button>
-            </div>
-        </div>
-    </section>
-
     <!-- Premangan Special Section -->
     <section class="premangan-section">
         <div class="premangan-card">
             <h2>Premangan - Our Old Age Home Project</h2>
             <p>We're building <span class="highlight">Premangan</span>, a sanctuary for the elderly in Igatpuri. With your support, we can create a loving home for those who need it most.</p>
-            <p>Donate <span class="highlight">₹50,000/-</span> or more to name a room in our facility. Your chosen name will be permanently displayed, creating a lasting legacy of your generosity.</p>
+            <p>Donate <span class="highlight">₹50,000/-</span> or more to name a room in our facility. Your chosen name will be permanently displayed, creating a lasting legacy of your generosity.</p><div class="project-gallery" style="margin: 20px 0; text-align: center;">
+    <div class="project-gallery" style="margin: 20px 0; text-align: center;">
+    <div class="gallery-container" style="position: relative; height: 250px; display: flex; justify-content: center; align-items: center;">
+        <img src="images/donate/1.jpeg" class="active gallery-image" 
+             style="max-width: 100%; max-height: 250px; object-fit: contain; margin: 0 5px; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); transition: opacity 1s ease-in-out; opacity: 1; cursor: pointer;">
+        <img src="images/donate/2.jpeg" class="gallery-image" 
+             style="max-width: 100%; max-height: 250px; object-fit: contain; margin: 0 5px; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); transition: opacity 1s ease-in-out; opacity: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); cursor: pointer;">
+        <img src="images/donate/3.jpeg" class="gallery-image" 
+             style="max-width: 100%; max-height: 250px; object-fit: contain; margin: 0 5px; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); transition: opacity 1s ease-in-out; opacity: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); cursor: pointer;">
+        <img src="images/donate/4.jpeg" class="gallery-image" 
+             style="max-width: 100%; max-height: 250px; object-fit: contain; margin: 0 5px; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); transition: opacity 1s ease-in-out; opacity: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); cursor: pointer;">
+        <img src="images/donate/5.jpeg" class="gallery-image" 
+             style="max-width: 100%; max-height: 250px; object-fit: contain; margin: 0 5px; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); transition: opacity 1s ease-in-out; opacity: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); cursor: pointer;">
+        <img src="images/donate/6.jpeg" class="gallery-image" 
+             style="max-width: 100%; max-height: 250px; object-fit: contain; margin: 0 5px; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); transition: opacity 1s ease-in-out; opacity: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); cursor: pointer;">
+    </div>
+</div>
+
+<!-- Image Modal -->
+<div class="modal" id="imageModal">
+    <span class="close-modal">&times;</span>
+    <img class="modal-content" id="enlargedImage" style="max-width: 90%; max-height: 90%; margin: auto; display: block;">
+</div>
+<br>
+<div>
             <button class="donate-btn premangan-btn" data-amount="50000">Name a Room at Premangan</button>
         </div>
     </section>
@@ -1410,7 +1385,7 @@
             <div class="qr-code-container">
                 <div class="qr-code">
                     <!-- Replace with your actual QR code image -->
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://premfoundation.org/donate" alt="Scan to Donate">
+                    <img src="images/donate/qrcode.jpeg" alt="Scan to Donate">
                 </div>
                 <p style="margin-top: 1rem;">Scan QR code to donate via UPI</p>
             </div>
@@ -1454,28 +1429,31 @@
                     </button>
                 </p>
                 
-                <p style="margin-top: 1.5rem;"><strong>For 80G receipt:</strong> Please email your transaction details to donations@premfoundation.org with your PAN number.</p>
+                <p style="margin-top: 1.5rem;"><strong>For 80G receipt:</strong> Please email your PAN number and your transaction details to premfoundation2012@gmail.com.</p>
             </div>
         </div>
     </section>
+
+
+
 
     <!-- 80G Tax Benefits Section -->
     <section class="tax-benefits">
         <div class="section-title">
             <h2>80G Tax Benefits</h2>
-            <p>Your donations qualify for 50% tax exemption under Section 80G</p>
+            <p>Your donations qualify for tax exemption under Section 80G</p>
         </div>
 
         <div class="benefits-grid">
             <div class="benefit-card">
                 <i class="fas fa-percentage"></i>
                 <h3>50% Tax Deduction</h3>
-                <p>Under Section 80G of the Income Tax Act, you can claim 50% of your donation amount as tax deduction.</p>
+                <p>Under Section 80G of the Income Tax Act, you can claim tax deduction on your donation amount.</p>
             </div>
             <div class="benefit-card">
                 <i class="fas fa-file-invoice"></i>
-                <h3>Instant Certificate</h3>
-                <p>Receive your 80G tax exemption certificate immediately after donation via email.</p>
+                <h3>Instant Invoice Generation</h3>
+                <p>Receive your payment invoice immediately after processing donation.</p>
             </div>
             <div class="benefit-card">
                 <i class="fas fa-rupee-sign"></i>
@@ -1520,7 +1498,7 @@
     <section class="cta-section">
         <div class="cta-content">
             <h2>Have Questions About Donating?</h2>
-            <p>Our team is here to help you with any questions you might have about the donation process, tax benefits, or our initiatives.</p>
+            <p>We are here to help you with any questions you might have about the donation process, tax benefits, or our initiatives.</p>
             <a href="contact.html" class="btn-outline get-in-touch-btn">Get In Touch</a>
         </div>
     </section>
@@ -2043,5 +2021,52 @@ function submitDonationForm(formData, isFailure = false) {
     });
 }
     </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Image gallery cycling
+        const images = document.querySelectorAll('.gallery-image');
+        let currentIndex = 0;
+        
+        function cycleImages() {
+            // Hide current image
+            images[currentIndex].style.opacity = '0';
+            
+            // Move to next image
+            currentIndex = (currentIndex + 1) % images.length;
+            
+            // Show next image
+            images[currentIndex].style.opacity = '1';
+        }
+        
+        // Change image every 3 seconds
+        setInterval(cycleImages, 3000);
+        
+        // Click to enlarge functionality
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('enlargedImage');
+        const closeModal = document.querySelector('#imageModal .close-modal');
+        
+        images.forEach(img => {
+            img.addEventListener('click', function() {
+                modal.style.display = 'flex';
+                modalImg.src = this.src;
+                modal.classList.add('active');
+            });
+        });
+        
+        closeModal.addEventListener('click', function() {
+            modal.classList.remove('active');
+            modal.style.display = 'none';
+        });
+        
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.classList.remove('active');
+                modal.style.display = 'none';
+            }
+        });
+    });
+</script>
 </body>
 </html>

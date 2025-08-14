@@ -729,6 +729,148 @@
   color: #000;
 }
 
+/* Advanced Documents Section */
+.advanced-documents-section {
+    background: linear-gradient(135deg, #0a0e1a 0%, #1a2030 100%);
+    overflow: hidden;
+    z-index: 1;
+}
+
+#documentsParticles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.document-card-advanced {
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: none;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    background: rgba(30, 35, 50, 0.7);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+}
+
+.document-card-advanced:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(212, 175, 55, 0.2);
+    border-color: rgba(212, 175, 55, 0.4);
+}
+
+.document-card-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+}
+
+.document-card-advanced:hover .document-card-glow {
+    opacity: 1;
+}
+
+.document-icon-container {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(244, 229, 194, 0.2) 100%);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.document-icon-container::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--gold-light);
+    border-radius: 10px;
+    animation: pulse 3s infinite;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.document-card-advanced:hover .document-icon-container::before {
+    opacity: 0.5;
+}
+
+.document-icon {
+    font-size: 1.5rem;
+    color: var(--gold);
+    transition: all 0.3s ease;
+}
+
+.document-card-advanced:hover .document-icon {
+    transform: scale(1.2);
+}
+
+.btn-gold {
+    background-color: var(--gold);
+    color: var(--dark-1);
+    border: none;
+    font-weight: 600;
+}
+
+.btn-outline-gold {
+    background-color: transparent;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+}
+
+.btn-outline-gold:hover {
+    background-color: var(--gold);
+    color: var(--dark-1);
+}
+
+.btn-hover-glow {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-hover-glow::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.4) 0%, transparent 70%);
+    transform: scale(0);
+    transition: transform 0.6s ease;
+    z-index: 0;
+}
+
+.btn-hover-glow:hover::before {
+    transform: scale(1);
+}
+
+.text-gold {
+    color: var(--gold) !important;
+}
+
+@keyframes floatParticle {
+    0% { transform: translateY(0) translateX(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-100vh) translateX(20px); opacity: 0; }
+}
+
 
     </style>
 </head>
@@ -1130,6 +1272,110 @@
                 </div>
             </div>
         </div>
+
+        <!-- Advanced Documents Section -->
+        <section class="advanced-documents-section py-5 position-relative">
+            <div id="documentsParticles"></div>
+            <div class="container py-5 position-relative">
+                <h2 class="text-center mb-5 fw-bold section-title" data-aos="fade-up">Resource Library</h2>
+                <p class="text-center mb-5 text-gold mx-auto" style="max-width: 700px;" data-aos="fade-up" data-aos-delay="100">
+                    Explore our comprehensive collection of resources, reports, and presentations
+                </p>
+                <div class="row g-4">
+                    <!-- Document 1 -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card h-100 document-card-advanced">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="document-icon-container">
+                                        <i class="fas fa-file-pdf document-icon"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="h5 mb-0 text-white">Project Proposal</h3>
+                                        <small class="text-white">PDF • 2.1 MB</small>
+                                    </div>
+                                </div>
+                                <p class="mb-4 text-white">Detailed proposal for our upcoming community development initiative.</p>
+                                <div class="d-flex gap-2">
+                                    <a href="documents/project-proposal.pdf" class="btn btn-sm btn-outline-gold" download>
+                                        <i class="fas fa-download me-2"></i>Download
+                                    </a>
+                                    <button class="btn btn-sm btn-gold preview-btn" data-pdf="documents/project-proposal.pdf">
+                                        <i class="fas fa-eye me-2"></i>Preview
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="document-card-glow"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Document 2 -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                        <div class="card h-100 document-card-advanced">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="document-icon-container">
+                                        <i class="fas fa-file-powerpoint document-icon"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="h5 mb-0 text-white">Impact Presentation</h3>
+                                        <small class="text-white">PPT • 5.4 MB</small>
+                                    </div>
+                                </div>
+                                <p class="mb-4 text-white">Visual presentation of our 5-year impact metrics and success stories.</p>
+                                <div class="d-flex gap-2">
+                                    <a href="documents/impact-presentation.pptx" class="btn btn-sm btn-outline-gold" download>
+                                        <i class="fas fa-download me-2"></i>Download
+                                    </a>
+                                    <button class="btn btn-sm btn-gold preview-btn" data-pdf="documents/impact-presentation.pdf">
+                                        <i class="fas fa-eye me-2"></i>Preview
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="document-card-glow"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Document 3 -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                        <div class="card h-100 document-card-advanced">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="document-icon-container">
+                                        <i class="fas fa-file-word document-icon"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="h5 mb-0 text-white">Program Guidelines</h3>
+                                        <small class="text-white">DOCX • 1.7 MB</small>
+                                    </div>
+                                </div>
+                                <p class="mb-4 text-white">Comprehensive guide for volunteers and community partners.</p>
+                                <div class="d-flex gap-2">
+                                    <a href="documents/program-guidelines.docx" class="btn btn-sm btn-outline-gold" download>
+                                        <i class="fas fa-download me-2"></i>Download
+                                    </a>
+                                    <button class="btn btn-sm btn-gold preview-btn" data-pdf="documents/program-guidelines.pdf">
+                                        <i class="fas fa-eye me-2"></i>Preview
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="document-card-glow"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- View More Button -->
+                <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="500">
+                    <button class="btn btn-gold btn-hover-glow" id="loadMoreDocuments">
+                        <i class="fas fa-folder-open me-2"></i>Explore More Resources
+                    </button>
+                    <div id="moreDocuments" class="row g-4 mt-4 d-none">
+                        <!-- Additional documents will load here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- Footer -->
@@ -1270,25 +1516,14 @@
       { filename: '42.jpeg', type: 'image' },
       { filename: '37.jpeg', type: 'image' },
       { filename: '13.jpg', type: 'image' },
-      { filename: '57.jpeg', type: 'image' },
       { filename: '43.jpeg', type: 'image' },
-      { filename: '50.jpeg', type: 'image' },
       { filename: '44.jpeg', type: 'image' },
-      { filename: '45.jpeg', type: 'image' },
-      { filename: '46.jpeg', type: 'image' },
-      { filename: '47.jpeg', type: 'image' },
-      { filename: '53.jpeg', type: 'image' },
-      { filename: '54.jpeg', type: 'image' },
       { filename: '21.jpeg', type: 'image' },
       { filename: '22.jpeg', type: 'image' },
       { filename: '23.jpeg', type: 'image' },
       { filename: '24.jpeg', type: 'image' },
       { filename: '25.jpeg', type: 'image' },
       { filename: '26.jpeg', type: 'image' },
-      { filename: '48.jpeg', type: 'image' },
-      { filename: '49.jpeg', type: 'image' },
-      { filename: '51.jpeg', type: 'image' },
-      { filename: '52.jpeg', type: 'image' },
       { filename: '27.jpeg', type: 'image' },
       { filename: '28.jpeg', type: 'image' },
       { filename: '29.jpeg', type: 'image' },
@@ -1319,17 +1554,7 @@
       { filename: '17.jpeg', type: 'image' },
       { filename: '18.jpeg', type: 'image' },
       { filename: '19.jpeg', type: 'image' },
-      { filename: '55.jpeg', type: 'image' },
-      { filename: '56.jpeg', type: 'image' },
-      { filename: '58.jpeg', type: 'image' },
-      { filename: '59.jpeg', type: 'image' },
-      { filename: '60.jpeg', type: 'image' },
-      { filename: '61.jpeg', type: 'image' },
-      { filename: '64.jpeg', type: 'image' },
-      { filename: '62.jpeg', type: 'image' },
-      { filename: '63.jpeg', type: 'image' },
-      { filename: '65.jpeg', type: 'image' },
-      { filename: '66.jpeg', type: 'image' }
+      { filename: '45.jpeg', type: 'image' }
       // Add more files here
     ];
 
@@ -1545,6 +1770,160 @@
       });
     });
   });
+
+    // Particles for Documents Section
+    function initDocumentParticles() {
+        const container = document.getElementById('documentsParticles');
+        if (!container) return;
+        
+        const particleCount = 30;
+        const colors = ['rgba(212, 175, 55, 0.5)', 'rgba(244, 229, 194, 0.3)', 'rgba(255, 255, 255, 0.2)'];
+        
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'document-particle';
+            
+            // Random properties
+            const size = Math.random() * 5 + 2;
+            const posX = Math.random() * 100;
+            const delay = Math.random() * 15;
+            const duration = Math.random() * 15 + 10;
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            
+            particle.style.cssText = `
+                width: ${size}px;
+                height: ${size}px;
+                background: ${color};
+                border-radius: 50%;
+                position: absolute;
+                bottom: -10px;
+                left: ${posX}%;
+                animation: floatParticle ${duration}s linear ${delay}s infinite;
+                z-index: 0;
+            `;
+            
+            container.appendChild(particle);
+        }
+    }
+
+    // Initialize particles when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        initDocumentParticles();
+        
+        // Load More Documents functionality (updated)
+        const moreDocsBtn = document.getElementById('loadMoreDocuments');
+        if (moreDocsBtn) {
+            moreDocsBtn.addEventListener('click', function () {
+                const moreDocsDiv = document.getElementById('moreDocuments');
+                const btn = this;
+
+                if (moreDocsDiv.classList.contains('d-none')) {
+                    btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Loading...';
+                    btn.disabled = true;
+
+                    setTimeout(() => {
+                        moreDocsDiv.innerHTML = `
+                            <!-- Document 4 -->
+                            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                                <div class="card h-100 document-card-advanced">
+                                    <div class="card-body p-4">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <div class="document-icon-container">
+                                                <i class="fas fa-file-excel document-icon"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="h5 mb-0 text-white">Financial Data</h3>
+                                                <small class="text-white">XLSX • 3.2 MB</small>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex gap-2">
+                                            <a href="documents/financial-data.xlsx" class="btn btn-sm btn-outline-gold" download>
+                                                <i class="fas fa-download me-2"></i>Download
+                                            </a>
+                                            <button class="btn btn-sm btn-gold preview-btn" data-pdf="documents/financial-data.pdf">
+                                                <i class="fas fa-eye me-2"></i>Preview
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="document-card-glow"></div>
+                                </div>
+                            </div>
+
+                            <!-- Document 5 -->
+                            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                                <div class="card h-100 document-card-advanced">
+                                    <div class="card-body p-4">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <div class="document-icon-container">
+                                                <i class="fas fa-file-pdf document-icon"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="h5 mb-0 text-white">Case Studies</h3>
+                                                <small class="text-white">PDF • 4.5 MB</small>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex gap-2">
+                                            <a href="documents/case-studies.pdf" class="btn btn-sm btn-outline-gold" download>
+                                                <i class="fas fa-download me-2"></i>Download
+                                            </a>
+                                            <button class="btn btn-sm btn-gold preview-btn" data-pdf="documents/case-studies.pdf">
+                                                <i class="fas fa-eye me-2"></i>Preview
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="document-card-glow"></div>
+                                </div>
+                            </div>
+
+                            <!-- Document 6 -->
+                            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                                <div class="card h-100 document-card-advanced">
+                                    <div class="card-body p-4">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <div class="document-icon-container">
+                                                <i class="fas fa-file-word document-icon"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="h5 mb-0 text-white">Volunteer Handbook</h3>
+                                                <small class="text-white">DOCX • 2.8 MB</small>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex gap-2">
+                                            <a href="documents/volunteer-handbook.docx" class="btn btn-sm btn-outline-gold" download>
+                                                <i class="fas fa-download me-2"></i>Download
+                                            </a>
+                                            <button class="btn btn-sm btn-gold preview-btn" data-pdf="documents/volunteer-handbook.pdf">
+                                                <i class="fas fa-eye me-2"></i>Preview
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="document-card-glow"></div>
+                                </div>
+                            </div>
+                        `;
+                        moreDocsDiv.classList.remove('d-none');
+                        btn.innerHTML = '<i class="fas fa-chevron-up me-2"></i> Show Less';
+                        btn.disabled = false;
+
+                        AOS.refresh();
+
+                        // Wire up preview buttons for new documents
+                        moreDocsDiv.querySelectorAll('.preview-btn').forEach(newBtn => {
+                            newBtn.addEventListener('click', function() {
+                                const pdfUrl = this.getAttribute('data-pdf');
+                                document.getElementById('pdfPreview').src = pdfUrl + '#view=fitH';
+                                document.getElementById('pdfDownloadBtn').href = pdfUrl;
+                                new bootstrap.Modal(document.getElementById('pdfModal')).show();
+                            });
+                        });
+                    }, 800);
+                } else {
+                    moreDocsDiv.classList.add('d-none');
+                    btn.innerHTML = '<i class="fas fa-folder-open me-2"></i> Explore More Resources';
+                }
+            });
+        }
+    });
 </script>
 
 </body>

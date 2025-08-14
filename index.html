@@ -798,7 +798,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const imageConfig = {
         folder: 'images/journey', // Folder where images are stored
         extensions: ['jpeg', 'jpg', 'png'], // Supported image extensions
-        count: 300, // Total number of images available
+        count: 237, // Total number of images available
         prefix: '', // Prefix for filenames (if any)
         startIndex: 1 // Starting index for numbered files
     };
@@ -861,7 +861,7 @@ document.addEventListener('DOMContentLoaded', function() {
             currentMediaItems.push(mediaItem);
             
             // Only load first few items for performance
-            if (i <= (type === 'photos' ? 20 : 6)) {
+            if (i <= (type === 'photos' ? 30 : 6)) {
                 createSlide(mediaItem, i <= 1); // Only first 1 are visible initially
             }
         }

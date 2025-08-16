@@ -555,6 +555,10 @@ body {
                 <button class="btn btn-sm btn-outline-light position-absolute top-0 end-0 m-3" id="downloadMedia" title="Download">
                     <i class="fas fa-download"></i>
                 </button>
+                <!-- Fullscreen Button (custom) -->
+                <button class="btn btn-sm btn-outline-light position-absolute top-0 end-0 m-3" id="fullscreenMedia" title="Fullscreen">
+                    <i class="fas fa-expand"></i>
+                </button>
                 <!-- Media Content -->
                 <div class="lightbox-content" id="lightboxContent"></div>
             </div>
@@ -883,29 +887,33 @@ document.addEventListener('DOMContentLoaded', function() {
             showPhotosBtn.classList.add('btn-outline-prem');
         }
         
-        // Initialize slider if not already initialized
-        if (!window.gallerySliderInitialized) {
-            initSlider();
-            window.gallerySliderInitialized = true;
-        }
+    // Initialize or reinitialize slider after items are rendered
+    // This ensures navigation and play handlers are bound for the current media set
+    try { initSlider(); } catch (e) { console.error('initSlider error', e); }
     }
     
     // Create a slide (both main and thumbnail)
     function createSlide(mediaItem, isActive = false) {
         const slideIndex = mediaItem.index;
         const isVideo = mediaItem.type === 'videos';
-        
-        // Main slide
+
+        // Main slide - for videos we render a placeholder with a rich play CTA
         const slide = document.createElement('div');
         slide.className = `slide ${isActive ? 'active' : ''}`;
         slide.dataset.index = slideIndex;
-        
+
         if (isVideo) {
             slide.innerHTML = `
-                <video class="w-100 h-100" autoplay loop muted playsinline>
-                    <source src="${mediaItem.path}" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+                <div class="video-placeholder position-relative" data-video="${mediaItem.path}">
+                    <video class="w-100 h-100 preview-video object-fit-cover" muted playsinline autoplay loop preload="metadata">
+                        <source src="${mediaItem.path}" type="video/mp4">
+                    </video>
+                    <div class="video-overlay d-flex align-items-center justify-content-center">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                </div>
                 <div class="slide-caption">${mediaItem.caption}</div>
             `;
         } else {
@@ -914,111 +922,124 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="slide-caption">${mediaItem.caption}</div>
             `;
         }
-        
+
         mainSlider.appendChild(slide);
-        
+
         // Thumbnail
         const thumb = document.createElement('div');
         thumb.className = `thumb ${isActive ? 'active' : ''}`;
         thumb.dataset.index = slideIndex;
-        
+
         if (isVideo) {
+            // Add a small muted autoplay preview inside the thumbnail for visual feedback
             thumb.innerHTML = `
-                <div class="position-relative h-100">
-                    <video class="w-100 h-100" muted playsinline>
+                <div class="video-thumb position-relative h-100" data-video="${mediaItem.path}">
+                    <video class="w-100 h-100 object-fit-cover" muted playsinline autoplay loop preload="metadata">
                         <source src="${mediaItem.path}" type="video/mp4">
                     </video>
-                    <div class="position-absolute top-50 start-50 translate-middle">
-                        <i class="fas fa-play text-white bg-dark bg-opacity-50 rounded-circle p-2"></i>
+                    <div class="thumb-overlay d-flex align-items-center justify-content-center">
+                        <i class="fas fa-play text-white play-btn"></i>
                     </div>
                 </div>
             `;
         } else {
             thumb.innerHTML = `<img src="${mediaItem.path}" alt="Thumbnail ${slideIndex + 1}">`;
         }
-        
+
         thumbnailStrip.appendChild(thumb);
-        
-        // Modal slide (for fullscreen view)
+
+        // Modal slide (for fullscreen view) - we do not auto-play here; openLightbox will create and play the media
         const modalSlide = document.createElement('div');
         modalSlide.className = `modal-slide ${isActive ? 'active' : ''}`;
         modalSlide.dataset.index = slideIndex;
-        
+
         if (isVideo) {
-            modalSlide.innerHTML = `
-                <video controls autoplay loop class="w-100 h-100">
-                    <source src="${mediaItem.path}" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            `;
+            modalSlide.innerHTML = `<div class="modal-media-placeholder" data-video="${mediaItem.path}"></div>`;
         } else {
             modalSlide.innerHTML = `<img src="${mediaItem.path}" alt="Gallery Image ${slideIndex + 1}">`;
         }
-        
+
         modalSlides.appendChild(modalSlide);
     }
     
     // Initialize slider functionality
     function initSlider() {
+        // Clear any existing intervals/listeners by replacing nav buttons (safe reset)
+        const nextBtnOld = document.querySelector('.next-btn');
+        const prevBtnOld = document.querySelector('.prev-btn');
+        if (!nextBtnOld || !prevBtnOld) return;
+
+        const nextBtn = nextBtnOld.cloneNode(true);
+        nextBtnOld.parentNode.replaceChild(nextBtn, nextBtnOld);
+        const prevBtn = prevBtnOld.cloneNode(true);
+        prevBtnOld.parentNode.replaceChild(prevBtn, prevBtnOld);
+
         const slides = document.querySelectorAll('.slide');
         const thumbs = document.querySelectorAll('.thumb');
         let currentSlide = 0;
         let slideInterval;
-        
+
         if (slides.length === 0) return;
-        
+
         // Start autoplay
         function startSlideShow() {
+            clearInterval(slideInterval);
             slideInterval = setInterval(nextSlide, 3000);
         }
-        
+
         // Go to specific slide
         function goToSlide(n) {
-            slides[currentSlide].classList.remove('active');
-            thumbs[currentSlide].classList.remove('active');
-            document.querySelectorAll('.modal-slide')[currentSlide].classList.remove('active');
-            
+            // defensive checks
+            const modalSlidesAll = document.querySelectorAll('.modal-slide');
+            if (slides[currentSlide]) slides[currentSlide].classList.remove('active');
+            if (thumbs[currentSlide]) thumbs[currentSlide].classList.remove('active');
+            if (modalSlidesAll[currentSlide]) modalSlidesAll[currentSlide].classList.remove('active');
+
             currentSlide = (n + slides.length) % slides.length;
-            
-            slides[currentSlide].classList.add('active');
-            thumbs[currentSlide].classList.add('active');
-            document.querySelectorAll('.modal-slide')[currentSlide].classList.add('active');
+
+            if (slides[currentSlide]) slides[currentSlide].classList.add('active');
+            if (thumbs[currentSlide]) thumbs[currentSlide].classList.add('active');
+            if (modalSlidesAll[currentSlide]) modalSlidesAll[currentSlide].classList.add('active');
         }
-        
-        // Next slide
-        function nextSlide() {
-            goToSlide(currentSlide + 1);
-        }
-        
-        // Previous slide
-        function prevSlide() {
-            goToSlide(currentSlide - 1);
-        }
-        
+
+        // Next/Prev
+        function nextSlide() { goToSlide(currentSlide + 1); }
+        function prevSlide() { goToSlide(currentSlide - 1); }
+
         // Navigation arrows
-        document.querySelector('.next-btn').addEventListener('click', function() {
+        nextBtn.addEventListener('click', function() {
             clearInterval(slideInterval);
             nextSlide();
             startSlideShow();
         });
-        
-        document.querySelector('.prev-btn').addEventListener('click', function() {
+
+        prevBtn.addEventListener('click', function() {
             clearInterval(slideInterval);
             prevSlide();
             startSlideShow();
         });
-        
-        // Thumbnail click
+
+        // Thumbnail click (thumbs are freshly created so safe to bind)
         thumbs.forEach(thumb => {
-            thumb.addEventListener('click', function() {
+            thumb.addEventListener('click', function(e) {
+                // if clicked on a video play icon/placeholder we open lightbox instead
                 const index = parseInt(this.getAttribute('data-index'));
                 clearInterval(slideInterval);
                 goToSlide(index);
                 startSlideShow();
             });
         });
-        
-        // Start the slideshow
+
+        // Click on play overlay inside slides/thumbs should open lightbox
+        document.querySelectorAll('.video-placeholder, .video-thumb').forEach(el => {
+            el.addEventListener('click', function(e) {
+                const parent = this.closest('.slide, .thumb');
+                const index = parent ? parseInt(parent.getAttribute('data-index')) : null;
+                if (index !== null) openLightbox(index);
+            });
+        });
+
+        // Start
         startSlideShow();
     }
     
@@ -1042,14 +1063,18 @@ document.addEventListener('DOMContentLoaded', function() {
             showAllMediaModal();
         });
         
-        // Click on slides to open modal
+        // Click on slides to open modal (image slides)
         document.addEventListener('click', function(e) {
-            if (e.target.closest('.slide') || e.target.closest('.thumb')) {
-                const slide = e.target.closest('.slide') || e.target.closest('.thumb');
-                if (slide) {
-                    const index = parseInt(slide.getAttribute('data-index'));
-                    openLightbox(index);
-                }
+            // If clicking on a slide image (not the video placeholder), open lightbox
+            const slide = e.target.closest('.slide');
+            if (slide && !e.target.closest('.video-placeholder')) {
+                const index = parseInt(slide.getAttribute('data-index'));
+                openLightbox(index);
+            }
+            const thumb = e.target.closest('.thumb');
+            if (thumb && !e.target.closest('.video-thumb')) {
+                const index = parseInt(thumb.getAttribute('data-index'));
+                openLightbox(index);
             }
         });
     }
@@ -1108,20 +1133,31 @@ document.addEventListener('DOMContentLoaded', function() {
         const item = currentMediaItems[index];
         const lightboxContent = document.getElementById('lightboxContent');
         const downloadBtn = document.getElementById('downloadMedia');
-        
+
+        // Pause any other videos on the page (defensive)
+        // Pause any preview videos (thumbnails and slide previews) to avoid overlapping playback
+        document.querySelectorAll('.thumbnail-strip video, .video-thumb video, .video-placeholder video, .slide video, .preview-video').forEach(v => {
+            try { v.pause(); v.currentTime = 0; } catch(e) {}
+        });
+
         if (item.type === 'videos') {
-            lightboxContent.innerHTML = `
-                <video controls autoplay class="w-100" style="max-height: 80vh;">
-                    <source src="${item.path}" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            `;
+            // Create a nicely styled video element only inside the lightbox
+            lightboxContent.innerHTML = '';
+            const video = document.createElement('video');
+            video.setAttribute('controls', '');
+            video.className = 'w-100';
+            video.style.maxHeight = '80vh';
+            video.src = item.path;
+            video.autoplay = true;
+            video.playsInline = true;
+            video.controls = true;
+            lightboxContent.appendChild(video);
+
+            // Ensure fullscreen is usable by giving space to controls (CSS handled separately)
         } else {
-            lightboxContent.innerHTML = `
-                <img src="${item.path}" alt="Media ${index + 1}" class="img-fluid" style="max-height: 80vh;">
-            `;
+            lightboxContent.innerHTML = `\n                <img src="${item.path}" alt="Media ${index + 1}" class="img-fluid" style="max-height: 80vh; display:block; margin:0 auto;">\n            `;
         }
-        
+
         // Set up download
         downloadBtn.onclick = () => {
             const link = document.createElement('a');
@@ -1129,10 +1165,47 @@ document.addEventListener('DOMContentLoaded', function() {
             link.download = item.path.split('/').pop();
             link.click();
         };
-        
-        // Show the lightbox
-        const lightbox = new bootstrap.Modal(document.getElementById('mediaLightbox'));
-        lightbox.show();
+
+        // Fullscreen button wiring
+        const fsBtn = document.getElementById('fullscreenMedia');
+        if (fsBtn) {
+            // remove previous handler if any
+            fsBtn.onclick = null;
+            fsBtn.onclick = () => {
+                const vid = lightboxContent.querySelector('video');
+                if (!vid) return;
+                if (document.fullscreenElement) {
+                    document.exitFullscreen();
+                } else if (vid.requestFullscreen) {
+                    vid.requestFullscreen();
+                } else if (vid.webkitRequestFullscreen) {
+                    vid.webkitRequestFullscreen();
+                }
+            };
+        }
+
+        // When lightbox closes, stop/remove video to avoid background playback
+        const modalEl = document.getElementById('mediaLightbox');
+        const bsModal = new bootstrap.Modal(modalEl);
+
+        // Remove any previous handler to avoid duplicates
+        modalEl.removeEventListener('hidden.bs.modal', modalEl._videoCleanupHandler);
+
+        modalEl._videoCleanupHandler = function() {
+            // stop and remove video
+            const vid = lightboxContent.querySelector('video');
+            if (vid) {
+                try { vid.pause(); vid.src = ''; } catch(e) {}
+            }
+            lightboxContent.innerHTML = '';
+            // remove fullscreen button handler
+            const fsBtnCleanup = document.getElementById('fullscreenMedia');
+            if (fsBtnCleanup) fsBtnCleanup.onclick = null;
+        };
+
+        modalEl.addEventListener('hidden.bs.modal', modalEl._videoCleanupHandler);
+
+        bsModal.show();
     }
     
     // Initialize the gallery
@@ -1149,6 +1222,25 @@ document.addEventListener('DOMContentLoaded', function() {
             badge.style.opacity = '1';
         }, i * 200);
     });
+
+    // Defensive: ensure any gallery-modal (custom modal) stops background videos when closed/opened
+    const galleryModalEl = document.querySelector('.gallery-modal');
+    if (galleryModalEl) {
+        // when hiding, pause all videos in document
+        galleryModalEl.addEventListener('transitionend', () => {
+            if (getComputedStyle(galleryModalEl).display === 'none') {
+                document.querySelectorAll('video').forEach(v => { try { v.pause(); } catch(e){} });
+            }
+        });
+
+        // Clicking close should also pause
+        const gmClose = galleryModalEl.querySelector('.close-modal');
+        if (gmClose) gmClose.addEventListener('click', () => {
+            document.querySelectorAll('video').forEach(v => { try { v.pause(); } catch(e){} });
+            galleryModalEl.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+    }
 });
     </script>
 </body>

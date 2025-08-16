@@ -272,22 +272,47 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalSlidesContainer = document.querySelector('.modal-slides');
     const modalCaption = document.querySelector('.modal-caption');
     
-    // Prepare modal slides
-    slides.forEach((slide, index) => {
-        const imgSrc = slide.querySelector('img').src;
-        const caption = slide.querySelector('.slide-caption').textContent;
-        
-        const modalSlide = document.createElement('div');
-        modalSlide.className = 'modal-slide';
-        if (index === 0) modalSlide.classList.add('active');
-        
-        const img = document.createElement('img');
-        img.src = imgSrc;
-        img.alt = `Gallery Image ${index + 1}`;
-        
-        modalSlide.appendChild(img);
-        modalSlidesContainer.appendChild(modalSlide);
-    });
+    // Prepare modal slides (defensive: some slides may be video previews)
+    try {
+        if (modalSlidesContainer) {
+            slides.forEach((slide, index) => {
+                const modalSlide = document.createElement('div');
+                modalSlide.className = 'modal-slide';
+                if (index === 0) modalSlide.classList.add('active');
+
+                const imgEl = slide.querySelector('img');
+                const captionEl = slide.querySelector('.slide-caption');
+
+                if (imgEl) {
+                    const img = document.createElement('img');
+                    img.src = imgEl.src;
+                    img.alt = `Gallery Image ${index + 1}`;
+                    modalSlide.appendChild(img);
+                } else {
+                    // handle video slide: try to copy the video source or leave placeholder
+                    const vid = slide.querySelector('video');
+                    const dataVideo = slide.querySelector('[data-video]') ? slide.querySelector('[data-video]').getAttribute('data-video') : null;
+                    const src = (vid && (vid.currentSrc || vid.src)) || dataVideo;
+                    if (src) {
+                        const v = document.createElement('video');
+                        v.src = src;
+                        v.controls = true;
+                        v.className = 'w-100';
+                        modalSlide.appendChild(v);
+                    } else {
+                        // fallback empty element
+                        const placeholder = document.createElement('div');
+                        placeholder.textContent = '';
+                        modalSlide.appendChild(placeholder);
+                    }
+                }
+
+                modalSlidesContainer.appendChild(modalSlide);
+            });
+        }
+    } catch (err) {
+        console.warn('Error preparing modal slides (skipped):', err);
+    }
     
     // Open modal
     slides.forEach((slide, index) => {

@@ -404,7 +404,7 @@ body {
 }
 
 .btn-prem:hover {
-    background: linear-gradient(135deg, var(--prem-gold-light), var(--prem-gold)));
+    background: linear-gradient(135deg, var(--prem-gold-light), var(--prem-gold));
     color: #0F172A;
     box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
     transform: translateY(-2px);
@@ -733,6 +733,113 @@ body {
     background: rgba(0,0,0,0.5);
     backdrop-filter: blur(5px);
 }
+
+/* Video placeholder and play CTA */
+
+/* Video placeholder: place the video as a full-bleed background and center the overlay CTA */
+.video-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.28));
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Make the preview video fill the container but keep it behind the overlay; positioning fixes vertical centering issues */
+.video-placeholder video.preview-video,
+.video-thumb video,
+.media-grid-item video,
+.preview-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform-origin: center center;
+}
+
+/* Overlay wrapper that's centered both horizontally and vertically */
+.video-placeholder .video-overlay { position: absolute; inset: 0; display:flex; align-items:center; justify-content:center; z-index: 2; pointer-events: none; }
+/* Allow clicks on the placeholder but not on the overlay decorative layer */
+.video-placeholder .play-overlay { pointer-events: auto; }
+
+.video-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.03), transparent 20%);
+    pointer-events: none;
+}
+
+.play-overlay {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(0,0,0,0.45));
+    border: 2px solid rgba(212,175,55,0.14);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 6px 18px rgba(212,175,55,0.08) inset;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    z-index: 2;
+}
+
+.play-overlay i {
+    color: var(--prem-gold-light);
+    font-size: 32px;
+    margin-left: 0;
+    line-height: 1;
+}
+
+.video-placeholder:hover .play-overlay {
+    transform: scale(1.06);
+    box-shadow: 0 14px 40px rgba(0,0,0,0.7), 0 8px 24px rgba(212,175,55,0.12) inset;
+}
+
+/* Thumbnails video play */
+.video-thumb { background: rgba(0,0,0,0.25); }
+.video-thumb .thumb-overlay { position: absolute; inset: 0; display:flex; align-items:center; justify-content:center; }
+.video-thumb .play-btn { font-size: 18px; color: var(--prem-gold); }
+
+/* Lightbox content - ensure controls are visible and close/download buttons are comfortable */
+#mediaLightbox .modal-body { padding: 0; }
+#mediaLightbox .modal-content { background: transparent; box-shadow: none; }
+#mediaLightbox .btn-outline-light { z-index: 3; }
+/* Move fullscreen to the right of download and keep the close on left; increase z-index */
+#mediaLightbox .btn[title] { opacity: 0.98; z-index: 1065; }
+/* Desktop: place download at the far right and fullscreen to its left so they don't overlap */
+#downloadMedia { right: 12px !important; top: 12px !important; z-index: 1080; }
+#fullscreenMedia { right: 72px !important; top: 12px !important; z-index: 1068; }
+#mediaLightbox .btn.position-absolute.top-0.start-0.m-3 { left: 12px !important; top: 12px !important; z-index: 1081; }
+
+/* Small screens: stack the control buttons vertically on the right so they remain tappable */
+@media (max-width: 576px) {
+    #downloadMedia { right: 12px !important; top: 12px !important; }
+    #fullscreenMedia { right: 12px !important; top: 56px !important; }
+}
+
+/* Soft background for the overlay controls so they remain visible above video controls */
+#mediaLightbox .btn-outline-light { background: rgba(0,0,0,0.45); border-color: rgba(255,255,255,0.12); }
+
+/* Hover polish */
+.play-overlay, .play-btn { transition: transform 0.15s ease, box-shadow 0.15s ease; }
+.play-overlay:hover { transform: scale(1.08); box-shadow: 0 12px 30px rgba(0,0,0,0.6); }
+
+/* Ensure enlarged images are centered and aligned */
+.lightbox-content img, .modal-slide img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+}
+
+/* Make download/close buttons slightly spaced from browser fullscreen control edges */
+.btn.position-absolute.top-0.start-0.m-3 { left: 12px !important; top: 12px !important; }
+.btn.position-absolute.top-0.end-0.m-3 { right: 12px !important; top: 12px !important; }
 
 /* Animations */
 @keyframes pulse {

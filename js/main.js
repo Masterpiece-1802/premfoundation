@@ -422,15 +422,6 @@ function createParticles() {
     }
 }
 
-// Rest of the JavaScript remains the same as previous version
-
-
-
-
-
-
-
-
 
 
 // Project Filtering

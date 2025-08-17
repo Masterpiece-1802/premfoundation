@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 setTimeout(() => {
                     moreReportsDiv.innerHTML = `
-                        <!-- 2019-20 -->
+                        <!-- 2021-2022 -->
                         <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
                             <div class="card h-100 report-card">
                                 <div class="card-body p-4">
@@ -163,8 +163,58 @@ document.addEventListener('DOMContentLoaded', function () {
                                             <i class="fas fa-file-pdf fa-2x text-blue-800"></i>
                                         </div>
                                         <div>
-                                            <h3 class="h5 mb-0 text-white">2019-20 Report</h3>
+                                            <h3 class="h5 mb-0 text-white">2021-22 Report</h3>
                                             <small class="text-gold-light">PDF • 3.5 MB</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <a href="reports/annual-report-2022.pdf" class="btn btn-sm btn-outline-light" download>
+                                            <i class="fas fa-download me-2"></i>Download
+                                        </a>
+                                        <button class="btn btn-sm btn-primary preview-btn" data-pdf="reports/annual-report-2022.pdf">
+                                            <i class="fas fa-eye me-2"></i>Preview
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2020-21 -->
+                        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="card h-100 report-card">
+                                <div class="card-body p-4">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="bg-blue-100 rounded p-3 me-3">
+                                            <i class="fas fa-file-pdf fa-2x text-blue-800"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="h5 mb-0 text-white">2020-21 Report</h3>
+                                            <small class="text-gold-light">PDF • 3.1 MB</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <a href="reports/annual-report-2021.pdf" class="btn btn-sm btn-outline-light" download>
+                                            <i class="fas fa-download me-2"></i>Download
+                                        </a>
+                                        <button class="btn btn-sm btn-primary preview-btn" data-pdf="reports/annual-report-2021.pdf">
+                                            <i class="fas fa-eye me-2"></i>Preview
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2019-20 -->
+                        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                            <div class="card h-100 report-card">
+                                <div class="card-body p-4">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="bg-blue-100 rounded p-3 me-3">
+                                            <i class="fas fa-file-pdf fa-2x text-blue-800"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="h5 mb-0 text-white">2019-20 Report</h3>
+                                            <small class="text-gold-light">PDF • 2.9 MB</small>
                                         </div>
                                     </div>
                                     <div class="d-flex gap-2">
@@ -179,8 +229,9 @@ document.addEventListener('DOMContentLoaded', function () {
                             </div>
                         </div>
 
-                        <!-- 2018-19 -->
-                        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+
+                        <!-- 2018-2019 -->
+                        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
                             <div class="card h-100 report-card">
                                 <div class="card-body p-4">
                                     <div class="d-flex align-items-center mb-3">
@@ -189,7 +240,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                         </div>
                                         <div>
                                             <h3 class="h5 mb-0 text-white">2018-19 Report</h3>
-                                            <small class="text-gold-light">PDF • 3.1 MB</small>
+                                            <small class="text-gold-light">PDF • 3.5 MB</small>
                                         </div>
                                     </div>
                                     <div class="d-flex gap-2">
@@ -205,7 +256,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         </div>
 
                         <!-- 2017-18 -->
-                        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
                             <div class="card h-100 report-card">
                                 <div class="card-body p-4">
                                     <div class="d-flex align-items-center mb-3">
@@ -214,7 +265,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                         </div>
                                         <div>
                                             <h3 class="h5 mb-0 text-white">2017-18 Report</h3>
-                                            <small class="text-gold-light">PDF • 2.9 MB</small>
+                                            <small class="text-gold-light">PDF • 3.1 MB</small>
                                         </div>
                                     </div>
                                     <div class="d-flex gap-2">
@@ -222,6 +273,106 @@ document.addEventListener('DOMContentLoaded', function () {
                                             <i class="fas fa-download me-2"></i>Download
                                         </a>
                                         <button class="btn btn-sm btn-primary preview-btn" data-pdf="reports/annual-report-2018.pdf">
+                                            <i class="fas fa-eye me-2"></i>Preview
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2016-17 -->
+                        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                            <div class="card h-100 report-card">
+                                <div class="card-body p-4">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="bg-blue-100 rounded p-3 me-3">
+                                            <i class="fas fa-file-pdf fa-2x text-blue-800"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="h5 mb-0 text-white">2016-17 Report</h3>
+                                            <small class="text-gold-light">PDF • 2.9 MB</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <a href="reports/annual-report-2017.pdf" class="btn btn-sm btn-outline-light" download>
+                                            <i class="fas fa-download me-2"></i>Download
+                                        </a>
+                                        <button class="btn btn-sm btn-primary preview-btn" data-pdf="reports/annual-report-2017.pdf">
+                                            <i class="fas fa-eye me-2"></i>Preview
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2015-2016 -->
+                        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                            <div class="card h-100 report-card">
+                                <div class="card-body p-4">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="bg-blue-100 rounded p-3 me-3">
+                                            <i class="fas fa-file-pdf fa-2x text-blue-800"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="h5 mb-0 text-white">2015-16 Report</h3>
+                                            <small class="text-gold-light">PDF • 3.5 MB</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <a href="reports/annual-report-2016.pdf" class="btn btn-sm btn-outline-light" download>
+                                            <i class="fas fa-download me-2"></i>Download
+                                        </a>
+                                        <button class="btn btn-sm btn-primary preview-btn" data-pdf="reports/annual-report-2016.pdf">
+                                            <i class="fas fa-eye me-2"></i>Preview
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2014-15 -->
+                        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="card h-100 report-card">
+                                <div class="card-body p-4">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="bg-blue-100 rounded p-3 me-3">
+                                            <i class="fas fa-file-pdf fa-2x text-blue-800"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="h5 mb-0 text-white">2014-15 Report</h3>
+                                            <small class="text-gold-light">PDF • 3.1 MB</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <a href="reports/annual-report-2015.pdf" class="btn btn-sm btn-outline-light" download>
+                                            <i class="fas fa-download me-2"></i>Download
+                                        </a>
+                                        <button class="btn btn-sm btn-primary preview-btn" data-pdf="reports/annual-report-2015.pdf">
+                                            <i class="fas fa-eye me-2"></i>Preview
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2013-14 -->
+                        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                            <div class="card h-100 report-card">
+                                <div class="card-body p-4">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="bg-blue-100 rounded p-3 me-3">
+                                            <i class="fas fa-file-pdf fa-2x text-blue-800"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="h5 mb-0 text-white">2013-14 Report</h3>
+                                            <small class="text-gold-light">PDF • 2.9 MB</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <a href="reports/annual-report-2014.pdf" class="btn btn-sm btn-outline-light" download>
+                                            <i class="fas fa-download me-2"></i>Download
+                                        </a>
+                                        <button class="btn btn-sm btn-primary preview-btn" data-pdf="reports/annual-report-2014.pdf">
                                             <i class="fas fa-eye me-2"></i>Preview
                                         </button>
                                     </div>

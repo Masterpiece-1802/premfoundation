@@ -1,29 +1,49 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Equalize card heights
-    const equalizeCards = () => {
+    // Store original card heights
+    let originalCardHeights = new Map();
+
+    // Equalize card heights with improved handling
+    const equalizeCards = (forceReset = false) => {
         document.querySelectorAll('.tab-pane').forEach(tab => {
             const rows = tab.querySelectorAll('.row');
             rows.forEach(row => {
                 let maxHeight = 0;
                 const cards = row.querySelectorAll('.team-card');
                 
-                cards.forEach(card => card.style.height = 'auto');
+                // Reset heights first
+                cards.forEach(card => {
+                    if (forceReset) {
+                        card.style.height = 'auto';
+                        const cardBody = card.querySelector('.team-card-body');
+                        if (cardBody) cardBody.style.height = 'auto';
+                    }
+                });
                 
+                // Calculate max height
                 cards.forEach(card => {
                     if (card.offsetHeight > maxHeight) maxHeight = card.offsetHeight;
                 });
                 
-                cards.forEach(card => card.style.height = `${maxHeight}px`);
+                // Apply max height
+                cards.forEach(card => {
+                    card.style.height = `${maxHeight}px`;
+                    if (forceReset) {
+                        originalCardHeights.set(card, maxHeight);
+                    }
+                });
             });
         });
     };
     
-    equalizeCards();
-    window.addEventListener('resize', equalizeCards);
-    
+    // Initialize and set up resize listener
+    equalizeCards(true); // true to store original heights
+    window.addEventListener('resize', () => equalizeCards(true));
+
     // Tab change handler
     document.querySelectorAll('button[data-bs-toggle="tab"]').forEach(tab => {
-        tab.addEventListener('shown.bs.tab', equalizeCards);
+        tab.addEventListener('shown.bs.tab', function() {
+            setTimeout(() => equalizeCards(true), 10);
+        });
     });
 
     // Animate cards on scroll
@@ -43,38 +63,75 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(card);
     });
 
-    // Fixed Read More functionality
-    document.querySelectorAll('.read-more-btn').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
+   // Enhanced Read More/Less with Animation
+document.querySelectorAll('.read-more-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const card = this.closest('.team-card');
+        const cardBody = this.closest('.team-card-body');
+        if (!cardBody) return;
+        
+        const bioContainer = cardBody.querySelector('.team-bio-container');
+        const bio = cardBody.querySelector('.team-bio');
+        if (!bio) return;
+        
+        // Toggle the expanded state
+        const isExpanding = !bio.classList.contains('expanded');
+        
+        // Add/remove classes for animation
+        if (isExpanding) {
+            bio.classList.remove('collapsed');
+            bioContainer.style.height = `${bio.offsetHeight}px`;
+            bio.classList.add('expanding'); // Temporary class for animation
             
-            const cardBody = this.closest('.team-card-body');
-            if (!cardBody) return;
+            setTimeout(() => {
+                bio.classList.add('expanded');
+                bio.classList.remove('expanding');
+                bioContainer.style.height = `${bio.scrollHeight}px`;
+                
+                // Update button
+                this.innerHTML = 'Read less <i class="fas fa-chevron-up"></i>';
+                this.classList.add('expanded');
+                
+                // Finalize height after animation
+                setTimeout(() => {
+                    bioContainer.style.height = 'auto';
+                    equalizeCards(true);
+                }, 500);
+            }, 10);
+        } else {
+            bio.classList.add('collapsing'); // Temporary class for animation
+            bioContainer.style.height = `${bio.offsetHeight}px`;
             
-            const bio = cardBody.querySelector('.team-bio');
-            if (!bio) return;
-            
-            // Toggle the expanded state
-            const isExpanded = bio.classList.toggle('expanded');
-            this.classList.toggle('expanded');
-            
-            // Update button text and icon
-            const icon = this.querySelector('i');
-            if (icon) {
-                if (isExpanded) {
-                    this.innerHTML = 'Read less <i class="fas fa-chevron-up"></i>';
-                } else {
-                    this.innerHTML = 'Read more <i class="fas fa-chevron-down"></i>';
-                }
-            }
-        });
+            setTimeout(() => {
+                bio.classList.remove('expanded');
+                bioContainer.style.height = '';
+                bio.classList.add('collapsed');
+                bio.classList.remove('collapsing');
+                
+                // Update button
+                this.innerHTML = 'Read more <i class="fas fa-chevron-down"></i>';
+                this.classList.remove('expanded');
+                
+                // Recalculate heights
+                setTimeout(() => equalizeCards(true), 50);
+            }, 10);
+        }
     });
+});
 
-    // Share functionality
+
+    // Enhanced Share functionality
     document.querySelectorAll('.share-btn').forEach(btn => {
         btn.addEventListener('click', function(e) {
             e.stopPropagation();
+            e.preventDefault();
+            
+            // Close any existing menus first
+            document.querySelectorAll('.custom-share-menu').forEach(menu => menu.remove());
+            
             const name = this.getAttribute('data-name');
             const currentUrl = window.location.href;
             const shareText = `Learn more about ${name} and their work with Prem Foundation`;
@@ -95,38 +152,35 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function showCustomShareMenu(button, name, url, text) {
-        // Remove any existing menus first
-        document.querySelectorAll('.custom-share-menu').forEach(menu => menu.remove());
-        
         // Create new menu
         const shareMenu = document.createElement('div');
         shareMenu.className = 'custom-share-menu';
         shareMenu.innerHTML = `
             <div class="share-option" data-type="whatsapp">
-                <i class="fab fa-whatsapp"></i> WhatsApp
+                <i class="fab fa-whatsapp" style="color: #25D366;"></i> WhatsApp
             </div>
             <div class="share-option" data-type="facebook">
-                <i class="fab fa-facebook"></i> Facebook
+                <i class="fab fa-facebook" style="color: #1877F2;"></i> Facebook
             </div>
             <div class="share-option" data-type="twitter">
-                <i class="fab fa-twitter"></i> Twitter
+                <i class="fab fa-twitter" style="color: #1DA1F2;"></i> Twitter
             </div>
             <div class="share-option" data-type="linkedin">
-                <i class="fab fa-linkedin"></i> LinkedIn
+                <i class="fab fa-linkedin" style="color: #0A66C2;"></i> LinkedIn
             </div>
             <div class="share-option" data-type="email">
-                <i class="fas fa-envelope"></i> Email
+                <i class="fas fa-envelope" style="color: #EA4335;"></i> Email
             </div>
             <div class="share-option" data-type="copy">
-                <i class="fas fa-link"></i> Copy Link
+                <i class="fas fa-link" style="color: #1e40af;"></i> Copy Link
             </div>
         `;
         
-        // Position menu absolutely relative to viewport
+        // Position menu near the button
         const rect = button.getBoundingClientRect();
-        shareMenu.style.position = 'absolute';
+        shareMenu.style.position = 'fixed';
         shareMenu.style.top = `${rect.bottom + window.scrollY}px`;
-        shareMenu.style.left = `${rect.left + window.scrollX}px`;
+        shareMenu.style.right = `${window.innerWidth - rect.right - window.scrollX}px`;
         shareMenu.style.zIndex = '1000';
         
         document.body.appendChild(shareMenu);
@@ -142,12 +196,15 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Close when clicking outside
         const clickHandler = function(e) {
-            if (!shareMenu.contains(e.target)) {
+            if (!shareMenu.contains(e.target) && e.target !== button) {
                 shareMenu.remove();
                 document.removeEventListener('click', clickHandler);
             }
         };
-        setTimeout(() => document.addEventListener('click', clickHandler), 0);
+        
+        setTimeout(() => {
+            document.addEventListener('click', clickHandler);
+        }, 10);
     }
 
     function shareViaPlatform(platform, name, url, text) {
@@ -172,15 +229,35 @@ document.addEventListener('DOMContentLoaded', function() {
                 break;
             case 'copy':
                 navigator.clipboard.writeText(url).then(() => {
-                    alert('Link copied to clipboard!');
+                    // Show a subtle notification instead of alert
+                    const notification = document.createElement('div');
+                    notification.textContent = 'Link copied to clipboard!';
+                    notification.style.position = 'fixed';
+                    notification.style.bottom = '20px';
+                    notification.style.right = '20px';
+                    notification.style.backgroundColor = '#1e40af';
+                    notification.style.color = 'white';
+                    notification.style.padding = '10px 20px';
+                    notification.style.borderRadius = '4px';
+                    notification.style.zIndex = '1000';
+                    notification.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+                    notification.style.animation = 'fadeIn 0.2s ease-out';
+                    document.body.appendChild(notification);
+                    
+                    setTimeout(() => {
+                        notification.style.animation = 'fadeOut 0.2s ease-out';
+                        setTimeout(() => notification.remove(), 200);
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy:', err);
                 });
                 break;
         }
     }
 });
 
+// Dot network effect for hero
 document.addEventListener('DOMContentLoaded', function() {
-    // Dot network effect for hero
     const heroTeam = document.querySelector('.hero-team');
     if (heroTeam) {
         createDotNetwork();

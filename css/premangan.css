@@ -153,3 +153,37 @@
         transform: translateY(-20px) translateX(20px);
     }
 }
+
+/* Particle Background for About Section */
+#about-premangan {
+    position: relative;
+    overflow: hidden;
+    background: #000;
+    z-index: 1;
+}
+
+.particle-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.8;
+}
+
+/* Add this if you want the content to stand out more */
+#about-premangan .container {
+    position: relative;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    border-radius: 15px;
+}
+
+#about-premangan h2,
+#about-premangan p,
+#about-premangan li {
+    color: #fff !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}

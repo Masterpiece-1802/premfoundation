@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const imageConfig = {
         folder: 'images/journey',
         extensions: ['jpeg', 'jpg', 'png'],
-        count: 237,
+        count: 272,
         prefix: '',
         startIndex: 1
     };

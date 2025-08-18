@@ -483,18 +483,18 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <div class="card-body p-4">
                                     <div class="d-flex align-items-center mb-3">
                                         <div class="document-icon-container">
-                                            <i class="fas fa-file-excel document-icon"></i>
+                                            <i class="fas fa-file-word document-icon"></i>
                                         </div>
                                         <div>
-                                            <h3 class="h5 mb-0 text-white">Financial Data</h3>
-                                            <small class="text-white">XLSX • 3.2 MB</small>
+                                            <h3 class="h5 mb-0 text-white">Case Study - 1</h3>
+                                            <small class="text-white">DOCX • 2.4 MB</small>
                                         </div>
                                     </div>
                                     <div class="d-flex gap-2">
-                                        <a href="documents/financial-data.xlsx" class="btn btn-sm btn-outline-gold" download>
+                                        <a href="documents/doc4.docx" class="btn btn-sm btn-outline-gold" download>
                                             <i class="fas fa-download me-2"></i>Download
                                         </a>
-                                        <button class="btn btn-sm btn-gold preview-btn" data-pdf="documents/financial-data.pdf">
+                                        <button class="btn btn-sm btn-gold preview-btn" data-pdf="documents/doc4.docx">
                                             <i class="fas fa-eye me-2"></i>Preview
                                         </button>
                                     </div>
@@ -509,18 +509,18 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <div class="card-body p-4">
                                     <div class="d-flex align-items-center mb-3">
                                         <div class="document-icon-container">
-                                            <i class="fas fa-file-pdf document-icon"></i>
+                                            <i class="fas fa-file-word document-icon"></i>
                                         </div>
                                         <div>
-                                            <h3 class="h5 mb-0 text-white">Case Studies</h3>
-                                            <small class="text-white">PDF • 4.5 MB</small>
+                                            <h3 class="h5 mb-0 text-white">Case Study - 2</h3>
+                                            <small class="text-white">DOCX • 274 KB</small>
                                         </div>
                                     </div>
                                     <div class="d-flex gap-2">
-                                        <a href="documents/case-studies.pdf" class="btn btn-sm btn-outline-gold" download>
+                                        <a href="documents/doc5.docx" class="btn btn-sm btn-outline-gold" download>
                                             <i class="fas fa-download me-2"></i>Download
                                         </a>
-                                        <button class="btn btn-sm btn-gold preview-btn" data-pdf="documents/case-studies.pdf">
+                                        <button class="btn btn-sm btn-gold preview-btn" data-pdf="documents/doc5.docx">
                                             <i class="fas fa-eye me-2"></i>Preview
                                         </button>
                                     </div>
@@ -535,18 +535,231 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <div class="card-body p-4">
                                     <div class="d-flex align-items-center mb-3">
                                         <div class="document-icon-container">
-                                            <i class="fas fa-file-word document-icon"></i>
+                                            <i class="fas fa-file-powerpoint document-icon"></i>
                                         </div>
                                         <div>
-                                            <h3 class="h5 mb-0 text-white">Volunteer Handbook</h3>
-                                            <small class="text-white">DOCX • 2.8 MB</small>
+                                            <h3 class="h5 mb-0 text-white">Widow Dignity Campaign</h3>
+                                            <small class="text-white">PPTX • 103 MB</small>
                                         </div>
                                     </div>
                                     <div class="d-flex gap-2">
-                                        <a href="documents/volunteer-handbook.docx" class="btn btn-sm btn-outline-gold" download>
+                                        <a href="documents/doc6.pptx" class="btn btn-sm btn-outline-gold" download>
                                             <i class="fas fa-download me-2"></i>Download
                                         </a>
-                                        <button class="btn btn-sm btn-gold preview-btn" data-pdf="documents/volunteer-handbook.pdf">
+                                        <button class="btn btn-sm btn-gold preview-btn" data-pdf="documents/doc6.pptx">
+                                            <i class="fas fa-eye me-2"></i>Preview
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="document-card-glow"></div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- Document 7 -->
+                        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="card h-100 document-card-advanced">
+                                <div class="card-body p-4">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="document-icon-container">
+                                            <i class="fas fa-file-powerpoint document-icon"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="h5 mb-0 text-white">Prem Foundation - Main</h3>
+                                            <small class="text-white">PPTX • 88.3 MB</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <a href="documents/doc7.pptx" class="btn btn-sm btn-outline-gold" download>
+                                            <i class="fas fa-download me-2"></i>Download
+                                        </a>
+                                        <button class="btn btn-sm btn-gold preview-btn" data-pdf="documents/doc7.pptx">
+                                            <i class="fas fa-eye me-2"></i>Preview
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="document-card-glow"></div>
+                            </div>
+                        </div>
+
+                        <!-- Document 8 -->
+                        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                            <div class="card h-100 document-card-advanced">
+                                <div class="card-body p-4">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="document-icon-container">
+                                            <i class="fas fa-file-pdf document-icon"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="h5 mb-0 text-white">Adivasi Sevak - Prem</h3>
+                                            <small class="text-white">PDF • 639 KB</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <a href="documents/doc8.pdf" class="btn btn-sm btn-outline-gold" download>
+                                            <i class="fas fa-download me-2"></i>Download
+                                        </a>
+                                        <button class="btn btn-sm btn-gold preview-btn" data-pdf="documents/doc8.pdf">
+                                            <i class="fas fa-eye me-2"></i>Preview
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="document-card-glow"></div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- Document 9 -->
+                        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="card h-100 document-card-advanced">
+                                <div class="card-body p-4">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="document-icon-container">
+                                            <i class="fas fa-file-pdf document-icon"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="h5 mb-0 text-white">Prem Committee</h3>
+                                            <small class="text-white">PDF • 181 KB</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <a href="documents/doc9.pdf" class="btn btn-sm btn-outline-gold" download>
+                                            <i class="fas fa-download me-2"></i>Download
+                                        </a>
+                                        <button class="btn btn-sm btn-gold preview-btn" data-pdf="documents/doc9.pdf">
+                                            <i class="fas fa-eye me-2"></i>Preview
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="document-card-glow"></div>
+                            </div>
+                        </div>
+
+                        <!-- Document 10 -->
+                        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                            <div class="card h-100 document-card-advanced">
+                                <div class="card-body p-4">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="document-icon-container">
+                                            <i class="fas fa-file-powerpoint document-icon"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="h5 mb-0 text-white">Panlot Project</h3>
+                                            <small class="text-white">PPTX • 3.6 MB</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <a href="documents/doc10.pptx" class="btn btn-sm btn-outline-gold" download>
+                                            <i class="fas fa-download me-2"></i>Download
+                                        </a>
+                                        <button class="btn btn-sm btn-gold preview-btn" data-pdf="documents/doc10.pptx">
+                                            <i class="fas fa-eye me-2"></i>Preview
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="document-card-glow"></div>
+                            </div>
+                        </div>
+
+
+                        <!-- Document 11 -->
+                        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="card h-100 document-card-advanced">
+                                <div class="card-body p-4">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="document-icon-container">
+                                            <i class="fas fa-file-pdf document-icon"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="h5 mb-0 text-white">Organisation Profile</h3>
+                                            <small class="text-white">PDF • 261 KB</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <a href="documents/doc11.pdf" class="btn btn-sm btn-outline-gold" download>
+                                            <i class="fas fa-download me-2"></i>Download
+                                        </a>
+                                        <button class="btn btn-sm btn-gold preview-btn" data-pdf="documents/doc11.pdf">
+                                            <i class="fas fa-eye me-2"></i>Preview
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="document-card-glow"></div>
+                            </div>
+                        </div>
+
+                        <!-- Document 12 -->
+                        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                            <div class="card h-100 document-card-advanced">
+                                <div class="card-body p-4">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="document-icon-container">
+                                            <i class="fas fa-file-pdf document-icon"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="h5 mb-0 text-white">Photos - 1</h3>
+                                            <small class="text-white">PDF • 347 KB</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <a href="documents/doc12.pdf" class="btn btn-sm btn-outline-gold" download>
+                                            <i class="fas fa-download me-2"></i>Download
+                                        </a>
+                                        <button class="btn btn-sm btn-gold preview-btn" data-pdf="documents/doc12.pdf">
+                                            <i class="fas fa-eye me-2"></i>Preview
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="document-card-glow"></div>
+                            </div>
+                        </div>
+
+                        <!-- Document 13 -->
+                        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="card h-100 document-card-advanced">
+                                <div class="card-body p-4">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="document-icon-container">
+                                            <i class="fas fa-file-pdf document-icon"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="h5 mb-0 text-white">Photos - 2</h3>
+                                            <small class="text-white">PDF • 1.4 MB</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <a href="documents/doc13.pdf" class="btn btn-sm btn-outline-gold" download>
+                                            <i class="fas fa-download me-2"></i>Download
+                                        </a>
+                                        <button class="btn btn-sm btn-gold preview-btn" data-pdf="documents/doc13.pdf">
+                                            <i class="fas fa-eye me-2"></i>Preview
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="document-card-glow"></div>
+                            </div>
+                        </div>
+
+                        <!-- Document 14 -->
+                        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                            <div class="card h-100 document-card-advanced">
+                                <div class="card-body p-4">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="document-icon-container">
+                                            <i class="fas fa-file-pdf document-icon"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="h5 mb-0 text-white">Photos - 3</h3>
+                                            <small class="text-white">PDF • 1.9 MB</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <a href="documents/doc14.pdf" class="btn btn-sm btn-outline-gold" download>
+                                            <i class="fas fa-download me-2"></i>Download
+                                        </a>
+                                        <button class="btn btn-sm btn-gold preview-btn" data-pdf="documents/doc14.pdf">
                                             <i class="fas fa-eye me-2"></i>Preview
                                         </button>
                                     </div>

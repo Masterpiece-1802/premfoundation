@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const videoConfig = {
         folder: 'videos/journey',
         extensions: ['mp4', 'mov'],
-        count: 10,
+        count: 13,
         prefix: '',
         startIndex: 1
     };

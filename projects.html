@@ -1,258 +1,932 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-XH1EG1VFN7"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XH1EG1VFN7"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-XH1EG1VFN7');
-</script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="icon" href="images/logo.jpg" type="image/jpg">
+      gtag("config", "G-XH1EG1VFN7");
+    </script>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <link rel="icon" href="images/logo.jpg" type="image/jpg" />
     <title>Prem Foundation - Empowering Communities</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
-<!-- meta tags for better SEO and sharing -->
-<meta name="description" content="Prem Foundation - Transforming lives through compassion and community service">
-<meta property="og:title" content="Prem Foundation">
-<meta property="og:description" content="Empowering communities through various social initiatives">
-<meta property="og:image" content="images/hero-bg.jpg">
-<meta name="theme-color" content="#1e40af">
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- meta tags for better SEO and sharing -->
+    <meta
+      name="description"
+      content="Prem Foundation - Transforming lives through compassion and community service"
+    />
+    <meta property="og:title" content="Prem Foundation" />
+    <meta
+      property="og:description"
+      content="Empowering communities through various social initiatives"
+    />
+    <meta property="og:image" content="images/hero-bg.jpg" />
+    <meta name="theme-color" content="#1e40af" />
     <title>Our Projects | Prem Foundation</title>
-<style>
+    <style>
+      .filter-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        padding: 0 10px;
+      }
 
-.filter-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-    padding: 0 10px;
-}
+      .filter-buttons .btn {
+        margin: 0;
+        flex: 1 0 auto;
+        min-width: 100px;
+        white-space: nowrap;
+      }
 
-.filter-buttons .btn {
-    margin: 0;
-    flex: 1 0 auto;
-    min-width: 100px;
-    white-space: nowrap;
-}
-
-@media (max-width: 576px) {
-    .filter-buttons {
-        gap: 6px;
-    }
-    .filter-buttons .btn {
-        padding: 6px 8px;
-        font-size: 0.8rem;
-        min-width: 80px;
-    }
-}
-</style>
-</head>
-<body>
-
+      @media (max-width: 576px) {
+        .filter-buttons {
+          gap: 6px;
+        }
+        .filter-buttons .btn {
+          padding: 6px 8px;
+          font-size: 0.8rem;
+          min-width: 80px;
+        }
+      }
+    </style>
+  </head>
+  <body>
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-  <div class="container">
-    <a class="navbar-brand logo-glow" href="index.html">
-      <img src="images/logo.jpg" alt="Prem Foundation" height="50">
-      <span class="logo-pulse"></span>
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link active" href="index.html">
-            <span class="nav-link-underline">Home</span>
-          </a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown">
-            <span class="nav-link-underline">About Us</span>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="about.html">Our Story</a></li>
-            <li><a class="dropdown-item" href="team.html">Our Team</a></li>
+      <div class="container">
+        <a class="navbar-brand logo-glow" href="index.html">
+          <img src="images/logo.jpg" alt="Prem Foundation" height="50" />
+          <span class="logo-pulse"></span>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">
+                <span class="nav-link-underline">Home</span>
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="aboutDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                <span class="nav-link-underline">About Us</span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="about.html">Our Story</a>
+                </li>
+                <li><a class="dropdown-item" href="team.html">Our Team</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="projectsDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                <span class="nav-link-underline">Projects</span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="projects.html"
+                    >All Initiatives</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="premangan.html"
+                    >Premangan Old Age Home</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link donate-btn" href="donate.html">
+                <span class="nav-link-underline">Donate</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="volunteer.html">
+                <span class="nav-link-underline">Volunteer</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">
+                <span class="nav-link-underline">Contact</span>
+              </a>
+            </li>
           </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="projectsDropdown" role="button" data-bs-toggle="dropdown">
-            <span class="nav-link-underline">Projects</span>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="projects.html">All Initiatives</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="premangan.html">Premangan Old Age Home</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link donate-btn" href="donate.html">
-            <span class="nav-link-underline">Donate</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="volunteer.html">
-            <span class="nav-link-underline">Volunteer</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="contact.html">
-            <span class="nav-link-underline">Contact</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+        </div>
+      </div>
+    </nav>
     <!-- Projects Hero -->
     <section class="projects-hero d-flex align-items-center">
-        <div class="container text-center">
-            <h1 class="display-4 fw-bold mb-3">Our Initiatives</h1>
-            <p class="lead">Creating impact through diverse programs</p>
-        </div>
+      <div class="container text-center">
+        <h1 class="display-4 fw-bold mb-3">Our Initiatives</h1>
+        <p class="lead">Creating impact through diverse programs</p>
+      </div>
     </section>
 
     <!-- Projects Grid -->
     <section class="py-5 bg-dark">
-        <div class="container">
-            <!-- Filter Buttons -->
-            <div class="text-center mb-5">
-                <div class="btn-group filter-buttons">
-                    <button class="btn btn-outline-primary active" data-filter="all">All</button>
-                    <button class="btn btn-outline-primary" data-filter="premangan">Premangan</button>
-                    <button class="btn btn-outline-primary" data-filter="education">Education</button>
-                    <button class="btn btn-outline-primary" data-filter="healthcare">Healthcare</button>
-                </div>
-            </div>
-
-            <!-- Projects -->
-            <div class="row g-4 projects-grid">
-                <!-- Premangan Card -->
-                <div class="col-lg-4 col-md-6" data-category="premangan">
-                    <div class="project-card">
-                        <img src="images/projects/premangan.jpg" class="project-img" alt="Premangan Old Age Home">
-                        <div class="project-overlay">
-                            <h3>Premangan Old Age Home</h3>
-                            <p>Dignified care for seniors</p>
-                            <a href="premangan.html" class="btn btn-sm btn-primary">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Education Card 1 -->
-                <div class="col-lg-4 col-md-6" data-category="education">
-                    <div class="project-card">
-                        <img src="images/projects/education.jpg" class="project-img" alt="Education Initiative">
-                        <div class="project-overlay">
-                            <h3>Rural Education</h3>
-                            <p>School support programs</p>
-                            <a href="#" class="btn btn-sm btn-primary">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Add more project cards following same structure -->
-            </div>
+      <div class="container">
+        <!-- Filter Buttons -->
+        <div class="text-center mb-5">
+          <div class="btn-group filter-buttons">
+            <button class="btn btn-outline-primary active" data-filter="all">
+              All
+            </button>
+            <button class="btn btn-outline-primary" data-filter="premangan">
+              Premangan
+            </button>
+            <button class="btn btn-outline-primary" data-filter="education">
+              Education
+            </button>
+            <button class="btn btn-outline-primary" data-filter="healthcare">
+              Healthcare
+            </button>
+            <button class="btn btn-outline-primary" data-filter="environment">
+              Environment
+            </button>
+            <button class="btn btn-outline-primary" data-filter="agriculture">
+              Agriculture
+            </button>
+            <button class="btn btn-outline-primary" data-filter="women">
+              Women
+            </button>
+            <button class="btn btn-outline-primary" data-filter="child">
+              Children
+            </button>
+            <button class="btn btn-outline-primary" data-filter="skill">
+              Skills
+            </button>
+            <button class="btn btn-outline-primary" data-filter="aware">
+              Awareness
+            </button>
+          </div>
         </div>
+
+        <!-- Projects -->
+        <div class="row g-4 projects-grid">
+          <!-- Premangan Card -->
+          <div class="col-lg-4 col-md-6" data-category="premangan">
+            <div class="project-card">
+              <img
+                src="images/projects/premangan.jpeg"
+                class="project-img"
+                alt="Premangan Old Age Home"
+              />
+              <div class="project-overlay">
+                <h3>Premangan Old Age Home</h3>
+                <p>Dignified care centre for seniors</p>
+                <a href="premangan.html" class="btn btn-sm btn-primary"
+                  >Learn More</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Education Card -->
+          <div class="col-lg-4 col-md-6" data-category="education">
+            <div class="project-card">
+              <img
+                src="images/projects/education.jpeg"
+                class="project-img"
+                alt="Education Initiative"
+              />
+              <div class="project-overlay">
+                <h3>Rural Education</h3>
+                <p>School support programs</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Healthcare Card -->
+          <div class="col-lg-4 col-md-6" data-category="healthcare">
+            <div class="project-card">
+              <img
+                src="images/projects/healthcare.jpeg"
+                class="project-img"
+                alt="Health Initiative"
+              />
+              <div class="project-overlay">
+                <h3>Medical Camps</h3>
+                <p>Regular health checkup programs</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Environment -->
+          <div class="col-lg-4 col-md-6" data-category="environment">
+            <div class="project-card">
+              <img
+                src="images/projects/d.jpg"
+                class="project-img"
+                alt="Environment Initiative"
+              />
+              <div class="project-overlay">
+                <h3>Environment Management</h3>
+                <p>Maintenance of Environment and Natural Resources</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Women Empowerment Card -->
+          <div class="col-lg-4 col-md-6" data-category="women agriculture">
+            <div class="project-card">
+              <img
+                src="images/projects/e.jpeg"
+                class="project-img"
+                alt="Women Initiative"
+              />
+              <div class="project-overlay">
+                <h3>Women Empowerment</h3>
+                <p>Empowering women through literacy and skill development</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Children Card -->
+          <div class="col-lg-4 col-md-6" data-category="child education">
+            <div class="project-card">
+              <img
+                src="images/projects/f.jpeg"
+                class="project-img"
+                alt="Children Initiative"
+              />
+              <div class="project-overlay">
+                <h3>Children Campaigns</h3>
+                <p>Child literacy and engagement sessions</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skill Building -->
+          <div class="col-lg-4 col-md-6" data-category="skill">
+            <div class="project-card">
+              <img
+                src="images/projects/g.jpeg"
+                class="project-img"
+                alt="Skills Initiative"
+              />
+              <div class="project-overlay">
+                <h3>Skill Building</h3>
+                <p>
+                  Bamboo training program to make skilled artisans in rural
+                  areas
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- General Awareness -->
+          <div class="col-lg-4 col-md-6" data-category="aware">
+            <div class="project-card">
+              <img
+                src="images/projects/h.jpeg"
+                class="project-img"
+                alt="Awareness Initiative"
+              />
+              <div class="project-overlay">
+                <h3>Awareness Programs</h3>
+                <p>Various Awareness Programs in Rural Areas</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add more project cards following same structure -->
+
+          <!-- Women Empowerment Card -->
+          <div class="col-lg-4 col-md-6" data-category="women aware">
+            <div class="project-card">
+              <img
+                src="images/projects/i.jpeg"
+                class="project-img"
+                alt="Women Initiative"
+              />
+              <div class="project-overlay">
+                <h3>Widow Women Dignity Movement</h3>
+                <p>
+                  Initiating a movement for the respect and dignity for widow
+                  women
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Environment -->
+          <div class="col-lg-4 col-md-6" data-category="environment education">
+            <div class="project-card">
+              <img
+                src="images/projects/j.jpeg"
+                class="project-img"
+                alt="Environment Initiative"
+              />
+              <div class="project-overlay">
+                <h3>Environment Management</h3>
+                <p>
+                  Spreading awareness of environment management and promoting
+                  environment conservation
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- General Awareness -->
+          <div class="col-lg-4 col-md-6" data-category="aware">
+            <div class="project-card">
+              <img
+                src="images/projects/k.jpeg"
+                class="project-img"
+                alt="Awareness Initiative"
+              />
+              <div class="project-overlay">
+                <h3>Awareness Programs</h3>
+                <p>Spreading Awareness through Gram Sabhas</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- General Awareness -->
+          <div class="col-lg-4 col-md-6" data-category="aware">
+            <div class="project-card">
+              <img
+                src="images/projects/zf.jpeg"
+                class="project-img"
+                alt="Awareness Initiative"
+              />
+              <div class="project-overlay">
+                <h3>Awareness Programs</h3>
+                <p>Various Creative Awareness Programs in Rural Areas</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Women Empowerment Card -->
+          <div class="col-lg-4 col-md-6" data-category="women">
+            <div class="project-card">
+              <img
+                src="images/projects/l.jpeg"
+                class="project-img"
+                alt="Women Initiative"
+              />
+              <div class="project-overlay">
+                <h3>Widow Women Dignity Movement Conference</h3>
+                <p>
+                  Initiating a nationwide movement for the respect and dignity
+                  for widow women
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- General Awareness -->
+          <div class="col-lg-4 col-md-6" data-category="aware">
+            <div class="project-card">
+              <img
+                src="images/projects/m.jpeg"
+                class="project-img"
+                alt="Awareness Initiative"
+              />
+              <div class="project-overlay">
+                <h3>Noble Prize Laureate Kailash Satyarthi's Bharat Yatra</h3>
+                <p>
+                  Joining and assisting Kailash Satyarthi's Bharat Yatra in
+                  state of Maharashtra
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- General Awareness -->
+          <div class="col-lg-4 col-md-6" data-category="aware">
+            <div class="project-card">
+              <img
+                src="images/projects/zb.jpeg"
+                class="project-img"
+                alt="Awareness Initiative"
+              />
+              <div class="project-overlay">
+                <h3>Promoting Companionship</h3>
+                <p>
+                  Promoting widow and handicap marriages through yearly
+                  matrimonial meets
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Women Empowerment Card -->
+          <div class="col-lg-4 col-md-6" data-category="women agriculture">
+            <div class="project-card">
+              <img
+                src="images/projects/n.jpeg"
+                class="project-img"
+                alt="Women Initiative"
+              />
+              <div class="project-overlay">
+                <h3>Women Empowerment</h3>
+                <p>
+                  Empowering women through literacy, skill development and
+                  promoting enterpreneurship
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skill Building -->
+          <div class="col-lg-4 col-md-6" data-category="skill agriculture">
+            <div class="project-card">
+              <img
+                src="images/projects/o.jpeg"
+                class="project-img"
+                alt="Skills Initiative"
+              />
+              <div class="project-overlay">
+                <h3>Skill Building</h3>
+                <p>Promoting skills by trinings and literacy programs</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skill Building -->
+          <div class="col-lg-4 col-md-6" data-category="skill">
+            <div class="project-card">
+              <img
+                src="images/projects/p.jpeg"
+                class="project-img"
+                alt="Skills Initiative"
+              />
+              <div class="project-overlay">
+                <h3>Skill Building - Honey Project</h3>
+                <p>
+                  Honeybee farming project to promote entrepreneurship and
+                  self-employment
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Environment -->
+          <div class="col-lg-4 col-md-6" data-category="environment education">
+            <div class="project-card">
+              <img
+                src="images/projects/q.jpeg"
+                class="project-img"
+                alt="Environment Initiative"
+              />
+              <div class="project-overlay">
+                <h3>Environment Management</h3>
+                <p>
+                  Organising Rallies To Spread Awareness for Environment
+                  Conservation
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- General Awareness -->
+          <div class="col-lg-4 col-md-6" data-category="aware women">
+            <div class="project-card">
+              <img
+                src="images/projects/r.jpeg"
+                class="project-img"
+                alt="Awareness Initiative"
+              />
+              <div class="project-overlay">
+                <h3>Awareness Programs</h3>
+                <p>Various Awareness Programs in Rural Areas</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- General Awareness -->
+          <div class="col-lg-4 col-md-6" data-category="aware">
+            <div class="project-card">
+              <img
+                src="images/projects/s.jpeg"
+                class="project-img"
+                alt="Awareness Initiative"
+              />
+              <div class="project-overlay">
+                <h3>Awareness Programs</h3>
+                <p>Various Awareness to awaken society</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Women Empowerment Card -->
+          <div class="col-lg-4 col-md-6" data-category="women">
+            <div class="project-card">
+              <img
+                src="images/projects/t.jpeg"
+                class="project-img"
+                alt="Women Initiative"
+              />
+              <div class="project-overlay">
+                <h3>Women Empowerment</h3>
+                <p>
+                  Empowering women through literacy, skill development and
+                  promoting enterpreneurship
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Women Empowerment Card -->
+          <div
+            class="col-lg-4 col-md-6"
+            data-category="women"
+            data-category="skill agriculture women"
+          >
+            <div class="project-card">
+              <img
+                src="images/projects/u.jpeg"
+                class="project-img"
+                alt="Women Initiative"
+              />
+              <div class="project-overlay">
+                <h3>Women Empowerment</h3>
+                <p>
+                  Empowering women through literacy, skill development and
+                  promoting enterpreneurship
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Women Empowerment Card -->
+          <div class="col-lg-4 col-md-6" data-category="women agriculture">
+            <div class="project-card">
+              <img
+                src="images/projects/v.jpeg"
+                class="project-img"
+                alt="Women Initiative"
+              />
+              <div class="project-overlay">
+                <h3>Women Empowerment</h3>
+                <p>
+                  Empowering women through literacy, training, skill development
+                  and promoting enterpreneurship
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Children Card -->
+          <div class="col-lg-4 col-md-6" data-category="child">
+            <div class="project-card">
+              <img
+                src="images/projects/zg.jpeg"
+                class="project-img"
+                alt="Children Initiative"
+              />
+              <div class="project-overlay">
+                <h3>Children Campaigns</h3>
+                <p>
+                  Promoting children literacy and engagement through various fun
+                  activities
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Women Empowerment Card -->
+          <div
+            class="col-lg-4 col-md-6"
+            data-category="women agriculture"
+            data-category="skill"
+          >
+            <div class="project-card">
+              <img
+                src="images/projects/y.jpeg"
+                class="project-img"
+                alt="Women Initiative"
+              />
+              <div class="project-overlay">
+                <h3>Women Empowerment</h3>
+                <p>
+                  Empowering women through literacy, training, skill development
+                  and promoting enterpreneurship
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Environment -->
+          <div
+            class="col-lg-4 col-md-6"
+            data-category="environment education child"
+          >
+            <div class="project-card">
+              <img
+                src="images/projects/w.jpeg"
+                class="project-img"
+                alt="Environment Initiative"
+              />
+              <div class="project-overlay">
+                <h3>Environment Management</h3>
+                <p>Spread Awareness for Environment Conservation</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Women Empowerment Card -->
+          <div
+            class="col-lg-4 col-md-6"
+            data-category="women education"
+            data-category="skill"
+          >
+            <div class="project-card">
+              <img
+                src="images/projects/z.jpeg"
+                class="project-img"
+                alt="Women Initiative"
+              />
+              <div class="project-overlay">
+                <h3>Women Empowerment</h3>
+                <p>
+                  Organising education trips for women from rural areas to
+                  promote literacy with their professions
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Women Empowerment Card -->
+          <div class="col-lg-4 col-md-6" data-category="women agriculture">
+            <div class="project-card">
+              <img
+                src="images/projects/x.jpeg"
+                class="project-img"
+                alt="Women Initiative"
+              />
+              <div class="project-overlay">
+                <h3>Women Empowerment</h3>
+                <p>
+                  Empowering women through literacy, training, skill development
+                  and promoting enterpreneurship
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Women Empowerment Card -->
+          <div class="col-lg-4 col-md-6" data-category="women aware">
+            <div class="project-card">
+              <img
+                src="images/projects/zc.jpeg"
+                class="project-img"
+                alt="Women Initiative"
+              />
+              <div class="project-overlay">
+                <h3>Women Empowerment and Training</h3>
+                <p>Empowering women through literacy and skill development</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Children Card -->
+          <div class="col-lg-4 col-md-6" data-category="child aware">
+            <div class="project-card">
+              <img
+                src="images/projects/zd.jpeg"
+                class="project-img"
+                alt="Children Initiative"
+              />
+              <div class="project-overlay">
+                <h3>Children Campaigns</h3>
+                <p>Child education and literacy initiatives</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Children Card -->
+          <div class="col-lg-4 col-md-6" data-category="child">
+            <div class="project-card">
+              <img
+                src="images/projects/ze.jpeg"
+                class="project-img"
+                alt="Children Initiative"
+              />
+              <div class="project-overlay">
+                <h3>Children Campaigns</h3>
+                <p>
+                  Child education and literacy initiatives supported by
+                  maharashtra police
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Footer -->
-<footer class="prem-footer">
-    <div class="prem-container">
+    <footer class="prem-footer">
+      <div class="prem-container">
         <div class="prem-footer-main">
-            <!-- Brand Column (same as before) -->
-            <div class="prem-footer-brand">
-                <div class="prem-logo-wrapper">
-                    <img src="images/logo.jpg" alt="Prem Foundation" class="prem-logo">
-                    <div class="prem-logo-glow"></div>
-                </div>
-                <p class="prem-tagline">Committed to dignity, care, and community service since 2012.</p>
-                <div class="prem-social-proof">
-                    <div class="prem-trust-badge">
-                        <i class="fas fa-certificate"></i>
-                        <span>30+ Years Combined Experience</span>
-                    </div>
-                    <div class="prem-trust-badge">
-                        <i class="fas fa-heart"></i>
-                        <span>10000+ Lives Impacted</span>
-                    </div>
-                </div>
+          <!-- Brand Column (same as before) -->
+          <div class="prem-footer-brand">
+            <div class="prem-logo-wrapper">
+              <img
+                src="images/logo.jpg"
+                alt="Prem Foundation"
+                class="prem-logo"
+              />
+              <div class="prem-logo-glow"></div>
             </div>
+            <p class="prem-tagline">
+              Committed to dignity, care, and community service since 2012.
+            </p>
+            <div class="prem-social-proof">
+              <div class="prem-trust-badge">
+                <i class="fas fa-certificate"></i>
+                <span>30+ Years Combined Experience</span>
+              </div>
+              <div class="prem-trust-badge">
+                <i class="fas fa-heart"></i>
+                <span>10000+ Lives Impacted</span>
+              </div>
+            </div>
+          </div>
 
-            <!-- Links Column (same as before) -->
-            <div class="prem-footer-links">
-                <div class="prem-links-column">
-                    <h5 class="prem-links-title">Our Initiatives</h5>
-                    <ul class="prem-links-list">
-                        <li><a href="premangan.html" class="prem-link"><i class="fas fa-home"></i> Premangan Old Age Home</a></li>
-                        <li><a href="projects.html" class="prem-link"><i class="fas fa-hands-helping"></i> Community Projects</a></li>
-                        <li><a href="donate.html" class="prem-link"><i class="fas fa-donate"></i> Donation Programs</a></li>
-                    </ul>
-                </div>
-                <div class="prem-links-column">
-                    <h5 class="prem-links-title">Organization</h5>
-                    <ul class="prem-links-list">
-                        <li><a href="about.html" class="prem-link"><i class="fas fa-info-circle"></i> About Us</a></li>
-                        <li><a href="team.html" class="prem-link"><i class="fas fa-users"></i> Our Team</a></li>
-                        <li><a href="about.html#report" class="prem-link"><i class="fas fa-file-alt"></i> Annual Reports</a></li>
-                    </ul>
-                </div>
+          <!-- Links Column (same as before) -->
+          <div class="prem-footer-links">
+            <div class="prem-links-column">
+              <h5 class="prem-links-title">Our Initiatives</h5>
+              <ul class="prem-links-list">
+                <li>
+                  <a href="premangan.html" class="prem-link"
+                    ><i class="fas fa-home"></i> Premangan Old Age Home</a
+                  >
+                </li>
+                <li>
+                  <a href="projects.html" class="prem-link"
+                    ><i class="fas fa-hands-helping"></i> Community Projects</a
+                  >
+                </li>
+                <li>
+                  <a href="donate.html" class="prem-link"
+                    ><i class="fas fa-donate"></i> Donation Programs</a
+                  >
+                </li>
+              </ul>
             </div>
+            <div class="prem-links-column">
+              <h5 class="prem-links-title">Organization</h5>
+              <ul class="prem-links-list">
+                <li>
+                  <a href="about.html" class="prem-link"
+                    ><i class="fas fa-info-circle"></i> About Us</a
+                  >
+                </li>
+                <li>
+                  <a href="team.html" class="prem-link"
+                    ><i class="fas fa-users"></i> Our Team</a
+                  >
+                </li>
+                <li>
+                  <a href="about.html#report" class="prem-link"
+                    ><i class="fas fa-file-alt"></i> Annual Reports</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
 
-            <!-- Contact Column (same as before) -->
-            <div class="prem-footer-contact">
-                <h5 class="prem-contact-title">Contact Us</h5>
-                <div class="prem-contact-info">
-                    <div class="prem-contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>4th Floor, Sitaram Chambers, Peth Naka, Panchavati, Nashik, Maharashtra, India - 422003</span>
-                    </div>
-                    <div class="prem-contact-item">
-                        <i class="fas fa-phone-alt"></i>
-                        <span>+91 9970559373</span>
-                    </div>
-                    <div class="prem-contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>premfoundation2012@gmail.com</span>
-                    </div>
-                </div>
-                <div class="prem-contact-buttons">
-                    <a href="tel:+919970559373" class="prem-call-button">
-                        <i class="fas fa-phone"></i> Call Us
-                    </a>
-                    <a href="https://wa.me/919970559373" class="prem-whatsapp-button">
-                        <i class="fab fa-whatsapp"></i> WhatsApp
-                    </a>
-                    <a href="mailto:premfoundation2012@gmail.com" class="prem-email-button">
-                        <i class="fas fa-envelope"></i> Email
-                    </a>
-                </div>
+          <!-- Contact Column (same as before) -->
+          <div class="prem-footer-contact">
+            <h5 class="prem-contact-title">Contact Us</h5>
+            <div class="prem-contact-info">
+              <div class="prem-contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span
+                  >4th Floor, Sitaram Chambers, Peth Naka, Panchavati, Nashik,
+                  Maharashtra, India - 422003</span
+                >
+              </div>
+              <div class="prem-contact-item">
+                <i class="fas fa-phone-alt"></i>
+                <span>+91 9970559373</span>
+              </div>
+              <div class="prem-contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>premfoundation2012@gmail.com</span>
+              </div>
             </div>
+            <div class="prem-contact-buttons">
+              <a href="tel:+919970559373" class="prem-call-button">
+                <i class="fas fa-phone"></i> Call Us
+              </a>
+              <a href="https://wa.me/919970559373" class="prem-whatsapp-button">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+              </a>
+              <a
+                href="mailto:premfoundation2012@gmail.com"
+                class="prem-email-button"
+              >
+                <i class="fas fa-envelope"></i> Email
+              </a>
+            </div>
+          </div>
         </div>
-            
 
-            <div class="prem-copyright">
-                <p>&copy; 2025 Prem Foundation. All Rights Reserved.</p>
-                <p class="prem-credits">Crafted with <i class="fas fa-heart"></i> for humanity</p>
-            </div>
+        <div class="prem-copyright">
+          <p>&copy; 2025 Prem Foundation. All Rights Reserved.</p>
+          <p class="prem-credits">
+            Crafted with <i class="fas fa-heart"></i> for humanity
+          </p>
         </div>
-    </div>
-</footer>
+      </div>
+    </footer>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
     <script src="js/main.js"></script>
-</body>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const filterButtons = document.querySelectorAll(".filter-buttons .btn");
+        const projectCards = document.querySelectorAll(
+          ".projects-grid > [data-category]"
+        );
+
+        filterButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            // Remove active class from all buttons
+            filterButtons.forEach((btn) => btn.classList.remove("active"));
+
+            // Add active class to clicked button
+            this.classList.add("active");
+
+            const filterValue = this.getAttribute("data-filter");
+
+            // Show all if 'all' is selected
+            if (filterValue === "all") {
+              projectCards.forEach((card) => {
+                card.style.display = "block";
+              });
+              return;
+            }
+
+            // Filter based on category
+            projectCards.forEach((card) => {
+              const categories = card.getAttribute("data-category").split(" ");
+
+              if (categories.includes(filterValue)) {
+                card.style.display = "block";
+              } else {
+                card.style.display = "none";
+              }
+            });
+          });
+        });
+      });
+    </script>
+  </body>
 </html>

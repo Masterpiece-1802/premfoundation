@@ -1532,7 +1532,7 @@ a:focus, button:focus {
 .projects-hero {
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
                 url('../images/projects-bg.jpg') center/cover no-repeat;
-    min-height: 60vh;
+    min-height: 55vh;
 }
 
 .project-card {

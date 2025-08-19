@@ -47,6 +47,23 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/contact.css" />
+
+    <!-- Cache control meta tags -->
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <script>
+      // Force reload on back/forward navigation
+      window.addEventListener("pageshow", function (event) {
+        if (event.persisted) {
+          window.location.reload();
+        }
+      });
+    </script>
   </head>
   <body>
     <!-- Header (Same as other pages) -->
@@ -351,65 +368,6 @@
       </div>
     </section>
 
-    <!-- Developer Section -->
-    <section class="developer-section py-5">
-      <div class="container py-5">
-        <div class="row justify-content-center">
-          <div class="col-lg-8 text-center mb-5" data-aos="fade-up">
-            <h2 class="h3 mb-3">Website Developed By</h2>
-            <p class="text-muted">
-              For technical inquiries or website feedback
-            </p>
-          </div>
-        </div>
-        <div class="row justify-content-center">
-          <div
-            class="col-md-8 col-lg-6"
-            data-aos="fade-up"
-            data-aos-delay="100"
-          >
-            <div class="developer-card p-4 p-md-5 text-center">
-              <div class="developer-img-container mb-4">
-                <img
-                  src="images/contact/developer1.jpg"
-                  alt="Mohit Raju Shirsath"
-                  class="developer-img"
-                />
-              </div>
-              <h3 class="h4 mb-2">Mohit Raju Shirsath</h3>
-              <p class="text-muted mb-4">Computer Engineer</p>
-
-              <div class="developer-social mb-4">
-                <!--  <a href="https://mohitshirsath.com" title="Personal Website" target="_blank">
-                                <i class="fas fa-globe"></i>
-                            </a>-->
-                <a href="mailto:mohit.r.shirsath@gmail.com" title="Email">
-                  <i class="fas fa-envelope"></i>
-                </a>
-                <a
-                  href="https://linkedin.com/in/mohitshirsath1802"
-                  title="LinkedIn"
-                  target="_blank"
-                >
-                  <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a
-                  href="https://instagram.com/mohitshirsath_1802"
-                  title="Instagram"
-                  target="_blank"
-                >
-                  <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://wa.me/917798072763" title="WhatsApp">
-                  <i class="fab fa-whatsapp"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Maps Section -->
     <section class="maps-section py-5">
       <div class="container py-5">
@@ -476,39 +434,62 @@
               >
             </div>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <div class="row g-4 mb-5">
-            <div
-              class="col-md-6 col-lg-4"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-              <div class="map-container" id="mainOfficeMap">
-                <div class="map-overlay">
-                  <h3 class="h6 mb-0">Head Office</h3>
-                </div>
+    <!-- Developer Section -->
+    <section class="developer-section py-5">
+      <div class="container py-5">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center mb-5" data-aos="fade-up">
+            <h2 class="h3 mb-3">Website Developed By</h2>
+            <p class="text-muted">
+              For technical inquiries or website feedback
+            </p>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div
+            class="col-md-8 col-lg-6"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="developer-card p-4 p-md-5 text-center">
+              <div class="developer-img-container mb-4">
+                <img
+                  src="images/contact/developer1.jpg"
+                  alt="Mohit Raju Shirsath"
+                  class="developer-img"
+                />
               </div>
-            </div>
-            <div
-              class="col-md-6 col-lg-4"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              <div class="map-container" id="premanganMap">
-                <div class="map-overlay">
-                  <h3 class="h6 mb-0">Premangan</h3>
-                </div>
-              </div>
-            </div>
-            <div
-              class="col-md-6 col-lg-4"
-              data-aos="fade-up"
-              data-aos-delay="300"
-            >
-              <div class="map-container" id="workSiteMap">
-                <div class="map-overlay">
-                  <h3 class="h6 mb-0">Work Site</h3>
-                </div>
+              <h3 class="h4 mb-2">Mohit Raju Shirsath</h3>
+              <p class="text-muted mb-4">Computer Engineer</p>
+
+              <div class="developer-social mb-4">
+                <!--  <a href="https://mohitshirsath.com" title="Personal Website" target="_blank">
+                                <i class="fas fa-globe"></i>
+                            </a>-->
+                <a href="mailto:mohit.r.shirsath@gmail.com" title="Email">
+                  <i class="fas fa-envelope"></i>
+                </a>
+                <a
+                  href="https://linkedin.com/in/mohitshirsath1802"
+                  title="LinkedIn"
+                  target="_blank"
+                >
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a
+                  href="https://instagram.com/mohitshirsath_1802"
+                  title="Instagram"
+                  target="_blank"
+                >
+                  <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://wa.me/917798072763" title="WhatsApp">
+                  <i class="fab fa-whatsapp"></i>
+                </a>
               </div>
             </div>
           </div>

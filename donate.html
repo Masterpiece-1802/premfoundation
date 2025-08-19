@@ -151,7 +151,7 @@
     <section class="premangan-section">
         <div class="premangan-card">
             <h2>Premangan - Our Old Age Home Project</h2>
-            <p>We're building <span class="highlight">Premangan</span>, a sanctuary for the elderly in Ambewadi, Igatpuri. With your support, we can create a loving home for those who need it most.</p>
+            <p>We're building <span class="highlight">Premangan</span>, a sanctuary for the elderly in Ambewadi, Igatpuri, Nashik (Maharashtra). With your support, we can create a loving home for those who need it most.</p>
             <p>Donate <span class="highlight">₹50,000/-</span> or more to name a room in our facility. Your chosen name will be permanently displayed, creating a lasting legacy of your generosity.</p><div class="project-gallery" style="margin: 20px 0; text-align: center;">
     <div class="project-gallery" style="margin: 20px 0; text-align: center;">
     <div class="gallery-container" style="position: relative; height: 250px; display: flex; justify-content: center; align-items: center;">
@@ -759,7 +759,7 @@ function showCertification(certType) {
                 <p>Prem Foundation is approved for CSR funding, enabling corporations to partner with us to fulfill their CSR obligations while creating measurable social impact.</p>
 
             `;
-            pdfLink = 'certificates/csr.pdf';
+            pdfLink = 'certificates/csr1.pdf';
             break;
         case 'registration':
             title = 'Organization Registration';
@@ -960,6 +960,24 @@ function submitDonationForm(formData, isFailure = false) {
             }
         });
     });
+</script>
+
+<script>
+// Add to all pages to handle back/forward navigation
+window.addEventListener('pageshow', function(event) {
+    // If page is loaded from cache, reload it
+    if (event.persisted) {
+        window.location.reload();
+    }
+});
+
+// Alternative: Listen for popstate events (back/forward button)
+window.addEventListener('popstate', function() {
+    window.location.reload();
+});
+
+// Push current state to history when page loads
+history.pushState(null, null, window.location.href);
 </script>
 </body>
 </html>

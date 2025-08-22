@@ -465,7 +465,7 @@
             white-space: nowrap;
             display: inline-block;
             padding: 0.5rem 1rem;
-            background: rgba(17, 6, 106, 0.118);
+            background: rgba(108, 92, 231, 0.1);
             border-radius: 5px;
             border: 1px solid rgba(108, 92, 231, 0.2);
         }
@@ -1403,4 +1403,228 @@
     color: white;
     font-weight: 500;
     font-size: 1.05rem;
+}
+
+/* Mobile Compatibility Improvements */
+@media (max-width: 768px) {
+    /* Custom Donation Box Improvements */
+    .custom-donation {
+        padding: 2rem 1.5rem;
+        margin: 1.5rem auto;
+        border-radius: 12px;
+        width: 90%;
+        max-width: 100%;
+    }
+
+    .custom-donation h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1.8rem;
+    }
+
+    .custom-donation h3::after {
+        width: 50px;
+        margin: 0.8rem auto 0;
+    }
+
+    .custom-donation .form-group {
+        margin-bottom: 1.8rem;
+    }
+
+    .custom-donation label {
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .custom-donation input {
+        padding: 1rem 1rem 1rem 2.8rem;
+        font-size: 1.1rem;
+    }
+
+    .custom-donation .form-group::before {
+        left: 1rem;
+        font-size: 1.2rem;
+        top: 55%;
+    }
+
+    .donate-btn {
+        padding: 1.1rem;
+        font-size: 1.1rem;
+    }
+
+    /* Premangan Section Improvements */
+    .premangan-section {
+        padding: 3rem 1rem;
+    }
+
+    .premangan-card {
+        padding: 2rem 1.5rem;
+        margin: 0 1rem;
+        width: auto;
+    }
+
+    .premangan-card h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .premangan-card p {
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-bottom: 1.5rem;
+    }
+
+    .project-gallery {
+        margin: 1rem 0;
+    }
+
+    .gallery-container {
+        height: 200px;
+    }
+
+    .gallery-image {
+        max-height: 200px !important;
+    }
+
+    .premangan-btn {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1rem;
+    }
+
+    /* Campaigns Table Improvements */
+    .campaign-table-container {
+        margin: 2rem 0;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        width: 100%;
+        padding: 0 0.5rem;
+    }
+
+    .campaign-table {
+        min-width: 650px; /* Allow horizontal scrolling on very small devices */
+        font-size: 0.9rem;
+    }
+
+    .campaign-table th, 
+    .campaign-table td {
+        padding: 0.8rem 0.6rem;
+    }
+
+    .campaign-table th {
+        font-size: 0.85rem;
+        padding: 0.9rem 0.6rem;
+    }
+
+    .campaign-amount {
+        font-size: 0.9rem;
+        white-space: nowrap;
+    }
+
+    .donate-link {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    /* Section title adjustments for mobile */
+    .section-title h2 {
+        font-size: 2rem;
+    }
+
+    .section-title p {
+        padding: 0 1rem;
+    }
+}
+
+/* Extra small devices (phones, 480px and down) */
+@media (max-width: 480px) {
+    .custom-donation {
+        padding: 1.5rem 1rem;
+        width: 95%;
+    }
+
+    .custom-donation h3 {
+        font-size: 1.5rem;
+    }
+
+    .premangan-card {
+        padding: 1.5rem 1rem;
+    }
+
+    .premangan-card h2 {
+        font-size: 1.5rem;
+    }
+
+    .gallery-container {
+        height: 180px;
+    }
+
+    .gallery-image {
+        max-height: 180px !important;
+    }
+
+    .campaign-table {
+        min-width: 600px;
+        font-size: 0.85rem;
+    }
+
+    .campaign-table th, 
+    .campaign-table td {
+        padding: 0.6rem 0.5rem;
+    }
+}
+
+/* Very small devices (phones, 360px and down) */
+@media (max-width: 360px) {
+    .custom-donation {
+        padding: 1.2rem 0.8rem;
+    }
+
+    .custom-donation h3 {
+        font-size: 1.3rem;
+    }
+
+    .custom-donation input {
+        padding: 0.8rem 0.8rem 0.8rem 2.5rem;
+        font-size: 1rem;
+    }
+
+    .custom-donation .form-group::before {
+        left: 0.8rem;
+        font-size: 1.1rem;
+    }
+
+    .premangan-card {
+        padding: 1.2rem 0.8rem;
+    }
+
+    .premangan-card h2 {
+        font-size: 1.3rem;
+    }
+
+    .gallery-container {
+        height: 160px;
+    }
+
+    .gallery-image {
+        max-height: 160px !important;
+    }
+}
+
+/* Prevent horizontal scrolling on body */
+body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* Ensure all sections don't exceed viewport width */
+.donation-hero,
+.donation-section,
+.premangan-section,
+.bank-transfer-section,
+.tax-benefits,
+.certifications,
+.cta-section {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
 }

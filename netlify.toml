@@ -1,0 +1,10 @@
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/api/sitemap"
+  force = true
+  status = 200
+
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Content-Type = "application/xml"

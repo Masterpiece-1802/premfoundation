@@ -149,7 +149,7 @@
               "addressLocality": "Panchavati",
               "addressRegion": "Maharashtra",
               "postalCode": "422003",
-              "addressCountry": "India"
+              "addressCountry": "IN"
             },
             "contactPoint": {
               "@type": "ContactPoint",
@@ -273,6 +273,7 @@
             "name": "Prem Foundation",
             "description": "Nashik-based NGO providing community services and elderly care",
             "url": "https://premfoundation.netlify.app/",
+            "image": "https://premfoundation.netlify.app/images/logo.jpg",
             "telephone": "+91-9970559373",
             "address": {
               "@type": "PostalAddress",
@@ -280,7 +281,7 @@
               "addressLocality": "Panchavati, Nashik",
               "addressRegion": "Maharashtra",
               "postalCode": "422003",
-              "addressCountry": "India"
+              "addressCountry": "IN"
             },
             "geo": {
               "@type": "GeoCoordinates",
@@ -288,7 +289,7 @@
               "longitude": "73.79165"
             },
             "openingHours": "Mo-Su 09:00-18:00",
-            "priceRange": "Free services for eligible beneficiaries",
+            "priceRange": "Paid Services",
             "sameAs": [
               "https://www.facebook.com/premfoundation",
               "https://www.instagram.com/premfoundation",
@@ -308,7 +309,35 @@
               "@type": "NGO",
               "name": "Prem Foundation"
             },
-            "paymentMethod": ["CreditCard", "DebitCard", "BankTransfer", "UPI"]
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://premfoundation.netlify.app/donate.html",
+              "actionPlatform": [
+                "http://schema.org/DesktopWebPlatform",
+                "http://schema.org/MobileWebPlatform"
+              ]
+            },
+            "object": {
+              "@type": "Offer",
+              "acceptedPaymentMethod": [
+                {
+                  "@type": "PaymentMethod",
+                  "name": "Credit Card"
+                },
+                {
+                  "@type": "PaymentMethod",
+                  "name": "Debit Card"
+                },
+                {
+                  "@type": "PaymentMethod",
+                  "name": "Bank Transfer"
+                },
+                {
+                  "@type": "PaymentMethod",
+                  "name": "UPI"
+                }
+              ]
+            }
           }
         ]
       }

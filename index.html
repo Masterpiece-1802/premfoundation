@@ -1,612 +1,876 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <!-- Character Encoding -->
-    <meta charset="UTF-8">
-    
+    <meta charset="UTF-8" />
+
     <!-- Viewport for Responsive Design -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes">
-    
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes"
+    />
+
     <!-- Primary Meta Tags -->
     <title>Prem Foundation Nashik | Empowering Communities Since 2012</title>
-    <meta name="title" content="Prem Foundation Nashik | Empowering Communities Since 2012">
-    <meta name="description" content="Prem Foundation is a Nashik-based NGO transforming lives through compassion, community service, and elderly care. Join us in making a difference.">
-    <meta name="keywords" content="Prem Foundation, NGO Nashik, old age home, community service, donate NGO, volunteer opportunities, social work India, elderly care, charity India">
-    
+    <meta
+      name="title"
+      content="Prem Foundation Nashik | Empowering Communities Since 2012"
+    />
+    <meta
+      name="description"
+      content="Prem Foundation is a Nashik-based NGO transforming lives through compassion, community service, and elderly care. Join us in making a difference."
+    />
+    <meta
+      name="keywords"
+      content="Prem Foundation, NGO Nashik, old age home, community service, donate NGO, volunteer opportunities, social work India, elderly care, charity India"
+    />
+
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://premfoundation.netlify.app/">
-    
+    <link rel="canonical" href="https://premfoundation.netlify.app/" />
+
     <!-- Favicon & App Icons -->
-    <link rel="icon" href="images/logo.jpg" type="image/jpg">
-    <link rel="apple-touch-icon" href="images/logo.jpg">
-    <meta name="msapplication-TileColor" content="#1e40af">
-    <meta name="theme-color" content="#1e40af">
-    
+    <link rel="icon" href="images/logo.jpg" type="image/jpg" />
+    <link rel="apple-touch-icon" href="images/logo.jpg" />
+    <meta name="msapplication-TileColor" content="#1e40af" />
+    <meta name="theme-color" content="#1e40af" />
+
     <!-- Preload Critical Resources -->
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="images/hero-bg.jpeg" as="image">
-    
+    <link
+      rel="preload"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="preload"
+      href="css/style.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="preload"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link rel="preload" href="images/hero-bg.jpeg" as="image" />
+
     <!-- DNS Prefetch -->
-    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-    
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/index.css">
-    
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/index.css" />
+
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://premfoundation.netlify.app/">
-    <meta property="og:title" content="Prem Foundation Nashik | Empowering Communities Since 2012">
-    <meta property="og:description" content="Join Prem Foundation in transforming lives through compassion, community service, and elderly care in Nashik, India.">
-    <meta property="og:image" content="https://premfoundation.netlify.app/images/hero-bg.jpeg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:locale" content="en_IN">
-    
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://premfoundation.netlify.app/" />
+    <meta
+      property="og:title"
+      content="Prem Foundation Nashik | Empowering Communities Since 2012"
+    />
+    <meta
+      property="og:description"
+      content="Join Prem Foundation in transforming lives through compassion, community service, and elderly care in Nashik, India."
+    />
+    <meta
+      property="og:image"
+      content="https://premfoundation.netlify.app/images/hero-bg.jpeg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_IN" />
+
     <!-- Additional Meta Tags -->
-    <meta name="author" content="Prem Foundation">
-    <meta name="robots" content="index, follow, max-image-preview:large">
-    <meta name="geo.region" content="IN-MH">
-    <meta name="geo.placename" content="Nashik">
-    <meta name="geo.position" content="20.00594;73.79165">
-    <meta name="ICBM" content="20.00594, 73.79165">
-    <meta name="revisit-after" content="7 days">
-    
+    <meta name="author" content="Prem Foundation" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="geo.region" content="IN-MH" />
+    <meta name="geo.placename" content="Nashik" />
+    <meta name="geo.position" content="20.00594;73.79165" />
+    <meta name="ICBM" content="20.00594, 73.79165" />
+    <meta name="revisit-after" content="7 days" />
+
     <!-- Structured Data (Schema.org) -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "NGO",
-          "@id": "https://premfoundation.netlify.app/#organization",
-          "name": "Prem Foundation",
-          "alternateName": "Participatory Research and Environment Management Organisation",
-          "url": "https://premfoundation.netlify.app/",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://premfoundation.netlify.app/images/logo.jpg",
-            "width": "500",
-            "height": "500"
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "NGO",
+            "@id": "https://premfoundation.netlify.app/#organization",
+            "name": "Prem Foundation",
+            "alternateName": "Participatory Research and Environment Management Organisation",
+            "url": "https://premfoundation.netlify.app/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://premfoundation.netlify.app/images/logo.jpg",
+              "width": "500",
+              "height": "500"
+            },
+            "image": "https://premfoundation.netlify.app/images/hero-bg.jpeg",
+            "description": "Prem Foundation is a Nashik-based NGO transforming lives through compassion, community service, and elderly care since 2012.",
+            "foundingDate": "2012",
+            "founder": {
+              "@type": "Organization",
+              "name": "Prem Foundation Team"
+            },
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "4th Floor, Sitaram Chambers, Peth Naka",
+              "addressLocality": "Panchavati",
+              "addressRegion": "Maharashtra",
+              "postalCode": "422003",
+              "addressCountry": "India"
+            },
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+91-9970559373",
+              "contactType": "Customer Service",
+              "email": "premfoundation2012@gmail.com",
+              "areaServed": "IN",
+              "availableLanguage": ["English", "Hindi", "Marathi"]
+            },
+            "sameAs": [
+              "https://www.facebook.com/premfoundation",
+              "https://www.instagram.com/premfoundation",
+              "https://www.linkedin.com/company/premfoundation"
+            ],
+            "keywords": "NGO Nashik, old age home, community service, donate NGO, volunteer opportunities, social work India, elderly care, charity India"
           },
-          "image": "https://premfoundation.netlify.app/images/hero-bg.jpeg",
-          "description": "Prem Foundation is a Nashik-based NGO transforming lives through compassion, community service, and elderly care since 2012.",
-          "foundingDate": "2012",
-          "founder": {
-            "@type": "Organization",
-            "name": "Prem Foundation Team"
+          {
+            "@type": "WebSite",
+            "@id": "https://premfoundation.netlify.app/#website",
+            "url": "https://premfoundation.netlify.app/",
+            "name": "Prem Foundation",
+            "description": "Prem Foundation - Transforming lives through compassion and community service",
+            "publisher": {
+              "@id": "https://premfoundation.netlify.app/#organization"
+            },
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://premfoundation.netlify.app/search?q={search_term_string}"
+              },
+              "query-input": "required name=search_term_string"
+            },
+            "inLanguage": "en"
           },
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "4th Floor, Sitaram Chambers, Peth Naka",
-            "addressLocality": "Panchavati",
-            "addressRegion": "Maharashtra",
-            "postalCode": "422003",
-            "addressCountry": "India"
+          {
+            "@type": "WebPage",
+            "@id": "https://premfoundation.netlify.app/#webpage",
+            "url": "https://premfoundation.netlify.app/",
+            "name": "Prem Foundation - Empowering Communities",
+            "isPartOf": {
+              "@id": "https://premfoundation.netlify.app/#website"
+            },
+            "about": {
+              "@id": "https://premfoundation.netlify.app/#organization"
+            },
+            "datePublished": "2012-01-01T00:00:00+05:30",
+            "dateModified": "2025-01-01T00:00:00+05:30",
+            "description": "Prem Foundation - Transforming lives through compassion and community service since 2012",
+            "breadcrumb": {
+              "@id": "https://premfoundation.netlify.app/#breadcrumb"
+            },
+            "inLanguage": "en",
+            "potentialAction": [
+              {
+                "@type": "ReadAction",
+                "target": ["https://premfoundation.netlify.app/"]
+              }
+            ]
           },
-          "contactPoint": {
-            "@type": "ContactPoint",
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://premfoundation.netlify.app/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://premfoundation.netlify.app/"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is Prem Foundation?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Prem Foundation is a Nashik-based NGO established in 2012, dedicated to transforming lives through compassion, community service, and elderly care through various initiatives including Premangan Old Age Home."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How can I donate to Prem Foundation?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "You can donate to Prem Foundation through our website's donation page, via bank transfer, or by visiting our office in Nashik. All donations are eligible for tax exemption under section 80G of the Income Tax Act."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How can I volunteer with Prem Foundation?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We welcome volunteers! You can apply through our volunteer page on the website, or contact us directly at +91 9970559373 or premfoundation2012@gmail.com to discuss how you can contribute your time and skills."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Where is Prem Foundation located?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Our main office is at 4th Floor, Sitaram Chambers, Peth Naka, Panchavati, Nashik, Maharashtra, India - 422003. Our Premangan Old Age Home is located at Sanit Bunglow, Near Bhujbal Farm Road, Behind Deccan Petrol Pump, Sunderban Colony, Lekha Nagar, Nashik."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What services does Prem Foundation provide?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We provide elderly care through our Premangan Old Age Home, community development programs, environmental initiatives, and various social welfare services focused on empowering underserved communities."
+                }
+              }
+            ]
+          },
+          {
+            "@type": "LocalBusiness",
+            "@id": "https://premfoundation.netlify.app/#localbusiness",
+            "name": "Prem Foundation",
+            "description": "Nashik-based NGO providing community services and elderly care",
+            "url": "https://premfoundation.netlify.app/",
             "telephone": "+91-9970559373",
-            "contactType": "Customer Service",
-            "email": "premfoundation2012@gmail.com",
-            "areaServed": "IN",
-            "availableLanguage": ["English", "Hindi", "Marathi"]
-          },
-          "sameAs": [
-            "https://www.facebook.com/premfoundation",
-            "https://www.instagram.com/premfoundation",
-            "https://www.linkedin.com/company/premfoundation"
-          ],
-          "keywords": "NGO Nashik, old age home, community service, donate NGO, volunteer opportunities, social work India, elderly care, charity India"
-        },
-        {
-          "@type": "WebSite",
-          "@id": "https://premfoundation.netlify.app/#website",
-          "url": "https://premfoundation.netlify.app/",
-          "name": "Prem Foundation",
-          "description": "Prem Foundation - Transforming lives through compassion and community service",
-          "publisher": {
-            "@id": "https://premfoundation.netlify.app/#organization"
-          },
-          "potentialAction": {
-            "@type": "SearchAction",
-            "target": {
-              "@type": "EntryPoint",
-              "urlTemplate": "https://premfoundation.netlify.app/search?q={search_term_string}"
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "4th Floor, Sitaram Chambers, Peth Naka",
+              "addressLocality": "Panchavati, Nashik",
+              "addressRegion": "Maharashtra",
+              "postalCode": "422003",
+              "addressCountry": "India"
             },
-            "query-input": "required name=search_term_string"
-          },
-          "inLanguage": "en"
-        },
-        {
-          "@type": "WebPage",
-          "@id": "https://premfoundation.netlify.app/#webpage",
-          "url": "https://premfoundation.netlify.app/",
-          "name": "Prem Foundation - Empowering Communities",
-          "isPartOf": {
-            "@id": "https://premfoundation.netlify.app/#website"
-          },
-          "about": {
-            "@id": "https://premfoundation.netlify.app/#organization"
-          },
-          "datePublished": "2012-01-01T00:00:00+05:30",
-          "dateModified": "2025-01-01T00:00:00+05:30",
-          "description": "Prem Foundation - Transforming lives through compassion and community service since 2012",
-          "breadcrumb": {
-            "@id": "https://premfoundation.netlify.app/#breadcrumb"
-          },
-          "inLanguage": "en",
-          "potentialAction": [
-            {
-              "@type": "ReadAction",
-              "target": [
-                "https://premfoundation.netlify.app/"
-              ]
-            }
-          ]
-        },
-        {
-          "@type": "BreadcrumbList",
-          "@id": "https://premfoundation.netlify.app/#breadcrumb",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://premfoundation.netlify.app/"
-            }
-          ]
-        },
-        {
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "What is Prem Foundation?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Prem Foundation is a Nashik-based NGO established in 2012, dedicated to transforming lives through compassion, community service, and elderly care through various initiatives including Premangan Old Age Home."
-              }
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "20.00594",
+              "longitude": "73.79165"
             },
-            {
-              "@type": "Question",
-              "name": "How can I donate to Prem Foundation?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "You can donate to Prem Foundation through our website's donation page, via bank transfer, or by visiting our office in Nashik. All donations are eligible for tax exemption under section 80G of the Income Tax Act."
-              }
+            "openingHours": "Mo-Su 09:00-18:00",
+            "priceRange": "Free services for eligible beneficiaries",
+            "sameAs": [
+              "https://www.facebook.com/premfoundation",
+              "https://www.instagram.com/premfoundation",
+              "https://www.linkedin.com/company/premfoundation"
+            ]
+          },
+          {
+            "@type": "DonateAction",
+            "name": "Donate to Prem Foundation",
+            "description": "Support our mission to empower communities and provide elderly care",
+            "url": "https://premfoundation.netlify.app/donate.html",
+            "agent": {
+              "@type": "NGO",
+              "name": "Prem Foundation"
             },
-            {
-              "@type": "Question",
-              "name": "How can I volunteer with Prem Foundation?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "We welcome volunteers! You can apply through our volunteer page on the website, or contact us directly at +91 9970559373 or premfoundation2012@gmail.com to discuss how you can contribute your time and skills."
-              }
-            }
-          ]
-        }
-      ]
-    }
+            "recipient": {
+              "@type": "NGO",
+              "name": "Prem Foundation"
+            },
+            "paymentMethod": ["CreditCard", "DebitCard", "BankTransfer", "UPI"]
+          }
+        ]
+      }
     </script>
 
     <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XH1EG1VFN7"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-XH1EG1VFN7"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XH1EG1VFN7');
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-XH1EG1VFN7");
     </script>
-</head>
-<body>
-
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-  <div class="container">
-    <a class="navbar-brand logo-glow" href="index.html">
-      <img src="images/logo.jpg" alt="Prem Foundation" height="50">
-      <span class="logo-pulse"></span>
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link active" href="index.html">
-            <span class="nav-link-underline">Home</span>
-          </a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown">
-            <span class="nav-link-underline">About Us</span>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="about.html">Our Story</a></li>
-            <li><a class="dropdown-item" href="team.html">Our Team</a></li>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand logo-glow" href="index.html">
+          <img src="images/logo.jpg" alt="Prem Foundation" height="50" />
+          <span class="logo-pulse"></span>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">
+                <span class="nav-link-underline">Home</span>
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="aboutDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                <span class="nav-link-underline">About Us</span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="about.html">Our Story</a>
+                </li>
+                <li><a class="dropdown-item" href="team.html">Our Team</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="projectsDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                <span class="nav-link-underline">Projects</span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="projects.html"
+                    >All Initiatives</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="premangan.html"
+                    >Premangan Old Age Home</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link donate-btn" href="donate.html">
+                <span class="nav-link-underline">Donate</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="volunteer.html">
+                <span class="nav-link-underline">Volunteer</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">
+                <span class="nav-link-underline">Contact</span>
+              </a>
+            </li>
           </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="projectsDropdown" role="button" data-bs-toggle="dropdown">
-            <span class="nav-link-underline">Projects</span>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="projects.html">All Initiatives</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="premangan.html">Premangan Old Age Home</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link donate-btn" href="donate.html">
-            <span class="nav-link-underline">Donate</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="volunteer.html">
-            <span class="nav-link-underline">Volunteer</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="contact.html">
-            <span class="nav-link-underline">Contact</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+        </div>
+      </div>
+    </nav>
 
     <!-- Hero Section -->
-<!-- Hero Section -->
-<section class="hero d-flex align-items-center">
-    <div class="container text-center position-relative">
-        <h1 class="display-4 fw-bold mb-3" data-aos="fade-down">Welcome to Prem Foundation</h1>
-        <p class="lead mb-4" data-aos="fade" data-aos-delay="100">Transforming lives through compassion and service</p>
-        <a href="#journey" class="btn btn-primary btn-lg px-4 py-2" data-aos="fade-up" data-aos-delay="100">
-            <i class="fas fa-heart me-2"></i> Learn More
+    <section class="hero d-flex align-items-center">
+      <div class="container text-center position-relative">
+        <h1 class="display-4 fw-bold mb-3" data-aos="fade-down">
+          Welcome to Prem Foundation
+        </h1>
+        <p class="lead mb-4" data-aos="fade" data-aos-delay="100">
+          Transforming lives through compassion and service
+        </p>
+        <a
+          href="#journey"
+          class="btn btn-primary btn-lg px-4 py-2"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          <i class="fas fa-heart me-2"></i> Learn More
         </a>
 
-
-            <!-- Counter Section -->
-            <div class="counter-section my-4" data-aos="fade" data-aos-delay="200">
-                <div class="counter-item">
-                    <span class="counter" data-target="10000">0</span>
-                    <span>+</span>
-                </div>
-                <p class="counter-text">Lives affected since 2012</p>
-            </div>
-
-            <!-- Scroll Down Arrow -->
-            <a href="#about" class="scroll-down-arrow" aria-label="Scroll down" data-aos="fade" data-aos-delay="300">
-                <i class="fas fa-chevron-down"></i>
-            </a>
+        <!-- Counter Section -->
+        <div class="counter-section my-4" data-aos="fade" data-aos-delay="200">
+          <div class="counter-item">
+            <span class="counter" data-target="10000">0</span>
+            <span>+</span>
+          </div>
+          <p class="counter-text">Lives affected since 2012</p>
         </div>
+
+        <!-- Scroll Down Arrow -->
+        <a
+          href="#about"
+          class="scroll-down-arrow"
+          aria-label="Scroll down"
+          data-aos="fade"
+          data-aos-delay="300"
+        >
+          <i class="fas fa-chevron-down"></i>
+        </a>
+      </div>
     </section>
 
     <!-- About Us Section -->
     <section id="about" class="py-5">
-        <div class="container">
-            <div class="text-center mb-5" data-aos="fade-up">
-                <h2 class="display-5 fw-bold">About Prem Foundation</h2>
-                <p class="lead">Committed to dignity, care, and community service</p>
-            </div>
+      <section class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+          <h2 class="display-5 fw-bold">About Prem Foundation</h2>
+          <p class="lead">Committed to dignity, care, and community service</p>
+        </div>
 
-            <!-- Mission & Vision Cards -->
-            <div class="row g-4 mb-5">
-                <div class="col-md-6" data-aos="fade-right" data-aos-delay="100">
-                    <div class="card-dark h-100 mission-card">
-                        <div class="card-body p-4 text-center">
-                            <div class="card-icon bg-primary">
-                                <i class="fas fa-bullseye"></i>
-                            </div>
-                            <h3>Our Mission</h3>
-                            <p>To provide compassionate care and sustainable solutions for underserved communities through holistic programs that address physical, emotional, and social needs.</p>
-                        </div>
-                    </div>
+        <!-- Mission & Vision Cards -->
+        <div class="row g-4 mb-5">
+          <div class="col-md-6" data-aos="fade-right" data-aos-delay="100">
+            <div class="card-dark h-100 mission-card">
+              <div class="card-body p-4 text-center">
+                <div class="card-icon bg-primary">
+                  <i class="fas fa-bullseye"></i>
                 </div>
-                <div class="col-md-6" data-aos="fade-left" data-aos-delay="100">
-                    <div class="card-dark h-100 vision-card">
-                        <div class="card-body p-4 text-center">
-                            <div class="card-icon bg-success">
-                                <i class="fas fa-eye"></i>
-                            </div>
-                            <h3>Our Vision</h3>
-                            <p>A society where every individual ages with dignity, and no one is left behind due to socioeconomic barriers. We envision empowered communities supporting participatory approaches.</p>
-                        </div>
-                    </div>
-                </div>
+                <h3>Our Mission</h3>
+                <p>
+                  To provide compassionate care and sustainable solutions for
+                  underserved communities through holistic programs that address
+                  physical, emotional, and social needs.
+                </p>
+              </div>
             </div>
+          </div>
+          <div class="col-md-6" data-aos="fade-left" data-aos-delay="100">
+            <div class="card-dark h-100 vision-card">
+              <div class="card-body p-4 text-center">
+                <div class="card-icon bg-success">
+                  <i class="fas fa-eye"></i>
+                </div>
+                <h3>Our Vision</h3>
+                <p>
+                  A society where every individual ages with dignity, and no one
+                  is left behind due to socioeconomic barriers. We envision
+                  empowered communities supporting participatory approaches.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
 
-
-<!-- Updated Journey/Gallery Section -->
-<section id="journey" class="journey-section py-5 position-relative">
-    <div class="container py-4">
+    <!-- Updated Journey/Gallery Section -->
+    <section id="journey" class="journey-section py-5 position-relative">
+      <div class="container py-4">
         <!-- Section Borders -->
         <div class="section-border-top"></div>
         <div class="section-border-bottom"></div>
-        
-        <div class="row align-items-center">
-            <!-- Journey Text -->
-            <div class="col-lg-5 mb-5 mb-lg-0" data-aos="fade-right">
-                <h3 class="h2 fw-bold mb-3 text-white">Our Journey</h3>
-                <div class="acronym-display mb-4">
-                    <span class="letter-p">P</span>
-                    <span class="letter-r">R</span>
-                    <span class="letter-e">E</span>
-                    <span class="letter-m">M</span>
-                    <span class="foundation-text">Foundation</span>
-                    <div class="full-form text-prem-light mt-2">
-                        Participatory Research and Environment Management Organisation
-                    </div>
-                </div>
-                <p class="lead mb-4 text-light">Since 2012, <strong class="text-prem">PREM Foundation</strong> has pioneered sustainable development through participatory approaches. Our journey reflects a commitment to environmental stewardship and community empowerment, creating lasting impact through research-driven solutions.</p>
-                
-                <!-- Floating Badges (Dynamic Elements) -->
-                <div class="floating-badges mb-4">
-                    <div class="badge-item" style="--delay: 0.2s">
-                        <i class="fas fa-leaf"></i> Environmental Care
-                    </div>
-                    <div class="badge-item" style="--delay: 0.4s">
-                        <i class="fas fa-users"></i> Community Focus
-                    </div>
-                </div>
-                
-                <!-- Action Buttons -->
-                <div class="d-flex flex-wrap gap-3">
-                    <a href="about.html" class="btn btn-outline-light px-4">
-                        <i class="fas fa-arrow-right me-2"></i> Our Story
-                    </a>
-                    <a href="donate.html" class="btn btn-prem px-4">
-                        <i class="fas fa-hand-holding-heart me-2"></i> Donate
-                    </a>
-                    <a href="projects.html" class="btn btn-initiatives px-4">
-                        <i class="fas fa-tasks me-2"></i> Initiatives
-                    </a>
-                    <a href="volunteer.html" class="btn btn-outline-prem px-4">
-                        <i class="fas fa-hands-helping me-2"></i> Volunteer
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Gallery -->
-            <div class="col-lg-7" data-aos="fade-left">
-                <div class="premium-gallery">
-                    <!-- Media Type Toggle -->
-                    <div class="media-toggle-container mb-3 d-flex justify-content-center">
-                        <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-prem active" id="showPhotos">
-                                <i class="fas fa-images me-2"></i> Photos
-                            </button>
-                            <button type="button" class="btn btn-outline-prem" id="showVideos">
-                                <i class="fas fa-video me-2"></i> Videos
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <!-- Main Slideshow -->
-                    <div class="main-slider">
-                        <!-- Slides will be loaded dynamically via JavaScript -->
-                    </div>
-                    
-                    <!-- Navigation Arrows -->
-                    <div class="slider-nav">
-                        <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
-                        <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
-                    </div>
-                    
-                    <!-- Thumbnail Strip and View All Button -->
-                    <div class="d-flex align-items-center">
-                        <div class="thumbnail-strip flex-grow-1">
-                            <!-- Thumbnails will be loaded dynamically via JavaScript -->
-                        </div>
-                        <button class="btn btn-prem ms-3" id="viewAllMedia" style="white-space: nowrap;">
-                            <i class="fas fa-expand me-2"></i> View All
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Floating Particles for Dynamic Effect -->
-    <div class="particles">
-        <!-- Particles will be added via JS -->
-    </div>
-    
-    <!-- Gold Accent Elements -->
-    <div class="gold-accent-1"></div>
-    <div class="gold-accent-2"></div>
-</section>
 
-<!-- Full Screen Gallery Modal -->
-<div class="gallery-modal">
-    <div class="modal-content">
+        <div class="row align-items-center">
+          <!-- Journey Text -->
+          <div class="col-lg-5 mb-5 mb-lg-0" data-aos="fade-right">
+            <h3 class="h2 fw-bold mb-3 text-white">Our Journey</h3>
+            <div class="acronym-display mb-4">
+              <span class="letter-p">P</span>
+              <span class="letter-r">R</span>
+              <span class="letter-e">E</span>
+              <span class="letter-m">M</span>
+              <span class="foundation-text">Foundation</span>
+              <div class="full-form text-prem-light mt-2">
+                Participatory Research and Environment Management Organisation
+              </div>
+            </div>
+            <p class="lead mb-4 text-light">
+              Since 2012, <strong class="text-prem">PREM Foundation</strong> has
+              pioneered sustainable development through participatory
+              approaches. Our journey reflects a commitment to environmental
+              stewardship and community empowerment, creating lasting impact
+              through research-driven solutions.
+            </p>
+
+            <!-- Floating Badges (Dynamic Elements) -->
+            <div class="floating-badges mb-4">
+              <div class="badge-item" style="--delay: 0.2s">
+                <i class="fas fa-leaf"></i> Environmental Care
+              </div>
+              <div class="badge-item" style="--delay: 0.4s">
+                <i class="fas fa-users"></i> Community Focus
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="d-flex flex-wrap gap-3">
+              <a href="about.html" class="btn btn-outline-light px-4">
+                <i class="fas fa-arrow-right me-2"></i> Our Story
+              </a>
+              <a href="donate.html" class="btn btn-prem px-4">
+                <i class="fas fa-hand-holding-heart me-2"></i> Donate
+              </a>
+              <a href="projects.html" class="btn btn-initiatives px-4">
+                <i class="fas fa-tasks me-2"></i> Initiatives
+              </a>
+              <a href="volunteer.html" class="btn btn-outline-prem px-4">
+                <i class="fas fa-hands-helping me-2"></i> Volunteer
+              </a>
+            </div>
+          </div>
+
+          <!-- Gallery -->
+          <div class="col-lg-7" data-aos="fade-left">
+            <div class="premium-gallery">
+              <!-- Media Type Toggle -->
+              <div
+                class="media-toggle-container mb-3 d-flex justify-content-center"
+              >
+                <div class="btn-group" role="group">
+                  <button
+                    type="button"
+                    class="btn btn-prem active"
+                    id="showPhotos"
+                  >
+                    <i class="fas fa-images me-2"></i> Photos
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-outline-prem"
+                    id="showVideos"
+                  >
+                    <i class="fas fa-video me-2"></i> Videos
+                  </button>
+                </div>
+              </div>
+
+              <!-- Main Slideshow -->
+              <div class="main-slider">
+                <!-- Slides will be loaded dynamically via JavaScript -->
+              </div>
+
+              <!-- Navigation Arrows -->
+              <div class="slider-nav">
+                <button class="prev-btn">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="next-btn">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+              </div>
+
+              <!-- Thumbnail Strip and View All Button -->
+              <div class="d-flex align-items-center">
+                <div class="thumbnail-strip flex-grow-1">
+                  <!-- Thumbnails will be loaded dynamically via JavaScript -->
+                </div>
+                <button
+                  class="btn btn-prem ms-3"
+                  id="viewAllMedia"
+                  style="white-space: nowrap"
+                >
+                  <i class="fas fa-expand me-2"></i> View All
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Floating Particles for Dynamic Effect -->
+      <div class="particles">
+        <!-- Particles will be added via JS -->
+      </div>
+
+      <!-- Gold Accent Elements -->
+      <div class="gold-accent-1"></div>
+      <div class="gold-accent-2"></div>
+    </section>
+
+    <!-- Full Screen Gallery Modal -->
+    <div class="gallery-modal">
+      <div class="modal-content">
         <span class="close-modal">&times;</span>
         <div class="modal-slides">
-            <!-- Slides will be injected here via JS -->
+          <!-- Slides will be injected here via JS -->
         </div>
         <div class="modal-caption"></div>
+      </div>
     </div>
-</div>
 
-<!-- View All Media Modal -->
-<div class="modal fade" id="allMediaModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
+    <!-- View All Media Modal -->
+    <div class="modal fade" id="allMediaModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
         <div class="modal-content bg-dark">
-            <div class="modal-header border-secondary">
-                <h5 class="modal-title text-gold">All Media</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          <div class="modal-header border-secondary">
+            <h5 class="modal-title text-gold">All Media</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="row g-3" id="allMediaGrid">
+              <!-- Media items will be loaded dynamically -->
             </div>
-            <div class="modal-body">
-                <div class="row g-3" id="allMediaGrid">
-                    <!-- Media items will be loaded dynamically -->
-                </div>
-            </div>
-            <div class="modal-footer border-secondary">
-                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button>
-            </div>
+          </div>
+          <div class="modal-footer border-secondary">
+            <button
+              type="button"
+              class="btn btn-outline-light"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
         </div>
+      </div>
     </div>
-</div>
 
-<!-- Lightbox Modal -->
-<div class="modal fade" id="mediaLightbox" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered">
+    <!-- Lightbox Modal -->
+    <div class="modal fade" id="mediaLightbox" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content bg-transparent border-0">
-            <div class="modal-body p-0 position-relative">
-                <!-- Close Button -->
-                <button type="button" class="btn btn-sm btn-outline-light position-absolute top-0 start-0 m-3" 
-                        data-bs-dismiss="modal" aria-label="Close" title="Close">
-                    <i class="fas fa-times"></i>
-                </button>
-                <!-- Download Button -->
-                <button class="btn btn-sm btn-outline-light position-absolute top-0 end-0 m-3" id="downloadMedia" title="Download">
-                    <i class="fas fa-download"></i>
-                </button>
-                <!-- Fullscreen Button (custom) -->
-                <button class="btn btn-sm btn-outline-light position-absolute top-0 end-0 m-3" id="fullscreenMedia" title="Fullscreen">
-                    <i class="fas fa-expand"></i>
-                </button>
-                <!-- Media Content -->
-                <div class="lightbox-content" id="lightboxContent"></div>
-            </div>
+          <div class="modal-body p-0 position-relative">
+            <!-- Close Button -->
+            <button
+              type="button"
+              class="btn btn-sm btn-outline-light position-absolute top-0 start-0 m-3"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+              title="Close"
+            >
+              <i class="fas fa-times"></i>
+            </button>
+            <!-- Download Button -->
+            <button
+              class="btn btn-sm btn-outline-light position-absolute top-0 end-0 m-3"
+              id="downloadMedia"
+              title="Download"
+            >
+              <i class="fas fa-download"></i>
+            </button>
+            <!-- Fullscreen Button (custom) -->
+            <button
+              class="btn btn-sm btn-outline-light position-absolute top-0 end-0 m-3"
+              id="fullscreenMedia"
+              title="Fullscreen"
+            >
+              <i class="fas fa-expand"></i>
+            </button>
+            <!-- Media Content -->
+            <div class="lightbox-content" id="lightboxContent"></div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
 
-
-<footer class="prem-footer">
-    <div class="prem-container">
+    <footer class="prem-footer">
+      <div class="prem-container">
         <div class="prem-footer-main">
-            <!-- Brand Column -->
-            <div class="prem-footer-brand">
-                <div class="prem-logo-wrapper">
-                    <img src="images/logo.jpg" alt="Prem Foundation" class="prem-logo">
-                    <div class="prem-logo-glow"></div>
-                </div>
-                <p class="prem-tagline">Committed to dignity, care, and community service since 2012.</p>
-                <div class="prem-social-proof">
-                    <div class="prem-trust-badge">
-                        <i class="fas fa-certificate"></i>
-                        <span>30+ Years Combined Experience</span>
-                    </div>
-                    <div class="prem-trust-badge">
-                        <i class="fas fa-heart"></i>
-                        <span>10000+ Lives Impacted</span>
-                    </div>
-                </div>
+          <!-- Brand Column -->
+          <div class="prem-footer-brand">
+            <div class="prem-logo-wrapper">
+              <img
+                src="images/logo.jpg"
+                alt="Prem Foundation"
+                class="prem-logo"
+              />
+              <div class="prem-logo-glow"></div>
             </div>
+            <p class="prem-tagline">
+              Committed to dignity, care, and community service since 2012.
+            </p>
+            <div class="prem-social-proof">
+              <div class="prem-trust-badge">
+                <i class="fas fa-certificate"></i>
+                <span>30+ Years Combined Experience</span>
+              </div>
+              <div class="prem-trust-badge">
+                <i class="fas fa-heart"></i>
+                <span>10000+ Lives Impacted</span>
+              </div>
+            </div>
+          </div>
 
-            <!-- Links Column -->
-            <div class="prem-footer-links">
-                <div class="prem-links-column">
-                    <h5 class="prem-links-title">Our Initiatives</h5>
-                    <ul class="prem-links-list">
-                        <li><a href="premangan.html" class="prem-link"><i class="fas fa-home"></i> Premangan Old Age Home</a></li>
-                        <li><a href="projects.html" class="prem-link"><i class="fas fa-hands-helping"></i> Community Projects</a></li>
-                        <li><a href="donate.html" class="prem-link"><i class="fas fa-donate"></i> Donation Programs</a></li>
-                    </ul>
-                </div>
-                <div class="prem-links-column">
-                    <h5 class="prem-links-title">Organization</h5>
-                    <ul class="prem-links-list">
-                        <li><a href="about.html" class="prem-link"><i class="fas fa-info-circle"></i> About Us</a></li>
-                        <li><a href="team.html" class="prem-link"><i class="fas fa-users"></i> Our Team</a></li>
-                        <li><a href="about.html#report" class="prem-link"><i class="fas fa-file-alt"></i> Annual Reports</a></li>
-                    </ul>
-                </div>
+          <!-- Links Column -->
+          <div class="prem-footer-links">
+            <div class="prem-links-column">
+              <h5 class="prem-links-title">Our Initiatives</h5>
+              <ul class="prem-links-list">
+                <li>
+                  <a href="premangan.html" class="prem-link"
+                    ><i class="fas fa-home"></i> Premangan Old Age Home</a
+                  >
+                </li>
+                <li>
+                  <a href="projects.html" class="prem-link"
+                    ><i class="fas fa-hands-helping"></i> Community Projects</a
+                  >
+                </li>
+                <li>
+                  <a href="donate.html" class="prem-link"
+                    ><i class="fas fa-donate"></i> Donation Programs</a
+                  >
+                </li>
+              </ul>
             </div>
+            <div class="prem-links-column">
+              <h5 class="prem-links-title">Organization</h5>
+              <ul class="prem-links-list">
+                <li>
+                  <a href="about.html" class="prem-link"
+                    ><i class="fas fa-info-circle"></i> About Us</a
+                  >
+                </li>
+                <li>
+                  <a href="team.html" class="prem-link"
+                    ><i class="fas fa-users"></i> Our Team</a
+                  >
+                </li>
+                <li>
+                  <a href="about.html#report" class="prem-link"
+                    ><i class="fas fa-file-alt"></i> Annual Reports</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
 
-            <!-- Contact Column -->
-            <div class="prem-footer-contact">
-                <h5 class="prem-contact-title">Contact Us</h5>
-                <div class="prem-contact-info">
-                    <div class="prem-contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>4th Floor, Sitaram Chambers, Peth Naka, Panchavati, Nashik, Maharashtra, India - 422003</span>
-                    </div>
-                    <div class="prem-contact-item">
-                        <i class="fas fa-phone-alt"></i>
-                        <span>+91 9970559373</span>
-                    </div>
-                    <div class="prem-contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>premfoundation2012@gmail.com</span>
-                    </div>
-                </div>
-                <div class="prem-contact-buttons">
-                    <a href="tel:+919970559373" class="prem-call-button">
-                        <i class="fas fa-phone"></i> Call Us
-                    </a>
-                    <a href="https://wa.me/919970559373" class="prem-whatsapp-button">
-                        <i class="fab fa-whatsapp"></i> WhatsApp
-                    </a>
-                    <a href="mailto:premfoundation2012@gmail.com" class="prem-email-button">
-                        <i class="fas fa-envelope"></i> Email
-                    </a>
-                </div>
+          <!-- Contact Column -->
+          <div class="prem-footer-contact">
+            <h5 class="prem-contact-title">Contact Us</h5>
+            <div class="prem-contact-info">
+              <div class="prem-contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span
+                  >4th Floor, Sitaram Chambers, Peth Naka, Panchavati, Nashik,
+                  Maharashtra, India - 422003</span
+                >
+              </div>
+              <div class="prem-contact-item">
+                <i class="fas fa-phone-alt"></i>
+                <span>+91 9970559373</span>
+              </div>
+              <div class="prem-contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>premfoundation2012@gmail.com</span>
+              </div>
             </div>
+            <div class="prem-contact-buttons">
+              <a href="tel:+919970559373" class="prem-call-button">
+                <i class="fas fa-phone"></i> Call Us
+              </a>
+              <a href="https://wa.me/919970559373" class="prem-whatsapp-button">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+              </a>
+              <a
+                href="mailto:premfoundation2012@gmail.com"
+                class="prem-email-button"
+              >
+                <i class="fas fa-envelope"></i> Email
+              </a>
+            </div>
+          </div>
         </div>
 
         <!-- Maps Section -->
         <div class="prem-footer-bottom">
-            <div class="prem-maps-container">
-                <div class="prem-map-wrapper">
-                    <h6 class="prem-map-title">Head Office</h6>
-                    <p class="prem-map-address">
-                        <i class="fas fa-map-marker-alt"></i> 
-                        4th Floor, Sitaram Chambers, Opp.Shweta Gas Agency, Peth Naka,<br> Panchavati, Nashik,
-                        Maharashtra, India - 422003
-                    </p>
-                    <div class="prem-map-ratio">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14995.597765001003!2d73.7735054937189!3d20.012734746571013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bddeba8d8ce1541%3A0x7b7f8306d427c1d9!2sPrem%20Foundation%20Nashik!5e0!3m2!1sen!2sin!4v1754061677229!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                </div>
-                <div class="prem-map-wrapper">
-                    <h6 class="prem-map-title">Premangan Old Age Home</h6>
-                    <p class="prem-map-address">
-                        <i class="fas fa-map-marker-alt"></i> 
-                        Sanit Bunglow, Near Bhujbal Farm Road, Behind Deccan Petrol Pump,<br>
-                        Sunderban Colony, Lekha Nagar, Nashik, Maharashtra, India - 422009
-                    </p>
-                    <div class="prem-map-ratio">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.744635898167!2d73.77330310981564!3d19.977238781344372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bddeb8b37cd614d%3A0xbe5f3f6132bfe731!2sPremangan%20Old%20Age%20Home%20-%20Holiday%20Home!5e0!3m2!1sen!2sin!4v1754060954716!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                </div>
+          <div class="prem-maps-container">
+            <div class="prem-map-wrapper">
+              <h6 class="prem-map-title">Head Office</h6>
+              <p class="prem-map-address">
+                <i class="fas fa-map-marker-alt"></i>
+                4th Floor, Sitaram Chambers, Opp.Shweta Gas Agency, Peth
+                Naka,<br />
+                Panchavati, Nashik, Maharashtra, India - 422003
+              </p>
+              <div class="prem-map-ratio">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14995.597765001003!2d73.7735054937189!3d20.012734746571013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bddeba8d8ce1541%3A0x7b7f8306d427c1d9!2sPrem%20Foundation%20Nashik!5e0!3m2!1sen!2sin!4v1754061677229!5m2!1sen!2sin"
+                  width="600"
+                  height="450"
+                  style="border: 0"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
             </div>
-            
-            <!-- Visitor Counter -->
-            <div class="visitor-counter" id="visitorCounter">
-                <div class="counter-label">
-                    <i class="fas fa-users"></i> Total Page Visits
-                </div>
-                <div class="counter-value">Loading...</div>
+            <div class="prem-map-wrapper">
+              <h6 class="prem-map-title">Premangan Old Age Home</h6>
+              <p class="prem-map-address">
+                <i class="fas fa-map-marker-alt"></i>
+                Sanit Bunglow, Near Bhujbal Farm Road, Behind Deccan Petrol
+                Pump,<br />
+                Sunderban Colony, Lekha Nagar, Nashik, Maharashtra, India -
+                422009
+              </p>
+              <div class="prem-map-ratio">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.744635898167!2d73.77330310981564!3d19.977238781344372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bddeb8b37cd614d%3A0xbe5f3f6132bfe731!2sPremangan%20Old%20Age%20Home%20-%20Holiday%20Home!5e0!3m2!1sen!2sin!4v1754060954716!5m2!1sen!2sin"
+                  width="600"
+                  height="450"
+                  style="border: 0"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
             </div>
+          </div>
 
-            <div class="prem-copyright">
-                <p>&copy; 2025 Prem Foundation. All Rights Reserved.</p>
-                <p class="prem-credits">Crafted with <i class="fas fa-heart"></i> for humanity</p>
+          <!-- Visitor Counter -->
+          <div class="visitor-counter" id="visitorCounter">
+            <div class="counter-label">
+              <i class="fas fa-users"></i> Total Page Visits
             </div>
+            <div class="counter-value">Loading...</div>
+          </div>
+
+          <div class="prem-copyright">
+            <p>&copy; 2025 Prem Foundation. All Rights Reserved.</p>
+            <p class="prem-credits">
+              Crafted with <i class="fas fa-heart"></i> for humanity
+            </p>
+          </div>
         </div>
-    </div>
-</footer>
+      </div>
+    </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -618,6 +882,5 @@
     <!-- Custom JS -->
     <script src="js/main.js"></script>
     <script src="js/index.js"></script>
-    
-</body>
+  </body>
 </html>

@@ -1,7 +1,322 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
+    <!-- Character Encoding -->
+    <meta charset="UTF-8" />
+
+    <!-- Viewport for Responsive Design -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes"
+    />
+
+    <!-- Primary Meta Tags -->
+    <title>Contact Prem Foundation Nashik | Get in Touch With Our NGO</title>
+    <meta
+      name="title"
+      content="Contact Prem Foundation Nashik | Get in Touch With Our NGO"
+    />
+    <meta
+      name="description"
+      content="Reach out to Prem Foundation Nashik for inquiries about our old age home, donation opportunities, volunteering, or partnerships. We're here to help make a difference."
+    />
+    <meta
+      name="keywords"
+      content="contact prem foundation, ngo contact nashik, premangan contact, elderly care inquiry, donate to ngo nashik, volunteer opportunities nashik, social work partnership"
+    />
+
+    <!-- Canonical URL -->
+    <link
+      rel="canonical"
+      href="https://premfoundation.netlify.app/contact.html"
+    />
+
+    <!-- Favicon & App Icons -->
+    <link rel="icon" href="images/logo.jpg" type="image/jpg" />
+    <link rel="apple-touch-icon" href="images/logo.jpg" />
+    <meta name="msapplication-TileColor" content="#1e40af" />
+    <meta name="theme-color" content="#1e40af" />
+
+    <!-- Preload Critical Resources -->
+    <link
+      rel="preload"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="preload"
+      href="css/style.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="preload"
+      href="css/contact.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="preload"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="preload"
+      href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link rel="preload" href="images/contact/director.jpeg" as="image" />
+
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://unpkg.com" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Leaflet CSS (Maps) -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    />
+
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/contact.css" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://premfoundation.netlify.app/contact.html"
+    />
+    <meta
+      property="og:title"
+      content="Contact Prem Foundation Nashik | Get in Touch With Our NGO"
+    />
+    <meta
+      property="og:description"
+      content="Reach out to Prem Foundation Nashik for inquiries about our old age home, donation opportunities, volunteering, or partnerships. We're here to help make a difference."
+    />
+    <meta
+      property="og:image"
+      content="https://premfoundation.netlify.app/images/contact/director.jpeg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:site_name" content="Prem Foundation" />
+
+    <!-- Twitter Card -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta
+      property="twitter:url"
+      content="https://premfoundation.netlify.app/contact.html"
+    />
+    <meta
+      property="twitter:title"
+      content="Contact Prem Foundation Nashik | Get in Touch With Our NGO"
+    />
+    <meta
+      property="twitter:description"
+      content="Reach out to Prem Foundation Nashik for inquiries about our old age home, donation opportunities, volunteering, or partnerships. We're here to help make a difference."
+    />
+    <meta
+      property="twitter:image"
+      content="https://premfoundation.netlify.app/images/contact/director.jpeg"
+    />
+
+    <!-- Additional Meta Tags -->
+    <meta name="author" content="Prem Foundation" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="geo.region" content="IN-MH" />
+    <meta name="geo.placename" content="Nashik" />
+    <meta name="geo.position" content="20.00594;73.79165" />
+    <meta name="ICBM" content="20.00594, 73.79165" />
+    <meta name="revisit-after" content="7 days" />
+
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://premfoundation.netlify.app/contact.html#webpage",
+            "url": "https://premfoundation.netlify.app/contact.html",
+            "name": "Contact Prem Foundation | Get in Touch With Our NGO",
+            "isPartOf": {
+              "@id": "https://premfoundation.netlify.app/#website"
+            },
+            "about": {
+              "@id": "https://premfoundation.netlify.app/#organization"
+            },
+            "datePublished": "2012-01-01T00:00:00+05:30",
+            "dateModified": "2025-01-01T00:00:00+05:30",
+            "description": "Reach out to Prem Foundation Nashik for inquiries about our old age home, donation opportunities, volunteering, or partnerships.",
+            "breadcrumb": {
+              "@id": "https://premfoundation.netlify.app/contact.html#breadcrumb"
+            },
+            "inLanguage": "en",
+            "potentialAction": {
+              "@type": "ReadAction",
+              "url": "https://premfoundation.netlify.app/contact.html"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://premfoundation.netlify.app/contact.html#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://premfoundation.netlify.app/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Contact",
+                "item": "https://premfoundation.netlify.app/contact.html"
+              }
+            ]
+          },
+          {
+            "@type": "ContactPage",
+            "name": "Contact Prem Foundation",
+            "description": "Get in touch with our team for inquiries, partnerships, or support",
+            "url": "https://premfoundation.netlify.app/contact.html",
+            "mainEntity": {
+              "@type": "ContactPoint",
+              "telephone": "+91-9970559373",
+              "contactType": "Customer Service",
+              "email": "premfoundation2012@gmail.com",
+              "areaServed": "IN",
+              "availableLanguage": ["English", "Hindi", "Marathi"],
+              "contactOption": "TollFree",
+              "hoursAvailable": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday",
+                  "Saturday"
+                ],
+                "opens": "09:00",
+                "closes": "18:00"
+              }
+            }
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How can I contact Prem Foundation?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "You can reach us by phone at +91-9970559373, via email at premfoundation2012@gmail.com, or by visiting our office at 4th Floor, Sitaram Chambers, Peth Naka, Panchavati, Nashik, Maharashtra, India - 422003."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What are your office hours?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Our head office is open Monday to Saturday from 9:00 AM to 6:00 PM. For Premangan visits, we welcome visitors daily between 9:00 AM to 9:00 PM."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How can I schedule a visit to Premangan?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "You can contact us at +91 99705 59373 or premfoundation2012@gmail.com to schedule a visit. We recommend family members accompany potential residents for the tour."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do you have multiple locations?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, we have three main locations: 1) Head Office at Sitaram Chambers, Panchavati, Nashik 2) Premangan Old Age Home at Sunderban Colony, Nashik 3) Work Site at Ambewadi, Igatpuri."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What's the best way to get in touch for partnership inquiries?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "For partnership inquiries, please email us at premfoundation2012@gmail.com with details about your organization and proposed collaboration, or call our director Mr. Raju Shirsath directly at +91-9970559373."
+                }
+              }
+            ]
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://premfoundation.netlify.app/#organization",
+            "name": "Prem Foundation",
+            "url": "https://premfoundation.netlify.app/",
+            "logo": "https://premfoundation.netlify.app/images/logo.jpg",
+            "foundingDate": "2012",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "4th Floor, Sitaram Chambers, Peth Naka",
+              "addressLocality": "Panchavati, Nashik",
+              "addressRegion": "Maharashtra",
+              "postalCode": "422003",
+              "addressCountry": "IN"
+            },
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+91-9970559373",
+              "contactType": "Customer Service",
+              "email": "premfoundation2012@gmail.com",
+              "areaServed": "IN",
+              "availableLanguage": ["English", "Hindi", "Marathi"]
+            },
+            "sameAs": [
+              "https://www.facebook.com/premfoundation",
+              "https://www.instagram.com/premfoundation",
+              "https://www.linkedin.com/company/premfoundation"
+            ]
+          }
+        ]
+      }
+    </script>
+
+    <!-- Google Analytics -->
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-XH1EG1VFN7"
@@ -12,41 +327,8 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-
       gtag("config", "G-XH1EG1VFN7");
     </script>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
-    />
-    <link rel="icon" href="images/logo.jpg" type="image/jpg" />
-    <title>Contact Us - Prem Foundation</title>
-    <!-- Bootstrap CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Leaflet CSS (Maps) -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-    />
-    <!-- AOS Animation -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/contact.css" />
 
     <!-- Cache control meta tags -->
     <meta

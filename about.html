@@ -1,7 +1,325 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
+    <!-- Character Encoding -->
+    <meta charset="UTF-8" />
+
+    <!-- Viewport for Responsive Design -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes"
+    />
+
+    <!-- Primary Meta Tags -->
+    <title>About Prem Foundation | Our Story, Values & Impact Since 2012</title>
+    <meta
+      name="title"
+      content="About Prem Foundation | Our Story, Values & Impact Since 2012"
+    />
+    <meta
+      name="description"
+      content="Discover Prem Foundation's journey of compassion since 2012. Learn about our values, impact, annual reports, and media coverage in community service and elderly care."
+    />
+    <meta
+      name="keywords"
+      content="Prem Foundation about us, NGO Nashik history, community service organization, elderly care Maharashtra, social impact reports, NGO annual reports, Prem Foundation team"
+    />
+
+    <!-- Canonical URL -->
+    <link
+      rel="canonical"
+      href="https://premfoundation.netlify.app/about.html"
+    />
+
+    <!-- Favicon & App Icons -->
+    <link rel="icon" href="images/logo.jpg" type="image/jpg" />
+    <link rel="apple-touch-icon" href="images/logo.jpg" />
+    <meta name="msapplication-TileColor" content="#1e40af" />
+    <meta name="theme-color" content="#1e40af" />
+
+    <!-- Preload Critical Resources -->
+    <link
+      rel="preload"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="preload"
+      href="css/style.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="preload"
+      href="css/about.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="preload"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link rel="preload" href="images/about/hero-about.jpeg" as="image" />
+
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Swiper JS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
+    />
+
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/about.css" rel="stylesheet" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://premfoundation.netlify.app/about.html"
+    />
+    <meta
+      property="og:title"
+      content="About Prem Foundation | Our Story, Values & Impact Since 2012"
+    />
+    <meta
+      property="og:description"
+      content="Discover Prem Foundation's journey of compassion since 2012. Learn about our values, impact, annual reports, and media coverage."
+    />
+    <meta
+      property="og:image"
+      content="https://premfoundation.netlify.app/images/about/hero-about.jpeg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:site_name" content="Prem Foundation" />
+
+    <!-- Twitter Card -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta
+      property="twitter:url"
+      content="https://premfoundation.netlify.app/about.html"
+    />
+    <meta
+      property="twitter:title"
+      content="About Prem Foundation | Our Story, Values & Impact Since 2012"
+    />
+    <meta
+      property="twitter:description"
+      content="Discover Prem Foundation's journey of compassion since 2012. Learn about our values, impact, annual reports, and media coverage."
+    />
+    <meta
+      property="twitter:image"
+      content="https://premfoundation.netlify.app/images/about/hero-about.jpeg"
+    />
+
+    <!-- Additional Meta Tags -->
+    <meta name="author" content="Prem Foundation" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="geo.region" content="IN-MH" />
+    <meta name="geo.placename" content="Nashik" />
+    <meta name="geo.position" content="20.00594;73.79165" />
+    <meta name="ICBM" content="20.00594, 73.79165" />
+    <meta name="revisit-after" content="7 days" />
+
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "NGO",
+            "@id": "https://premfoundation.netlify.app/#organization",
+            "name": "Prem Foundation",
+            "alternateName": "Participatory Research and Environment Management Organisation",
+            "url": "https://premfoundation.netlify.app/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://premfoundation.netlify.app/images/logo.jpg",
+              "width": "500",
+              "height": "500"
+            },
+            "image": "https://premfoundation.netlify.app/images/about/hero-about.jpeg",
+            "description": "Prem Foundation is a Nashik-based NGO transforming lives through compassion, community service, and elderly care since 2012.",
+            "foundingDate": "2012",
+            "founder": {
+              "@type": "Organization",
+              "name": "Prem Foundation Team"
+            },
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "4th Floor, Sitaram Chambers, Peth Naka",
+              "addressLocality": "Panchavati",
+              "addressRegion": "Maharashtra",
+              "postalCode": "422003",
+              "addressCountry": "IN"
+            },
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+91-9970559373",
+              "contactType": "Customer Service",
+              "email": "premfoundation2012@gmail.com",
+              "areaServed": "IN",
+              "availableLanguage": ["English", "Hindi", "Marathi"]
+            },
+            "sameAs": [
+              "https://www.facebook.com/premfoundation",
+              "https://www.instagram.com/premfoundation",
+              "https://www.linkedin.com/company/premfoundation"
+            ],
+            "keywords": "NGO Nashik, old age home, community service, donate NGO, volunteer opportunities, social work India, elderly care, charity India"
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://premfoundation.netlify.app/about.html#webpage",
+            "url": "https://premfoundation.netlify.app/about.html",
+            "name": "About Prem Foundation - Our Story, Values & Impact",
+            "isPartOf": {
+              "@id": "https://premfoundation.netlify.app/#website"
+            },
+            "about": {
+              "@id": "https://premfoundation.netlify.app/#organization"
+            },
+            "datePublished": "2012-01-01T00:00:00+05:30",
+            "dateModified": "2025-01-01T00:00:00+05:30",
+            "description": "Learn about Prem Foundation's journey, core values, impact metrics, annual reports, and media coverage since 2012.",
+            "breadcrumb": {
+              "@id": "https://premfoundation.netlify.app/about.html#breadcrumb"
+            },
+            "inLanguage": "en",
+            "potentialAction": {
+              "@type": "ReadAction",
+              "target": ["https://premfoundation.netlify.app/about.html"]
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://premfoundation.netlify.app/about.html#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://premfoundation.netlify.app/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "About Us",
+                "item": "https://premfoundation.netlify.app/about.html"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "When was Prem Foundation established?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Prem Foundation was established in 2012 as a sister organization of Baglan Seva Samiti, with over 13 years of experience in community service and transformative change across Maharashtra."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What are Prem Foundation's core values?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Our core values are Compassion (empathy and respect for those we serve), Integrity (transparency and ethical conduct), and Innovation (creative, sustainable solutions that maximize impact)."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Where can I view Prem Foundation's annual reports?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Our annual reports are available in the Resource Library section on our About page. You can download PDF versions of our latest reports or preview them online."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Has Prem Foundation received media coverage?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, Prem Foundation has been featured in various media outlets. You can view our media highlights in the Media Coverage section on our About page."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What does PREM stand for?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "PREM stands for Participatory Research and Environment Management Organisation, reflecting our commitment to environmental stewardship and community empowerment through research-driven solutions."
+                }
+              }
+            ]
+          },
+          {
+            "@type": "Article",
+            "headline": "Prem Foundation's Journey of Compassion",
+            "description": "For over 13 years, Prem Foundation has been at the forefront of transformative change, pioneering sustainable community initiatives that have touched thousands of lives across Maharashtra.",
+            "image": "https://premfoundation.netlify.app/images/about/hero-about.jpeg",
+            "author": {
+              "@type": "Organization",
+              "name": "Prem Foundation",
+              "url": "https://premfoundation.netlify.app/about.html"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Prem Foundation",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://premfoundation.netlify.app/images/logo.jpg"
+              }
+            },
+            "datePublished": "2012-01-01T00:00:00+05:30",
+            "dateModified": "2025-01-01T00:00:00+05:30",
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://premfoundation.netlify.app/about.html"
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- Google Analytics -->
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-XH1EG1VFN7"
@@ -12,36 +330,8 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-
       gtag("config", "G-XH1EG1VFN7");
     </script>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Us - Prem Foundation</title>
-    <!-- Bootstrap CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Swiper JS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
-    />
-    <!-- AOS Animation -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet" />
-    <link href="css/about.css" rel="stylesheet" />
   </head>
   <body>
     <!-- Navigation Bar -->

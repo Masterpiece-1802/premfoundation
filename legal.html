@@ -1,37 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <!-- Your existing head content -->
+  <head>
+    <!-- Character Encoding -->
+    <meta charset="UTF-8" />
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XH1EG1VFN7"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Viewport for Responsive Design -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes"
+    />
 
-  gtag('config', 'G-XH1EG1VFN7');
-</script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="icon" href="images/logo.jpg" type="image/jpg">
-    <title>Contact Us - Prem Foundation</title>
+    <!-- Primary Meta Tags -->
+    <title>Legal Information | Prem Foundation - Terms, Privacy & Policies</title>
+    <meta
+      name="title"
+      content="Legal Information | Prem Foundation - Terms, Privacy & Policies"
+    />
+    <meta
+      name="description"
+      content="Prem Foundation's legal information including Terms & Conditions, Privacy Policy, Refund Policy, and other important legal documents for donors and supporters."
+    />
+    <meta
+      name="keywords"
+      content="Prem Foundation legal, NGO terms and conditions, privacy policy, donation refund policy, charity legal documents, NGO policies India"
+    />
+
+    <!-- Canonical URL -->
+    <link
+      rel="canonical"
+      href="https://premfoundation.netlify.app/legal.html"
+    />
+
+    <!-- Favicon & App Icons -->
+    <link rel="icon" href="images/logo.jpg" type="image/jpg" />
+    <link rel="apple-touch-icon" href="images/logo.jpg" />
+    <meta name="msapplication-TileColor" content="#1e40af" />
+    <meta name="theme-color" content="#1e40af" />
+
+    <!-- Preload Critical Resources -->
+    <link
+      rel="preload"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="preload"
+      href="css/style.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="preload"
+      href="css/legal.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="preload"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com/ajax/libs" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Leaflet CSS (Maps) -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css">
-    <!-- AOS Animation -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
-    <title>Legal Information | Prem Foundation</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/legal.css">
-</head>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/legal.css" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://premfoundation.netlify.app/legal.html"
+    />
+    <meta
+      property="og:title"
+      content="Legal Information | Prem Foundation - Terms, Privacy & Policies"
+    />
+    <meta
+      property="og:description"
+      content="Prem Foundation's legal information including Terms & Conditions, Privacy Policy, Refund Policy, and other important legal documents."
+    />
+    <meta
+      property="og:image"
+      content="https://premfoundation.netlify.app/images/logo.jpg"
+    />
+    <meta property="og:image:width" content="500" />
+    <meta property="og:image:height" content="500" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:site_name" content="Prem Foundation" />
+
+    <!-- Twitter Card -->
+    <meta property="twitter:card" content="summary" />
+    <meta
+      property="twitter:url"
+      content="https://premfoundation.netlify.app/legal.html"
+    />
+    <meta
+      property="twitter:title"
+      content="Legal Information | Prem Foundation - Terms, Privacy & Policies"
+    />
+    <meta
+      property="twitter:description"
+      content="Prem Foundation's legal information including Terms & Conditions, Privacy Policy, Refund Policy, and other important legal documents."
+    />
+    <meta
+      property="twitter:image"
+      content="https://premfoundation.netlify.app/images/logo.jpg"
+    />
+
+    <!-- Additional Meta Tags -->
+    <meta name="author" content="Prem Foundation" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="geo.region" content="IN-MH" />
+    <meta name="geo.placename" content="Nashik" />
+    <meta name="geo.position" content="20.00594;73.79165" />
+    <meta name="ICBM" content="20.00594, 73.79165" />
+    <meta name="revisit-after" content="7 days" />
+
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://premfoundation.netlify.app/legal.html#webpage",
+            "url": "https://premfoundation.netlify.app/legal.html",
+            "name": "Legal Information | Prem Foundation",
+            "description": "Prem Foundation's legal information including Terms & Conditions, Privacy Policy, Refund Policy, and other important legal documents for donors and supporters.",
+            "isPartOf": {
+              "@id": "https://premfoundation.netlify.app/#website"
+            },
+            "about": {
+              "@id": "https://premfoundation.netlify.app/#organization"
+            },
+            "datePublished": "2021-01-01T00:00:00+05:30",
+            "dateModified": "2025-01-01T00:00:00+05:30",
+            "breadcrumb": {
+              "@id": "https://premfoundation.netlify.app/legal.html#breadcrumb"
+            },
+            "inLanguage": "en",
+            "potentialAction": {
+              "@type": "ReadAction",
+              "target": ["https://premfoundation.netlify.app/legal.html"]
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://premfoundation.netlify.app/legal.html#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://premfoundation.netlify.app/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Legal Information",
+                "item": "https://premfoundation.netlify.app/legal.html"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is Prem Foundation's refund policy for donations?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Donations are typically non-refundable as they are considered charitable contributions. In exceptional cases of accidental or duplicate donations, contact us within 7 days of transaction for review."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How does Prem Foundation protect my personal information?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We implement appropriate security measures to protect your data. Payment details are processed securely through our PCI-DSS compliant partner Razorpay, and we never sell or share your personal information without consent."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Where can I find Prem Foundation's terms and conditions?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Our complete Terms and Conditions are available on this Legal Information page, covering website usage, donations, and engagement with our services."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How can I request additional payment options for donations?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Send an email to premfoundation2012@gmail.com with subject 'Bank Access Request' including your full name, contact number, and preferred bank details. Our team will review and enable additional payment options within 3 business days."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-XH1EG1VFN7"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-XH1EG1VFN7");
+    </script>
+  </head>
 <body>
     <!-- Your existing header/navigation -->
 

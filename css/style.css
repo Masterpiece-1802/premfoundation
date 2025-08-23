@@ -1618,7 +1618,7 @@ html {
 .premangan-hero {
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
                 url('../images/premangan/hero-bg.jpg') center/cover no-repeat;
-    min-height: 60vh;
+    min-height: 65vh;
 }
 
 /* Facility Modal Styles */
@@ -2485,4 +2485,121 @@ footer iframe {
 .prem-legal-links a:hover {
     color: #2c3e50;
     text-decoration: underline;
+}
+
+/* Mobile Compatibility Improvements for Projects Page */
+@media (max-width: 768px) {
+  /* Reduce hero height and adjust text positioning */
+  .projects-hero {
+    min-height: 40vh !important;
+    padding-top: 70px;
+  }
+  
+  .projects-hero .container {
+    padding-top: 2rem;
+  }
+  
+  .projects-hero h1 {
+    font-size: 2.2rem !important;
+    margin-bottom: 0.8rem !important;
+  }
+  
+  .projects-hero p {
+    font-size: 1.1rem !important;
+  }
+  
+  /* Adjust filter buttons for mobile */
+  .filter-buttons {
+    gap: 4px !important;
+    padding: 0 5px !important;
+    margin-bottom: 1.5rem !important;
+  }
+  
+  .filter-buttons .btn {
+    min-width: 70px !important;
+    padding: 6px 8px !important;
+    font-size: 0.75rem !important;
+    margin: 2px !important;
+    flex: 0 0 calc(33.333% - 8px) !important;
+  }
+  
+  /* Adjust project cards for mobile */
+  .project-card {
+    height: 220px !important;
+    margin-bottom: 15px;
+  }
+  
+  .project-overlay {
+    padding: 1.2rem 1rem 1rem !important;
+  }
+  
+  .project-overlay h3 {
+    font-size: 1.1rem !important;
+    margin-bottom: 0.4rem !important;
+  }
+  
+  .project-overlay p {
+    font-size: 0.85rem !important;
+    margin-bottom: 0.8rem !important;
+    line-height: 1.3;
+  }
+  
+  .project-overlay .btn {
+    padding: 4px 10px !important;
+    font-size: 0.8rem !important;
+  }
+  
+  /* Ensure proper grid layout on mobile */
+  .projects-grid .col-lg-4 {
+    padding: 0 8px;
+  }
+  
+  /* Adjust spacing between sections */
+  section.py-5.bg-dark {
+    padding: 2rem 0 !important;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Further adjustments for very small screens */
+  .projects-hero {
+    min-height: 35vh !important;
+  }
+  
+  .projects-hero h1 {
+    font-size: 1.8rem !important;
+  }
+  
+  .projects-hero p {
+    font-size: 1rem !important;
+  }
+  
+  .filter-buttons .btn {
+    min-width: 65px !important;
+    font-size: 0.7rem !important;
+    padding: 5px 6px !important;
+    flex: 0 0 calc(50% - 8px) !important;
+  }
+  
+  .project-card {
+    height: 200px !important;
+  }
+  
+  .project-overlay {
+    padding: 1rem 0.8rem 0.8rem !important;
+  }
+  
+  .project-overlay h3 {
+    font-size: 1rem !important;
+  }
+  
+  .project-overlay p {
+    font-size: 0.8rem !important;
+  }
+}
+
+/* Prevent horizontal scrolling on mobile */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
 }

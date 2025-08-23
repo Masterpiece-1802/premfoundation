@@ -1628,3 +1628,106 @@ body {
     max-width: 100vw;
     overflow-x: hidden;
 }
+
+/* Mobile Compatibility Improvements for Bank Account Details */
+@media (max-width: 768px) {
+    .bank-transfer-container {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 0 1rem;
+    }
+    
+    .bank-details {
+        text-align: center;
+        width: 100%;
+        min-width: auto;
+        padding: 1.5rem;
+    }
+    
+    .bank-details p {
+        text-align: left;
+        padding-right: 2rem;
+        position: relative;
+        margin-bottom: 1.2rem;
+        line-height: 1.5;
+        word-break: break-word;
+    }
+    
+    .qr-code {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .copy-btn {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 28px;
+        height: 28px;
+    }
+    
+    .bank-details h3 {
+        font-size: 1.3rem;
+        margin-bottom: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .bank-details {
+        padding: 1.2rem;
+    }
+    
+    .bank-details p {
+        font-size: 0.9rem;
+        padding-right: 2.2rem;
+    }
+    
+    .qr-code {
+        width: 160px;
+        height: 160px;
+    }
+    
+    .copy-btn {
+        width: 26px;
+        height: 26px;
+    }
+    
+    .bank-details h3 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .bank-details p {
+        font-size: 0.85rem;
+        padding-right: 2rem;
+    }
+    
+    .qr-code {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .copy-btn {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .bank-transfer-container {
+        gap: 1.5rem;
+    }
+}
+
+/* Ensure text doesn't overflow on very small devices */
+.bank-details p strong {
+    display: block;
+    margin-bottom: 0.2rem;
+}
+
+/* Improve spacing for UPI ID section */
+.bank-details p:last-of-type {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}

@@ -300,3 +300,6 @@ body {
         /* subtle animated glow behind the icon */
         .hero .btn-primary i.fas { transition: transform 220ms ease; }
         .hero .btn-primary:hover i.fas { transform: translateX(4px) rotate(-8deg); }
+
+
+        

@@ -187,3 +187,193 @@
     color: #fff !important;
     text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
+
+/* Mobile Compatibility Improvements */
+@media (max-width: 768px) {
+  /* Facilities Section Improvements */
+  #facilities .facility-card {
+    margin-bottom: 1.5rem;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  
+  #facilities .facility-img-container {
+    height: 200px;
+    overflow: hidden;
+  }
+  
+  #facilities .facility-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  #facilities .facility-card:hover .facility-img {
+    transform: scale(1.05);
+  }
+  
+  #facilities .facility-body {
+    padding: 1.25rem;
+  }
+  
+  #facilities .facility-body h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  #facilities .facility-features {
+    padding-left: 1rem;
+    margin-bottom: 0;
+  }
+  
+  #facilities .facility-features li {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+  
+  #facilities .facility-features li:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* Testimonials Section Improvements */
+  #testimonials-fixed {
+    padding: 2rem 0 !important;
+  }
+  
+  #testimonials-fixed .testimonial-carousel {
+    padding: 0 15px;
+  }
+  
+  #testimonials-fixed .testimonial-card {
+    padding: 0.5rem !important;
+  }
+  
+  #testimonials-fixed .testimonial-card > div {
+    padding: 1.5rem !important;
+  }
+  
+  #testimonials-fixed blockquote {
+    font-size: 1rem !important;
+    margin: 1rem 0 !important;
+    line-height: 1.6;
+  }
+  
+  #testimonials-fixed img {
+    width: 80px !important;
+    height: 80px !important;
+  }
+  
+  #testimonials-fixed .carousel-prev,
+  #testimonials-fixed .carousel-next {
+    width: 35px !important;
+    height: 35px !important;
+    font-size: 0.8rem;
+  }
+  
+  #testimonials-fixed .carousel-prev {
+    left: 5px !important;
+  }
+  
+  #testimonials-fixed .carousel-next {
+    right: 5px !important;
+  }
+  
+  /* Admission Section Improvements */
+  #admission .accordion-button {
+    padding: 0.75rem;
+    font-size: 0.95rem;
+  }
+  
+  #admission .badge {
+    font-size: 0.7rem;
+    padding: 0.35em 0.65em;
+  }
+  
+  #admission .card {
+    margin-top: 1.5rem;
+  }
+  
+  /* Gallery Improvements for Mobile */
+  .gallery-set {
+    margin: 0 -5px;
+  }
+  
+  .gallery-set .gallery-item {
+    padding: 5px;
+  }
+  
+  .set-nav-btn {
+    width: 40px !important;
+    height: 40px !important;
+    opacity: 0.8 !important;
+  }
+  
+  /* Text size adjustments for mobile */
+  #about-premangan h2 {
+    font-size: 1.8rem;
+  }
+  
+  #about-premangan .lead {
+    font-size: 1.1rem;
+  }
+  
+  #facilities h2.display-5 {
+    font-size: 1.8rem;
+  }
+  
+  #facilities .lead.text-muted {
+    font-size: 1.1rem;
+  }
+}
+
+/* Additional improvements for very small devices */
+@media (max-width: 576px) {
+  #facilities .facility-img-container {
+    height: 180px;
+  }
+  
+  #testimonials-fixed h2 {
+    font-size: 1.75rem !important;
+  }
+  
+  #testimonials-fixed > div > p {
+    font-size: 1.1rem !important;
+  }
+  
+  #testimonials-fixed blockquote {
+    font-size: 0.95rem !important;
+  }
+  
+  .prem-footer-main {
+    flex-direction: column;
+  }
+  
+  .prem-footer-links {
+    flex-direction: column;
+    margin: 1.5rem 0;
+  }
+  
+  .prem-links-column {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Fix for iOS Safari specific issues */
+@supports (-webkit-touch-callout: none) {
+  .facility-card {
+    -webkit-transform: translateZ(0);
+  }
+  
+  .testimonial-card > div {
+    -webkit-backface-visibility: hidden;
+  }
+}
+
+/* Prevent horizontal scrolling on mobile */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}

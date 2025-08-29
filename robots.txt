@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /private/
+Disallow: /admin/
+Disallow: /cgi-bin/
+Disallow: /wp-admin/
+
+Crawl-delay: 1
+
+Sitemap: https://premfoundation.netlify.app/sitemap.xml

@@ -458,3 +458,34 @@ document.addEventListener('DOMContentLoaded', function() {
     // Keep your existing counter and scroll code
 });
 
+// Handle back button on mobile devices
+(function() {
+    // Check if the page is loaded in a mobile device
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    
+    if (isMobile) {
+        let backButtonPressed = false;
+        
+        // Listen for pageshow event to detect back/forward navigation
+        window.addEventListener('pageshow', function(event) {
+            // If the page is shown from the cache (back/forward navigation)
+            if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
+                backButtonPressed = true;
+                
+                // Refresh the page after a short delay
+                setTimeout(function() {
+                    if (backButtonPressed) {
+                        window.location.reload();
+                    }
+                }, 100);
+            }
+        });
+        
+        // Reset the flag when the page is about to be unloaded
+        window.addEventListener('beforeunload', function() {
+            backButtonPressed = false;
+        });
+    }
+})();
+
+

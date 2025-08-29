@@ -38,30 +38,26 @@
   to = "/legal.html"
   status = 200
 
+# Remove force=true from these redirects as they're not needed
 [[redirects]]
   from = "/sitemap.xml"
   to = "/sitemap.xml"
   status = 200
-  force = true
 
 [[redirects]]
   from = "/robots.txt"
   to = "/robots.txt"
   status = 200
-  force = true
 
-[[headers]]
-  for = "/sitemap.xml"
-  [headers.values]
-    "Content-Type" = "application/xml"
-    "X-Robots-Tag" = "noindex"
+# REMOVE the headers section for sitemap.xml - Netlify handles XML content type automatically
+# Only keep headers for robots.txt if needed
 
 [[headers]]
   for = "/robots.txt"
   [headers.values]
-    "Content-Type" = "text/plain"
+    "Content-Type" = "text/plain; charset=utf-8"
 
-# Catch-all redirect for SPA behavior (if needed)
+# Catch-all redirect for SPA behavior
 [[redirects]]
   from = "/*"
   to = "/index.html"

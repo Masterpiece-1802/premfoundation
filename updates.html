@@ -1,0 +1,2063 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recent Activities | Your NGO</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <style>
+      :root {
+        --bg-primary: #0a0a0a;
+        --bg-secondary: #151515;
+        --bg-tertiary: #222222;
+        --text-primary: #f5f5f5;
+        --text-secondary: #b0b0b0;
+        --accent: #6c5ce7;
+        --accent-gradient: linear-gradient(135deg, #6c5ce7, #00cec9);
+        --success: #00b894;
+        --warning: #fdcb6e;
+        --danger: #d63031;
+        --border-radius: 12px;
+        --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        --card-hover-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        line-height: 1.6;
+        padding-bottom: 2rem;
+        background-image: radial-gradient(
+            circle at 15% 50%,
+            rgba(108, 92, 231, 0.03) 0%,
+            transparent 25%
+          ),
+          radial-gradient(
+            circle at 85% 30%,
+            rgba(0, 206, 201, 0.03) 0%,
+            transparent 25%
+          );
+      }
+
+      .page-container {
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+
+      .page-title {
+        text-align: center;
+        margin: 3rem 0;
+        font-size: 2.8rem;
+        font-weight: 700;
+        background: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        position: relative;
+        display: inline-block;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .page-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: var(--accent-gradient);
+        border-radius: 3px;
+      }
+
+      /* Filters and Controls */
+      .controls-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .sort-controls {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .sort-btn {
+        background-color: var(--bg-tertiary);
+        color: var(--text-primary);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 0.6rem 1.2rem;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .sort-btn.active {
+        background: var(--accent-gradient);
+        color: white;
+      }
+
+      .sort-btn:hover {
+        background-color: var(--accent);
+        color: white;
+      }
+
+      .search-box {
+        position: relative;
+      }
+
+      .search-input {
+        background-color: var(--bg-tertiary);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 0.6rem 1.2rem 0.6rem 2.5rem;
+        border-radius: var(--border-radius);
+        color: var(--text-primary);
+        width: 250px;
+        transition: var(--transition);
+      }
+
+      .search-input:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
+      }
+
+      .search-icon {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text-secondary);
+      }
+
+      /* Floating Admin Button */
+      .admin-floating-btn {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: var(--accent-gradient);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 6px 20px rgba(108, 92, 231, 0.4);
+        z-index: 900;
+        transition: var(--transition);
+      }
+
+      .admin-floating-btn:hover {
+        transform: translateY(-5px) rotate(10deg);
+        box-shadow: 0 10px 25px rgba(108, 92, 231, 0.6);
+      }
+
+      /* Activity Cards */
+      .activities-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+        gap: 2.5rem;
+        margin-top: 2rem;
+      }
+
+      .activity-card {
+        background-color: var(--bg-secondary);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--card-shadow);
+        transition: var(--transition);
+        position: relative;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .activity-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: var(--accent-gradient);
+        opacity: 0.8;
+      }
+
+      .activity-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--card-hover-shadow);
+      }
+
+      .activity-images {
+        position: relative;
+        height: 250px;
+        overflow: hidden;
+      }
+
+      .activity-main-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition);
+      }
+
+      .activity-card:hover .activity-main-image {
+        transform: scale(1.08);
+      }
+
+      .image-counter {
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        backdrop-filter: blur(5px);
+      }
+
+      .activity-content {
+        padding: 1.8rem;
+      }
+
+      .activity-date {
+        color: var(--accent);
+        font-size: 0.9rem;
+        margin-bottom: 0.8rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .activity-date i {
+        font-size: 1rem;
+      }
+
+      .activity-location {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        margin-bottom: 0.8rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .activity-location i {
+        font-size: 1rem;
+      }
+
+      .activity-description {
+        margin: 1.2rem 0;
+        line-height: 1.7;
+        color: var(--text-secondary);
+      }
+
+      .activity-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1.5rem;
+      }
+
+      .view-gallery-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--accent);
+        background: rgba(108, 92, 231, 0.1);
+        padding: 8px 16px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: var(--transition);
+        cursor: pointer;
+      }
+
+      .view-gallery-btn:hover {
+        background: rgba(108, 92, 231, 0.2);
+        transform: translateX(5px);
+      }
+
+      .share-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--text-secondary);
+        background: rgba(255, 255, 255, 0.05);
+        padding: 8px 16px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: var(--transition);
+        cursor: pointer;
+      }
+
+      .share-btn:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text-primary);
+      }
+
+      /* Image grid in gallery view */
+      .image-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 10px;
+        margin-top: 1rem;
+      }
+
+      .grid-image {
+        width: 100%;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .grid-image:hover {
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Admin Panel */
+      .admin-panel {
+        position: fixed;
+        top: 70px;
+        right: -400px;
+        width: 380px;
+        height: 100vh;
+        background-color: var(--bg-secondary);
+        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        transition: var(--transition);
+        overflow-y: auto;
+        padding: 2rem;
+        border-left: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .admin-panel.active {
+        right: 0;
+      }
+
+      .admin-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .admin-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        background: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .close-admin {
+        background: none;
+        border: none;
+        color: var(--text-secondary);
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .close-admin:hover {
+        color: var(--danger);
+        transform: rotate(90deg);
+      }
+
+      .admin-content {
+        height: calc(100% - 60px);
+        overflow-y: auto;
+        padding-right: 10px;
+      }
+
+      /* Scrollbar styling */
+      .admin-content::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      .admin-content::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+      }
+
+      .admin-content::-webkit-scrollbar-thumb {
+        background: var(--accent);
+        border-radius: 10px;
+      }
+
+      .admin-content::-webkit-scrollbar-thumb:hover {
+        background: #5245c9;
+      }
+
+      .admin-form {
+        
+        margin-bottom: 2rem;
+      }
+
+      .form-group {
+        
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.8rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 0.9rem;
+        background-color: var(--bg-tertiary);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--border-radius);
+        color: var(--text-primary);
+        font-size: 1rem;
+        transition: var(--transition);
+      }
+
+      .form-control:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
+      }
+
+      textarea.form-control {
+        min-height: 130px;
+        resize: vertical;
+      }
+
+      .image-preview {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 1rem;
+      }
+
+      .preview-image {
+        width: 90px;
+        height: 90px;
+        object-fit: cover;
+        border-radius: 8px;
+        border: 2px solid var(--accent);
+        position: relative;
+        transition: var(--transition);
+      }
+
+      .preview-image:hover {
+        transform: scale(1.05);
+      }
+
+      .remove-image {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        background: var(--danger);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 14px;
+        transition: var(--transition);
+      }
+
+      .remove-image:hover {
+        transform: scale(1.1);
+      }
+
+      .btn {
+        padding: 0.9rem 1.8rem;
+        border: none;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        font-weight: 600;
+        transition: var(--transition);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .btn-primary {
+        background: var(--accent-gradient);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+      }
+
+      .btn-danger {
+        background-color: var(--danger);
+        color: white;
+      }
+
+      .btn-danger:hover {
+        background-color: #c02c2c;
+        transform: translateY(-2px);
+      }
+
+      .btn-success {
+        background-color: var(--success);
+        color: white;
+      }
+
+      .btn-success:hover {
+        background-color: #00a382;
+        transform: translateY(-2px);
+      }
+
+      .btn-warning {
+        background-color: var(--warning);
+        color: #2d3436;
+      }
+
+      .btn-warning:hover {
+        background-color: #f0b44a;
+        transform: translateY(-2px);
+      }
+
+      /* Modal */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 1100;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(5px);
+      }
+
+      .modal-content {
+        background-color: var(--bg-secondary);
+        padding: 2.5rem;
+        border-radius: var(--border-radius);
+        width: 90%;
+        max-width: 450px;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        position: relative;
+      }
+
+      .modal-header {
+        margin-bottom: 1.8rem;
+        text-align: center;
+      }
+
+      /* Loading animation */
+      .loader {
+        display: flex;
+        justify-content: center;
+        margin: 3rem 0;
+      }
+
+      .loader-circle {
+        width: 50px;
+        height: 50px;
+        border: 3px solid rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        border-top: 3px solid var(--accent);
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Empty state */
+      .empty-state {
+        text-align: center;
+        padding: 4rem 2rem;
+        color: var(--text-secondary);
+      }
+
+      .empty-state i {
+        font-size: 4rem;
+        margin-bottom: 1.5rem;
+        opacity: 0.3;
+      }
+
+      .empty-state h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+      }
+
+      /* Image gallery modal */
+      .gallery-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.95);
+        z-index: 1200;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .gallery-content {
+        max-width: 90%;
+        max-height: 90%;
+        position: relative;
+      }
+
+      .gallery-image {
+        max-width: 100%;
+        max-height: 80vh;
+        object-fit: contain;
+        border-radius: 8px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      }
+
+      .gallery-controls {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+      }
+
+      .gallery-nav {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        transform: translateY(-50%);
+        padding: 0 20px;
+      }
+
+      .gallery-counter {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+      }
+
+      /* Notification */
+      .notification {
+        position: fixed;
+        top: 30px;
+        right: 30px;
+        padding: 1rem 1.5rem;
+        border-radius: var(--border-radius);
+        background: var(--success);
+        color: white;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        transform: translateX(100%);
+        transition: transform 0.4s ease, opacity 0.4s ease;
+        z-index: 2000;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        opacity: 0;
+        max-width: 350px;
+      }
+
+      .notification.show {
+        transform: translateX(0);
+        opacity: 1;
+      }
+
+      .notification.error {
+        background: var(--danger);
+      }
+
+      .notification.warning {
+        background: var(--warning);
+        color: #2d3436;
+      }
+
+      .notification.info {
+        background: var(--accent);
+      }
+
+      .admin-activities-list {
+        margin-top: 2.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 1.5rem;
+      }
+
+      .admin-activity-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.2rem;
+        background-color: var(--bg-tertiary);
+        border-radius: var(--border-radius);
+        margin-bottom: 1rem;
+        transition: var(--transition);
+      }
+
+      .admin-activity-item:hover {
+        transform: translateX(5px);
+      }
+
+      /* Share modal */
+      .share-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 1300;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(5px);
+      }
+
+      .share-modal-content {
+        background-color: var(--bg-secondary);
+        padding: 2.5rem;
+        border-radius: var(--border-radius);
+        width: 90%;
+        max-width: 450px;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        position: relative;
+      }
+
+      .share-options {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .share-option {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem;
+        border-radius: var(--border-radius);
+        background-color: var(--bg-tertiary);
+        cursor: pointer;
+        transition: var(--transition);
+        min-width: 80px;
+      }
+
+      .share-option:hover {
+        transform: translateY(-5px);
+        background-color: var(--accent);
+      }
+
+      .share-icon {
+        font-size: 1.5rem;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 1024px) {
+        .activities-container {
+          grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+        }
+      }
+
+      @media (max-width: 768px) {
+        .activities-container {
+          grid-template-columns: 1fr;
+        }
+
+        .controls-container {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .admin-panel {
+          width: 85%;
+          right: -85%;
+        }
+
+        .page-title {
+          font-size: 2.2rem;
+        }
+
+        .share-options {
+          flex-wrap: wrap;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .page-container {
+          padding: 0 1rem;
+        }
+
+        .page-title {
+          font-size: 2rem;
+        }
+
+        .activity-content {
+          padding: 1.5rem;
+        }
+
+        .admin-panel {
+          width: 90%;
+          right: -90%;
+          padding: 1.5rem;
+        }
+
+        .search-input {
+          width: 100%;
+        }
+
+        .sort-controls {
+          flex-wrap: wrap;
+        }
+      }
+
+      /* Animation for cards */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .activity-card {
+        animation: fadeInUp 0.5s ease forwards;
+        opacity: 0;
+      }
+
+      .activity-card:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .activity-card:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .activity-card:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .activity-card:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .activity-card:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+      .activity-card:nth-child(6) {
+        animation-delay: 0.6s;
+      }
+
+      /* Push page content below fixed navbar */
+:root {
+  --navbar-height: 70px; /* adjust once */
+}
+
+body {
+  padding-top: var(--navbar-height);
+}
+
+      /* Space above footer */
+footer {
+  margin-top: 30px;   /* adjust as needed */
+}
+
+
+
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+      <div class="container">
+        <!-- Added container for proper centering -->
+        <a class="navbar-brand logo-glow" href="index.html">
+          <img src="images/logo.jpg" alt="Prem Foundation" height="50" />
+          <span class="logo-pulse"></span>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">
+                <!-- Removed active class -->
+                <span class="nav-link-underline">Home</span>
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="aboutDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                <span class="nav-link-underline">About Us</span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="about.html">Our Story</a>
+                </li>
+                                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="team.html">Our Team</a></li>
+
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="projectsDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                <span class="nav-link-underline">Projects</span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="projects.html"
+                    >All Initiatives</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="updates.html">Recent Updates</a>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="premangan.html"
+                    >Premangan Old Age Home</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link donate-btn" href="donate.html">
+                <span class="nav-link-underline">Donate</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="volunteer.html">
+                <span class="nav-link-underline">Volunteer</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">
+                <span class="nav-link-underline">Contact</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="page-container">
+      <h1 class="page-title">Our Recent Activities</h1>
+
+      <div class="controls-container">
+        <div class="sort-controls">
+          <button id="sort-newest" class="sort-btn active">
+            <i class="fas fa-arrow-down"></i> Newest
+          </button>
+          <button id="sort-oldest" class="sort-btn">
+            <i class="fas fa-arrow-up"></i> Oldest
+          </button>
+        </div>
+
+        <div class="search-box">
+          <i class="fas fa-search search-icon"></i>
+          <input
+            type="text"
+            id="search-input"
+            class="search-input"
+            placeholder="Search activities..."
+          />
+        </div>
+      </div>
+
+      <div id="activities-container" class="activities-container">
+        <div class="loader">
+          <div class="loader-circle"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating Admin Button -->
+    <div id="admin-floating-btn" class="admin-floating-btn">
+      <i class="fas fa-lock"></i>
+    </div>
+
+    <!-- Admin Panel (initially hidden on the right) -->
+    <div id="admin-panel" class="admin-panel">
+      <div class="admin-header">
+        <h2 class="admin-title">Admin Panel</h2>
+        <button class="close-admin">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="admin-content">
+        <div id="admin-form" class="admin-form">
+          <form id="activity-form">
+            <input type="hidden" id="edit-id" value="" />
+
+            <div class="form-group">
+              <label for="activity-date"
+                ><i class="fas fa-calendar"></i> Date</label
+              >
+              <input
+                type="date"
+                id="activity-date"
+                class="form-control"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="activity-location"
+                ><i class="fas fa-map-marker-alt"></i> Location
+                (Optional)</label
+              >
+              <input
+                type="text"
+                id="activity-location"
+                class="form-control"
+                placeholder="Enter activity location"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="activity-description"
+                ><i class="fas fa-align-left"></i> Description</label
+              >
+              <textarea
+                id="activity-description"
+                class="form-control"
+                required
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="activity-images"
+                ><i class="fas fa-images"></i> Upload Images (Multiple)</label
+              >
+              <input
+                type="file"
+                id="activity-images"
+                class="form-control"
+                multiple
+                accept="image/*"
+              />
+
+              <div id="image-preview" class="image-preview"></div>
+            </div>
+
+            <div class="activity-actions">
+              <button type="submit" id="save-activity" class="btn btn-success">
+                <i class="fas fa-save"></i> Save Activity
+              </button>
+              <button
+                type="button"
+                id="cancel-edit"
+                class="btn btn-warning"
+                style="display: none"
+              >
+                <i class="fas fa-times"></i> Cancel Edit
+              </button>
+            </div>
+          </form>
+
+          <div id="existing-activities" class="admin-activities-list">
+            <h3><i class="fas fa-list"></i> Existing Activities</h3>
+            <div id="admin-activities-list"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for passkey entry -->
+    <div id="passkey-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2><i class="fas fa-key"></i> Admin Authentication</h2>
+        </div>
+        <div class="form-group">
+          <input
+            type="password"
+            id="passkey-input"
+            class="form-control"
+            placeholder="Enter admin passkey"
+          />
+        </div>
+        <div class="activity-actions">
+          <button id="submit-passkey" class="btn btn-primary">
+            <i class="fas fa-check"></i> Submit
+          </button>
+          <button id="cancel-passkey" class="btn btn-warning">
+            <i class="fas fa-times"></i> Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Image gallery modal -->
+    <div id="gallery-modal" class="gallery-modal">
+      <div class="gallery-content">
+        <img id="gallery-image" class="gallery-image" src="" alt="" />
+        <div id="gallery-counter" class="gallery-counter">1/5</div>
+      </div>
+      <div class="gallery-controls">
+        <button id="close-gallery" class="btn btn-danger">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="gallery-nav">
+        <button id="prev-image" class="btn btn-primary">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button id="next-image" class="btn btn-primary">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Share modal -->
+    <div id="share-modal" class="share-modal">
+      <div class="share-modal-content">
+        <div class="modal-header">
+          <h2><i class="fas fa-share-alt"></i> Share This Activity</h2>
+          <button id="close-share" class="close-admin">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <p>Share this activity with your friends and community:</p>
+        <div class="share-options">
+          <div class="share-option" data-platform="facebook">
+            <i class="fab fa-facebook share-icon"></i>
+            <span>Facebook</span>
+          </div>
+          <div class="share-option" data-platform="twitter">
+            <i class="fab fa-twitter share-icon"></i>
+            <span>Twitter</span>
+          </div>
+          <div class="share-option" data-platform="whatsapp">
+            <i class="fab fa-whatsapp share-icon"></i>
+            <span>WhatsApp</span>
+          </div>
+          <div class="share-option" data-platform="link">
+            <i class="fas fa-link share-icon"></i>
+            <span>Copy Link</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification"></div>
+
+    <!-- Footer -->
+    <footer class="prem-footer">
+      <div class="prem-container">
+        <div class="prem-footer-main">
+          <!-- Brand Column (same as before) -->
+          <div class="prem-footer-brand">
+            <div class="prem-logo-wrapper">
+              <img
+                src="images/logo.jpg"
+                alt="Prem Foundation"
+                class="prem-logo"
+              />
+              <div class="prem-logo-glow"></div>
+            </div>
+            <p class="prem-tagline">
+              Committed to dignity, care, and community service since 2012.
+            </p>
+            <div class="prem-social-proof">
+              <div class="prem-trust-badge">
+                <i class="fas fa-certificate"></i>
+                <span>30+ Years Combined Experience</span>
+              </div>
+              <div class="prem-trust-badge">
+                <i class="fas fa-heart"></i>
+                <span>10000+ Lives Impacted</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Links Column (same as before) -->
+          <div class="prem-footer-links">
+            <div class="prem-links-column">
+              <h5 class="prem-links-title">Our Initiatives</h5>
+              <ul class="prem-links-list">
+                <li>
+                  <a href="premangan.html" class="prem-link"
+                    ><i class="fas fa-home"></i> Premangan Old Age Home</a
+                  >
+                </li>
+                <li>
+                  <a href="projects.html" class="prem-link"
+                    ><i class="fas fa-hands-helping"></i> Community Projects</a
+                  >
+                </li>
+                <li>
+                  <a href="donate.html" class="prem-link"
+                    ><i class="fas fa-donate"></i> Donation Programs</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="prem-links-column">
+              <h5 class="prem-links-title">Organization</h5>
+              <ul class="prem-links-list">
+                <li>
+                  <a href="about.html" class="prem-link"
+                    ><i class="fas fa-info-circle"></i> About Us</a
+                  >
+                </li>
+                <li>
+                  <a href="team.html" class="prem-link"
+                    ><i class="fas fa-users"></i> Our Team</a
+                  >
+                </li>
+                <li>
+                  <a href="about.html#report" class="prem-link"
+                    ><i class="fas fa-file-alt"></i> Annual Reports</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Contact Column (same as before) -->
+          <div class="prem-footer-contact">
+            <h5 class="prem-contact-title">Contact Us</h5>
+            <div class="prem-contact-info">
+              <div class="prem-contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span
+                  >4th Floor, Sitaram Chambers, Peth Naka, Panchavati, Nashik,
+                  Maharashtra, India - 422003</span
+                >
+              </div>
+              <div class="prem-contact-item">
+                <i class="fas fa-phone-alt"></i>
+                <span>+91 9970559373</span>
+              </div>
+              <div class="prem-contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>premfoundation2012@gmail.com</span>
+              </div>
+            </div>
+            <div class="prem-contact-buttons">
+              <a href="tel:+919970559373" class="prem-call-button">
+                <i class="fas fa-phone"></i> Call Us
+              </a>
+              <a href="https://wa.me/919970559373" class="prem-whatsapp-button">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+              </a>
+              <a
+                href="mailto:premfoundation2012@gmail.com"
+                class="prem-email-button"
+              >
+                <i class="fas fa-envelope"></i> Email
+              </a>
+            </div>
+          </div>
+        </div>
+
+
+
+          <div class="prem-copyright">
+            <p>&copy; 2025 Prem Foundation. All Rights Reserved.</p>
+            <p class="prem-credits">
+              Crafted with <i class="fas fa-heart"></i> for humanity
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // DOM elements
+      const activitiesContainer = document.getElementById(
+        "activities-container"
+      );
+      const adminFloatingBtn = document.getElementById("admin-floating-btn");
+      const adminPanel = document.getElementById("admin-panel");
+      const closeAdminBtn = document.querySelector(".close-admin");
+      const activityForm = document.getElementById("activity-form");
+      const passkeyModal = document.getElementById("passkey-modal");
+      const passkeyInput = document.getElementById("passkey-input");
+      const submitPasskey = document.getElementById("submit-passkey");
+      const cancelPasskey = document.getElementById("cancel-passkey");
+      const imagePreview = document.getElementById("image-preview");
+      const activityImages = document.getElementById("activity-images");
+      const adminActivitiesList = document.getElementById(
+        "admin-activities-list"
+      );
+      const cancelEditBtn = document.getElementById("cancel-edit");
+      const saveActivityBtn = document.getElementById("save-activity");
+      const galleryModal = document.getElementById("gallery-modal");
+      const galleryImage = document.getElementById("gallery-image");
+      const galleryCounter = document.getElementById("gallery-counter");
+      const closeGallery = document.getElementById("close-gallery");
+      const prevImage = document.getElementById("prev-image");
+      const nextImage = document.getElementById("next-image");
+      const notification = document.getElementById("notification");
+      const sortNewestBtn = document.getElementById("sort-newest");
+      const sortOldestBtn = document.getElementById("sort-oldest");
+      const searchInput = document.getElementById("search-input");
+      const shareModal = document.getElementById("share-modal");
+      const closeShareBtn = document.getElementById("close-share");
+      const shareOptions = document.querySelectorAll(".share-option");
+
+      // State variables
+      let isAdmin = false;
+      let selectedFiles = [];
+      let currentlyEditing = null;
+      let currentGalleryImages = [];
+      let currentGalleryIndex = 0;
+      let currentSortOrder = "newest";
+      let currentActivityForSharing = null;
+
+      // Check if user was previously authenticated
+      window.addEventListener("DOMContentLoaded", () => {
+        if (localStorage.getItem("adminAuthenticated") === "true") {
+          isAdmin = true;
+          adminFloatingBtn.innerHTML = '<i class="fas fa-unlock"></i>';
+          showNotification("Admin mode active", "info");
+        }
+        loadActivitiesForPublic();
+
+        // Set up event listeners for new features
+        sortNewestBtn.addEventListener("click", () => {
+          sortNewestBtn.classList.add("active");
+          sortOldestBtn.classList.remove("active");
+          currentSortOrder = "newest";
+          loadActivitiesForPublic();
+        });
+
+        sortOldestBtn.addEventListener("click", () => {
+          sortOldestBtn.classList.add("active");
+          sortNewestBtn.classList.remove("active");
+          currentSortOrder = "oldest";
+          loadActivitiesForPublic();
+        });
+
+        searchInput.addEventListener(
+          "input",
+          debounce(() => {
+            loadActivitiesForPublic();
+          }, 300)
+        );
+
+        closeShareBtn.addEventListener("click", () => {
+          shareModal.style.display = "none";
+        });
+
+        // Set up share option event listeners
+        shareOptions.forEach((option) => {
+          option.addEventListener("click", (e) => {
+            const platform = e.currentTarget.dataset.platform;
+            shareActivity(currentActivityForSharing, platform);
+          });
+        });
+      });
+
+      // Debounce function for search
+      function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+          const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+          };
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+        };
+      }
+
+      // Admin floating button click
+      adminFloatingBtn.addEventListener("click", () => {
+        if (isAdmin) {
+          // Already authenticated, show admin panel
+          adminPanel.classList.add("active");
+          loadActivitiesForAdmin();
+        } else {
+          // Show passkey modal
+          passkeyModal.style.display = "flex";
+        }
+      });
+
+      // Close admin panel
+      closeAdminBtn.addEventListener("click", () => {
+        adminPanel.classList.remove("active");
+      });
+
+      // Submit passkey
+      submitPasskey.addEventListener("click", () => {
+        if (passkeyInput.value === "rupraj") {
+          isAdmin = true;
+          localStorage.setItem("adminAuthenticated", "true");
+          passkeyModal.style.display = "none";
+          adminFloatingBtn.innerHTML = '<i class="fas fa-unlock"></i>';
+          passkeyInput.value = "";
+          adminPanel.classList.add("active");
+          loadActivitiesForAdmin();
+          showNotification("Admin access granted", "success");
+        } else {
+          showNotification("Incorrect passkey. Please try again.", "error");
+          passkeyInput.value = "";
+        }
+      });
+
+      // Cancel passkey entry
+      cancelPasskey.addEventListener("click", () => {
+        passkeyModal.style.display = "none";
+        passkeyInput.value = "";
+      });
+
+      // Image selection handling
+      activityImages.addEventListener("change", (e) => {
+        selectedFiles = Array.from(e.target.files);
+        imagePreview.innerHTML = "";
+
+        selectedFiles.forEach((file, index) => {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            const previewContainer = document.createElement("div");
+            previewContainer.style.position = "relative";
+            previewContainer.style.display = "inline-block";
+
+            const img = document.createElement("img");
+            img.src = e.target.result;
+            img.className = "preview-image";
+            img.dataset.index = index;
+
+            const removeBtn = document.createElement("button");
+            removeBtn.className = "remove-image";
+            removeBtn.innerHTML = "&times;";
+            removeBtn.addEventListener("click", () => {
+              selectedFiles.splice(index, 1);
+              previewContainer.remove();
+            });
+
+            previewContainer.appendChild(img);
+            previewContainer.appendChild(removeBtn);
+            imagePreview.appendChild(previewContainer);
+          };
+          reader.readAsDataURL(file);
+        });
+      });
+
+      // Form submission
+      activityForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const date = document.getElementById("activity-date").value;
+        const location = document.getElementById("activity-location").value;
+        const description = document.getElementById(
+          "activity-description"
+        ).value;
+        const editId = document.getElementById("edit-id").value;
+
+        if (!date || !description) {
+          showNotification("Please fill in all required fields.", "error");
+          return;
+        }
+
+        saveActivityBtn.disabled = true;
+        saveActivityBtn.innerHTML =
+          '<i class="fas fa-spinner fa-spin"></i> Saving...';
+
+        try {
+          // Convert images to base64 for storage
+          const imagePromises = selectedFiles.map((file) => {
+            return new Promise((resolve) => {
+              const reader = new FileReader();
+              reader.onload = (e) => resolve(e.target.result);
+              reader.readAsDataURL(file);
+            });
+          });
+
+          Promise.all(imagePromises).then((imageDataUrls) => {
+            const activityData = {
+              date,
+              location,
+              description,
+              images: imageDataUrls,
+              timestamp: editId ? currentlyEditing.timestamp : Date.now(),
+            };
+
+            // Save to localStorage
+            let activities =
+              JSON.parse(localStorage.getItem("activities")) || [];
+
+            if (editId) {
+              // Update existing activity
+              const index = activities.findIndex(
+                (a) => a.timestamp === parseInt(editId)
+              );
+              if (index !== -1) {
+                activities[index] = activityData;
+              }
+            } else {
+              // Create new activity
+              activities.push(activityData);
+            }
+
+            // Sort by timestamp (newest first)
+            activities.sort((a, b) => b.timestamp - a.timestamp);
+
+            // Save back to localStorage
+            localStorage.setItem("activities", JSON.stringify(activities));
+
+            // Reset form and reload
+            resetForm();
+            loadActivitiesForPublic();
+            loadActivitiesForAdmin();
+
+            showNotification(
+              `Activity ${editId ? "updated" : "added"} successfully!`,
+              "success"
+            );
+          });
+        } catch (error) {
+          console.error("Error saving activity:", error);
+          showNotification("Error saving activity. Please try again.", "error");
+        } finally {
+          saveActivityBtn.disabled = false;
+          saveActivityBtn.innerHTML =
+            '<i class="fas fa-save"></i> Save Activity';
+        }
+      });
+
+      // Cancel edit
+      cancelEditBtn.addEventListener("click", resetForm);
+
+      // Load activities for public view
+      function loadActivitiesForPublic() {
+        activitiesContainer.innerHTML =
+          '<div class="loader"><div class="loader-circle"></div></div>';
+
+        setTimeout(() => {
+          let activities = JSON.parse(localStorage.getItem("activities")) || [];
+
+          // Apply search filter
+          const searchTerm = searchInput.value.toLowerCase().trim();
+          if (searchTerm) {
+            activities = activities.filter(
+              (activity) =>
+                activity.description.toLowerCase().includes(searchTerm) ||
+                (activity.location &&
+                  activity.location.toLowerCase().includes(searchTerm))
+            );
+          }
+
+          // Apply sorting
+          if (currentSortOrder === "newest") {
+            activities.sort((a, b) => new Date(b.date) - new Date(a.date));
+          } else {
+            activities.sort((a, b) => new Date(a.date) - new Date(b.date));
+          }
+
+          activitiesContainer.innerHTML = "";
+
+          if (activities.length === 0) {
+            activitiesContainer.innerHTML = `
+                        <div class="empty-state">
+                            <i class="fas fa-inbox"></i>
+                            <h2>No activities found</h2>
+                            <p>${
+                              searchTerm
+                                ? "Try a different search term"
+                                : "Check back later for updates on our activities."
+                            }</p>
+                        </div>
+                    `;
+            return;
+          }
+
+          activities.forEach((activity, index) => {
+            const activityCard = createActivityCard(activity, index);
+            activitiesContainer.appendChild(activityCard);
+          });
+        }, 500); // Simulate loading
+      }
+
+      // Load activities for admin view
+      function loadActivitiesForAdmin() {
+        if (!isAdmin) return;
+
+        adminActivitiesList.innerHTML = "<p>Loading...</p>";
+
+        setTimeout(() => {
+          const activities =
+            JSON.parse(localStorage.getItem("activities")) || [];
+
+          adminActivitiesList.innerHTML = "";
+
+          if (activities.length === 0) {
+            adminActivitiesList.innerHTML = "<p>No activities found.</p>";
+            return;
+          }
+
+          // Sort by newest first for admin view
+          const sortedActivities = [...activities].sort(
+            (a, b) => b.timestamp - a.timestamp
+          );
+
+          sortedActivities.forEach((activity) => {
+            const activityItem = document.createElement("div");
+            activityItem.className = "admin-activity-item";
+
+            activityItem.innerHTML = `
+                        <div>
+                            <strong>${formatDate(activity.date)}</strong>
+                            <p>${activity.description.substring(0, 50)}${
+              activity.description.length > 50 ? "..." : ""
+            }</p>
+                        </div>
+                        <div>
+                            <button class="btn btn-warning edit-btn" data-id="${
+                              activity.timestamp
+                            }">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                            <button class="btn btn-danger delete-btn" data-id="${
+                              activity.timestamp
+                            }">
+                                <i class="fas fa-trash"></i> Delete
+                            </button>
+                        </div>
+                    `;
+
+            adminActivitiesList.appendChild(activityItem);
+          });
+
+          // Add event listeners to edit and delete buttons
+          document.querySelectorAll(".edit-btn").forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+              const id = e.target.closest(".edit-btn").dataset.id;
+              editActivity(id);
+            });
+          });
+
+          document.querySelectorAll(".delete-btn").forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+              const id = e.target.closest(".delete-btn").dataset.id;
+              deleteActivity(id);
+            });
+          });
+        }, 500);
+      }
+
+      // Create activity card for public view
+      function createActivityCard(activity, index) {
+        const card = document.createElement("div");
+        card.className = "activity-card";
+        card.style.animationDelay = `${index * 0.1}s`;
+
+        const formattedDate = formatDate(activity.date);
+
+        let imagesHTML = "";
+        if (activity.images && activity.images.length > 0) {
+          imagesHTML = `
+                    <div class="activity-images">
+                        <img src="${
+                          activity.images[0]
+                        }" alt="Activity image" class="activity-main-image">
+                        ${
+                          activity.images.length > 1
+                            ? `<div class="image-counter">+${
+                                activity.images.length - 1
+                              } more</div>`
+                            : ""
+                        }
+                    </div>
+                `;
+        }
+
+        card.innerHTML = `
+                ${imagesHTML}
+                <div class="activity-content">
+                    <div class="activity-date"><i class="fas fa-calendar-alt"></i> ${formattedDate}</div>
+                    ${
+                      activity.location
+                        ? `<div class="activity-location"><i class="fas fa-map-marker-alt"></i> ${activity.location}</div>`
+                        : ""
+                    }
+                    <p class="activity-description">${activity.description}</p>
+                    <div class="activity-actions">
+                        ${
+                          activity.images && activity.images.length > 0
+                            ? `<div class="view-gallery-btn"><i class="fas fa-images"></i> View Gallery</div>`
+                            : `<div></div>`
+                        }
+                        <div class="share-btn" data-id="${activity.timestamp}">
+                            <i class="fas fa-share-alt"></i> Share
+                        </div>
+                    </div>
+                </div>
+            `;
+
+        // Add click event to show image gallery if multiple images
+        if (activity.images && activity.images.length > 0) {
+          const viewGalleryBtn = card.querySelector(".view-gallery-btn");
+          viewGalleryBtn.addEventListener("click", () => {
+            showImageGallery(activity.images);
+          });
+        }
+
+        // Add click event to share button
+        const shareBtn = card.querySelector(".share-btn");
+        shareBtn.addEventListener("click", () => {
+          currentActivityForSharing = activity;
+          shareModal.style.display = "flex";
+        });
+
+        return card;
+      }
+
+      // Edit activity
+      function editActivity(id) {
+        const activities = JSON.parse(localStorage.getItem("activities")) || [];
+        const activity = activities.find((a) => a.timestamp === parseInt(id));
+
+        if (activity) {
+          currentlyEditing = activity;
+
+          document.getElementById("edit-id").value = id;
+          document.getElementById("activity-date").value = activity.date;
+          document.getElementById("activity-location").value =
+            activity.location || "";
+          document.getElementById("activity-description").value =
+            activity.description;
+
+          // Show existing images if any
+          imagePreview.innerHTML = "";
+          if (activity.images && activity.images.length > 0) {
+            activity.images.forEach((url, index) => {
+              const previewContainer = document.createElement("div");
+              previewContainer.style.position = "relative";
+              previewContainer.style.display = "inline-block";
+
+              const img = document.createElement("img");
+              img.src = url;
+              img.className = "preview-image";
+
+              const removeBtn = document.createElement("button");
+              removeBtn.className = "remove-image";
+              removeBtn.innerHTML = "&times;";
+              removeBtn.addEventListener("click", () => {
+                // Remove image from activity
+                activity.images.splice(index, 1);
+                // Update the activity in localStorage
+                const activities =
+                  JSON.parse(localStorage.getItem("activities")) || [];
+                const activityIndex = activities.findIndex(
+                  (a) => a.timestamp === parseInt(id)
+                );
+                if (activityIndex !== -1) {
+                  activities[activityIndex] = activity;
+                  localStorage.setItem(
+                    "activities",
+                    JSON.stringify(activities)
+                  );
+                }
+                // Refresh the form
+                editActivity(id);
+              });
+
+              previewContainer.appendChild(img);
+              previewContainer.appendChild(removeBtn);
+              imagePreview.appendChild(previewContainer);
+            });
+
+            // Mark these as existing images (not new uploads)
+            selectedFiles = []; // Reset selected files when editing
+          }
+
+          // Show cancel button
+          cancelEditBtn.style.display = "inline-block";
+
+          // Scroll to form
+          document
+            .querySelector(".admin-form")
+            .scrollIntoView({ behavior: "smooth" });
+        }
+      }
+
+      // Delete activity
+      function deleteActivity(id) {
+        if (
+          !confirm(
+            "Are you sure you want to delete this activity? This action cannot be undone."
+          )
+        ) {
+          return;
+        }
+
+        const activities = JSON.parse(localStorage.getItem("activities")) || [];
+        const updatedActivities = activities.filter(
+          (a) => a.timestamp !== parseInt(id)
+        );
+
+        localStorage.setItem("activities", JSON.stringify(updatedActivities));
+
+        loadActivitiesForPublic();
+        loadActivitiesForAdmin();
+
+        showNotification("Activity deleted successfully.", "success");
+      }
+
+      // Reset form
+      function resetForm() {
+        activityForm.reset();
+        document.getElementById("edit-id").value = "";
+        document.getElementById("activity-location").value = "";
+        imagePreview.innerHTML = "";
+        selectedFiles = [];
+        currentlyEditing = null;
+        cancelEditBtn.style.display = "none";
+      }
+
+      // Format date for display
+      function formatDate(dateString) {
+        const options = { year: "numeric", month: "long", day: "numeric" };
+        return new Date(dateString).toLocaleDateString(undefined, options);
+      }
+
+      // Show image gallery
+      function showImageGallery(images) {
+        currentGalleryImages = images;
+        currentGalleryIndex = 0;
+
+        galleryImage.src = currentGalleryImages[currentGalleryIndex];
+        galleryCounter.textContent = `${currentGalleryIndex + 1}/${
+          currentGalleryImages.length
+        }`;
+        galleryModal.style.display = "flex";
+      }
+
+      // Close gallery
+      closeGallery.addEventListener("click", () => {
+        galleryModal.style.display = "none";
+      });
+
+      // Navigate gallery
+      prevImage.addEventListener("click", () => {
+        if (currentGalleryIndex > 0) {
+          currentGalleryIndex--;
+          galleryImage.src = currentGalleryImages[currentGalleryIndex];
+          galleryCounter.textContent = `${currentGalleryIndex + 1}/${
+            currentGalleryImages.length
+          }`;
+        }
+      });
+
+      nextImage.addEventListener("click", () => {
+        if (currentGalleryIndex < currentGalleryImages.length - 1) {
+          currentGalleryIndex++;
+          galleryImage.src = currentGalleryImages[currentGalleryIndex];
+          galleryCounter.textContent = `${currentGalleryIndex + 1}/${
+            currentGalleryImages.length
+          }`;
+        }
+      });
+
+      // Share activity
+      function shareActivity(activity, platform) {
+        const text = `Check out this NGO activity: ${activity.description.substring(
+          0,
+          100
+        )}...`;
+        const url = window.location.href;
+
+        let shareUrl = "";
+
+        switch (platform) {
+          case "facebook":
+            shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+              url
+            )}`;
+            break;
+          case "twitter":
+            shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+              text
+            )}&url=${encodeURIComponent(url)}`;
+            break;
+          case "whatsapp":
+            shareUrl = `https://wa.me/?text=${encodeURIComponent(
+              text + " " + url
+            )}`;
+            break;
+          case "link":
+            navigator.clipboard
+              .writeText(url)
+              .then(() => {
+                showNotification("Link copied to clipboard!", "success");
+                shareModal.style.display = "none";
+                return;
+              })
+              .catch((err) => {
+                showNotification("Failed to copy link", "error");
+                console.error("Could not copy text: ", err);
+              });
+            return;
+          default:
+            return;
+        }
+
+        window.open(shareUrl, "_blank");
+        shareModal.style.display = "none";
+        showNotification("Sharing dialog opened", "info");
+      }
+
+      // Show notification
+      function showNotification(message, type = "success") {
+        notification.textContent = message;
+        notification.className = `notification ${type}`;
+        notification.innerHTML = `<i class="fas fa-${
+          type === "success"
+            ? "check-circle"
+            : type === "error"
+            ? "exclamation-circle"
+            : type === "warning"
+            ? "exclamation-triangle"
+            : "info-circle"
+        }"></i> ${message}`;
+        notification.classList.add("show");
+
+        setTimeout(() => {
+          notification.classList.remove("show");
+        }, 3000);
+      }
+
+      // Close gallery with ESC key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          if (galleryModal.style.display === "flex") {
+            galleryModal.style.display = "none";
+          }
+          if (shareModal.style.display === "flex") {
+            shareModal.style.display = "none";
+          }
+          if (passkeyModal.style.display === "flex") {
+            passkeyModal.style.display = "none";
+            passkeyInput.value = "";
+          }
+        }
+
+        // Navigate gallery with arrow keys
+        if (galleryModal.style.display === "flex") {
+          if (e.key === "ArrowLeft") {
+            prevImage.click();
+          } else if (e.key === "ArrowRight") {
+            nextImage.click();
+          }
+        }
+      });
+
+      // Sample data for first-time users
+      function initializeSampleData() {
+        if (
+          !localStorage.getItem("activities") ||
+          JSON.parse(localStorage.getItem("activities")).length === 0
+        ) {
+          const sampleActivities = [
+            {
+              date: new Date().toISOString().split("T")[0],
+              location: "Community Center, Downtown",
+              description:
+                "We're excited to announce our new education initiative for underprivileged children in the community. This program will provide free tutoring and educational resources.",
+              images: [],
+              timestamp: Date.now() - 86400000, // 1 day ago
+            },
+            {
+              date: new Date(Date.now() - 86400000 * 2)
+                .toISOString()
+                .split("T")[0],
+              location: "City Park",
+              description:
+                "Our team participated in the city-wide clean-up drive. We collected over 200kg of waste and helped make our community cleaner and greener!",
+              images: [],
+              timestamp: Date.now() - 86400000 * 2, // 2 days ago
+            },
+          ];
+
+          localStorage.setItem("activities", JSON.stringify(sampleActivities));
+          loadActivitiesForPublic();
+        }
+      }
+
+      // Initialize sample data on first load
+      initializeSampleData();
+    </script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

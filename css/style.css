@@ -1878,7 +1878,11 @@ html {
 
 /* Testimonials */
 .testimonial-card {
-    background: white;
+    background:linear-gradient(
+          135deg,
+          #c4fbfb 0%,
+          #f0a9e6 100%
+        );
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(0, 0, 0, 0.08);

@@ -1,6 +1,6 @@
 /* Dark Theme Gallery Styles */
 #gallery {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    background: linear-gradient(135deg, #0c0a27 0%,#050b36 50%, #0b363e 100%);
     position: relative;
     overflow: hidden;
     z-index: 1;
@@ -376,4 +376,358 @@
 html, body {
   overflow-x: hidden;
   width: 100%;
+}
+
+/* Plan Options Section Styles */
+#plan-options {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.plan-bg-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle at 25% 25%, rgba(212, 175, 55, 0.05) 2px, transparent 0),
+                    radial-gradient(circle at 75% 75%, rgba(212, 175, 55, 0.05) 2px, transparent 0);
+  background-size: 50px 50px;
+  z-index: -1;
+}
+
+.plan-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.plan-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border-color: rgba(212, 175, 55, 0.5);
+}
+
+.plan-header {
+  background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.plan-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+  transform: rotate(30deg);
+}
+
+.plan-popular .plan-header {
+  background: linear-gradient(135deg, #f72585 0%, #7209b7 100%);
+}
+
+.plan-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.plan-price {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.plan-period {
+  font-size: 1rem;
+  opacity: 0.8;
+  position: relative;
+  z-index: 1;
+}
+
+.plan-body {
+  padding: 2rem;
+}
+
+.plan-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+}
+
+.plan-features li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+}
+
+.plan-features li:last-child {
+  border-bottom: none;
+}
+
+.plan-features i {
+  color: var(--prem-gold);
+  margin-right: 1rem;
+  font-size: 1.2rem;
+}
+
+.plan-deposit {
+  background: rgba(212, 175, 55, 0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  border: 1px dashed rgba(212, 175, 55, 0.3);
+}
+
+.plan-deposit h5 {
+  color: var(--prem-gold);
+  margin-bottom: 0.5rem;
+}
+
+.plan-note {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  text-align: center;
+  margin-top: 1.5rem;
+  font-style: italic;
+}
+
+.plan-cta {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+/* Social Media Section Styles */
+#social-connect {
+  background: #0f172a;
+  position: relative;
+  overflow: hidden;
+}
+
+.social-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23d4af37' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+  z-index: 0;
+}
+
+.social-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.social-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+.social-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  font-size: 1.8rem;
+  transition: all 0.3s ease;
+}
+
+.social-card:hover .social-icon {
+  transform: scale(1.1);
+}
+
+.social-facebook .social-icon {
+  background: rgba(59, 89, 152, 0.1);
+  color: #3b5998;
+  border: 1px solid rgba(59, 89, 152, 0.3);
+}
+
+.social-instagram .social-icon {
+  background: rgba(225, 48, 108, 0.1);
+  color: #e1306c;
+  border: 1px solid rgba(225, 48, 108, 0.3);
+}
+
+.social-twitter .social-icon {
+  background: rgba(29, 161, 242, 0.1);
+  color: #1da1f2;
+  border: 1px solid rgba(29, 161, 242, 0.3);
+}
+
+.social-whatsapp .social-icon {
+  background: rgba(37, 211, 102, 0.1);
+  color: #25d366;
+  border: 1px solid rgba(37, 211, 102, 0.3);
+}
+
+.social-email .social-icon {
+  background: rgba(219, 68, 55, 0.1);
+  color: #db4437;
+  border: 1px solid rgba(219, 68, 55, 0.3);
+}
+
+.social-phone .social-icon {
+  background: rgba(0, 128, 0, 0.1);
+  color: #008000;
+  border: 1px solid rgba(0, 128, 0, 0.3);
+}
+
+.social-maps .social-icon {
+  background: rgba(66, 133, 244, 0.1);
+  color: #4285f4;
+  border: 1px solid rgba(66, 133, 244, 0.3);
+}
+
+.social-title {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.social-desc {
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.social-link {
+  display: inline-block;
+  padding: 0.6rem 1.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.social-facebook .social-link {
+  background: rgba(59, 89, 152, 0.2);
+  color: #3b5998;
+  border: 1px solid rgba(59, 89, 152, 0.4);
+}
+
+.social-facebook .social-link:hover {
+  background: #3b5998;
+  color: #fff;
+}
+
+.social-instagram .social-link {
+  background: rgba(225, 48, 108, 0.2);
+  color: #e1306c;
+  border: 1px solid rgba(225, 48, 108, 0.4);
+}
+
+.social-instagram .social-link:hover {
+  background: #e1306c;
+  color: #fff;
+}
+
+.social-twitter .social-link {
+  background: rgba(29, 161, 242, 0.2);
+  color: #1da1f2;
+  border: 1px solid rgba(29, 161, 242, 0.4);
+}
+
+.social-twitter .social-link:hover {
+  background: #1da1f2;
+  color: #fff;
+}
+
+.social-whatsapp .social-link {
+  background: rgba(37, 211, 102, 0.2);
+  color: #25d366;
+  border: 1px solid rgba(37, 211, 102, 0.4);
+}
+
+.social-whatsapp .social-link:hover {
+  background: #25d366;
+  color: #fff;
+}
+
+.social-email .social-link {
+  background: rgba(219, 68, 55, 0.2);
+  color: #db4437;
+  border: 1px solid rgba(219, 68, 55, 0.4);
+}
+
+.social-email .social-link:hover {
+  background: #db4437;
+  color: #fff;
+}
+
+.social-phone .social-link {
+  background: rgba(0, 128, 0, 0.2);
+  color: #008000;
+  border: 1px solid rgba(0, 128, 0, 0.4);
+}
+
+.social-phone .social-link:hover {
+  background: #008000;
+  color: #fff;
+}
+
+.social-maps .social-link {
+  background: rgba(66, 133, 244, 0.2);
+  color: #4285f4;
+  border: 1px solid rgba(66, 133, 244, 0.4);
+}
+
+.social-maps .social-link:hover {
+  background: #4285f4;
+  color: #fff;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .plan-card {
+    margin-bottom: 2rem;
+  }
+  
+  .plan-title {
+    font-size: 1.5rem;
+  }
+  
+  .plan-price {
+    font-size: 2rem;
+  }
+  
+  .social-card {
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+  }
+  
+  .social-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
 }

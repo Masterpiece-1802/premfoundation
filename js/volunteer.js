@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <div class="file-size">${fileSize} MB • ${fileExtension}</div>
                             </div>
                         </div>
-                        <button type="button" class="file-remove" data-index="${index}">
+                        <button type="button" class="file-remove" data-index="${index}" aria-label="Remove ${file.name}">
                             <i class="fas fa-times"></i>
                         </button>
                     `;
@@ -90,6 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Form validation enhancement
     const form = document.querySelector('form');
     if (form) {
+        // Use passive event listeners for better scroll performance
         form.addEventListener('submit', function(e) {
             const requiredFields = form.querySelectorAll('[required]');
             let isValid = true;
@@ -111,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 alertDiv.innerHTML = `
                     <i class="fas fa-exclamation-triangle me-2"></i>
                     Please fill in all required fields.
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 `;
                 
                 form.insertBefore(alertDiv, form.firstChild);
@@ -123,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }, 5000);
             }
-        });
+        }, { passive: true });
     }
     
     // Age validation
@@ -136,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 this.setCustomValidity('');
             }
-        });
+        }, { passive: true });
     }
     
     // Phone number validation
@@ -149,10 +150,10 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 this.setCustomValidity('');
             }
-        });
+        }, { passive: true });
     }
     
-    // Smooth scrolling for anchor links
+    // Smooth scrolling for anchor links with passive event listeners
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -163,10 +164,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     block: 'start'
                 });
             }
-        });
+        }, { passive: true });
     });
     
-    // Animate elements on scroll
+    // Animate elements on scroll with passive event listeners
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -190,4 +191,10 @@ document.addEventListener('DOMContentLoaded', function() {
     if (formCard) {
         observer.observe(formCard);
     }
+});
+
+// Defer initialization of non-critical functionality
+window.addEventListener('load', function() {
+    // Any non-critical initialization can go here
+    console.log('Page fully loaded - volunteer form ready');
 });

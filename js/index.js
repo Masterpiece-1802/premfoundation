@@ -539,3 +539,91 @@ document.addEventListener('DOMContentLoaded', function() {
         window.addEventListener('beforeunload', () => window.removeEventListener('resize', onResize));
     });
 })();
+
+
+// Enhanced Hero Section Functionality
+function enhanceHeroSection() {
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+    
+    // Create floating elements
+    const floatingElements = document.createElement('div');
+    floatingElements.className = 'floating-elements';
+    
+    for (let i = 0; i < 3; i++) {
+        const element = document.createElement('div');
+        element.className = 'floating-element';
+        floatingElements.appendChild(element);
+    }
+    
+    hero.appendChild(floatingElements);
+    
+    // Add subtle animation to hero title
+    const heroTitle = document.querySelector('.hero-title');
+    if (heroTitle) {
+        heroTitle.style.opacity = '0';
+        heroTitle.style.transform = 'translateY(20px)';
+        heroTitle.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        
+        setTimeout(() => {
+            heroTitle.style.opacity = '1';
+            heroTitle.style.transform = 'translateY(0)';
+        }, 300);
+    }
+    
+    // Add button hover effects
+    const buttons = document.querySelectorAll('.hero-btn');
+    buttons.forEach(button => {
+        button.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-3px) scale(1.02)';
+        });
+        
+        button.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+    
+    // Animate stats counter
+    const statNumbers = document.querySelectorAll('.stat-number');
+    const observerOptions = {
+        threshold: 0.5,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const target = entry.target;
+                const finalValue = parseInt(target.getAttribute('data-target'));
+                animateCounter(target, finalValue);
+                observer.unobserve(target);
+            }
+        });
+    }, observerOptions);
+    
+    statNumbers.forEach(stat => {
+        observer.observe(stat);
+    });
+    
+    function animateCounter(element, target) {
+        let current = 0;
+        const increment = target / 50;
+        const duration = 1500;
+        const stepTime = Math.abs(Math.floor(duration / (target / increment)));
+        
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                element.textContent = target.toLocaleString();
+                clearInterval(timer);
+            } else {
+                element.textContent = Math.floor(current).toLocaleString();
+            }
+        }, stepTime);
+    }
+}
+
+// Call the function when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    enhanceHeroSection();
+});

@@ -30,10 +30,7 @@
     <meta name="robots" content="index, follow, max-image-preview:large" />
 
     <!-- Canonical URL -->
-    <link
-      rel="canonical"
-      href="https://premfoundation.co.in/volunteer/"
-    />
+    <link rel="canonical" href="https://premfoundation.co.in/volunteer/" />
 
     <!-- Favicon & App Icons -->
     <link rel="icon" href="images/logo.jpg" type="image/jpg" />
@@ -91,20 +88,46 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts with font-display: swap -->
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <style>
+      /* Font fallbacks to prevent layout shifts */
+      body {
+        font-family: Arial, sans-serif;
+      }
+      body.fonts-loaded {
+        font-family: "Poppins", Arial, sans-serif;
+      }
+    </style>
 
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-
-    <!-- Animate CSS -->
+    <!-- AOS Animation Library - Deferred -->
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      rel="preload"
+      href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript
+      ><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+    /></noscript>
+
+    <!-- Animate CSS - Deferred -->
+    <link
+      rel="preload"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript
+      ><link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    /></noscript>
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css" />
@@ -279,111 +302,136 @@
       }
     </script>
 
-    <!-- Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-XH1EG1VFN7"
-    ></script>
+    <!-- Google Analytics - Deferred -->
     <script>
+      // Defer Google Analytics
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
-      gtag("js", new Date());
-      gtag("config", "G-XH1EG1VFN7");
+
+      // Load Google Analytics after page load
+      function loadGoogleAnalytics() {
+        var script = document.createElement("script");
+        script.async = true;
+        script.src = "https://www.googletagmanager.com/gtag/js?id=G-XH1EG1VFN7";
+        document.head.appendChild(script);
+
+        gtag("js", new Date());
+        gtag("config", "G-XH1EG1VFN7");
+      }
+
+      // Load after DOM is ready
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", loadGoogleAnalytics);
+      } else {
+        loadGoogleAnalytics();
+      }
     </script>
   </head>
   <body>
     <!-- Header -->
     <header>
-          <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand logo-glow" href="index.html">
-          <img src="images/logo.jpg" alt="Prem Foundation" height="50" />
-          <span class="logo-pulse"></span>
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link active" href="index.html">
-                <span class="nav-link-underline">Home</span>
-              </a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="aboutDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-              >
-                <span class="nav-link-underline">About Us</span>
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a class="dropdown-item" href="about.html">Our Story</a>
-                </li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="team.html">Our Team</a></li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="projectsDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-              >
-                <span class="nav-link-underline">Projects</span>
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a class="dropdown-item" href="projects.html"
-                    >All Initiatives</a
-                  >
-                </li>
-                <li><hr class="dropdown-divider" /></li>
-                <li>
-                  <a class="dropdown-item" href="updates.html"
-                    >Recent Updates</a
-                  >
-                </li>
-                <li><hr class="dropdown-divider" /></li>
-                <li>
-                  <a class="dropdown-item" href="premangan.html"
-                    >Premangan Old Age Home</a
-                  >
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link donate-btn" href="donate.html">
-                <span class="nav-link-underline">Donate</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="volunteer.html">
-                <span class="nav-link-underline">Volunteer</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">
-                <span class="nav-link-underline">Contact</span>
-              </a>
-            </li>
-          </ul>
+      <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand logo-glow" href="index.html">
+            <img
+              src="images/logo.jpg"
+              alt="Prem Foundation"
+              height="50"
+              fetchpriority="high"
+            />
+            <span class="logo-pulse"></span>
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-label="Toggle navigation"
+            aria-expanded="false"
+            aria-controls="navbarNav"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="index.html">
+                  <span class="nav-link-underline">Home</span>
+                </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="aboutDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <span class="nav-link-underline">About Us</span>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                  <li>
+                    <a class="dropdown-item" href="about.html">Our Story</a>
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="team.html">Our Team</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="projectsDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <span class="nav-link-underline">Projects</span>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="projectsDropdown">
+                  <li>
+                    <a class="dropdown-item" href="projects.html"
+                      >All Initiatives</a
+                    >
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="updates.html"
+                      >Recent Updates</a
+                    >
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="premangan.html"
+                      >Premangan Old Age Home</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link donate-btn" href="donate.html">
+                  <span class="nav-link-underline">Donate</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="volunteer.html">
+                  <span class="nav-link-underline">Volunteer</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">
+                  <span class="nav-link-underline">Contact</span>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
     </header>
 
     <!-- Hero Section -->
@@ -502,73 +550,89 @@
 
                   <div class="row g-3 mb-4">
                     <div class="col-md-6">
-                      <label class="form-label"
+                      <label for="full-name" class="form-label"
                         >Full Name <span class="text-danger">*</span></label
                       >
                       <input
                         type="text"
                         class="form-control"
+                        id="full-name"
                         name="name"
                         required
+                        aria-required="true"
                       />
                     </div>
                     <div class="col-md-6">
-                      <label class="form-label"
+                      <label for="age" class="form-label"
                         >Age <span class="text-danger">*</span></label
                       >
                       <input
                         type="number"
                         class="form-control"
+                        id="age"
                         name="age"
                         min="16"
                         required
+                        aria-required="true"
                       />
                     </div>
                   </div>
 
                   <div class="row g-3 mb-4">
                     <div class="col-md-6">
-                      <label class="form-label"
+                      <label for="phone" class="form-label"
                         >Phone <span class="text-danger">*</span></label
                       >
                       <input
                         type="tel"
                         class="form-control"
+                        id="phone"
                         name="phone"
                         required
+                        aria-required="true"
                       />
                     </div>
                     <div class="col-md-6">
-                      <label class="form-label">Email</label>
-                      <input type="email" class="form-control" name="email" />
+                      <label for="email" class="form-label">Email</label>
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="email"
+                        name="email"
+                      />
                     </div>
                   </div>
 
                   <div class="mb-4">
-                    <label class="form-label">Highest Education</label>
+                    <label for="education" class="form-label"
+                      >Highest Education</label
+                    >
                     <input
                       type="text"
                       class="form-control"
+                      id="education"
                       name="education"
                       placeholder="e.g., B.A. Sociology, 12th Grade"
                     />
                   </div>
 
                   <div class="mb-4">
-                    <label class="form-label">Full Address</label>
+                    <label for="address" class="form-label">Full Address</label>
                     <textarea
                       class="form-control"
+                      id="address"
                       name="address"
                       rows="2"
                     ></textarea>
                   </div>
 
                   <div class="mb-4">
-                    <label class="form-label"
+                    <label for="motivation" class="form-label"
                       >Why do you want to volunteer with us?</label
                     >
                     <textarea
                       class="form-control"
+                      id="motivation"
                       name="motivation"
                       rows="3"
                     ></textarea>
@@ -596,7 +660,7 @@
                         <i class="fas fa-cloud-upload-alt"></i>
                       </div>
                       <div class="file-upload-text">
-                        <h5>Click to upload files</h5>
+                        <span class="h6">Click to upload files</span>
                         <p>or drag and drop files here</p>
                       </div>
                     </label>
@@ -630,6 +694,7 @@
                 src="images/logo.jpg"
                 alt="Prem Foundation"
                 class="prem-logo"
+                fetchpriority="high"
               />
               <div class="prem-logo-glow"></div>
             </div>
@@ -749,6 +814,7 @@
                   allowfullscreen=""
                   loading="lazy"
                   referrerpolicy="no-referrer-when-downgrade"
+                  title="Prem Foundation Head Office Location Map"
                 ></iframe>
               </div>
             </div>
@@ -770,6 +836,7 @@
                   allowfullscreen=""
                   loading="lazy"
                   referrerpolicy="no-referrer-when-downgrade"
+                  title="Premangan Old Age Home Location Map"
                 ></iframe>
               </div>
             </div>
@@ -785,8 +852,19 @@
       </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/volunteer.js"></script>
+    <!-- Scripts - Deferred -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      defer
+    ></script>
+    <script src="js/volunteer.js" defer></script>
+
+    <!-- Font loading handler -->
+    <script>
+      // Add fonts-loaded class when fonts are ready
+      document.fonts.ready.then(function () {
+        document.body.classList.add("fonts-loaded");
+      });
+    </script>
   </body>
 </html>

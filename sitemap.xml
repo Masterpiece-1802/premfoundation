@@ -2,66 +2,73 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
    <url>
-      <loc>https://premfoundation.netlify.app/</loc>
+      <loc>https://premfoundation.co.in/</loc>
       <lastmod>2025-08-21</lastmod>
       <changefreq>monthly</changefreq>
       <priority>1.00</priority>
-      <xhtml:link rel="alternate" hreflang="en" href="https://premfoundation.netlify.app/" />
+      <xhtml:link rel="alternate" hreflang="en" href="https://premfoundation.co.in/" />
    </url>
    <url>
-      <loc>https://premfoundation.netlify.app/about/</loc>
+      <loc>https://premfoundation.co.in/about/</loc>
       <lastmod>2025-08-21</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.90</priority>
-      <xhtml:link rel="alternate" hreflang="en" href="https://premfoundation.netlify.app/about/" />
+      <xhtml:link rel="alternate" hreflang="en" href="https://premfoundation.co.in/about/" />
    </url>
    <url>
-      <loc>https://premfoundation.netlify.app/team/</loc>
+      <loc>https://premfoundation.co.in/team/</loc>
       <lastmod>2025-08-21</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.80</priority>
-      <xhtml:link rel="alternate" hreflang="en" href="https://premfoundation.netlify.app/team/" />
+      <xhtml:link rel="alternate" hreflang="en" href="https://premfoundation.co.in/team/" />
    </url>
    <url>
-      <loc>https://premfoundation.netlify.app/projects/</loc>
+      <loc>https://premfoundation.co.in/projects/</loc>
       <lastmod>2025-08-21</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.90</priority>
-      <xhtml:link rel="alternate" hreflang="en" href="https://premfoundation.netlify.app/projects/" />
+      <xhtml:link rel="alternate" hreflang="en" href="https://premfoundation.co.in/projects/" />
+   </url>
+      <url>
+      <loc>https://premfoundation.co.in/updates/</loc>
+      <lastmod>2025-08-21</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.90</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://premfoundation.co.in/updates/" />
    </url>
    <url>
-      <loc>https://premfoundation.netlify.app/premangan/</loc>
+      <loc>https://premfoundation.co.in/premangan/</loc>
       <lastmod>2025-08-21</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.90</priority>
-      <xhtml:link rel="alternate" hreflang="en" href="https://premfoundation.netlify.app/premangan/" />
+      <xhtml:link rel="alternate" hreflang="en" href="https://premfoundation.co.in/premangan/" />
    </url>
    <url>
-      <loc>https://premfoundation.netlify.app/donate/</loc>
+      <loc>https://premfoundation.co.in/donate/</loc>
       <lastmod>2025-08-21</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.80</priority>
-      <xhtml:link rel="alternate" hreflang="en" href="https://premfoundation.netlify.app/donate/" />
+      <xhtml:link rel="alternate" hreflang="en" href="https://premfoundation.co.in/donate/" />
    </url>
    <url>
-      <loc>https://premfoundation.netlify.app/volunteer/</loc>
+      <loc>https://premfoundation.co.in/volunteer/</loc>
       <lastmod>2025-08-21</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.80</priority>
-      <xhtml:link rel="alternate" hreflang="en" href="https://premfoundation.netlify.app/volunteer/" />
+      <xhtml:link rel="alternate" hreflang="en" href="https://premfoundation.co.in/volunteer/" />
    </url>
    <url>
-      <loc>https://premfoundation.netlify.app/contact/</loc>
+      <loc>https://premfoundation.co.in/contact/</loc>
       <lastmod>2025-08-21</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.70</priority>
-      <xhtml:link rel="alternate" hreflang="en" href="https://premfoundation.netlify.app/contact/" />
+      <xhtml:link rel="alternate" hreflang="en" href="https://premfoundation.co.in/contact/" />
    </url>
    <url>
-      <loc>https://premfoundation.netlify.app/legal/</loc>
+      <loc>https://premfoundation.co.in/legal/</loc>
       <lastmod>2025-08-21</lastmod>
       <changefreq>yearly</changefreq>
       <priority>0.30</priority>
-      <xhtml:link rel="alternate" hreflang="en" href="https://premfoundation.netlify.app/legal/" />
+      <xhtml:link rel="alternate" hreflang="en" href="https://premfoundation.co.in/legal/" />
    </url>
 </urlset>

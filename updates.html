@@ -1335,6 +1335,24 @@
           padding: 10px 15px; /* Larger touch targets */
         }
       }
+
+      /* Fix for image counter alignment */
+      .image-counter {
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        backdrop-filter: blur(5px);
+        z-index: 5; /* Ensure it's above the image */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 60px; /* Ensure consistent width */
+      }
     </style>
   </head>
   <body>
@@ -1846,6 +1864,7 @@
       let currentActivityForSharing = null;
       let activitiesListener = null;
       let currentViewMode = "single"; // 'single' or 'grid'
+      let imageCycles = {}; // Store cycling intervals for each activity
 
       // Initialize the app
       window.addEventListener("DOMContentLoaded", () => {
@@ -2157,7 +2176,9 @@
               (activity) =>
                 activity.description.toLowerCase().includes(searchTerm) ||
                 (activity.location &&
-                  activity.location.toLowerCase().includes(searchTerm))
+                  activity.location.toLowerCase().includes(searchTerm)) ||
+                (activity.date &&
+                  activity.date.toLowerCase().includes(searchTerm))
             );
           }
 
@@ -2172,22 +2193,27 @@
 
           if (activities.length === 0) {
             activitiesContainer.innerHTML = `
-              <div class="empty-state">
-                <i class="fas fa-inbox"></i>
-                <h2>No activities found</h2>
-                <p>${
-                  searchTerm
-                    ? "Try a different search term"
-                    : "Check back later for updates on our activities."
-                }</p>
-              </div>
-            `;
+          <div class="empty-state">
+            <i class="fas fa-inbox"></i>
+            <h2>No activities found</h2>
+            <p>${
+              searchTerm
+                ? "Try a different search term"
+                : "Check back later for updates on our activities."
+            }</p>
+          </div>
+        `;
             return;
           }
 
           activities.forEach((activity, index) => {
             const activityCard = createActivityCard(activity, index);
             activitiesContainer.appendChild(activityCard);
+
+            // Start image cycling if there are multiple images
+            if (activity.images && activity.images.length > 1) {
+              startImageCycle(activity.id, activity.images);
+            }
           });
         }, 500);
       }
@@ -2213,25 +2239,21 @@
             activityItem.className = "admin-activity-item";
 
             activityItem.innerHTML = `
-              <div>
-                <strong>${formatDate(activity.date)}</strong>
-                <p>${activity.description.substring(0, 50)}${
+          <div>
+            <strong>${formatDate(activity.date)}</strong>
+            <p>${activity.description.substring(0, 50)}${
               activity.description.length > 50 ? "..." : ""
             }</p>
-              </div>
-              <div>
-                <button class="btn btn-warning edit-btn" data-id="${
-                  activity.id
-                }">
-                  <i class="fas fa-edit"></i> Edit
-                </button>
-                <button class="btn btn-danger delete-btn" data-id="${
-                  activity.id
-                }">
-                  <i class="fas fa-trash"></i> Delete
-                </button>
-              </div>
-            `;
+          </div>
+          <div>
+            <button class="btn btn-warning edit-btn" data-id="${activity.id}">
+              <i class="fas fa-edit"></i> Edit
+            </button>
+            <button class="btn btn-danger delete-btn" data-id="${activity.id}">
+              <i class="fas fa-trash"></i> Delete
+            </button>
+          </div>
+        `;
 
             adminActivitiesList.appendChild(activityItem);
           });
@@ -2264,48 +2286,56 @@
         let imagesHTML = "";
         if (activity.images && activity.images.length > 0) {
           imagesHTML = `
-            <div class="activity-images">
-              <img src="${
-                activity.images[0]
-              }" alt="Activity image" class="activity-main-image">
-              ${
-                activity.images.length > 1
-                  ? `<div class="image-counter">+${
-                      activity.images.length - 1
-                    } more</div>`
-                  : ""
-              }
-            </div>
-          `;
+        <div class="activity-images">
+          <img src="${
+            activity.images[0]
+          }" alt="Activity image" class="activity-main-image" data-id="${
+            activity.id
+          }">
+          ${
+            activity.images.length > 1
+              ? `<div class="image-counter">+${
+                  activity.images.length - 1
+                } more</div>`
+              : ""
+          }
+        </div>
+      `;
         }
 
         card.innerHTML = `
-          ${imagesHTML}
-          <div class="activity-content">
-            <div class="activity-date"><i class="fas fa-calendar-alt"></i> ${formattedDate}</div>
-            ${
-              activity.location
-                ? `<div class="activity-location"><i class="fas fa-map-marker-alt"></i> ${activity.location}</div>`
-                : ""
-            }
-            <p class="activity-description">${activity.description}</p>
-            <div class="activity-actions">
-              ${
-                activity.images && activity.images.length > 0
-                  ? `<div class="view-gallery-btn"><i class="fas fa-images"></i> View Gallery</div>`
-                  : `<div></div>`
-              }
-              <div class="share-btn" data-id="${activity.id}">
-                <i class="fas fa-share-alt"></i> Share
-              </div>
-            </div>
+      ${imagesHTML}
+      <div class="activity-content">
+        <div class="activity-date"><i class="fas fa-calendar-alt"></i> ${formattedDate}</div>
+        ${
+          activity.location
+            ? `<div class="activity-location"><i class="fas fa-map-marker-alt"></i> ${activity.location}</div>`
+            : ""
+        }
+        <p class="activity-description">${activity.description}</p>
+        <div class="activity-actions">
+          ${
+            activity.images && activity.images.length > 0
+              ? `<div class="view-gallery-btn"><i class="fas fa-images"></i> View Gallery</div>`
+              : `<div></div>`
+          }
+          <div class="share-btn" data-id="${activity.id}">
+            <i class="fas fa-share-alt"></i> Share
           </div>
-        `;
+        </div>
+      </div>
+    `;
 
         // Add click event to show image gallery if multiple images
         if (activity.images && activity.images.length > 0) {
           const viewGalleryBtn = card.querySelector(".view-gallery-btn");
           viewGalleryBtn.addEventListener("click", () => {
+            showImageGallery(activity.images);
+          });
+
+          // Add click event to the main image to open gallery
+          const mainImage = card.querySelector(".activity-main-image");
+          mainImage.addEventListener("click", () => {
             showImageGallery(activity.images);
           });
         }
@@ -2318,6 +2348,27 @@
         });
 
         return card;
+      }
+
+      // Start image cycling for activity cards with multiple images
+      function startImageCycle(activityId, images) {
+        // Clear any existing cycle for this activity
+        if (imageCycles[activityId]) {
+          clearInterval(imageCycles[activityId]);
+        }
+
+        let currentImageIndex = 0;
+        const imageElement = document.querySelector(
+          `.activity-main-image[data-id="${activityId}"]`
+        );
+
+        if (!imageElement) return;
+
+        // Cycle through images every 5 seconds
+        imageCycles[activityId] = setInterval(() => {
+          currentImageIndex = (currentImageIndex + 1) % images.length;
+          imageElement.src = images[currentImageIndex];
+        }, 5000);
       }
 
       // Edit activity
@@ -2611,7 +2662,6 @@
           }
         }
       });
-
     </script>
 
     <!-- Bootstrap JS -->

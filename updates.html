@@ -2612,51 +2612,6 @@
         }
       });
 
-      // Initialize sample data for first-time setup
-      async function initializeSampleData() {
-        try {
-          const snapshot = await db.collection("activities").get();
-
-          if (snapshot.empty) {
-            // Add sample activities if the collection is empty
-            const sampleActivities = [
-              {
-                date: new Date().toISOString().split("T")[0],
-                location: "Community Center, Downtown",
-                description:
-                  "We're excited to announce our new education initiative for underprivileged children in the community. This program will provide free tutoring and educational resources.",
-                images: [],
-                timestamp: Date.now() - 86400000, // 1 day ago
-              },
-              {
-                date: new Date(Date.now() - 86400000 * 2)
-                  .toISOString()
-                  .split("T")[0],
-                location: "City Park",
-                description:
-                  "Our team participated in the city-wide clean-up drive. We collected over 200kg of waste and helped make our community cleaner and greener!",
-                images: [],
-                timestamp: Date.now() - 86400000 * 2, // 2 days ago
-              },
-            ];
-
-            // Add sample activities to Firestore
-            const batch = db.batch();
-            sampleActivities.forEach((activity) => {
-              const docRef = db.collection("activities").doc();
-              batch.set(docRef, activity);
-            });
-
-            await batch.commit();
-            console.log("Sample data added successfully");
-          }
-        } catch (error) {
-          console.error("Error initializing sample data:", error);
-        }
-      }
-
-      // Initialize sample data on first load
-      initializeSampleData();
     </script>
 
     <!-- Bootstrap JS -->

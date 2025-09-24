@@ -1974,6 +1974,266 @@
       </div>
     </section>
 
+        <!-- New Premangan Project Section -->
+    <section id="new-premangan" class="py-4 position-relative overflow-hidden">
+      <!-- Animated Background -->
+      <div class="premangan-bg">
+        <div class="mountain-range"></div>
+        <div class="clouds">
+          <div class="cloud cloud-1"></div>
+          <div class="cloud cloud-2"></div>
+          <div class="cloud cloud-3"></div>
+        </div>
+        <div class="greenery">
+          <div class="tree tree-1"></div>
+          <div class="tree tree-2"></div>
+          <div class="tree tree-3"></div>
+          <div class="bush bush-1"></div>
+          <div class="bush bush-2"></div>
+        </div>
+        <div class="falling-leaves">
+          <!-- Leaves will be generated via JavaScript -->
+        </div>
+      </div>
+
+      <div class="container position-relative z-2">
+        <div class="row align-items-center">
+          <div class="col-lg-7 mb-4 mb-lg-0">
+            <div class="new-premangan-content">
+              <span class="pre-badge">Coming Soon</span>
+              <h2 class="display-5 fw-bold mb-3">Premangan Igatpuri</h2>
+              <p class="lead mb-3">
+                A new sanctuary for golden years amidst nature's embrace
+              </p>
+
+              <div class="project-highlights mb-3">
+                <div class="highlight-item">
+                  <i class="fas fa-mountain"></i>
+                  <span>Serene location in Ambewadi, Igatpuri</span>
+                </div>
+                <div class="highlight-item">
+                  <i class="fas fa-tree"></i>
+                  <span>Surrounded by lush greenery and mountains</span>
+                </div>
+                <div class="highlight-item">
+                  <i class="fas fa-home"></i>
+                  <span>Modern facilities with traditional warmth</span>
+                </div>
+              </div>
+
+              <p class="mb-3">
+                We're expanding our mission to create another haven for seniors.
+                With your support, we can build a home where elders can live
+                with dignity, surrounded by nature's tranquility.
+              </p>
+
+              <!-- Mini Gallery -->
+              <div class="mini-gallery mb-3">
+                <div class="gallery-container">
+                  <img
+                    src="images/donate/1.jpeg"
+                    class="gallery-image active"
+                    alt="Premangan Project"
+                    data-enlargeable
+                  />
+                  <img
+                    src="images/donate/2.jpeg"
+                    class="gallery-image"
+                    alt="Premangan Project"
+                    data-enlargeable
+                  />
+                  <img
+                    src="images/donate/3.jpeg"
+                    class="gallery-image"
+                    alt="Premangan Project"
+                    data-enlargeable
+                  />
+                  <img
+                    src="images/donate/4.jpeg"
+                    class="gallery-image"
+                    alt="Premangan Project"
+                    data-enlargeable
+                  />
+                  <img
+                    src="images/donate/5.jpeg"
+                    class="gallery-image"
+                    alt="Premangan Project"
+                    data-enlargeable
+                  />
+                  <img
+                    src="images/donate/6.jpeg"
+                    class="gallery-image"
+                    alt="Premangan Project"
+                    data-enlargeable
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <div class="premangan-sidebar">
+              <div class="location-map mb-3">
+                <h5 class="mb-2">
+                  <i class="fas fa-map-marker-alt me-2"></i>Location
+                </h5>
+                <div class="map-container">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d7516.996817591107!2d73.65374089281893!3d19.605978540930728!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTnCsDM2JzIxLjUiTiA3M8KwMzknMjYuOCJF!5e0!3m2!1sen!2sin!4v1758736493496!5m2!1sen!2sin"
+                    width="100%"
+                    height="200"
+                    style="border: 0; border-radius: 6px"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                  >
+                  </iframe>
+                </div>
+              </div>
+
+              <div class="donation-cta">
+                <h4 class="mb-2">Name a Room & Create a Legacy</h4>
+                <p class="mb-3">
+                  Donate ₹50,000 or more to name a room in our new facility.
+                  Your chosen name will be permanently displayed, creating a
+                  lasting tribute to your generosity.
+                </p>
+
+                <button
+                  class="btn btn-prem btn-lg w-100"
+                  id="supportNewPremangan"
+                >
+                  <i class="fas fa-hands-helping me-2"></i>Support This Project
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Image Enlargement Modal -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Premangan Igatpuri</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body text-center">
+            <img id="enlargedImage" src="" alt="" class="img-fluid" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom Donation Modal for New Premangan -->
+    <div
+      class="modal fade"
+      id="newPremanganModal"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content premium-modal">
+          <div class="modal-header">
+            <div class="icon-circle">
+              <i class="fas fa-mountain"></i>
+            </div>
+            <h2 class="modal-title">Support Premangan Igatpuri</h2>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p class="text-center mb-4">
+              Your contribution will help us create a new home for seniors
+              amidst the beautiful landscapes of Igatpuri.
+            </p>
+
+            <form id="newPremanganForm">
+              <div class="form-group mb-3">
+                <label for="donorName">Your Name</label>
+                <input
+                  type="text"
+                  id="donorName"
+                  class="form-control"
+                  placeholder="Enter your full name"
+                  required
+                />
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="donorEmail">Email Address</label>
+                <input
+                  type="email"
+                  id="donorEmail"
+                  class="form-control"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="donorPhone">Phone Number</label>
+                <input
+                  type="tel"
+                  id="donorPhone"
+                  class="form-control"
+                  placeholder="Enter your phone number"
+                  required
+                />
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="roomName">Room Name (Optional)</label>
+                <input
+                  type="text"
+                  id="roomName"
+                  class="form-control"
+                  placeholder="Name you'd like to display"
+                />
+                <small class="form-text text-muted"
+                  >For donations of ₹50,000 or more</small
+                >
+              </div>
+
+              <div class="form-group mb-4">
+                <label for="donationAmount">Donation Amount (₹)</label>
+                <div class="input-group">
+                  <span class="input-group-text">₹</span>
+                  <input
+                    type="number"
+                    id="donationAmount"
+                    class="form-control"
+                    value="50000"
+                    min="100"
+                    required
+                  />
+                </div>
+              </div>
+
+              <button
+                type="button"
+                id="newPremanganDonate"
+                class="btn btn-prem w-100 py-2"
+              >
+                <i class="fas fa-lock me-2"></i>Proceed to Secure Payment
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Location Map -->
     <section id="location" class="py-5 bg-dark">
       <div class="container">
@@ -2929,6 +3189,197 @@
 
         // Initialize
         loadGallery();
+      });
+    </script>
+        <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Mini Gallery Cycling
+        const galleryImages = document.querySelectorAll(".gallery-image");
+        let currentImageIndex = 0;
+
+        function cycleGalleryImages() {
+          galleryImages[currentImageIndex].classList.remove("active");
+          currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+          galleryImages[currentImageIndex].classList.add("active");
+        }
+
+        // Change image every 3 seconds
+        setInterval(cycleGalleryImages, 3000);
+
+        // Create Falling Leaves - More Realistic
+        function createLeaves() {
+          const leavesContainer = document.querySelector(".falling-leaves");
+          const leafCount = 20; // Increased number of leaves
+
+          for (let i = 0; i < leafCount; i++) {
+            const leaf = document.createElement("div");
+            leaf.classList.add("leaf");
+
+            // Random leaf type (1-3)
+            const leafType = Math.floor(Math.random() * 3) + 1;
+            leaf.classList.add(`leaf-${leafType}`);
+
+            // Random properties for each leaf
+            const size = Math.random() * 15 + 10; // 10-25px
+            const left = Math.random() * 100; // 0-100%
+            const delay = Math.random() * 15; // 0-15s
+            const duration = Math.random() * 15 + 10; // 10-25s
+            const sway = Math.random() * 100 - 50; // -50 to 50px horizontal movement
+
+            leaf.style.width = `${size}px`;
+            leaf.style.height = `${size}px`;
+            leaf.style.left = `${left}%`;
+            leaf.style.animationDelay = `${delay}s`;
+            leaf.style.animationDuration = `${duration}s`;
+
+            // Add swaying effect
+            leaf.style.animation = `fall ${duration}s linear ${delay}s forwards, sway ${
+              duration / 2
+            }s ease-in-out ${delay}s infinite alternate`;
+
+            // Random rotation
+            leaf.style.transform = `rotate(${Math.random() * 360}deg)`;
+
+            leavesContainer.appendChild(leaf);
+          }
+        }
+
+        // Sway animation for leaves
+        const style = document.createElement("style");
+        style.textContent = `
+    @keyframes sway {
+      0% { transform: translateX(0) rotate(0deg); }
+      100% { transform: translateX(var(--sway-distance, 20px)) rotate(5deg); }
+    }
+  `;
+        document.head.appendChild(style);
+
+        createLeaves();
+
+        // Image Enlargement Feature
+        const imageModal = new bootstrap.Modal(
+          document.getElementById("imageModal")
+        );
+        const enlargedImage = document.getElementById("enlargedImage");
+
+        galleryImages.forEach((img) => {
+          img.addEventListener("click", function () {
+            enlargedImage.src = this.src;
+            enlargedImage.alt = this.alt;
+            imageModal.show();
+          });
+        });
+
+        // Modal Handling
+        const newPremanganModal = new bootstrap.Modal(
+          document.getElementById("newPremanganModal")
+        );
+        const supportButton = document.getElementById("supportNewPremangan");
+
+        supportButton.addEventListener("click", function () {
+          newPremanganModal.show();
+        });
+
+        // Payment Handler
+        const donateButton = document.getElementById("newPremanganDonate");
+
+        donateButton.addEventListener("click", function () {
+          const name = document.getElementById("donorName").value;
+          const email = document.getElementById("donorEmail").value;
+          const phone = document.getElementById("donorPhone").value;
+          const roomName = document.getElementById("roomName").value;
+          const amount =
+            parseFloat(document.getElementById("donationAmount").value) * 100; // Convert to paise
+
+          // Validate required fields
+          if (!name || !email || !phone || !amount || isNaN(amount)) {
+            alert("Please fill all required fields with valid values");
+            return;
+          }
+
+          // Validate amount
+          if (amount < 10000) {
+            // Minimum ₹100 in paise
+            alert("Minimum donation amount is ₹100");
+            return;
+          }
+
+          const options = {
+            key: "rzp_live_G7vfI7oMd4pG4r",
+            amount: Math.round(amount),
+            currency: "INR",
+            name: "Prem Foundation - New Premangan Project",
+            description: "Donation for Premangan Igatpuri",
+            image: "images/logo.jpg",
+            handler: function (response) {
+              // On successful payment
+              submitNewPremanganDonation({
+                name,
+                email,
+                phone,
+                roomName,
+                amount: amount / 100,
+                paymentId: response.razorpay_payment_id,
+                razorpayOrderId: response.razorpay_order_id,
+                razorpaySignature: response.razorpay_signature,
+              });
+            },
+            prefill: {
+              name: name,
+              email: email,
+              contact: phone,
+            },
+            theme: {
+              color: "#f9c74f",
+            },
+          };
+
+          try {
+            const rzp = new Razorpay(options);
+            rzp.open();
+
+            rzp.on("payment.failed", function (response) {
+              console.error("Payment failed:", response.error);
+              alert("Payment failed: " + response.error.description);
+            });
+          } catch (error) {
+            console.error("Razorpay initialization error:", error);
+            alert("Error initializing payment gateway. Please try again.");
+          }
+        });
+
+        // Submit donation data to Google Form
+        function submitNewPremanganDonation(formData) {
+          const formURL =
+            "https://docs.google.com/forms/d/e/1FAIpQLSct5HEKa6sFyYP8xDt54Ci470Lht9zMlJDrzjIXw9oxhJCROw/formResponse";
+
+          const params = new URLSearchParams();
+          params.append("entry.166682115", formData.name);
+          params.append("entry.896540183", formData.email);
+          params.append("entry.1672727099", formData.phone);
+          params.append("entry.672957603", formData.amount);
+          params.append("entry.797974295", formData.paymentId);
+          params.append("entry.10645470", "New Premangan Project - Igatpuri");
+          if (formData.roomName) {
+            params.append("entry.12345678", formData.roomName);
+          }
+
+          fetch(formURL, {
+            method: "POST",
+            body: params,
+            mode: "no-cors",
+          })
+            .then(() => {
+              // Redirect to thank you page
+              sessionStorage.setItem("donationData", JSON.stringify(formData));
+              window.location.href = "thank-you.html";
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+              sessionStorage.setItem("donationData", JSON.stringify(formData));
+              window.location.href = "thank-you.html";
+            });
+        }
       });
     </script>
   </body>

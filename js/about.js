@@ -164,14 +164,14 @@ document.addEventListener('DOMContentLoaded', function () {
                                         </div>
                                         <div>
                                             <h3 class="h5 mb-0 text-white">2021-22 Report</h3>
-                                            <small class="text-gold-light">PDF • 3.5 MB</small>
+                                            <small class="text-gold-light">PDF • 9.5 MB</small>
                                         </div>
                                     </div>
                                     <div class="d-flex gap-2">
-                                        <a href="reports/annual-report-2022.pdf" class="btn btn-sm btn-outline-light" download>
+                                        <a href="documents/annual-reports/annual-report-2022.pdf" class="btn btn-sm btn-outline-light" download>
                                             <i class="fas fa-download me-2"></i>Download
                                         </a>
-                                        <button class="btn btn-sm btn-primary preview-btn" data-pdf="reports/annual-report-2022.pdf">
+                                        <button class="btn btn-sm btn-primary preview-btn" data-pdf="documents/annual-reports/annual-report-2022.pdf">
                                             <i class="fas fa-eye me-2"></i>Preview
                                         </button>
                                     </div>
@@ -189,14 +189,14 @@ document.addEventListener('DOMContentLoaded', function () {
                                         </div>
                                         <div>
                                             <h3 class="h5 mb-0 text-white">2020-21 Report</h3>
-                                            <small class="text-gold-light">PDF • 3.1 MB</small>
+                                            <small class="text-gold-light">PDF • 4.0 MB</small>
                                         </div>
                                     </div>
                                     <div class="d-flex gap-2">
-                                        <a href="reports/annual-report-2021.pdf" class="btn btn-sm btn-outline-light" download>
+                                        <a href="documents/annual-reports/annual-report-2021.pdf" class="btn btn-sm btn-outline-light" download>
                                             <i class="fas fa-download me-2"></i>Download
                                         </a>
-                                        <button class="btn btn-sm btn-primary preview-btn" data-pdf="reports/annual-report-2021.pdf">
+                                        <button class="btn btn-sm btn-primary preview-btn" data-pdf="documents/annual-reports/annual-report-2021.pdf">
                                             <i class="fas fa-eye me-2"></i>Preview
                                         </button>
                                     </div>
@@ -214,14 +214,14 @@ document.addEventListener('DOMContentLoaded', function () {
                                         </div>
                                         <div>
                                             <h3 class="h5 mb-0 text-white">2019-20 Report</h3>
-                                            <small class="text-gold-light">PDF • 2.9 MB</small>
+                                            <small class="text-gold-light">PDF • 3.8 MB</small>
                                         </div>
                                     </div>
                                     <div class="d-flex gap-2">
-                                        <a href="reports/annual-report-2020.pdf" class="btn btn-sm btn-outline-light" download>
+                                        <a href="documents/annual-reports/annual-report-2020.pdf" class="btn btn-sm btn-outline-light" download>
                                             <i class="fas fa-download me-2"></i>Download
                                         </a>
-                                        <button class="btn btn-sm btn-primary preview-btn" data-pdf="reports/annual-report-2020.pdf">
+                                        <button class="btn btn-sm btn-primary preview-btn" data-pdf="documents/annual-reports/annual-report-2020.pdf">
                                             <i class="fas fa-eye me-2"></i>Preview
                                         </button>
                                     </div>
@@ -240,14 +240,14 @@ document.addEventListener('DOMContentLoaded', function () {
                                         </div>
                                         <div>
                                             <h3 class="h5 mb-0 text-white">2018-19 Report</h3>
-                                            <small class="text-gold-light">PDF • 3.5 MB</small>
+                                            <small class="text-gold-light">PDF • 897 KB</small>
                                         </div>
                                     </div>
                                     <div class="d-flex gap-2">
-                                        <a href="reports/annual-report-2019.pdf" class="btn btn-sm btn-outline-light" download>
+                                        <a href="documents/annual-reports/annual-report-2029.pdf" class="btn btn-sm btn-outline-light" download>
                                             <i class="fas fa-download me-2"></i>Download
                                         </a>
-                                        <button class="btn btn-sm btn-primary preview-btn" data-pdf="reports/annual-report-2019.pdf">
+                                        <button class="btn btn-sm btn-primary preview-btn" data-pdf="documents/annual-reports/annual-report-2029.pdf">
                                             <i class="fas fa-eye me-2"></i>Preview
                                         </button>
                                     </div>
@@ -255,130 +255,6 @@ document.addEventListener('DOMContentLoaded', function () {
                             </div>
                         </div>
 
-                        <!-- 2017-18 -->
-                        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                            <div class="card h-100 report-card">
-                                <div class="card-body p-4">
-                                    <div class="d-flex align-items-center mb-3">
-                                        <div class="bg-blue-100 rounded p-3 me-3">
-                                            <i class="fas fa-file-pdf fa-2x text-blue-800"></i>
-                                        </div>
-                                        <div>
-                                            <h3 class="h5 mb-0 text-white">2017-18 Report</h3>
-                                            <small class="text-gold-light">PDF • 3.1 MB</small>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex gap-2">
-                                        <a href="reports/annual-report-2018.pdf" class="btn btn-sm btn-outline-light" download>
-                                            <i class="fas fa-download me-2"></i>Download
-                                        </a>
-                                        <button class="btn btn-sm btn-primary preview-btn" data-pdf="reports/annual-report-2018.pdf">
-                                            <i class="fas fa-eye me-2"></i>Preview
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 2016-17 -->
-                        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
-                            <div class="card h-100 report-card">
-                                <div class="card-body p-4">
-                                    <div class="d-flex align-items-center mb-3">
-                                        <div class="bg-blue-100 rounded p-3 me-3">
-                                            <i class="fas fa-file-pdf fa-2x text-blue-800"></i>
-                                        </div>
-                                        <div>
-                                            <h3 class="h5 mb-0 text-white">2016-17 Report</h3>
-                                            <small class="text-gold-light">PDF • 2.9 MB</small>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex gap-2">
-                                        <a href="reports/annual-report-2017.pdf" class="btn btn-sm btn-outline-light" download>
-                                            <i class="fas fa-download me-2"></i>Download
-                                        </a>
-                                        <button class="btn btn-sm btn-primary preview-btn" data-pdf="reports/annual-report-2017.pdf">
-                                            <i class="fas fa-eye me-2"></i>Preview
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 2015-2016 -->
-                        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                            <div class="card h-100 report-card">
-                                <div class="card-body p-4">
-                                    <div class="d-flex align-items-center mb-3">
-                                        <div class="bg-blue-100 rounded p-3 me-3">
-                                            <i class="fas fa-file-pdf fa-2x text-blue-800"></i>
-                                        </div>
-                                        <div>
-                                            <h3 class="h5 mb-0 text-white">2015-16 Report</h3>
-                                            <small class="text-gold-light">PDF • 3.5 MB</small>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex gap-2">
-                                        <a href="reports/annual-report-2016.pdf" class="btn btn-sm btn-outline-light" download>
-                                            <i class="fas fa-download me-2"></i>Download
-                                        </a>
-                                        <button class="btn btn-sm btn-primary preview-btn" data-pdf="reports/annual-report-2016.pdf">
-                                            <i class="fas fa-eye me-2"></i>Preview
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 2014-15 -->
-                        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                            <div class="card h-100 report-card">
-                                <div class="card-body p-4">
-                                    <div class="d-flex align-items-center mb-3">
-                                        <div class="bg-blue-100 rounded p-3 me-3">
-                                            <i class="fas fa-file-pdf fa-2x text-blue-800"></i>
-                                        </div>
-                                        <div>
-                                            <h3 class="h5 mb-0 text-white">2014-15 Report</h3>
-                                            <small class="text-gold-light">PDF • 3.1 MB</small>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex gap-2">
-                                        <a href="reports/annual-report-2015.pdf" class="btn btn-sm btn-outline-light" download>
-                                            <i class="fas fa-download me-2"></i>Download
-                                        </a>
-                                        <button class="btn btn-sm btn-primary preview-btn" data-pdf="reports/annual-report-2015.pdf">
-                                            <i class="fas fa-eye me-2"></i>Preview
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 2013-14 -->
-                        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
-                            <div class="card h-100 report-card">
-                                <div class="card-body p-4">
-                                    <div class="d-flex align-items-center mb-3">
-                                        <div class="bg-blue-100 rounded p-3 me-3">
-                                            <i class="fas fa-file-pdf fa-2x text-blue-800"></i>
-                                        </div>
-                                        <div>
-                                            <h3 class="h5 mb-0 text-white">2013-14 Report</h3>
-                                            <small class="text-gold-light">PDF • 2.9 MB</small>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex gap-2">
-                                        <a href="reports/annual-report-2014.pdf" class="btn btn-sm btn-outline-light" download>
-                                            <i class="fas fa-download me-2"></i>Download
-                                        </a>
-                                        <button class="btn btn-sm btn-primary preview-btn" data-pdf="reports/annual-report-2014.pdf">
-                                            <i class="fas fa-eye me-2"></i>Preview
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     `;
                     moreReportsDiv.classList.remove('d-none');
                     btn.innerHTML = '<i class="fas fa-chevron-up me-2"></i> Show Less';
@@ -491,10 +367,10 @@ document.addEventListener('DOMContentLoaded', function() {
                                         </div>
                                     </div>
                                     <div class="d-flex gap-2">
-                                        <a href="documents/doc4.docx" class="btn btn-sm btn-outline-gold" download>
+                                        <a href="documents/resources/doc4.docx" class="btn btn-sm btn-outline-gold" download>
                                             <i class="fas fa-download me-2"></i>Download
                                         </a>
-                                        <button class="btn btn-sm btn-gold preview-btn" data-pdf="documents/doc4.docx">
+                                        <button class="btn btn-sm btn-gold preview-btn btn-hover-glow" data-pdf="documents/resources/doc4.docx">
                                             <i class="fas fa-eye me-2"></i>Preview
                                         </button>
                                     </div>
@@ -517,10 +393,10 @@ document.addEventListener('DOMContentLoaded', function() {
                                         </div>
                                     </div>
                                     <div class="d-flex gap-2">
-                                        <a href="documents/doc5.docx" class="btn btn-sm btn-outline-gold" download>
+                                        <a href="documents/resources/doc5.docx" class="btn btn-sm btn-outline-gold" download>
                                             <i class="fas fa-download me-2"></i>Download
                                         </a>
-                                        <button class="btn btn-sm btn-gold preview-btn" data-pdf="documents/doc5.docx">
+                                        <button class="btn btn-sm btn-gold preview-btn btn-hover-glow" data-pdf="documents/resources/doc5.docx">
                                             <i class="fas fa-eye me-2"></i>Preview
                                         </button>
                                     </div>
@@ -543,10 +419,10 @@ document.addEventListener('DOMContentLoaded', function() {
                                         </div>
                                     </div>
                                     <div class="d-flex gap-2">
-                                        <a href="documents/doc6.pptx" class="btn btn-sm btn-outline-gold" download>
+                                        <a href="documents/resources/doc6.pptx" class="btn btn-sm btn-outline-gold" download>
                                             <i class="fas fa-download me-2"></i>Download
                                         </a>
-                                        <button class="btn btn-sm btn-gold preview-btn" data-pdf="documents/doc6.pptx">
+                                        <button class="btn btn-sm btn-gold preview-btn btn-hover-glow" data-pdf="documents/resources/doc6.pptx">
                                             <i class="fas fa-eye me-2"></i>Preview
                                         </button>
                                     </div>
@@ -571,10 +447,10 @@ document.addEventListener('DOMContentLoaded', function() {
                                         </div>
                                     </div>
                                     <div class="d-flex gap-2">
-                                        <a href="documents/doc7.pptx" class="btn btn-sm btn-outline-gold" download>
+                                        <a href="documents/resources/doc7.pptx" class="btn btn-sm btn-outline-gold" download>
                                             <i class="fas fa-download me-2"></i>Download
                                         </a>
-                                        <button class="btn btn-sm btn-gold preview-btn" data-pdf="documents/doc7.pptx">
+                                        <button class="btn btn-sm btn-gold preview-btn btn-hover-glow" data-pdf="documents/resources/doc7.pptx">
                                             <i class="fas fa-eye me-2"></i>Preview
                                         </button>
                                     </div>
@@ -597,10 +473,10 @@ document.addEventListener('DOMContentLoaded', function() {
                                         </div>
                                     </div>
                                     <div class="d-flex gap-2">
-                                        <a href="documents/doc8.pdf" class="btn btn-sm btn-outline-gold" download>
+                                        <a href="documents/resources/doc8.pdf" class="btn btn-sm btn-outline-gold" download>
                                             <i class="fas fa-download me-2"></i>Download
                                         </a>
-                                        <button class="btn btn-sm btn-gold preview-btn" data-pdf="documents/doc8.pdf">
+                                        <button class="btn btn-sm btn-gold preview-btn btn-hover-glow" data-pdf="documents/resources/doc8.pdf">
                                             <i class="fas fa-eye me-2"></i>Preview
                                         </button>
                                     </div>
@@ -625,10 +501,10 @@ document.addEventListener('DOMContentLoaded', function() {
                                         </div>
                                     </div>
                                     <div class="d-flex gap-2">
-                                        <a href="documents/doc9.pdf" class="btn btn-sm btn-outline-gold" download>
+                                        <a href="documents/resources/doc9.pdf" class="btn btn-sm btn-outline-gold" download>
                                             <i class="fas fa-download me-2"></i>Download
                                         </a>
-                                        <button class="btn btn-sm btn-gold preview-btn" data-pdf="documents/doc9.pdf">
+                                        <button class="btn btn-sm btn-gold preview-btn btn-hover-glow" data-pdf="documents/resources/doc9.pdf">
                                             <i class="fas fa-eye me-2"></i>Preview
                                         </button>
                                     </div>
@@ -651,10 +527,10 @@ document.addEventListener('DOMContentLoaded', function() {
                                         </div>
                                     </div>
                                     <div class="d-flex gap-2">
-                                        <a href="documents/doc10.pptx" class="btn btn-sm btn-outline-gold" download>
+                                        <a href="documents/resources/doc10.pptx" class="btn btn-sm btn-outline-gold" download>
                                             <i class="fas fa-download me-2"></i>Download
                                         </a>
-                                        <button class="btn btn-sm btn-gold preview-btn" data-pdf="documents/doc10.pptx">
+                                        <button class="btn btn-sm btn-gold preview-btn btn-hover-glow" data-pdf="documents/resources/doc10.pptx">
                                             <i class="fas fa-eye me-2"></i>Preview
                                         </button>
                                     </div>
@@ -678,10 +554,10 @@ document.addEventListener('DOMContentLoaded', function() {
                                         </div>
                                     </div>
                                     <div class="d-flex gap-2">
-                                        <a href="documents/doc11.pdf" class="btn btn-sm btn-outline-gold" download>
+                                        <a href="documents/resources/doc11.pdf" class="btn btn-sm btn-outline-gold" download>
                                             <i class="fas fa-download me-2"></i>Download
                                         </a>
-                                        <button class="btn btn-sm btn-gold preview-btn" data-pdf="documents/doc11.pdf">
+                                        <button class="btn btn-sm btn-gold preview-btn btn-hover-glow" data-pdf="documents/resources/doc11.pdf">
                                             <i class="fas fa-eye me-2"></i>Preview
                                         </button>
                                     </div>
@@ -704,10 +580,10 @@ document.addEventListener('DOMContentLoaded', function() {
                                         </div>
                                     </div>
                                     <div class="d-flex gap-2">
-                                        <a href="documents/doc12.pdf" class="btn btn-sm btn-outline-gold" download>
+                                        <a href="documents/resources/doc12.pdf" class="btn btn-sm btn-outline-gold" download>
                                             <i class="fas fa-download me-2"></i>Download
                                         </a>
-                                        <button class="btn btn-sm btn-gold preview-btn" data-pdf="documents/doc12.pdf">
+                                        <button class="btn btn-sm btn-gold preview-btn btn-hover-glow" data-pdf="documents/resources/doc12.pdf">
                                             <i class="fas fa-eye me-2"></i>Preview
                                         </button>
                                     </div>
@@ -730,10 +606,10 @@ document.addEventListener('DOMContentLoaded', function() {
                                         </div>
                                     </div>
                                     <div class="d-flex gap-2">
-                                        <a href="documents/doc13.pdf" class="btn btn-sm btn-outline-gold" download>
+                                        <a href="documents/resources/doc13.pdf" class="btn btn-sm btn-outline-gold" download>
                                             <i class="fas fa-download me-2"></i>Download
                                         </a>
-                                        <button class="btn btn-sm btn-gold preview-btn" data-pdf="documents/doc13.pdf">
+                                        <button class="btn btn-sm btn-gold preview-btn btn-hover-glow" data-pdf="documents/resources/doc13.pdf">
                                             <i class="fas fa-eye me-2"></i>Preview
                                         </button>
                                     </div>
@@ -756,10 +632,10 @@ document.addEventListener('DOMContentLoaded', function() {
                                         </div>
                                     </div>
                                     <div class="d-flex gap-2">
-                                        <a href="documents/doc14.pdf" class="btn btn-sm btn-outline-gold" download>
+                                        <a href="documents/resources/doc14.pdf" class="btn btn-sm btn-outline-gold" download>
                                             <i class="fas fa-download me-2"></i>Download
                                         </a>
-                                        <button class="btn btn-sm btn-gold preview-btn" data-pdf="documents/doc14.pdf">
+                                        <button class="btn btn-sm btn-gold preview-btn btn-hover-glow" data-pdf="documents/resources/doc14.pdf">
                                             <i class="fas fa-eye me-2"></i>Preview
                                         </button>
                                     </div>
@@ -791,3 +667,111 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// Load More Audits functionality
+const moreAuditsBtn = document.getElementById('loadMoreAudits');
+if (moreAuditsBtn) {
+    moreAuditsBtn.addEventListener('click', function () {
+        const moreAuditsDiv = document.getElementById('moreAudits');
+        const btn = this;
+
+        if (moreAuditsDiv.classList.contains('d-none')) {
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Loading...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                moreAuditsDiv.innerHTML = `
+                    <!-- Audit Report 4 -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card h-100 audit-card">
+                            <div class="card-body text-center">
+                                <div class="audit-icon-container">
+                                    <i class="fas fa-file-contract audit-icon"></i>
+                                </div>
+                                <h3 class="h5">2021-22 Audit Report</h3>
+                                <p>
+                                    Complete financial audit with detailed breakdown 
+                                    of all income sources and expenditures.
+                                </p>
+                                <div class="d-flex gap-2 justify-content-center">
+                                    <a href="documents/audit-reports/audit-report-2022.pdf" class="btn btn-sm btn-outline-light" download>
+                                        <i class="fas fa-download me-2"></i>Download
+                                    </a>
+                                    <button class="btn btn-sm btn-primary preview-btn" data-pdf="documents/audit-reports/audit-report-2022.pdf">
+                                        <i class="fas fa-eye me-2"></i>Preview
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Audit Report 5 -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card h-100 audit-card">
+                            <div class="card-body text-center">
+                                <div class="audit-icon-container">
+                                    <i class="fas fa-receipt audit-icon"></i>
+                                </div>
+                                <h3 class="h5">2020-21 Audit Report</h3>
+                                <p>
+                                    Certified financial statements and compliance 
+                                    report for the fiscal year 2020-21.
+                                </p>
+                                <div class="d-flex gap-2 justify-content-center">
+                                    <a href="documents/audit-reports/audit-report-2021.pdf" class="btn btn-sm btn-outline-light" download>
+                                        <i class="fas fa-download me-2"></i>Download
+                                    </a>
+                                    <button class="btn btn-sm btn-primary preview-btn" data-pdf="documents/audit-reports/audit-report-2021.pdf">
+                                        <i class="fas fa-eye me-2"></i>Preview
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Audit Report 6 -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                        <div class="card h-100 audit-card">
+                            <div class="card-body text-center">
+                                <div class="audit-icon-container">
+                                    <i class="fas fa-chart-pie audit-icon"></i>
+                                </div>
+                                <h3 class="h5">2019-20 Audit Report</h3>
+                                <p>
+                                    Comprehensive financial analysis with detailed 
+                                    expense categorization and reporting.
+                                </p>
+                                <div class="d-flex gap-2 justify-content-center">
+                                    <a href="documents/audit-reports/audit-report-2020.pdf" class="btn btn-sm btn-outline-light" download>
+                                        <i class="fas fa-download me-2"></i>Download
+                                    </a>
+                                    <button class="btn btn-sm btn-primary preview-btn" data-pdf="documents/audit-reports/audit-report-2020.pdf">
+                                        <i class="fas fa-eye me-2"></i>Preview
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                moreAuditsDiv.classList.remove('d-none');
+                btn.innerHTML = '<i class="fas fa-chevron-up me-2"></i> Show Less';
+                btn.disabled = false;
+
+                AOS.refresh();
+
+                // Wire up preview buttons for new audit reports
+                moreAuditsDiv.querySelectorAll('.preview-btn').forEach(newBtn => {
+                    newBtn.addEventListener('click', function() {
+                        const pdfUrl = this.getAttribute('data-pdf');
+                        document.getElementById('pdfPreview').src = pdfUrl + '#view=fitH';
+                        document.getElementById('pdfDownloadBtn').href = pdfUrl;
+                        new bootstrap.Modal(document.getElementById('pdfModal')).show();
+                    });
+                });
+            }, 800);
+        } else {
+            moreAuditsDiv.classList.add('d-none');
+            btn.innerHTML = '<i class="fas fa-history me-2"></i>View Archive (2012-2022)';
+        }
+    });
+}

@@ -698,7 +698,7 @@ section {
   color: #000;
 }
 
-/* Advanced Documents Section */
+/* Documents Section */
 .advanced-documents-section {
     background: linear-gradient(135deg, #0a0e1a 0%, #1a2030 100%);
     overflow: hidden;
@@ -796,6 +796,11 @@ section {
     font-weight: 600;
 }
 
+.btn-gold:hover {
+    color: var(--gold-light);
+    border: 1px solid var(--gold);
+}
+
 .btn-outline-gold {
     background-color: transparent;
     color: var(--gold);
@@ -850,3 +855,173 @@ section {
 .document-particle {
     animation: floatParticle linear infinite;
 }
+
+/* Audit Reports Section */
+.audit-section {
+    background: linear-gradient(135deg, var(--dark-2) 0%, var(--dark-1) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.audit-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="rgba(212, 175, 55, 0.1)" d="M50 0L61.8 38.2H100L69.1 61.8L80.9 100L50 76.4L19.1 100L30.9 61.8L0 38.2H38.2L50 0Z"/></svg>');
+    background-size: 25px;
+    opacity: 0.4;
+    animation: stars 100s linear infinite;
+    z-index: 0;
+}
+
+.audit-card {
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: none;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.audit-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+    border-color: rgba(212, 175, 55, 0.4);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.audit-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, var(--gold), var(--gold-light));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+.audit-card:hover::before {
+    transform: scaleX(1);
+}
+
+.audit-icon-container {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(244, 229, 194, 0.25) 100%);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.audit-icon-container::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--gold-light);
+    border-radius: 12px;
+    animation: pulse 3s infinite;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.audit-card:hover .audit-icon-container::before {
+    opacity: 0.5;
+}
+
+.audit-icon {
+    font-size: 1.8rem;
+    color: var(--gold);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.audit-card:hover .audit-icon {
+    transform: scale(1.1);
+}
+
+.audit-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--gold);
+    color: var(--dark-1);
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    box-shadow: 0 3px 10px rgba(212, 175, 55, 0.3);
+}
+
+.audit-card .card-body {
+    padding: 30px 25px;
+    position: relative;
+    z-index: 2;
+}
+
+.audit-card h3 {
+    color: var(--light-1);
+    position: relative;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.audit-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: var(--gold);
+    transition: all 0.3s ease;
+}
+
+.audit-card:hover h3::after {
+    width: 60px;
+}
+
+.audit-card p {
+    color: var(--light-3);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.audit-card small {
+    color: var(--gold-light) !important;
+}
+
+.audit-card .btn-outline-light {
+    color: var(--light-2) !important;
+    border-color: var(--gold-light) !important;
+}
+
+.audit-card .btn-outline-light:hover {
+    color: var(--dark-1) !important;
+    background-color: var(--gold-light) !important;
+}
+
+.audit-card .bg-blue-100 {
+    background-color: rgba(212, 175, 55, 0.1) !important;
+}
+
+.audit-card .text-blue-800 {
+    color: var(--gold) !important;
+}
+
+
